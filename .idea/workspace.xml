@@ -2,7 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Activation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Activation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_BifurcationGenerator.m" afterPath="$PROJECT_DIR$/Kernel/CLM_BifurcationGenerator.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Binomial.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Binomial.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_CatLigation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_CatLigation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Chain.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Chain.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_ChainHlp.m" afterPath="$PROJECT_DIR$/Kernel/CLM_ChainHlp.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_ChainInit.m" afterPath="$PROJECT_DIR$/Kernel/CLM_ChainInit.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_ChainModel.m" afterPath="$PROJECT_DIR$/Kernel/CLM_ChainModel.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_ChainPlot.m" afterPath="$PROJECT_DIR$/Kernel/CLM_ChainPlot.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Common.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Common.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_CommonPostFix.m" afterPath="$PROJECT_DIR$/Kernel/CLM_CommonPostFix.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Epimerization.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Epimerization.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m" afterPath="$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_GeneratorCommon.m" afterPath="$PROJECT_DIR$/Kernel/CLM_GeneratorCommon.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Init.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Init.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Ligation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Ligation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Output.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Output.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Sedimentation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Sedimentation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" afterPath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,26 +40,65 @@
     <favorites_list name="CLM" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+    <leaf>
+      <file leaf-file-name="CLM_SedimentationDirect.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLM_Ligation.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Kernel/CLM_Ligation.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="22" column="40" lean-forward="true" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CLM_Calc.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41547">
+            <state relative-caret-position="1739">
               <caret line="1259" column="3" lean-forward="false" selection-start-line="1259" selection-start-column="3" selection-end-line="1259" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="CLM_Chain.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2430">
+              <caret line="372" column="200" lean-forward="false" selection-start-line="372" selection-start-column="200" selection-end-line="372" selection-end-column="200" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLM_Sedimentation.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1218">
+              <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
+              <folding>
+                <marker date="1488173659143" expanded="false" signature="7950:16967" ph="Module[...]" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLM_ChainHlp.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Kernel/CLM_ChainHlp.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="582">
+              <caret line="435" column="66" lean-forward="true" selection-start-line="435" selection-start-column="66" selection-end-line="435" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,12 +114,58 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>UseSamePairFormCoeff</find>
+      <find>InitializePairFormation</find>
+      <find>UseSymmetricPairsValue</find>
+      <find>AllChainsTbl</find>
+      <find>AssignPairDiastereomericReactions</find>
+      <find>\ :</find>
+      <find>Process</find>
+      <find>EvolutionRun[</find>
+      <find>base</find>
+      <find>switch</find>
+      <find>InitializeTwoSubstCrystValue</find>
+      <find>kDirectCrystCoefficientValue</find>
+      <find>RandomCoefficientValue</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>\:</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Kernel/CLM_Activation.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_BifurcationGenerator.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Binomial.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_CatLigation.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_ChainInit.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_ChainModel.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_ChainPlot.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_CommonPostFix.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Epimerization.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_GeneratorCommon.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Init.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Ligation.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Output.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Common.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_ChainHlp.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Sedimentation.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Chain.m" />
+      </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
@@ -84,6 +189,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -106,73 +214,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ISSOL_201612" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CLM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CLM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ISSOL_201612" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Calc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="L5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CLM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CLM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ISSOL_201612" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Calc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="L5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="A" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CLM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CLM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ISSOL_201612" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Calc" />
+              <option name="myItemId" value="Run" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -192,9 +234,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -409,6 +448,19 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="executeSpecs" factoryName="Gauge Execution">
+      <setting name="environment" value="" />
+      <setting name="specsToExecute" value="" />
+      <setting name="tags" value="" />
+      <setting name="parallelNodes" value="" />
+      <setting name="execInParallel" value="false" />
+      <setting name="programParameters" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="moduleName" value="" />
+      <envMap />
+      <setting name="rowsRange" value="" />
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -434,7 +486,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="3866" height="2106" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990807" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -450,7 +502,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1401919" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -472,6 +524,10 @@
     <breakpoint-manager />
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
       <provider selected="true" editor-type-id="text-editor">
@@ -486,7 +542,24 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41547">
+          <caret line="1259" column="3" lean-forward="false" selection-start-line="1259" selection-start-column="3" selection-end-line="1259" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           </first_editor>
           <second_editor />
         </state>
@@ -506,29 +579,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Activation.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/init.m" />
     <entry file="file://$PROJECT_DIR$/Kernel/CLM.m" />
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41547">
-          <caret line="1259" column="3" lean-forward="false" selection-start-line="1259" selection-start-column="3" selection-end-line="1259" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -536,6 +593,481 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Activation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_BifurcationGenerator.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#2326#2349#1" expanded="false" />
+            <element signature="e#2326#2349#1" expanded="false" />
+            <element signature="e#2351#2374#1" expanded="false" />
+            <element signature="e#2351#2374#1" expanded="false" />
+            <element signature="e#2376#2385#1" expanded="false" />
+            <element signature="e#2387#2395#1" expanded="false" />
+            <element signature="e#2397#2412#1" expanded="false" />
+            <element signature="e#2414#2419#1" expanded="false" />
+            <element signature="e#2421#2431#1" expanded="false" />
+            <element signature="e#2433#2439#1" expanded="false" />
+            <element signature="e#2442#2456#1" expanded="false" />
+            <element signature="e#2442#2456#1" expanded="false" />
+            <element signature="e#2459#2473#1" expanded="false" />
+            <element signature="e#2459#2473#1" expanded="false" />
+            <element signature="e#2489#2497#1" expanded="false" />
+            <element signature="e#3514#3522#0" expanded="false" />
+            <element signature="e#3537#3552#0" expanded="false" />
+            <element signature="e#3623#3631#0" expanded="false" />
+            <element signature="e#3646#3661#0" expanded="false" />
+            <element signature="e#3772#3780#0" expanded="false" />
+            <element signature="e#3846#3861#0" expanded="false" />
+            <element signature="e#3939#3954#0" expanded="false" />
+            <element signature="e#4018#4026#0" expanded="false" />
+            <element signature="e#4641#4649#0" expanded="false" />
+            <element signature="e#4664#4679#0" expanded="false" />
+            <element signature="e#4750#4758#0" expanded="false" />
+            <element signature="e#4773#4788#0" expanded="false" />
+            <element signature="e#4907#4915#0" expanded="false" />
+            <element signature="e#4970#4985#0" expanded="false" />
+            <element signature="e#5067#5082#0" expanded="false" />
+            <element signature="e#5150#5158#0" expanded="false" />
+            <element signature="e#11046#11054#0" expanded="false" />
+            <element signature="e#11081#11094#1" expanded="false" />
+            <element signature="e#11145#11160#0" expanded="false" />
+            <element signature="e#11160#11168#0" expanded="false" />
+            <element signature="e#11195#11223#1" expanded="false" />
+            <element signature="e#11195#11223#1" expanded="false" />
+            <element signature="e#11274#11282#0" expanded="false" />
+            <element signature="e#11282#11297#0" expanded="false" />
+            <element signature="e#11324#11352#1" expanded="false" />
+            <element signature="e#11324#11352#1" expanded="false" />
+            <element signature="e#11403#11411#0" expanded="false" />
+            <element signature="e#11439#11453#1" expanded="false" />
+            <element signature="e#11504#11519#0" expanded="false" />
+            <element signature="e#11546#11566#1" expanded="false" />
+            <element signature="e#11617#11622#0" expanded="false" />
+            <element signature="e#11649#11659#1" expanded="false" />
+            <element signature="e#11710#11716#0" expanded="false" />
+            <element signature="e#11744#11750#1" expanded="false" />
+            <element signature="e#11807#11815#0" expanded="false" />
+            <element signature="e#11815#11821#0" expanded="false" />
+            <element signature="e#11849#11863#1" expanded="false" />
+            <element signature="e#11849#11863#1" expanded="false" />
+            <element signature="e#11920#11928#0" expanded="false" />
+            <element signature="e#11928#11934#0" expanded="false" />
+            <element signature="e#11961#11980#1" expanded="false" />
+            <element signature="e#11961#11980#1" expanded="false" />
+            <element signature="e#18435#18441#0" expanded="false" />
+            <element signature="e#18530#18536#0" expanded="false" />
+            <element signature="e#21981#21989#0" expanded="false" />
+            <element signature="e#21989#21995#0" expanded="false" />
+            <element signature="e#25502#25521#1" expanded="false" />
+            <element signature="e#25502#25521#1" expanded="false" />
+            <element signature="e#26020#26026#0" expanded="false" />
+            <element signature="e#26099#26112#1" expanded="false" />
+            <element signature="e#26205#26239#1" expanded="false" />
+            <element signature="e#37792#37811#1" expanded="false" />
+            <element signature="e#37792#37811#1" expanded="false" />
+            <element signature="e#38195#38214#1" expanded="false" />
+            <element signature="e#38195#38214#1" expanded="false" />
+            <element signature="e#40400#40406#0" expanded="false" />
+            <element signature="e#40439#40452#1" expanded="false" />
+            <element signature="e#40627#40661#1" expanded="false" />
+            <element signature="e#40796#40817#1" expanded="false" />
+            <element signature="e#40858#40879#1" expanded="false" />
+            <element signature="e#45353#45387#1" expanded="false" />
+            <element signature="e#45549#45568#1" expanded="false" />
+            <element signature="e#45549#45568#1" expanded="false" />
+            <element signature="e#45669#45688#1" expanded="false" />
+            <element signature="e#45669#45688#1" expanded="false" />
+            <element signature="e#46443#46449#0" expanded="false" />
+            <element signature="e#46477#46498#1" expanded="false" />
+            <element signature="e#46509#46530#1" expanded="false" />
+            <element signature="e#47731#47737#0" expanded="false" />
+            <element signature="e#47868#47874#0" expanded="false" />
+            <element signature="e#48005#48013#0" expanded="false" />
+            <element signature="e#48018#48026#0" expanded="false" />
+            <element signature="e#48210#48216#0" expanded="false" />
+            <element signature="e#48220#48226#0" expanded="false" />
+            <element signature="e#52707#52720#1" expanded="false" />
+            <element signature="e#57606#57622#0" expanded="false" />
+            <element signature="e#57728#57744#1" expanded="false" />
+            <element signature="e#57837#57853#0" expanded="false" />
+            <element signature="e#57959#57975#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Binomial.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="11" column="85" lean-forward="true" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_BinomialDistribution.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2607">
+          <caret line="5" column="52" lean-forward="true" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_BinomialOutput.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_CatLigation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1739">
+          <caret line="1259" column="3" lean-forward="false" selection-start-line="1259" selection-start-column="3" selection-end-line="1259" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_ChainFindMin.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_ChainInit.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="12" column="106" lean-forward="true" selection-start-line="12" selection-start-column="106" selection-end-line="12" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_ChainModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_ChainPlot.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_CommonPostFix.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Epimerization.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_GeneratorCommon.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2891">
+          <caret line="655" column="68" lean-forward="false" selection-start-line="655" selection-start-column="68" selection-end-line="655" selection-end-column="68" />
+          <folding>
+            <element signature="e#14353#14369#1" expanded="false" />
+            <element signature="e#14371#14380#1" expanded="false" />
+            <element signature="e#14498#14514#1" expanded="false" />
+            <element signature="e#14516#14525#1" expanded="false" />
+            <element signature="e#14850#14867#1" expanded="false" />
+            <element signature="e#14869#14879#1" expanded="false" />
+            <element signature="e#15001#15018#1" expanded="false" />
+            <element signature="e#15020#15030#1" expanded="false" />
+            <element signature="e#15303#15320#1" expanded="false" />
+            <element signature="e#15322#15332#1" expanded="false" />
+            <element signature="e#15454#15471#1" expanded="false" />
+            <element signature="e#15473#15483#1" expanded="false" />
+            <element signature="e#15812#15830#1" expanded="false" />
+            <element signature="e#15832#15843#1" expanded="false" />
+            <element signature="e#15969#15987#1" expanded="false" />
+            <element signature="e#15989#16000#1" expanded="false" />
+            <element signature="e#16277#16295#1" expanded="false" />
+            <element signature="e#16297#16308#1" expanded="false" />
+            <element signature="e#16434#16452#1" expanded="false" />
+            <element signature="e#16454#16465#1" expanded="false" />
+            <element signature="e#16742#16760#1" expanded="false" />
+            <element signature="e#16762#16773#1" expanded="false" />
+            <element signature="e#16899#16917#1" expanded="false" />
+            <element signature="e#16919#16930#1" expanded="false" />
+            <element signature="e#17207#17225#1" expanded="false" />
+            <element signature="e#17227#17238#1" expanded="false" />
+            <element signature="e#17364#17382#1" expanded="false" />
+            <element signature="e#17384#17395#1" expanded="false" />
+            <element signature="e#17756#17773#1" expanded="false" />
+            <element signature="e#17775#17785#1" expanded="false" />
+            <element signature="e#18045#18063#1" expanded="false" />
+            <element signature="e#18065#18076#1" expanded="false" />
+            <element signature="e#18219#18238#1" expanded="false" />
+            <element signature="e#18240#18252#1" expanded="false" />
+            <element signature="e#18342#18361#1" expanded="false" />
+            <element signature="e#18363#18375#1" expanded="false" />
+            <element signature="e#18605#18621#1" expanded="false" />
+            <element signature="e#18623#18632#1" expanded="false" />
+            <element signature="e#18976#18993#1" expanded="false" />
+            <element signature="e#18995#19005#1" expanded="false" />
+            <element signature="e#19171#19189#1" expanded="false" />
+            <element signature="e#19191#19202#1" expanded="false" />
+            <element signature="e#19315#19333#1" expanded="false" />
+            <element signature="e#19335#19346#1" expanded="false" />
+            <element signature="e#19629#19646#1" expanded="false" />
+            <element signature="e#19648#19658#1" expanded="false" />
+            <element signature="e#19816#19834#1" expanded="false" />
+            <element signature="e#19836#19847#1" expanded="false" />
+            <element signature="e#19952#19970#1" expanded="false" />
+            <element signature="e#19972#19983#1" expanded="false" />
+            <element signature="e#20374#20391#1" expanded="false" />
+            <element signature="e#20393#20403#1" expanded="false" />
+            <element signature="e#20557#20576#1" expanded="false" />
+            <element signature="e#20578#20590#1" expanded="false" />
+            <element signature="e#20691#20710#1" expanded="false" />
+            <element signature="e#20712#20724#1" expanded="false" />
+            <element signature="e#20878#20897#1" expanded="false" />
+            <element signature="e#20899#20911#1" expanded="false" />
+            <element signature="e#21012#21031#1" expanded="false" />
+            <element signature="e#21033#21045#1" expanded="false" />
+            <element signature="e#21328#21345#1" expanded="false" />
+            <element signature="e#21347#21357#1" expanded="false" />
+            <element signature="e#21515#21534#1" expanded="false" />
+            <element signature="e#21536#21548#1" expanded="false" />
+            <element signature="e#21653#21672#1" expanded="false" />
+            <element signature="e#21674#21686#1" expanded="false" />
+            <element signature="e#21844#21863#1" expanded="false" />
+            <element signature="e#21865#21877#1" expanded="false" />
+            <element signature="e#21982#22001#1" expanded="false" />
+            <element signature="e#22003#22015#1" expanded="false" />
+            <element signature="e#23634#23639#1" expanded="false" />
+            <element signature="e#23642#23657#1" expanded="false" />
+            <element signature="e#23808#23824#1" expanded="false" />
+            <element signature="e#23826#23835#1" expanded="false" />
+            <element signature="e#23985#24002#1" expanded="false" />
+            <element signature="e#24004#24014#1" expanded="false" />
+            <element signature="e#24111#24128#1" expanded="false" />
+            <element signature="e#24130#24140#1" expanded="false" />
+            <element signature="e#24294#24312#1" expanded="false" />
+            <element signature="e#24314#24325#1" expanded="false" />
+            <element signature="e#24426#24444#1" expanded="false" />
+            <element signature="e#24446#24457#1" expanded="false" />
+            <element signature="e#24558#24576#1" expanded="false" />
+            <element signature="e#24578#24589#1" expanded="false" />
+            <element signature="e#24690#24708#1" expanded="false" />
+            <element signature="e#24710#24721#1" expanded="false" />
+            <element signature="e#24924#24939#1" expanded="false" />
+            <element signature="e#24941#24949#1" expanded="false" />
+            <element signature="e#25044#25059#1" expanded="false" />
+            <element signature="e#25061#25069#1" expanded="false" />
+            <element signature="e#25166#25181#1" expanded="false" />
+            <element signature="e#25183#25191#1" expanded="false" />
+            <element signature="e#25288#25303#1" expanded="false" />
+            <element signature="e#25305#25313#1" expanded="false" />
+            <element signature="e#25412#25427#1" expanded="false" />
+            <element signature="e#25429#25437#1" expanded="false" />
+            <element signature="e#25536#25551#1" expanded="false" />
+            <element signature="e#25553#25561#1" expanded="false" />
+            <element signature="e#25658#25673#1" expanded="false" />
+            <element signature="e#25675#25683#1" expanded="false" />
+            <element signature="e#25782#25797#1" expanded="false" />
+            <element signature="e#25799#25807#1" expanded="false" />
+            <element signature="e#25906#25921#1" expanded="false" />
+            <element signature="e#25923#25931#1" expanded="false" />
+            <element signature="e#26032#26047#1" expanded="false" />
+            <element signature="e#26049#26057#1" expanded="false" />
+            <element signature="e#26154#26169#1" expanded="false" />
+            <element signature="e#26171#26179#1" expanded="false" />
+            <element signature="e#26278#26293#1" expanded="false" />
+            <element signature="e#26295#26303#1" expanded="false" />
+            <element signature="e#26402#26417#1" expanded="false" />
+            <element signature="e#26419#26427#1" expanded="false" />
+            <element signature="e#26528#26543#1" expanded="false" />
+            <element signature="e#26545#26553#1" expanded="false" />
+            <element signature="e#26654#26669#1" expanded="false" />
+            <element signature="e#26671#26679#1" expanded="false" />
+            <element signature="e#26776#26791#1" expanded="false" />
+            <element signature="e#26793#26801#1" expanded="false" />
+            <element signature="e#26900#26915#1" expanded="false" />
+            <element signature="e#26917#26925#1" expanded="false" />
+            <element signature="e#27024#27039#1" expanded="false" />
+            <element signature="e#27041#27049#1" expanded="false" />
+            <element signature="e#27150#27165#1" expanded="false" />
+            <element signature="e#27167#27175#1" expanded="false" />
+            <element signature="e#27276#27291#1" expanded="false" />
+            <element signature="e#27293#27301#1" expanded="false" />
+            <element signature="e#27402#27417#1" expanded="false" />
+            <element signature="e#27419#27427#1" expanded="false" />
+            <element signature="e#28113#28122#1" expanded="false" />
+            <element signature="e#28152#28167#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Output.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Synthesis.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Init.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Common.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3333">
+          <caret line="101" column="18" lean-forward="true" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
+          <folding>
+            <element signature="e#5246#5268#1" expanded="false" />
+            <element signature="e#5279#5308#1" expanded="false" />
+            <element signature="e#5324#5348#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_ChainHlp.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="435" column="66" lean-forward="true" selection-start-line="435" selection-start-column="66" selection-end-line="435" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="582" column="22" lean-forward="true" selection-start-line="582" selection-start-column="22" selection-end-line="582" selection-end-column="22" />
+          <folding>
+            <element signature="e#4437#4453#1" expanded="true" />
+            <element signature="e#4467#4483#1" expanded="true" />
+            <element signature="e#4498#4513#1" expanded="true" />
+            <element signature="e#4535#4550#1" expanded="true" />
+            <element signature="e#4573#4581#1" expanded="true" />
+            <element signature="e#4599#4607#1" expanded="true" />
+            <element signature="e#4626#4638#1" expanded="true" />
+            <element signature="e#4653#4665#1" expanded="true" />
+            <element signature="e#4680#4685#1" expanded="true" />
+            <element signature="e#4699#4704#1" expanded="true" />
+            <element signature="e#4719#4734#1" expanded="true" />
+            <element signature="e#4751#4766#1" expanded="true" />
+            <element signature="e#4784#4799#1" expanded="true" />
+            <element signature="e#4817#4823#1" expanded="true" />
+            <element signature="e#4841#4847#1" expanded="true" />
+            <element signature="e#4865#4880#1" expanded="true" />
+            <element signature="e#8710#10539#0" expanded="false" />
+            <element signature="e#10597#10612#1" expanded="true" />
+            <element signature="e#10621#10636#1" expanded="true" />
+            <element signature="e#10647#10662#1" expanded="true" />
+            <element signature="e#10671#10686#1" expanded="true" />
+            <element signature="e#10697#10705#1" expanded="true" />
+            <element signature="e#10714#10722#1" expanded="true" />
+            <element signature="e#10733#10741#1" expanded="true" />
+            <element signature="e#10750#10758#1" expanded="true" />
+            <element signature="e#10884#10899#1" expanded="true" />
+            <element signature="e#10917#10925#1" expanded="true" />
+            <element signature="e#10974#10982#1" expanded="true" />
+            <element signature="e#11031#11039#1" expanded="true" />
+            <element signature="e#11048#11056#1" expanded="true" />
+            <element signature="e#11103#11111#1" expanded="true" />
+            <element signature="e#11121#11129#1" expanded="true" />
+            <element signature="e#11269#11284#1" expanded="true" />
+            <element signature="e#11302#11310#1" expanded="true" />
+            <element signature="e#11359#11367#1" expanded="true" />
+            <element signature="e#11416#11424#1" expanded="true" />
+            <element signature="e#11433#11441#1" expanded="true" />
+            <element signature="e#11488#11496#1" expanded="true" />
+            <element signature="e#11506#11514#1" expanded="true" />
+            <element signature="e#11876#13226#0" expanded="false" />
+            <element signature="e#25004#25028#1" expanded="true" />
+            <element signature="e#29898#29904#0" expanded="true" />
+            <element signature="e#29949#29955#0" expanded="true" />
+            <element signature="e#30005#30011#0" expanded="true" />
+            <element signature="e#30056#30062#0" expanded="true" />
+            <element signature="e#30115#30130#0" expanded="true" />
+            <element signature="e#30176#30191#0" expanded="true" />
+            <element signature="e#30242#30257#0" expanded="true" />
+            <element signature="e#30305#30320#0" expanded="true" />
+            <element signature="e#30366#30381#0" expanded="true" />
+            <element signature="e#30432#30447#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1218">
+          <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
+          <folding>
+            <marker date="1488173659143" expanded="false" signature="7950:16967" ph="Module[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Ligation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="22" column="40" lean-forward="true" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2430">
+          <caret line="372" column="200" lean-forward="false" selection-start-line="372" selection-start-column="200" selection-end-line="372" selection-end-column="200" />
           <folding />
         </state>
       </provider>
