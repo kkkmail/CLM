@@ -1,0 +1,230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8271,        221]
+NotebookOptionsPosition[      8030,        208]
+NotebookOutlinePosition[      8372,        223]
+CellTagsIndexPosition[      8329,        220]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"mm", "=", 
+  RowBox[{"Median", "[", 
+   RowBox[{"ParetoDistribution", "[", 
+    RowBox[{"k", ",", "\[Alpha]", ",", "0"}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"qq", "=", 
+  RowBox[{"Quartiles", "[", 
+   RowBox[{"ParetoDistribution", "[", 
+    RowBox[{"k", ",", "\[Alpha]", ",", "0"}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"qqDmm", " ", "=", " ", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"qq", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "-", 
+       RowBox[{"qq", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", "mm"}], 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{"mm", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Median", "[", 
+       RowBox[{"ParetoDistribution", "[", 
+        RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], 
+       "]"}], "\[IndentingNewLine]", "qq"}], "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Quartiles", "[", 
+        RowBox[{"ParetoDistribution", "[", 
+         RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], 
+        "]"}], "\[IndentingNewLine]", "qqDmm"}], " ", "=", " ", 
+      RowBox[{"FullSimplify", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"qq", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "-", 
+          RowBox[{"qq", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", "mm"}], 
+       "]"}]}]}]}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"FindParetoParams", "[", "qqdmmVal_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{"{", "}"}], "]"}]}], ";"}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"qqDmm2Func", "[", "\[Alpha]_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"mm", ",", "qq", ",", "qqDmm"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"mm", "=", 
+        RowBox[{"Median", "[", 
+         RowBox[{"ParetoDistribution", "[", 
+          RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"qq", "=", 
+        RowBox[{"Quartiles", "[", 
+         RowBox[{"ParetoDistribution", "[", 
+          RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"qqDmm", " ", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"qq", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], "-", 
+            RowBox[{"qq", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", "mm"}], 
+         " ", "/", "2"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "qqDmm", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"qqDmm4Func", "[", 
+     RowBox[{"\[Alpha]_", ",", "\[Gamma]_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"mm", ",", "qq", ",", "qqDmm"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"mm", "=", 
+        RowBox[{"Median", "[", 
+         RowBox[{"ParetoDistribution", "[", 
+          RowBox[{"1", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"qq", "=", 
+        RowBox[{"Quartiles", "[", 
+         RowBox[{"ParetoDistribution", "[", 
+          RowBox[{"1", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"qqDmm", " ", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"qq", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], "-", 
+            RowBox[{"qq", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", "mm"}], 
+         " ", "/", "2"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "qqDmm", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"Median", "[", 
+      RowBox[{"ParetoDistribution", "[", 
+       RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", " ", 
+     RowBox[{"ImageSize", "->", "Large"}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"qqDmm2Func", "[", "\[Alpha]", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", " ", 
+     RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "100"}], "}"}]}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"Log", "[", 
+       RowBox[{"10", ",", 
+        RowBox[{"qqDmm2Func", "[", "\[Alpha]", "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", " ", 
+      RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "10"}], "}"}]}]}], "]"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Plot3D", "[", 
+    RowBox[{
+     RowBox[{"qqDmm4Func", "[", 
+      RowBox[{"\[Alpha]", ",", "\[Gamma]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Gamma]", ",", "0", ",", "10"}], "}"}], ",", " ", 
+     RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "100"}], "}"}]}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.697509500855503*^9, 3.6975095623309174`*^9}, {
+   3.6975096547798567`*^9, 3.6975097100679398`*^9}, {3.697510347187999*^9, 
+   3.6975105319967895`*^9}, {3.697510587691837*^9, 3.6975106428778663`*^9}, {
+   3.6975107157634134`*^9, 3.697510716262109*^9}, {3.6975107746760283`*^9, 
+   3.6975107748279114`*^9}, 3.6975108058934293`*^9, {3.6975108558450394`*^9, 
+   3.697510964297767*^9}, {3.6975109963645144`*^9, 3.697511060200388*^9}, {
+   3.697511133105181*^9, 3.6975111740447197`*^9}, {3.6975112362113457`*^9, 
+   3.697511258917426*^9}, {3.6975112971975374`*^9, 3.6975113632527065`*^9}, {
+   3.6975114768390427`*^9, 3.697511572299881*^9}, {3.697511618530218*^9, 
+   3.697511672364335*^9}, {3.6975117241324096`*^9, 3.697511738804033*^9}, {
+   3.697511810024564*^9, 3.697511858249942*^9}, {3.6975118887758093`*^9, 
+   3.6975118916046934`*^9}, {3.6975129160515604`*^9, 
+   3.6975129595691104`*^9}, {3.697513004955294*^9, 3.697513038339413*^9}, {
+   3.6975131267818365`*^9, 3.6975131823646975`*^9}, {3.6975132645302715`*^9, 
+   3.697513373754265*^9}, {3.69751351832358*^9, 3.6975136035805635`*^9}, {
+   3.697513692701784*^9, 3.697513729894304*^9}}]
+},
+WindowSize->{1044, 927},
+WindowMargins->{{65, Automatic}, {Automatic, 25}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7468, 186, 712, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

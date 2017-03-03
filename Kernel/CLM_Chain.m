@@ -239,7 +239,7 @@ PrepareDistributionParameters[distribution_, params_?VectorQ, base_?IntegerQ] :=
 
           If[(-1 + eps^2) == 0,
             (
-              Print["PrepareDistributionParameters::Incorrect value of eps = ", eps, " for ParetoDistribution type I. Quitting..."];
+              Print["CLM_Chain::PrepareDistributionParameters::Incorrect value of eps = ", eps, " for ParetoDistribution type I. Quitting..."];
               Quit[];
             )
           ];
@@ -255,8 +255,8 @@ PrepareDistributionParameters[distribution_, params_?VectorQ, base_?IntegerQ] :=
               paramVals = Join[Take[params, 3], {0}];
             ),
             (
-              Print["PrepareDistributionParameters::ParetoDistribution::Incorrect length of params = ", params // MatrixForm];
-              Return[{Indeterminate, Indeterminate}];
+              Print["CLM_Chain::PrepareDistributionParameters::ParetoDistribution::Incorrect length of params = ", params // MatrixForm, " for ParetoDistribution type IV. Quitting..."];
+              Quit[];
             )
           ];
         )

@@ -28,11 +28,11 @@ kDirectCrystCoeffParams = {1, 1};
 DirectCrystMinLen = 1;
 DirectCrystSecondSubstMinLen = 1;
 (* ============================================== *)
-(* TODO : kDirectCrystCoefficientValue::base was supposed to be a length of a oen enantiomer in the pair
+(* TODO : kDirectCrystCoefficientValue::base was supposed to be a length of one enantiomer in the pair
           Once the code was extended to support any pairs that assumtion can no longer be applied.
           Subsequently base = 0 is currently pushed down. *)
 
-Print["TODO : kDirectCrystCoefficientValue::base was supposed to be a length of a oen enantiomer in the pair Once the code was extended to support any pairs that assumtion can no longer be applied. Subsequently base = 0 is currently pushed down."];
+Print["TODO::CLM_SedimentationDirect::kDirectCrystCoefficientValue::base was supposed to be a length of one enantiomer in the pair Once the code was extended to support any pairs that assumtion can no longer be applied. Subsequently base = 0 is currently pushed down."];
 kDirectCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
 
   (* base = (GetChainLength[substAid] - 1) / 2; *)
