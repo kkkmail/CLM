@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Chain.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Chain.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" afterPath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NB/CLM_Chain_Run_325__001.nb" afterPath="$PROJECT_DIR$/NB/CLM_Chain_Run_325__001.nb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NB/Temp/Untitled-1.nb" afterPath="$PROJECT_DIR$/NB/Temp/Untitled-1.nb" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +25,7 @@
       <file leaf-file-name="CLM_SedimentationDirect.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
+            <state relative-caret-position="825">
               <caret line="25" column="60" lean-forward="false" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
               <folding />
             </state>
@@ -57,8 +55,8 @@
       <file leaf-file-name="CLM_Chain.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1440">
-              <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+            <state relative-caret-position="1407">
+              <caret line="306" column="21" lean-forward="false" selection-start-line="306" selection-start-column="21" selection-end-line="306" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -67,7 +65,7 @@
       <file leaf-file-name="CLM_Sedimentation.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
+            <state relative-caret-position="660">
               <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
               <folding>
                 <element signature="e#7950#16967#0" expanded="false" />
@@ -173,6 +171,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -229,9 +229,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -484,7 +482,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="3866" height="2106" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990807" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -495,13 +493,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990807" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990807" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14179105" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1433902" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -513,7 +510,26 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -527,6 +543,56 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="25" column="60" lean-forward="false" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Ligation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41547">
+          <caret line="1259" column="3" lean-forward="false" selection-start-line="1259" selection-start-column="3" selection-end-line="1259" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding>
+            <element signature="e#7950#16967#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_ChainHlp.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14355">
+          <caret line="435" column="66" lean-forward="false" selection-start-line="435" selection-start-column="66" selection-end-line="435" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -630,17 +696,17 @@
     <entry file="file://$PROJECT_DIR$/Kernel/init.m" />
     <entry file="file://$PROJECT_DIR$/Kernel/CLM.m" />
     <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -740,138 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2891">
           <caret line="655" column="68" lean-forward="false" selection-start-line="655" selection-start-column="68" selection-end-line="655" selection-end-column="68" />
-          <folding>
-            <element signature="e#14353#14369#1" expanded="false" />
-            <element signature="e#14371#14380#1" expanded="false" />
-            <element signature="e#14498#14514#1" expanded="false" />
-            <element signature="e#14516#14525#1" expanded="false" />
-            <element signature="e#14850#14867#1" expanded="false" />
-            <element signature="e#14869#14879#1" expanded="false" />
-            <element signature="e#15001#15018#1" expanded="false" />
-            <element signature="e#15020#15030#1" expanded="false" />
-            <element signature="e#15303#15320#1" expanded="false" />
-            <element signature="e#15322#15332#1" expanded="false" />
-            <element signature="e#15454#15471#1" expanded="false" />
-            <element signature="e#15473#15483#1" expanded="false" />
-            <element signature="e#15812#15830#1" expanded="false" />
-            <element signature="e#15832#15843#1" expanded="false" />
-            <element signature="e#15969#15987#1" expanded="false" />
-            <element signature="e#15989#16000#1" expanded="false" />
-            <element signature="e#16277#16295#1" expanded="false" />
-            <element signature="e#16297#16308#1" expanded="false" />
-            <element signature="e#16434#16452#1" expanded="false" />
-            <element signature="e#16454#16465#1" expanded="false" />
-            <element signature="e#16742#16760#1" expanded="false" />
-            <element signature="e#16762#16773#1" expanded="false" />
-            <element signature="e#16899#16917#1" expanded="false" />
-            <element signature="e#16919#16930#1" expanded="false" />
-            <element signature="e#17207#17225#1" expanded="false" />
-            <element signature="e#17227#17238#1" expanded="false" />
-            <element signature="e#17364#17382#1" expanded="false" />
-            <element signature="e#17384#17395#1" expanded="false" />
-            <element signature="e#17756#17773#1" expanded="false" />
-            <element signature="e#17775#17785#1" expanded="false" />
-            <element signature="e#18045#18063#1" expanded="false" />
-            <element signature="e#18065#18076#1" expanded="false" />
-            <element signature="e#18219#18238#1" expanded="false" />
-            <element signature="e#18240#18252#1" expanded="false" />
-            <element signature="e#18342#18361#1" expanded="false" />
-            <element signature="e#18363#18375#1" expanded="false" />
-            <element signature="e#18605#18621#1" expanded="false" />
-            <element signature="e#18623#18632#1" expanded="false" />
-            <element signature="e#18976#18993#1" expanded="false" />
-            <element signature="e#18995#19005#1" expanded="false" />
-            <element signature="e#19171#19189#1" expanded="false" />
-            <element signature="e#19191#19202#1" expanded="false" />
-            <element signature="e#19315#19333#1" expanded="false" />
-            <element signature="e#19335#19346#1" expanded="false" />
-            <element signature="e#19629#19646#1" expanded="false" />
-            <element signature="e#19648#19658#1" expanded="false" />
-            <element signature="e#19816#19834#1" expanded="false" />
-            <element signature="e#19836#19847#1" expanded="false" />
-            <element signature="e#19952#19970#1" expanded="false" />
-            <element signature="e#19972#19983#1" expanded="false" />
-            <element signature="e#20374#20391#1" expanded="false" />
-            <element signature="e#20393#20403#1" expanded="false" />
-            <element signature="e#20557#20576#1" expanded="false" />
-            <element signature="e#20578#20590#1" expanded="false" />
-            <element signature="e#20691#20710#1" expanded="false" />
-            <element signature="e#20712#20724#1" expanded="false" />
-            <element signature="e#20878#20897#1" expanded="false" />
-            <element signature="e#20899#20911#1" expanded="false" />
-            <element signature="e#21012#21031#1" expanded="false" />
-            <element signature="e#21033#21045#1" expanded="false" />
-            <element signature="e#21328#21345#1" expanded="false" />
-            <element signature="e#21347#21357#1" expanded="false" />
-            <element signature="e#21515#21534#1" expanded="false" />
-            <element signature="e#21536#21548#1" expanded="false" />
-            <element signature="e#21653#21672#1" expanded="false" />
-            <element signature="e#21674#21686#1" expanded="false" />
-            <element signature="e#21844#21863#1" expanded="false" />
-            <element signature="e#21865#21877#1" expanded="false" />
-            <element signature="e#21982#22001#1" expanded="false" />
-            <element signature="e#22003#22015#1" expanded="false" />
-            <element signature="e#23634#23639#1" expanded="false" />
-            <element signature="e#23642#23657#1" expanded="false" />
-            <element signature="e#23808#23824#1" expanded="false" />
-            <element signature="e#23826#23835#1" expanded="false" />
-            <element signature="e#23985#24002#1" expanded="false" />
-            <element signature="e#24004#24014#1" expanded="false" />
-            <element signature="e#24111#24128#1" expanded="false" />
-            <element signature="e#24130#24140#1" expanded="false" />
-            <element signature="e#24294#24312#1" expanded="false" />
-            <element signature="e#24314#24325#1" expanded="false" />
-            <element signature="e#24426#24444#1" expanded="false" />
-            <element signature="e#24446#24457#1" expanded="false" />
-            <element signature="e#24558#24576#1" expanded="false" />
-            <element signature="e#24578#24589#1" expanded="false" />
-            <element signature="e#24690#24708#1" expanded="false" />
-            <element signature="e#24710#24721#1" expanded="false" />
-            <element signature="e#24924#24939#1" expanded="false" />
-            <element signature="e#24941#24949#1" expanded="false" />
-            <element signature="e#25044#25059#1" expanded="false" />
-            <element signature="e#25061#25069#1" expanded="false" />
-            <element signature="e#25166#25181#1" expanded="false" />
-            <element signature="e#25183#25191#1" expanded="false" />
-            <element signature="e#25288#25303#1" expanded="false" />
-            <element signature="e#25305#25313#1" expanded="false" />
-            <element signature="e#25412#25427#1" expanded="false" />
-            <element signature="e#25429#25437#1" expanded="false" />
-            <element signature="e#25536#25551#1" expanded="false" />
-            <element signature="e#25553#25561#1" expanded="false" />
-            <element signature="e#25658#25673#1" expanded="false" />
-            <element signature="e#25675#25683#1" expanded="false" />
-            <element signature="e#25782#25797#1" expanded="false" />
-            <element signature="e#25799#25807#1" expanded="false" />
-            <element signature="e#25906#25921#1" expanded="false" />
-            <element signature="e#25923#25931#1" expanded="false" />
-            <element signature="e#26032#26047#1" expanded="false" />
-            <element signature="e#26049#26057#1" expanded="false" />
-            <element signature="e#26154#26169#1" expanded="false" />
-            <element signature="e#26171#26179#1" expanded="false" />
-            <element signature="e#26278#26293#1" expanded="false" />
-            <element signature="e#26295#26303#1" expanded="false" />
-            <element signature="e#26402#26417#1" expanded="false" />
-            <element signature="e#26419#26427#1" expanded="false" />
-            <element signature="e#26528#26543#1" expanded="false" />
-            <element signature="e#26545#26553#1" expanded="false" />
-            <element signature="e#26654#26669#1" expanded="false" />
-            <element signature="e#26671#26679#1" expanded="false" />
-            <element signature="e#26776#26791#1" expanded="false" />
-            <element signature="e#26793#26801#1" expanded="false" />
-            <element signature="e#26900#26915#1" expanded="false" />
-            <element signature="e#26917#26925#1" expanded="false" />
-            <element signature="e#27024#27039#1" expanded="false" />
-            <element signature="e#27041#27049#1" expanded="false" />
-            <element signature="e#27150#27165#1" expanded="false" />
-            <element signature="e#27167#27175#1" expanded="false" />
-            <element signature="e#27276#27291#1" expanded="false" />
-            <element signature="e#27293#27301#1" expanded="false" />
-            <element signature="e#27402#27417#1" expanded="false" />
-            <element signature="e#27419#27427#1" expanded="false" />
-            <element signature="e#28113#28122#1" expanded="false" />
-            <element signature="e#28152#28167#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -900,11 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3333">
           <caret line="101" column="18" lean-forward="true" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
-          <folding>
-            <element signature="e#5246#5268#1" expanded="false" />
-            <element signature="e#5279#5308#1" expanded="false" />
-            <element signature="e#5324#5348#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -940,7 +869,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
+        <state relative-caret-position="660">
           <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding>
             <element signature="e#7950#16967#0" expanded="false" />
@@ -950,7 +879,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
+        <state relative-caret-position="825">
           <caret line="25" column="60" lean-forward="false" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
           <folding />
         </state>
@@ -958,8 +887,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+        <state relative-caret-position="1407">
+          <caret line="306" column="21" lean-forward="false" selection-start-line="306" selection-start-column="21" selection-end-line="306" selection-end-column="21" />
           <folding />
         </state>
       </provider>
