@@ -66,10 +66,13 @@ CapitalGammaLetter = "\[CapitalGamma]";
 (* ============================================== *)
 NoSimpleSubstCnt = Indeterminate;
 (* ============================================== *)
-(* TODO : CLM_Sedimentation::MaxRandomCoeffValue - extend to be able to set individual max value for each type of coefficients.*)
-Print["TODO : CLM_Sedimentation::MaxRandomCoeffValue - extend to be able to set individual max value for each type of coefficients."];
+(* TODO : CLM_Sedimentation::MinRandomCoeffValue / MaxRandomCoeffValue - extend to be able to set individual min / max value for each type of coefficients.*)
+Print["TODO : CLM_Sedimentation::MinRandomCoeffValue / MaxRandomCoeffValue - extend to be able to set individual min / max value for each type of coefficients."];
 (* The absolute maximum value of a random coefficient. Some heavy tailed distribuitons may produce insanely large values. *)
+MinRandomCoeffValue = 10^-4;
 MaxRandomCoeffValue = 10^4;
+(* If random value is very large we censor it by MaxRandomCoeffValue * (1 + RandomReal[] * MaxRandomValLeeway)*)
+MaxRandomValLeeway = 0.5;
 (* ============================================== *)
 DigitArray = Indeterminate;
 DigitArrayL = Indeterminate;
@@ -301,20 +304,24 @@ PrepareDistributionShift[distribution_, params_?VectorQ, base_?IntegerQ] := Modu
 (* Vector Function, which creates random value of a coefficient *)
 RandomCoefficientValue[distributionVec_?VectorQ, paramMatr_?MatrixQ] := RandomCoefficientValue[distributionVec, paramMatr, 0];
 
-RandomCoefficientValue[distributionVec_?VectorQ, paramMatr_?MatrixQ, base_?IntegerQ] := Module[{retVal, paramVals, shiftVal},
+RandomCoefficientValue[distributionVec_?VectorQ, paramMatr_?MatrixQ, base_?IntegerQ] := Module[{retVal, paramVals, shiftVal, randVal},
   paramVals = PrepareDistributionParameters[distributionVec, paramMatr, base];
   shiftVal = PrepareDistributionShift[distributionVec, paramMatr, base];
-  retVal = Min[RandomVariate[Apply[distributionVec[[base]], paramVals]] - shiftVal, MaxRandomCoeffValue];
+  (* Impose min / max limits but do not want exact max value in case of "overflow". *)
+  randVal = Min[RandomVariate[Apply[distributionVec[[base]], paramVals]] - shiftVal, MaxRandomCoeffValue * (1 + MaxRandomValLeeway * RandomReal[])];
+  retVal = If[randVal < MinRandomCoeffValue, 0, randVal];
   Return[retVal];
 ];
 (* ============================================== *)
 (* Function, which creates random value of a coefficient *)
 RandomCoefficientValue[distribution_, params_?VectorQ] := RandomCoefficientValue[distribution, params, 0];
 
-RandomCoefficientValue[distribution_, params_?VectorQ, base_?IntegerQ] := Module[{retVal, paramVals, shiftVal},
+RandomCoefficientValue[distribution_, params_?VectorQ, base_?IntegerQ] := Module[{retVal, paramVals, shiftVal, randVal},
   paramVals = PrepareDistributionParameters[distribution, params, base];
   shiftVal = PrepareDistributionShift[distribution, params, base];
-  retVal = Min[RandomVariate[Apply[distribution, paramVals]] - shiftVal, MaxRandomCoeffValue];
+  (* Impose min / max limits but do not want exact max value in case of "overflow". *)
+  randVal = Min[RandomVariate[Apply[distribution, paramVals]] - shiftVal, MaxRandomCoeffValue * (1 + MaxRandomValLeeway * RandomReal[])];
+  retVal = If[randVal < MinRandomCoeffValue, 0, randVal];
   Return[retVal];
 ];
 (* ============================================== *)

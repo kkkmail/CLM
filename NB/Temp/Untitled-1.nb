@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25281,        636]
-NotebookOptionsPosition[     25038,        623]
-NotebookOutlinePosition[     25380,        638]
-CellTagsIndexPosition[     25337,        635]
+NotebookDataLength[     28064,        707]
+NotebookOptionsPosition[     27821,        694]
+NotebookOutlinePosition[     28163,        709]
+CellTagsIndexPosition[     28120,        706]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,6 +33,73 @@ Cell[BoxData[{
       RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
      RowBox[{"95", "/", "100"}]}], "]"}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Quantile[ParetoDistribution[1,\[Alpha],0],990/1000]\>\"",
+    "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<q990\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q990", "=", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+     RowBox[{"990", "/", "1000"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Quantile[ParetoDistribution[1,\[Alpha],0],995/1000]\>\"",
+    "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<q995\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q995", "=", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+     RowBox[{"995", "/", "1000"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<Quantile[ParetoDistribution[1,\[Alpha],0],999/1000]\>\"",
+    "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<q999\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q999", "=", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+     RowBox[{"999", "/", "1000"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"Log", "[", 
+       RowBox[{"10", ",", 
+        RowBox[{
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"ParetoDistribution", "[", 
+            RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+           RowBox[{"999", "/", "1000"}]}], "]"}], "/", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"ParetoDistribution", "[", 
+            RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+           RowBox[{"990", "/", "1000"}]}], "]"}]}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[Alpha]", ",", " ", "0.1", ",", " ", "0.4"}], "}"}], ",", 
+      " ", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+      RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}], "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Print", "[", "\"\<q95S\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -619,9 +686,13 @@ Cell[BoxData[{
    3.6976664071824155`*^9, 3.6976664109405336`*^9}, {3.697666497952557*^9, 
    3.697666535538327*^9}, {3.6976665773311977`*^9, 3.697666607737482*^9}, {
    3.6976666555984583`*^9, 3.6976666579649706`*^9}, {3.697666694206601*^9, 
-   3.6976667464399624`*^9}, {3.6976668035293503`*^9, 3.697666949702114*^9}}]
+   3.6976667464399624`*^9}, {3.6976668035293503`*^9, 3.697666949702114*^9}, {
+   3.6982726435445943`*^9, 3.6982727037647924`*^9}, {3.6982728077287235`*^9, 
+   3.6982728667257776`*^9}, {3.6982729015745683`*^9, 
+   3.6982729567452507`*^9}, {3.6982730012788625`*^9, 
+   3.6982730270262403`*^9}, {3.698273060257333*^9, 3.698273061365458*^9}}]
 },
-WindowSize->{1056, 670},
+WindowSize->{1056, 671},
 WindowMargins->{{Automatic, 83}, {85, Automatic}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
 StyleDefinitions->"Default.nb"
@@ -637,7 +708,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 24476, 601, 2392, "Input"]
+Cell[558, 20, 27259, 672, 2772, "Input"]
 }
 ]
 *)
