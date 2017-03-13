@@ -23,8 +23,10 @@ AssignDirectCrystCoefficientsValue = Indeterminate;
 (* ============================================== *)
 UseAllPairsForDirectCrystValue = Indeterminate;
 (* ============================================== *)
-kDirectCrystCoeffDistribution = InverseGaussianDistribution;
+kDirectCrystCoeffDistribution = ParetoDistribution;
 kDirectCrystCoeffParams = {1, 1};
+kDirectCrystCoeffControlParams = {}; // use default values
+(* ============================================== *)
 DirectCrystMinLen = 1;
 DirectCrystSecondSubstMinLen = 1;
 (* ============================================== *)
@@ -38,8 +40,8 @@ kDirectCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{
   (* base = (GetChainLength[substAid] - 1) / 2; *)
   base = 0;
 
-  retVal = RandomCoefficientValue[kDirectCrystCoeffDistribution, kDirectCrystCoeffParams, base];
-  Print["kDirectCrystCoefficientValue:: substAid = ", substAid, ", GetChainLength[substAid] = ", GetChainLength[substAid], ", substBid = ", substBid, ", GetChainLength[substBid] = ", GetChainLength[substBid], ", base = ", base, ", retVal = ", retVal];
+  retVal = RandomCoefficientValue[kDirectCrystCoeffDistribution, kDirectCrystCoeffParams, kDirectCrystCoeffControlParams, base];
+  (* Print["kDirectCrystCoefficientValue:: substAid = ", substAid, ", GetChainLength[substAid] = ", GetChainLength[substAid], ", substBid = ", substBid, ", GetChainLength[substBid] = ", GetChainLength[substBid], ", base = ", base, ", retVal = ", retVal]; *)
   Return[retVal];
 ];
 (* ============================================== *)

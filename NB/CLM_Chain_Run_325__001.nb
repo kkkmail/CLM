@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    168229,       3355]
-NotebookOptionsPosition[    167981,       3342]
-NotebookOutlinePosition[    168325,       3357]
-CellTagsIndexPosition[    168282,       3354]
+NotebookDataLength[    168455,       3351]
+NotebookOptionsPosition[    168208,       3338]
+NotebookOutlinePosition[    168551,       3353]
+CellTagsIndexPosition[    168508,       3350]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1070,31 +1070,22 @@ Cell[BoxData[
     "Pareto", " ", "IV", " ", "is", " ", "neither", " ", "rescaled", " ", 
      "nor", " ", "shifted"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"kDirectCrystCoeffDistribution", "=", "ParetoDistribution"}], 
-    ";"}], "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     StyleBox["k", "TI"], ",", " ", 
-     StyleBox["\[Alpha]", "TR"], ",", " ", 
-     RowBox[{
-      StyleBox["\[Gamma]", "TR"], 
-      StyleBox[" ", "TR"], "\[Congruent]", 
-      StyleBox[" ", "TR"], 
-      StyleBox["1", "TR"]}], ",", " ", 
-     RowBox[{
-      StyleBox["\[Mu]", "TR"], 
-      StyleBox[" ", "TR"], "\[Congruent]", 
-      StyleBox[" ", "TR"], 
-      StyleBox["0", "TR"]}]}], 
-    StyleBox[" ", "TR"], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"kDirectCrystQLowVal", "=", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "2"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kDirectCrystQHighVal", " ", "=", " ", 
+     RowBox[{"10", "^", "4"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"kDirectCrystCoeffParams", "=", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"1.0", "*", 
-        RowBox[{"10", "^", 
-         RowBox[{"-", "8"}]}]}], ",", "0.05", ",", "1", ",", "0"}], "}"}]}], 
-    ";"}], "\[IndentingNewLine]", 
+     RowBox[{"GetParetoParams", "[", 
+      RowBox[{"kDirectCrystQLowVal", ",", " ", "kDirectCrystQHighVal"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"kDirectCrystCoeffControlParams", "=", 
+     RowBox[{"GetParetoControlParams", "[", 
+      RowBox[{"kDirectCrystQLowVal", ",", " ", "kDirectCrystQHighVal"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1759,7 +1750,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"InitializeChains", "[", 
      RowBox[{"maxChainLen", ",", "maxEnantNumb", ",", "options"}], "]"}], 
-    ";"}], "\n", 
+    ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1770,8 +1761,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2107,7 +2097,8 @@ Cell[BoxData[
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"ProcessLCatInfo", "[", 
-      RowBox[{"True", ",", "options"}], "]"}], ";"}], " ", "*)"}], "\n", 
+      RowBox[{"True", ",", "options"}], "]"}], ";"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2119,7 +2110,7 @@ Cell[BoxData[
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\n", 
    RowBox[{
     RowBox[{"If", "[", 
      RowBox[{"RunNDSolve", ",", "\[IndentingNewLine]", 
@@ -3338,10 +3329,15 @@ Cell[BoxData[
    3.6982802971362596`*^9}, {3.6982826466704025`*^9, 3.698282649868476*^9}, {
    3.698282837991843*^9, 3.6982828402780414`*^9}, 3.6982828930864363`*^9, {
    3.6982830746152735`*^9, 3.698283079098648*^9}, {3.6982831900165467`*^9, 
-   3.698283191642112*^9}, 3.698283306113949*^9}]
+   3.698283191642112*^9}, 3.698283306113949*^9, {3.6983475852782307`*^9, 
+   3.6983475853442955`*^9}, {3.698347939319575*^9, 3.698347940853047*^9}, {
+   3.6983480312893815`*^9, 3.6983480315996785`*^9}, {3.6983677907963886`*^9, 
+   3.69836786365306*^9}, {3.6983679186091948`*^9, 3.6983679260956116`*^9}, 
+   3.698368031370875*^9, {3.6983680974325647`*^9, 3.6983680976591897`*^9}, {
+   3.698368212674921*^9, 3.6983682133563385`*^9}}]
 },
-WindowSize->{1603, 960},
-WindowMargins->{{116, Automatic}, {-32, Automatic}},
+WindowSize->{1329, 742},
+WindowMargins->{{Automatic, 166}, {Automatic, 82}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -3356,7 +3352,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 167419, 3320, 10452, "Input"]
+Cell[558, 20, 167646, 3316, 10685, "Input"]
 }
 ]
 *)

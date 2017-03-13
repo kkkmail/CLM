@@ -31,9 +31,11 @@ AssignWrongCatLigReactionsValue = Indeterminate;
 (* ============================================== *)
 SynthCoeffDistribution = InverseGaussianDistribution;
 SynthCoeffParams = {1, 1};
+SynthCoeffControlParams = {}; // use default values
 (* ============================================== *)
 InvSynthCoeffDistribution = InverseGaussianDistribution;
 InvSynthCoeffParams = {1, 1};
+InvSynthCoeffControlParams = {}; // use default values
 (* ============================================== *)
 CatSynthC = 1;
 CatSynthR = 0;
@@ -41,19 +43,21 @@ CatSynthMinLen = 0;
 (* ============================================== *)
 CatSynthCoeffDistribution = ParetoDistribution;
 CatSynthCoeffParams = {1, 1};
+CatSynthCoeffControlParams = {}; // use default values
 (* ============================================== *)
 InvCatSynthCoeffDistribution = ParetoDistribution;
 InvCatSynthCoeffParams = {1, 1};
+InvCatSynthCoeffControlParams = {}; // use default values
 (* ============================================== *)
 SynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
   base = GetChainLength[substBid];
-  retVal = RandomCoefficientValue[SynthCoeffDistribution, SynthCoeffParams, base];
+  retVal = RandomCoefficientValue[SynthCoeffDistribution, SynthCoeffParams, SynthCoeffControlParams, base];
   Return[retVal];
 ];
 (* ============================================== *)
 InvSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
   base = GetChainLength[substBid];
-  retVal = RandomCoefficientValue[InvSynthCoeffDistribution, InvSynthCoeffParams, base];
+  retVal = RandomCoefficientValue[InvSynthCoeffDistribution, InvSynthCoeffParams, InvSynthCoeffControlParams, base];
   Return[retVal];
 ];
 (* ============================================== *)
@@ -61,13 +65,13 @@ InvSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retV
 CatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ, IsWrong_?BooleanQ] := Module[{retVal, base, groupDescr, reacDescr, reacDescrW, func, params},
   base = GetChainLength[catalystSubstID];
 
-  (* retVal=RandomCoefficientValue[CatSynthCoeffDistribution,CatSynthCoeffParams,base]; *)
+  (* retVal=RandomCoefficientValue[CatSynthCoeffDistribution,CatSynthCoeffParams,CatSynthCoeffControlParams,base]; *)
 
   groupDescr = If[UseCatSynthEnantGroupingValue, CatSynthGroupMatrix[catalystSubstID], Indeterminate];
   reacDescr = {substAid, substBid, catalystSubstID};
   reacDescrW = {EnantiomerSubstanceID[substAid], EnantiomerSubstanceID[substBid], catalystSubstID};
   func = RandomCoefficientValue;
-  params = {CatSynthCoeffDistribution, CatSynthCoeffParams, base};
+  params = {CatSynthCoeffDistribution, CatSynthCoeffParams, CatSynthCoeffControlParams, base};
   retVal = PairedCoefficientValue[reacDescr, reacDescrW, IsWrong, "CatSynthGroupCoeff", groupDescr, func, params];
   Return[retVal];
 ];
@@ -75,13 +79,13 @@ CatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID
 InvCatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ, IsWrong_?BooleanQ] := Module[{retVal, base, groupDescr, reacDescr, reacDescrW, func, params},
   base = GetChainLength[catalystSubstID];
 
-  (* retVal=RandomCoefficientValue[InvCatSynthCoeffDistribution,InvCatSynthCoeffParams,base]; *)
+  (* retVal=RandomCoefficientValue[InvCatSynthCoeffDistribution,InvCatSynthCoeffParams,InvCatSynthCoeffControlParams,base]; *)
 
   groupDescr = If[UseCatSynthEnantGroupingValue, CatSynthGroupMatrix[catalystSubstID], Indeterminate];
   reacDescr = {substAid, substBid, catalystSubstID};
   reacDescrW = {EnantiomerSubstanceID[substAid], EnantiomerSubstanceID[substBid], catalystSubstID};
   func = RandomCoefficientValue;
-  params = {InvCatSynthCoeffDistribution, InvCatSynthCoeffParams, base};
+  params = {InvCatSynthCoeffDistribution, InvCatSynthCoeffParams, InvCatSynthCoeffControlParams, base};
   retVal = PairedCoefficientValue[reacDescr, reacDescrW, IsWrong, "InvCatSynthGroupCoeff", groupDescr, func, params];
   Return[retVal];
 ];

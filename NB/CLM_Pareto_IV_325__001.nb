@@ -1,0 +1,698 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29032,        689]
+NotebookOptionsPosition[     28787,        676]
+NotebookOutlinePosition[     29131,        691]
+CellTagsIndexPosition[     29088,        688]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "Print", "[", 
+   "\"\<Quantile[ParetoDistribution[k,\[Alpha],\[Gamma],0],95/100]\>\"", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<q95\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q95", "=", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], ",", 
+     RowBox[{"95", "/", "100"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", 
+   "\"\<Quantile[ParetoDistribution[k,\[Alpha],\[Gamma],0],990/1000]\>\"", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<q990\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q990", "=", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], ",", 
+     RowBox[{"990", "/", "1000"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", 
+   "\"\<Quantile[ParetoDistribution[k,\[Alpha],\[Gamma],0],995/1000]\>\"", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<q995\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q995", "=", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], ",", 
+     RowBox[{"995", "/", "1000"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", 
+   "\"\<Quantile[ParetoDistribution[k,\[Alpha],\[Gamma],0],999/1000]\>\"", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<q999\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q999", "=", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], ",", 
+     RowBox[{"999", "/", "1000"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"Log", "[", 
+        RowBox[{"10", ",", 
+         RowBox[{
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+            RowBox[{"999", "/", "1000"}]}], "]"}], "/", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+            RowBox[{"990", "/", "1000"}]}], "]"}]}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Alpha]", ",", " ", "0.1", ",", " ", "0.4"}], "}"}], ",", 
+       " ", 
+       RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+       RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", "\"\<q95S\>\"", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"q95S", "=", 
+     RowBox[{
+      RowBox[{"FullSimplify", "[", 
+       RowBox[{
+        RowBox[{"Quantile", "[", 
+         RowBox[{
+          RowBox[{"CensoredDistribution", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "LL"}], "}"}], ",", 
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}]}], "]"}], ",", 
+          RowBox[{"95", "/", "100"}]}], "]"}], ",", " ", 
+        RowBox[{"\[Alpha]", " ", ">", " ", "0"}]}], "]"}], 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"Plot3D", "[", 
+        RowBox[{
+         RowBox[{"PDF", "[", 
+          RowBox[{
+           RowBox[{"ParetoDistribution", "[", 
+            RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", " ", "x"}], 
+          "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", " ", "0", ",", " ", "10"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\[Alpha]", ",", " ", "0.1", ",", " ", "02"}], "}"}]}], 
+        "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", "\"\<q90\>\"", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"q90", "=", 
+     RowBox[{
+      RowBox[{"Quantile", "[", 
+       RowBox[{
+        RowBox[{"ParetoDistribution", "[", 
+         RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+        RowBox[{"90", "/", "100"}]}], "]"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<q90S\>\"", "]"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"q90S", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"FullSimplify", "[", 
+        RowBox[{
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"CensoredDistribution", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "LL"}], "}"}], ",", 
+             RowBox[{"ParetoDistribution", "[", 
+              RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}]}], "]"}], ",", 
+           RowBox[{"90", "/", "100"}]}], "]"}], ",", " ", 
+         RowBox[{"\[Alpha]", " ", ">", " ", "0"}]}], "]"}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Q95SdQ90S", "[", 
+        RowBox[{
+         RowBox[{"kk_", "?", "NumericQ"}], ",", " ", 
+         RowBox[{"alpha_", "?", "NumericQ"}], ",", " ", 
+         RowBox[{"LL_", "?", "NumericQ"}]}], "]"}]}], ":=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"CensoredDistribution", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "LL"}], "}"}], ",", 
+              RowBox[{"ParetoDistribution", "[", 
+               RowBox[{"kk", ",", "alpha", ",", "0"}], "]"}]}], "]"}], ",", 
+            RowBox[{"95", "/", "100"}]}], "]"}], "/", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"CensoredDistribution", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "LL"}], "}"}], ",", 
+              RowBox[{"ParetoDistribution", "[", 
+               RowBox[{"kk", ",", "alpha", ",", "0"}], "]"}]}], "]"}], ",", 
+            RowBox[{"90", "/", "100"}]}], "]"}]}], ")"}], "-", 
+        RowBox[{"1", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"Q95dQ90", "[", 
+          RowBox[{
+           RowBox[{"kk_", "?", "NumericQ"}], ",", " ", 
+           RowBox[{"alpha_", "?", "NumericQ"}]}], "]"}]}]}], ":=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"kk", ",", "alpha", ",", "0"}], "]"}], ",", 
+            RowBox[{"95", "/", "100"}]}], "]"}], "/", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"kk", ",", "alpha", ",", "0"}], "]"}], ",", 
+            RowBox[{"90", "/", "100"}]}], "]"}]}], ")"}], "-", 
+        RowBox[{"1", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"kkVal", " ", "=", " ", "0.00001"}]}]}]}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"LLVal", " ", "=", " ", "10000000"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", "\"\<Q95SdQ90S\>\"", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{"Q95SdQ90S", "[", 
+        RowBox[{"kkVal", ",", " ", "alpha", ",", " ", "LL"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"alpha", ",", " ", "0.10", ",", " ", "0.12"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"LL", ",", " ", "1", ",", " ", "LLVal"}], "}"}], ",", " ", 
+       RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Q95SdQ90S", "[", 
+         RowBox[{"kkVal", ",", " ", "alpha", ",", " ", "LL"}], "]"}], " ", 
+        "/", " ", 
+        RowBox[{"Q95dQ90", "[", 
+         RowBox[{"kkVal", ",", " ", "alpha"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"alpha", ",", " ", "0.10", ",", " ", "0.12"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"LL", ",", " ", "1", ",", " ", "LLVal"}], "}"}], ",", " ", 
+       RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+    "Print", "[", "\"\<Quantile[ParetoDistribution[k,\[Alpha],0],90/100]\>\"",
+      "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"q90", "=", 
+     RowBox[{
+      RowBox[{"Quantile", "[", 
+       RowBox[{
+        RowBox[{"ParetoDistribution", "[", 
+         RowBox[{"k", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+        RowBox[{"90", "/", "100"}]}], "]"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "[", "\"\<q95/q90\>\"", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"FullSimplify", "[", 
+          RowBox[{"q95", "/", "q90"}], "]"}], "\[IndentingNewLine]", 
+         RowBox[{"N", "[", 
+          RowBox[{
+           RowBox[{"FullSimplify", "[", 
+            RowBox[{"q95", "/", "q90"}], "]"}], " ", "/.", " ", 
+           RowBox[{"\[Alpha]", " ", "\[Rule]", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "/", "10"}], ")"}]}]}], "]"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            RowBox[{"Log", "[", 
+             RowBox[{"10", ",", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"Quantile", "[", 
+                 RowBox[{
+                  RowBox[{"ParetoDistribution", "[", 
+                   RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+                  RowBox[{"95", "/", "100"}]}], "]"}], " ", "/", " ", 
+                RowBox[{"Quantile", "[", 
+                 RowBox[{
+                  RowBox[{"ParetoDistribution", "[", 
+                   RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], ",", 
+                  RowBox[{"90", "/", "100"}]}], "]"}]}], ")"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\[Alpha]", ",", "0", ",", "0.5"}], "}"}], ",", " ", 
+            RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+            RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+            RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", " ", 
+            RowBox[{"PlotRange", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "4"}], "}"}]}]}], "]"}], "]"}]}], ";"}], 
+       "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<Inverse\>\"", "]"}]}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"GetAlpha", "[", 
+      RowBox[{"q95Dq90_", "?", "NumericQ"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"alpha", ",", "sol", ",", "q95", ",", "q90"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"q95", "[", "alpha_", "]"}], ":=", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"ParetoDistribution", "[", 
+            RowBox[{"1", ",", "alpha", ",", "0"}], "]"}], ",", 
+           RowBox[{"95", "/", "100"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"q90", "[", "alpha_", "]"}], ":=", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"ParetoDistribution", "[", 
+            RowBox[{"1", ",", "alpha", ",", "0"}], "]"}], ",", 
+           RowBox[{"90", "/", "100"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"sol", "=", 
+         RowBox[{"NMinimize", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"q95", "[", "alpha", "]"}], "/", 
+                  RowBox[{"q90", "[", "alpha", "]"}]}], ")"}], "-", 
+                "q95Dq90"}], ")"}], "^", "2"}], ",", " ", 
+             RowBox[{"alpha", " ", ">", " ", "0"}]}], "}"}], ",", " ", 
+           "alpha"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<sol = \>\"", ",", " ", "sol"}], "]"}], ";"}], " ", 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"alpha", " ", "/.", " ", 
+          RowBox[{"sol", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"GetAlphaCensored", "[", 
+      RowBox[{
+       RowBox[{"q95Dq90_", "?", "NumericQ"}], ",", " ", 
+       RowBox[{"LL_", "?", "NumericQ"}]}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"alpha", ",", "sol", ",", "q95", ",", "q90"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"q95", "[", "alpha_", "]"}], ":=", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"CensoredDistribution", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "LL"}], "}"}], ",", 
+             RowBox[{"ParetoDistribution", "[", 
+              RowBox[{"1", ",", "alpha", ",", "0"}], "]"}]}], "]"}], ",", 
+           RowBox[{"95", "/", "100"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"q90", "[", "alpha_", "]"}], ":=", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"CensoredDistribution", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "LL"}], "}"}], ",", 
+             RowBox[{"ParetoDistribution", "[", 
+              RowBox[{"1", ",", "alpha", ",", "0"}], "]"}]}], "]"}], ",", 
+           RowBox[{"90", "/", "100"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"sol", "=", 
+         RowBox[{"NMinimize", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"q95", "[", "alpha", "]"}], "/", 
+                  RowBox[{"q90", "[", "alpha", "]"}]}], ")"}], "-", 
+                "q95Dq90"}], ")"}], "^", "2"}], ",", " ", 
+             RowBox[{"alpha", " ", ">", " ", "0"}]}], "}"}], ",", " ", 
+           "alpha"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<sol = \>\"", ",", " ", "sol"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"alpha", " ", "/.", " ", 
+          RowBox[{"sol", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"q95Dq90val", " ", "=", " ", "10"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"LLval", " ", "=", " ", 
+     RowBox[{"10", "^", "4"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<q95Dq90val = \>\"", ",", " ", "q95Dq90val", ",", " ", 
+      "\"\<, LLval = \>\"", ",", " ", "LLval"}], "]"}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", "\"\<GetAlpha\>\"", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"aVal", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"GetAlpha", "[", "q95Dq90val", "]"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<GetAlphaCensored\>\"", "]"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"aValC", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"GetAlphaCensored", "[", 
+       RowBox[{"q95Dq90val", ",", "LLval"}], "]"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"Quantile", "[", 
+         RowBox[{
+          RowBox[{"CensoredDistribution", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "LLval"}], "}"}], ",", 
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"1", ",", "aValC", ",", "0"}], "]"}]}], "]"}], ",", 
+          RowBox[{"95", "/", "100"}]}], "]"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"Quantile", "[", 
+         RowBox[{
+          RowBox[{"CensoredDistribution", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "LLval"}], "}"}], ",", 
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"1", ",", "aValC", ",", "0"}], "]"}]}], "]"}], ",", 
+          RowBox[{"90", "/", "100"}]}], "]"}], ")"}]}]}]}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"GetAlpha", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "2", ",", 
+          RowBox[{"10", "^", "4"}]}], "}"}], ",", " ", 
+        RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+        RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+        RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}], "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "\"\<Median\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mm", "=", 
+      RowBox[{
+       RowBox[{"Median", "[", 
+        RowBox[{"ParetoDistribution", "[", 
+         RowBox[{"k", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "\"\<Quartiles\>\"", "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"qq", "=", 
+      RowBox[{
+       RowBox[{"Quartiles", "[", 
+        RowBox[{"ParetoDistribution", "[", 
+         RowBox[{"k", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{
+       "Print", "[", "\"\<(Quartiles[[3]] - Quartiles[[1]]) / Median\>\"", 
+        "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"qqDmm", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"FullSimplify", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"qq", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], "-", 
+            RowBox[{"qq", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", "mm"}], 
+         "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", "\[IndentingNewLine]", 
+         RowBox[{"mm", "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Median", "[", 
+             RowBox[{"ParetoDistribution", "[", 
+              RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], 
+              "]"}], "]"}], "\[IndentingNewLine]", "qq"}], "=", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Quartiles", "[", 
+              RowBox[{"ParetoDistribution", "[", 
+               RowBox[{"k", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], 
+               "]"}], "]"}], "\[IndentingNewLine]", "qqDmm"}], " ", "=", " ", 
+            RowBox[{"FullSimplify", "[", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"qq", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "-", 
+                RowBox[{"qq", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", 
+              "mm"}], "]"}]}]}]}], "\[IndentingNewLine]", "*)"}], 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"FindParetoParams", "[", "qqdmmVal_", "]"}], ":=", 
+           RowBox[{"Module", "[", 
+            RowBox[{"{", "}"}], "]"}]}], ";"}], " ", "*)"}], 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"qqDmm2Func", "[", "\[Alpha]_", "]"}]}], ":=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"mm", ",", "qq", ",", "qqDmm"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"mm", "=", 
+           RowBox[{"Median", "[", 
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"qq", "=", 
+           RowBox[{"Quartiles", "[", 
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"qqDmm", " ", "=", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"qq", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "-", 
+               RowBox[{"qq", "[", 
+                RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", 
+             "mm"}], " ", "/", "2"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Return", "[", "qqDmm", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}]}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"qqDmm4Func", "[", 
+       RowBox[{"\[Alpha]_", ",", "\[Gamma]_"}], "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"mm", ",", "qq", ",", "qqDmm"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"mm", "=", 
+          RowBox[{"Median", "[", 
+           RowBox[{"ParetoDistribution", "[", 
+            RowBox[{"1", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"qq", "=", 
+          RowBox[{"Quartiles", "[", 
+           RowBox[{"ParetoDistribution", "[", 
+            RowBox[{"1", ",", "\[Alpha]", ",", "\[Gamma]", ",", "0"}], "]"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"qqDmm", " ", "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"qq", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], "-", 
+              RowBox[{"qq", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "/", " ", "mm"}],
+            " ", "/", "2"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", "qqDmm", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Median", "[", 
+         RowBox[{"ParetoDistribution", "[", 
+          RowBox[{"1", ",", "\[Alpha]", ",", "0"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", " ", 
+        RowBox[{"ImageSize", "->", "Large"}]}], "]"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"qqDmm2Func", "[", "\[Alpha]", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", " ", 
+        RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "100"}], "}"}]}]}], "]"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Log", "[", 
+         RowBox[{"10", ",", 
+          RowBox[{"qqDmm2Func", "[", "\[Alpha]", "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", " ", 
+        RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "10"}], "}"}]}]}], "]"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"Plot3D", "[", 
+       RowBox[{
+        RowBox[{"qqDmm4Func", "[", 
+         RowBox[{"\[Alpha]", ",", "\[Gamma]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Alpha]", ",", "0", ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Gamma]", ",", "0", ",", "10"}], "}"}], ",", " ", 
+        RowBox[{"ImageSize", "->", "Large"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "100"}], "}"}]}]}], "]"}], "]"}], ";"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.697509500855503*^9, 3.6975095623309174`*^9}, {
+   3.6975096547798567`*^9, 3.6975097100679398`*^9}, {3.697510347187999*^9, 
+   3.6975105319967895`*^9}, {3.697510587691837*^9, 3.6975106428778663`*^9}, {
+   3.6975107157634134`*^9, 3.697510716262109*^9}, {3.6975107746760283`*^9, 
+   3.6975107748279114`*^9}, 3.6975108058934293`*^9, {3.6975108558450394`*^9, 
+   3.697510964297767*^9}, {3.6975109963645144`*^9, 3.697511060200388*^9}, {
+   3.697511133105181*^9, 3.6975111740447197`*^9}, {3.6975112362113457`*^9, 
+   3.697511258917426*^9}, {3.6975112971975374`*^9, 3.6975113632527065`*^9}, {
+   3.6975114768390427`*^9, 3.697511572299881*^9}, {3.697511618530218*^9, 
+   3.697511672364335*^9}, {3.6975117241324096`*^9, 3.697511738804033*^9}, {
+   3.697511810024564*^9, 3.697511858249942*^9}, {3.6975118887758093`*^9, 
+   3.6975118916046934`*^9}, {3.6975129160515604`*^9, 
+   3.6975129595691104`*^9}, {3.697513004955294*^9, 3.697513038339413*^9}, {
+   3.6975131267818365`*^9, 3.6975131823646975`*^9}, {3.6975132645302715`*^9, 
+   3.697513373754265*^9}, {3.69751351832358*^9, 3.6975136035805635`*^9}, {
+   3.697513692701784*^9, 3.697513729894304*^9}, {3.6976615453281384`*^9, 
+   3.697661655978701*^9}, {3.6976617274251227`*^9, 3.6976620161545324`*^9}, {
+   3.697662219136936*^9, 3.697662582306645*^9}, 3.697662627038125*^9, {
+   3.6976644368904114`*^9, 3.697664469315544*^9}, {3.6976645019448385`*^9, 
+   3.6976645105555596`*^9}, {3.697664564308569*^9, 3.6976648120922346`*^9}, {
+   3.697664868373032*^9, 3.6976648686583*^9}, {3.697664967003279*^9, 
+   3.697664989389828*^9}, {3.6976650335071096`*^9, 3.697665109882568*^9}, {
+   3.697665157685501*^9, 3.6976651578406525`*^9}, {3.697665218826934*^9, 
+   3.6976653348557177`*^9}, {3.6976653674828053`*^9, 
+   3.6976654100781956`*^9}, {3.697665443746126*^9, 3.697665453440279*^9}, {
+   3.6976654956093254`*^9, 3.697665514688524*^9}, {3.697665546107566*^9, 
+   3.6976655917711697`*^9}, {3.697665778542245*^9, 3.697665784551174*^9}, 
+   3.697665842761083*^9, {3.697665875756153*^9, 3.6976658895436635`*^9}, {
+   3.6976659639041023`*^9, 3.6976659641743393`*^9}, {3.6976660037548113`*^9, 
+   3.6976660838164835`*^9}, {3.697666147208933*^9, 3.697666151107007*^9}, 
+   3.697666214886483*^9, {3.6976662477850833`*^9, 3.697666248255537*^9}, 
+   3.697666279479616*^9, 3.697666322937302*^9, 3.6976663689994473`*^9, {
+   3.6976664071824155`*^9, 3.6976664109405336`*^9}, {3.697666497952557*^9, 
+   3.697666535538327*^9}, {3.6976665773311977`*^9, 3.697666607737482*^9}, {
+   3.6976666555984583`*^9, 3.6976666579649706`*^9}, {3.697666694206601*^9, 
+   3.6976667464399624`*^9}, {3.6976668035293503`*^9, 3.697666949702114*^9}, {
+   3.6982726435445943`*^9, 3.6982727037647924`*^9}, {3.6982728077287235`*^9, 
+   3.6982728667257776`*^9}, {3.6982729015745683`*^9, 
+   3.6982729567452507`*^9}, {3.6982730012788625`*^9, 
+   3.6982730270262403`*^9}, {3.698273060257333*^9, 3.698273061365458*^9}, {
+   3.698351633646036*^9, 3.6983517267093334`*^9}}]
+},
+WindowSize->{1147, 842},
+WindowMargins->{{229, Automatic}, {-21, Automatic}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 28225, 654, 2772, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

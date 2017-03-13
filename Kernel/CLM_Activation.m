@@ -23,24 +23,24 @@ AssignActivationCoefficientsValue = Indeterminate;
 (* ============================================== *)
 ActivationCoeffDistribution = InverseGaussianDistribution;
 ActivationCoeffParams = {1, 1};
+ActivationCoeffControlParams = {}; // use default values
 (* ============================================== *)
 DeactivationCoeffDistribution = InverseGaussianDistribution;
 DeactivationCoeffParams = {1, 1};
+DeactivationCoeffControlParams = {}; // use default values
 (* ============================================== *)
 (* ============================================== *)
 (* ============================================== *)
 ActivationCoefficientValue[substAid_?IntegerQ] := Module[{retVal, base},
   base = GetChainLength[substAid];
-  retVal = RandomCoefficientValue[ActivationCoeffDistribution, ActivationCoeffParams, base];
-  (*
-Print["ActivationCoefficientValue::substAid = ", substAid, ", base = ", base, ", retVal = ", retVal, ", ActivationCoeffDistribution = ", ActivationCoeffDistribution, ", ActivationCoeffParams = ", ActivationCoeffParams];
-*)
+  retVal = RandomCoefficientValue[ActivationCoeffDistribution, ActivationCoeffParams, ActivationCoeffControlParams, base];
+  (* Print["ActivationCoefficientValue::substAid = ", substAid, ", base = ", base, ", retVal = ", retVal, ", ActivationCoeffDistribution = ", ActivationCoeffDistribution, ", ActivationCoeffParams = ", ActivationCoeffParams]; *)
   Return[retVal];
 ];
 (* ============================================== *)
 DeactivationCoefficientValue[substAid_?IntegerQ] := Module[{retVal, base},
   base = GetChainLength[substAid];
-  retVal = RandomCoefficientValue[DeactivationCoeffDistribution, DeactivationCoeffParams, base];
+  retVal = RandomCoefficientValue[DeactivationCoeffDistribution, DeactivationCoeffParams, DeactivationCoeffControlParams, base];
   Return[retVal];
 ];
 (* ============================================== *)

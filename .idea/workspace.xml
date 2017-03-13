@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Activation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Activation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_CatLigation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_CatLigation.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Chain.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Chain.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Epimerization.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Epimerization.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Ligation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Ligation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Sedimentation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Sedimentation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" afterPath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NB/CLM_Chain_Run_325__001.nb" afterPath="$PROJECT_DIR$/NB/CLM_Chain_Run_325__001.nb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NB/Temp/Untitled-1.nb" afterPath="$PROJECT_DIR$/NB/Temp/Untitled-1.nb" />
     </list>
@@ -27,18 +34,18 @@
       <file leaf-file-name="CLM_SedimentationDirect.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="116" column="2" lean-forward="true" selection-start-line="116" selection-start-column="2" selection-end-line="116" selection-end-column="2" />
+            <state relative-caret-position="825">
+              <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CLM_Ligation.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Kernel/CLM_Ligation.m">
+      <file leaf-file-name="CLM_Synthesis.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Kernel/CLM_Synthesis.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+            <state relative-caret-position="763">
+              <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -47,8 +54,8 @@
       <file leaf-file-name="CLM_Calc.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41547">
-              <caret line="1259" column="3" lean-forward="false" selection-start-line="1259" selection-start-column="3" selection-end-line="1259" selection-end-column="3" />
+            <state relative-caret-position="-58">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,8 +65,19 @@
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="978">
-              <caret line="322" column="119" lean-forward="false" selection-start-line="322" selection-start-column="119" selection-end-line="322" selection-end-column="119" />
-              <folding />
+              <caret line="247" column="15" lean-forward="false" selection-start-line="247" selection-start-column="15" selection-end-line="247" selection-end-column="15" />
+              <folding>
+                <element signature="e#6774#7046#0" expanded="false" />
+                <element signature="e#7213#7320#0" expanded="false" />
+                <element signature="e#7572#7775#0" expanded="false" />
+                <element signature="e#7812#8044#0" expanded="false" />
+                <element signature="e#8299#8537#0" expanded="false" />
+                <element signature="e#8576#8822#0" expanded="false" />
+                <element signature="e#9019#9379#0" expanded="false" />
+                <element signature="e#9421#9779#0" expanded="false" />
+                <element signature="e#15107#17139#0" expanded="false" />
+                <element signature="e#18026#18298#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,10 +85,10 @@
       <file leaf-file-name="CLM_Sedimentation.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+            <state relative-caret-position="990">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
-                <element signature="e#7950#16967#0" expanded="false" />
+                <element signature="e#8540#17557#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -110,11 +128,13 @@
       <find>base</find>
       <find>switch</find>
       <find>InitializeTwoSubstCrystValue</find>
-      <find>RandomCoefficientValue</find>
-      <find>kDirectCrystCoefficientValue</find>
       <find>oen</find>
       <find>MaxRandomCoeffValue</find>
       <find>InitializeDirectCrystallization</find>
+      <find>RandomCoefficientValue</find>
+      <find>kDirectCrystCoeffDistribution</find>
+      <find>kDirectCrystCoefficientValue</find>
+      <find>RandomCoefficientValue[</find>
     </findStrings>
     <replaceStrings>
       <replace>\:</replace>
@@ -131,31 +151,32 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Kernel/CLM_Activation.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_BifurcationGenerator.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Binomial.m" />
-        <option value="$PROJECT_DIR$/Kernel/CLM_CatLigation.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_ChainInit.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_ChainModel.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_ChainPlot.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_CommonPostFix.m" />
-        <option value="$PROJECT_DIR$/Kernel/CLM_Epimerization.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_GeneratorCommon.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Init.m" />
-        <option value="$PROJECT_DIR$/Kernel/CLM_Ligation.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Output.m" />
-        <option value="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Common.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_ChainHlp.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Activation.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_CatLigation.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Epimerization.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Ligation.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Sedimentation.m" />
-        <option value="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Chain.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-12" />
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
     <option name="width" value="3866" />
     <option name="height" value="2106" />
   </component>
@@ -174,9 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,6 +269,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -502,7 +523,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-12" y="0" width="3866" height="2106" extended-state="0" />
+    <frame x="-13" y="-13" width="3866" height="2106" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -519,7 +540,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14658849" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14818764" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09518658" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -531,7 +553,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -584,7 +605,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6774#7046#0" expanded="false" />
+            <element signature="e#7213#7320#0" expanded="false" />
+            <element signature="e#7572#7775#0" expanded="false" />
+            <element signature="e#7812#8044#0" expanded="false" />
+            <element signature="e#8299#8537#0" expanded="false" />
+            <element signature="e#8576#8822#0" expanded="false" />
+            <element signature="e#9019#9379#0" expanded="false" />
+            <element signature="e#9421#9779#0" expanded="false" />
+            <element signature="e#15107#17139#0" expanded="false" />
+            <element signature="e#18026#18298#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -593,7 +625,7 @@
         <state relative-caret-position="660">
           <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding>
-            <element signature="e#7950#16967#0" expanded="false" />
+            <element signature="e#8540#17557#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -634,7 +666,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6774#7046#0" expanded="false" />
+            <element signature="e#7213#7320#0" expanded="false" />
+            <element signature="e#7572#7775#0" expanded="false" />
+            <element signature="e#7812#8044#0" expanded="false" />
+            <element signature="e#8299#8537#0" expanded="false" />
+            <element signature="e#8576#8822#0" expanded="false" />
+            <element signature="e#9019#9379#0" expanded="false" />
+            <element signature="e#9421#9779#0" expanded="false" />
+            <element signature="e#15107#17139#0" expanded="false" />
+            <element signature="e#18026#18298#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -643,7 +686,7 @@
         <state relative-caret-position="660">
           <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding>
-            <element signature="e#7950#16967#0" expanded="false" />
+            <element signature="e#8540#17557#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -684,7 +727,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6774#7046#0" expanded="false" />
+            <element signature="e#7213#7320#0" expanded="false" />
+            <element signature="e#7572#7775#0" expanded="false" />
+            <element signature="e#7812#8044#0" expanded="false" />
+            <element signature="e#8299#8537#0" expanded="false" />
+            <element signature="e#8576#8822#0" expanded="false" />
+            <element signature="e#9019#9379#0" expanded="false" />
+            <element signature="e#9421#9779#0" expanded="false" />
+            <element signature="e#15107#17139#0" expanded="false" />
+            <element signature="e#18026#18298#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -693,7 +747,7 @@
         <state relative-caret-position="10164">
           <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
           <folding>
-            <element signature="e#7950#16967#0" expanded="false" />
+            <element signature="e#8540#17557#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -759,11 +813,6 @@
     <entry file="file://$PROJECT_DIR$/Kernel/init.m" />
     <entry file="file://$PROJECT_DIR$/Kernel/CLM.m" />
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
@@ -772,11 +821,9 @@
           <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Activation.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -805,21 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_CatLigation.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41547">
-          <caret line="1259" column="3" lean-forward="false" selection-start-line="1259" selection-start-column="3" selection-end-line="1259" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,13 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Epimerization.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_GeneratorCommon.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2891">
@@ -876,13 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
           <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Synthesis.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -915,14 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Ligation.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NB/CLM_Chain_Run_325__001.nb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2772">
@@ -930,28 +940,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-58">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Activation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_CatLigation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1019">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Epimerization.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1089">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Ligation.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
-          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <caret line="38" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Sedimentation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
-            <element signature="e#7950#16967#0" expanded="false" />
+            <element signature="e#8540#17557#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_Synthesis.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="763">
+          <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="978">
-          <caret line="322" column="119" lean-forward="false" selection-start-line="322" selection-start-column="119" selection-end-line="322" selection-end-column="119" />
-          <folding />
+          <caret line="247" column="15" lean-forward="false" selection-start-line="247" selection-start-column="15" selection-end-line="247" selection-end-column="15" />
+          <folding>
+            <element signature="e#6774#7046#0" expanded="false" />
+            <element signature="e#7213#7320#0" expanded="false" />
+            <element signature="e#7572#7775#0" expanded="false" />
+            <element signature="e#7812#8044#0" expanded="false" />
+            <element signature="e#8299#8537#0" expanded="false" />
+            <element signature="e#8576#8822#0" expanded="false" />
+            <element signature="e#9019#9379#0" expanded="false" />
+            <element signature="e#9421#9779#0" expanded="false" />
+            <element signature="e#15107#17139#0" expanded="false" />
+            <element signature="e#18026#18298#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="116" column="2" lean-forward="true" selection-start-line="116" selection-start-column="2" selection-end-line="116" selection-end-column="2" />
+        <state relative-caret-position="825">
+          <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
           <folding />
         </state>
       </provider>

@@ -32,9 +32,11 @@ CatLigMinLen = 0;
 (* ============================================== *)
 CatLigCoeffDistribution = ParetoDistribution;
 CatLigCoeffParams = {1, 1};
+CatLigCoeffControlParams = {}; // use default values
 (* ============================================== *)
 InvCatLigCoeffDistribution = ParetoDistribution;
 InvCatLigCoeffParams = {1, 1};
+InvCatLigCoeffControlParams = {}; // use default values
 (* ============================================== *)
 CreateCatLigReactionInfo[substAid_?IntegerQ, substBid_?IntegerQ, substABid_?IntegerQ, catalystSubstID_?IntegerQ] := Module[{reacInfo, catEnantSubstID, Aid, Bid, ABid, substID},
   catEnantSubstID = EnantiomerSubstanceID[catalystSubstID];
@@ -70,7 +72,7 @@ CatLigCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, substABid_?Intege
   reacDescr = {substAid, substBid, substABid, catalystSubstID};
   reacDescrW = {EnantiomerSubstanceID[substAid], EnantiomerSubstanceID[substBid], EnantiomerSubstanceID[substABid], catalystSubstID};
   func = RandomCoefficientValue;
-  params = {CatLigCoeffDistribution, CatLigCoeffParams, base};
+  params = {CatLigCoeffDistribution, CatLigCoeffParams, CatLigCoeffParams, base};
   retVal = PairedCoefficientValue[reacDescr, reacDescrW, IsWrong, "CatLigGroupCoeff", groupDescr, func, params];
   Return[retVal];
 ];
@@ -84,7 +86,7 @@ InvCatLigCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, substABid_?Int
   reacDescr = {substAid, substBid, substABid, catalystSubstID};
   reacDescrW = {EnantiomerSubstanceID[substAid], EnantiomerSubstanceID[substBid], EnantiomerSubstanceID[substABid], catalystSubstID};
   func = RandomCoefficientValue;
-  params = {InvCatLigCoeffDistribution, InvCatLigCoeffParams, base};
+  params = {InvCatLigCoeffDistribution, InvCatLigCoeffParams, InvCatLigCoeffControlParams, base};
   retVal = PairedCoefficientValue[reacDescr, reacDescrW, IsWrong, "InvCatLigGroupCoeff", groupDescr, func, params];
   Return[retVal];
 ];

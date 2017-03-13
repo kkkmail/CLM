@@ -42,7 +42,7 @@ Options[CLMChains] :=
 If[!SilentRunValue, Print["TODO::CLM_Chain::Possibly implement two different statistics of catalytic reactions: 1. Catalyst first and then reactions (currently implemented), 2. Just reactions..."]];
 (* ============================================== *)
 (* ToUpperCase and ToLowerCase do not work for Russian and some other letters *)
-(* So we use English and Greek *)
+(* So we use only English and Greek *)
 UpperCaseLetterCodes = Join[Table[ii, {ii, 65, 87}], Table[ii, {ii, 913, 929}], Table[ii, {ii, 931, 937}](* ,Table[ii,{ii,1040,1071}] *)];
 MaxEnantNoLimit = Length[UpperCaseLetterCodes];
 (* ============================================== *)
@@ -68,11 +68,18 @@ NoSimpleSubstCnt = Indeterminate;
 (* ============================================== *)
 (* TODO : CLM_Sedimentation::MinRandomCoeffValue / MaxRandomCoeffValue - extend to be able to set individual min / max value for each type of coefficients.*)
 Print["TODO : CLM_Sedimentation::MinRandomCoeffValue / MaxRandomCoeffValue - extend to be able to set individual min / max value for each type of coefficients."];
-(* The absolute maximum value of a random coefficient. Some heavy tailed distribuitons may produce insanely large values. *)
+(* The default absolute maximum value of a random coefficient. Some heavy tailed distribuitons may produce insanely large values. *)
 MinRandomCoeffValue = 10^-4;
 MaxRandomCoeffValue = 10^4;
 (* If random value is very large we censor it by MaxRandomCoeffValue * (1 + RandomReal[] * MaxRandomValLeeway)*)
 MaxRandomValLeeway = 0.5;
+(* ============================================== *)
+(* Default values to be used by RandomCoefficientValue *)
+RandCoeffValParams = {MinRandomCoeffValue, MaxRandomCoeffValue, MaxRandomValLeeway};
+(* getter functions with relevant defalt values *)
+GetMinRandomCoeffValue[controlParam_?VectorQ] := If[Length[controlParam] >= 1, controlParam[[1]], MinRandomCoeffValue];
+GetMaxRandomCoeffValue[controlParam_?VectorQ] := If[Length[controlParam] >= 2, controlParam[[2]], MaxRandomCoeffValue];
+GetMaxRandomValLeeway[controlParam_?VectorQ] := If[Length[controlParam] >= 3, controlParam[[3]], MaxRandomValLeeway];
 (* ============================================== *)
 DigitArray = Indeterminate;
 DigitArrayL = Indeterminate;
@@ -197,6 +204,51 @@ DistributionPlotRange[distributionVec_?VectorQ, paramMatr_?MatrixQ] := Module[{i
 (* ============================================== *)
 DistributionPlotRange[distribution_, params_?VectorQ] := Max[DistributionMu[distribution, params] + SigmaMultiplier * DistributionSigma[distribution, params], MuMultiplier * DistributionMu[distribution, params]];
 (* ============================================== *)
+(* ParetoAlphaDefault is a parameter in ParetoDistribution[k,\[Alpha],\[Gamma],\[Mu]] *)
+(*  \[Alpha] around 5 does not result in any extremes for the default values of p and used values of q *)
+(* pLow (default = ParetoPLowDefault) is how much is before the tail of CDF for the value of x = qLow *)
+(* pHigh (default = ParetoPHighDefault) is how much is before the tail of CDF for the value of x = qHigh *)
+(* QLowDefaultMultiplier is the multiplier for qLow. Any random values below (qLow * QLowDefaultMultiplier) are converted into zero. *)
+ParetoAlphaDefault = 5;
+ParetoPLowDefault = 0.95;
+ParetoPHighDefault = 0.99;
+QLowDefaultMultiplier = 0.05;
+(* ============================================== *)
+GetParetoGamma[qLow_?NumericQ, qHigh_?NumericQ] := GetParetoGamma[qLow, qHigh, ParetoAlphaDefault, ParetoPLowDefault, ParetoPHighDefault]
+GetParetoGamma[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ] := GetParetoGamma[qLow, qHigh, alpha, ParetoPLowDefault, ParetoPHighDefault]
+GetParetoGamma[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ, pLow_?NumericQ, pHigh_?NumericQ] := Module[{q, sol, gamma, qVal},
+  qVal = qHigh/qLow;
+  q = (Quantile[ParetoDistribution[1, alpha, gamma, 0], pHigh] / Quantile[ParetoDistribution[1, alpha, gamma, 0], pLow]);
+  (* Print["q = ", q]; *)
+  Off[NSolve::ifun];
+  sol = NSolve[q == qVal, gamma];
+  (* On[NSolve::ifun]; *)
+  (* Print["sol = ", sol]; *)
+  Return[gamma /. sol[[1]]];
+];
+(* ============================================== *)
+GetParetoK[qLow_?NumericQ, qHigh_?NumericQ] := GetParetoGamma[qLow, qHigh, ParetoAlphaDefault, ParetoPLowDefault, ParetoPHighDefault];
+GetParetoK[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ] := GetParetoGamma[qLow, qHigh, alpha, ParetoPLowDefault, ParetoPHighDefault];
+GetParetoK[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ, pLow_?NumericQ, pHigh_?NumericQ] := Module[{gamma, sol, qL, k},
+  gamma = GetParetoGamma[qLow, qHigh, alpha, pLow, pHigh];
+  qL = Quantile[ParetoDistribution[k, alpha, gamma, 0], pLow];
+  (* Print["GetParetoK::gamma = ", gamma]; *)
+  (* Print["GetParetoK::qL = ", qL]; *)
+
+  sol = NSolve[qL == qLow , k];
+  (* Print["GetParetoK::sol = ", sol]; *)
+  Return[k /. sol[[1]]];
+];
+(* ============================================== *)
+(* All parameters of Pareto distribution ready to be used by RandomCoefficientValue *)
+GetParetoParams[qLow_?NumericQ, qHigh_?NumericQ] := GetParetoParams[qLow, qHigh, ParetoAlphaDefault, ParetoPLowDefault, ParetoPHighDefault];
+GetParetoParams[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ] := GetParetoParams[qLow, qHigh, alpha, ParetoPLowDefault, ParetoPHighDefault];
+GetParetoParams[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ, pLow_?NumericQ, pHigh_?NumericQ] := { GetParetoK[qLow, qHigh, alpha, pLow, pHigh], alpha, GetParetoGamma[qLow, qHigh, alpha, pLow, pHigh], 0 };
+
+(* All control parameters of Pareto distribution ready to be used by RandomCoefficientValue *)
+GetParetoControlParams[qLow_?NumericQ, qHigh_?NumericQ] := {qLow * QLowDefaultMultiplier, qHigh};
+(* ============================================== *)
+(*
 (* Vector function to prepare distribution parameters *)
 PrepareDistributionParameters[distributionVec_?VectorQ, paramMatr_?MatrixQ, base_?IntegerQ] := Module[{len, retVal, distribution, params},
   retVal = Indeterminate;
@@ -211,6 +263,7 @@ PrepareDistributionParameters[distributionVec_?VectorQ, paramMatr_?MatrixQ, base
 
   Return[retVal];
 ];
+*)
 (* ============================================== *)
 (* Function to prepare distribution parameters as we might need to rescale them somehow. *)
 PrepareDistributionParameters[distribution_, params_?VectorQ] := PrepareDistributionParameters[distribution, params, 0];
@@ -270,6 +323,7 @@ PrepareDistributionParameters[distribution_, params_?VectorQ, base_?IntegerQ] :=
   Return[paramVals];
 ];
 (* ============================================== *)
+(*
 (* Vector function to prepare distribution parameters *)
 PrepareDistributionShift[distributionVec_?VectorQ, paramMatr_?MatrixQ, base_?IntegerQ] := Module[{len, retVal, distribution, params},
   retVal = Indeterminate;
@@ -284,6 +338,7 @@ PrepareDistributionShift[distributionVec_?VectorQ, paramMatr_?MatrixQ, base_?Int
 
   Return[retVal];
 ];
+*)
 (* ============================================== *)
 (* For some distributions we need to shift the value of x *)
 PrepareDistributionShift[distribution_, params_?VectorQ] := PrepareDistributionShift[distribution, params, 0];
@@ -301,6 +356,7 @@ PrepareDistributionShift[distribution_, params_?VectorQ, base_?IntegerQ] := Modu
   Return[shiftVal];
 ];
 (* ============================================== *)
+(*
 (* Vector Function, which creates random value of a coefficient *)
 RandomCoefficientValue[distributionVec_?VectorQ, paramMatr_?MatrixQ] := RandomCoefficientValue[distributionVec, paramMatr, 0];
 
@@ -308,20 +364,24 @@ RandomCoefficientValue[distributionVec_?VectorQ, paramMatr_?MatrixQ, base_?Integ
   paramVals = PrepareDistributionParameters[distributionVec, paramMatr, base];
   shiftVal = PrepareDistributionShift[distributionVec, paramMatr, base];
   (* Impose min / max limits but do not want exact max value in case of "overflow". *)
-  randVal = Min[RandomVariate[Apply[distributionVec[[base]], paramVals]] - shiftVal, MaxRandomCoeffValue * (1 + MaxRandomValLeeway * RandomReal[])];
+  randVal = Min[RandomVariate[Apply[distributionVec[[base]], paramVals]] - shiftVal, GetMaxRandomValLeeway[] * (1 + MaxRandomValLeeway * RandomReal[])];
   retVal = If[randVal < MinRandomCoeffValue, 0, randVal];
   Return[retVal];
 ];
+*)
 (* ============================================== *)
 (* Function, which creates random value of a coefficient *)
-RandomCoefficientValue[distribution_, params_?VectorQ] := RandomCoefficientValue[distribution, params, 0];
+(* distribution is the name of random distribution, for example ParetoDistribution *)
+(* params is a vector of parameters for a given distribution *)
+(* controlParams is a vector of control parameters, like min or max allowed values *)
+RandomCoefficientValue[distribution_, params_?VectorQ, controlParams_?VectorQ] := RandomCoefficientValue[distribution, params, controlParams, 0];
 
-RandomCoefficientValue[distribution_, params_?VectorQ, base_?IntegerQ] := Module[{retVal, paramVals, shiftVal, randVal},
+RandomCoefficientValue[distribution_, params_?VectorQ, controlParams_?VectorQ, base_?IntegerQ] := Module[{retVal, paramVals, shiftVal, randVal},
   paramVals = PrepareDistributionParameters[distribution, params, base];
   shiftVal = PrepareDistributionShift[distribution, params, base];
   (* Impose min / max limits but do not want exact max value in case of "overflow". *)
-  randVal = Min[RandomVariate[Apply[distribution, paramVals]] - shiftVal, MaxRandomCoeffValue * (1 + MaxRandomValLeeway * RandomReal[])];
-  retVal = If[randVal < MinRandomCoeffValue, 0, randVal];
+  randVal = Min[RandomVariate[Apply[distribution, paramVals]] - shiftVal, GetMaxRandomCoeffValue[controlParams] * (1 + GetMaxRandomValLeeway[controlParams] * RandomReal[])];
+  retVal = If[randVal < GetMinRandomCoeffValue[controlParams], 0, randVal];
   Return[retVal];
 ];
 (* ============================================== *)

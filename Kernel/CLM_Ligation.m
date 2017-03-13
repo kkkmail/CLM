@@ -35,19 +35,23 @@ UseOnlySimpleLigationValue = Indeterminate;
 (* rate[A*+A \[Rule] AA] + rate[A*+a \[Rule] Aa] *)
 LigTotalRateDistribution = InverseGaussianDistribution;
 LigTotalRateParams = {1, 1};
+LigTotalRateControlParams = {}; // use default values
 (* ============================================== *)
 (* Same as above but for inverse reaction (activation is irrelevant) *)
 (* rate[AA \[Rule] A+A] + rate[Aa \[Rule] A+a] *)
 InvLigTotalRateDistribution = InverseGaussianDistribution;
 InvLigTotalRateParams = {1, 1};
+InvLigTotalRateControlParams = {}; // use default values
 (* ============================================== *)
 (* Distribution parameters of unweighted and not normalized ligation coefficients. *)
 LigCoeffDistribution = InverseGaussianDistribution;
 LigCoeffParams = {1, 1};
+LigCoeffControlParams = {}; // use default values
 (* ============================================== *)
 (* Distribution parameters of unweighted and not normalized inverse ligation coefficients. *)
 InvLigCoeffDistribution = InverseGaussianDistribution;
 InvLigCoeffParams = {1, 1};
+InvLigCoeffControlParams = {}; // use default values
 (* ============================================== *)
 (* LigNotAAweight: varies between 0 and 1 and determines relative rates of ligation reactions. *)
 (* If value \[Equal] 0 then total rate is allocated to A+A \[Rule] AA and zero to A+a \[Rule] Aa *)
@@ -101,27 +105,27 @@ InvLigCoeffDiffWeight = Indeterminate;
 (* ============================================== *)
 (* LigTotalRateValue returns random value of total ligation rate (sum of 2 coefficients). *)
 LigTotalRateValue[] := Module[{retVal},
-  retVal = RandomCoefficientValue[LigTotalRateDistribution, LigTotalRateParams];
+  retVal = RandomCoefficientValue[LigTotalRateDistribution, LigTotalRateParams, LigTotalRateControlParams];
   Return[retVal];
 ];
 (* ============================================== *)
 (* InvLigTotalRateValue returns random value of total inverse ligation rate (sum of 2 coefficients). *)
 InvLigTotalRateValue[] := Module[{retVal},
-  retVal = RandomCoefficientValue[InvLigTotalRateDistribution, InvLigTotalRateParams];
+  retVal = RandomCoefficientValue[InvLigTotalRateDistribution, InvLigTotalRateParams, InvLigTotalRateControlParams];
   Return[retVal];
 ];
 (* ============================================== *)
 (* LigCoeffValue returns random UNWEIGHTED value of relative ligation coefficient. *)
 (* See LigCoeffRandom BELOW for further description. *)
 LigCoeffValue[] := Module[{retVal},
-  retVal = RandomCoefficientValue[LigCoeffDistribution, LigCoeffParams];
+  retVal = RandomCoefficientValue[LigCoeffDistribution, LigCoeffParams, LigCoeffControlParams];
   Return[retVal];
 ];
 (* ============================================== *)
 (* InvLigCoeffValue returns random UNWEIGHTED value of relative inverse ligation coefficient. *)
 (* See InvLigCoeffRandom BELOW for further description. *)
 InvLigCoeffValue[] := Module[{retVal},
-  retVal = RandomCoefficientValue[InvLigCoeffDistribution, InvLigCoeffParams];
+  retVal = RandomCoefficientValue[InvLigCoeffDistribution, InvLigCoeffParams, InvLigCoeffControlParams];
   Return[retVal];
 ];
 (* ============================================== *)

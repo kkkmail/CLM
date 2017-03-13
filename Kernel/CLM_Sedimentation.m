@@ -35,53 +35,60 @@ AssignChainCrystCoefficientsValue = Indeterminate;
 (* ============================================== *)
 DiastCoeffDistribution = InverseGaussianDistribution;
 DiastCoeffParams = {1, 1};
+DiastCoeffControlParams = {}; // use default values
 (* ============================================== *)
 InvDiastCoeffDistribution = InverseGaussianDistribution;
 InvDiastCoeffParams = {1, 1};
+InvDiastCoeffControlParams = {}; // use default values
 (* ============================================== *)
 rMaxCoeffDistribution = InverseGaussianDistribution;
 rMaxCoeffParams = {1, 1};
+rMaxCoeffControlParams = {}; // use default values
 
 kCrystCoeffDistribution = InverseGaussianDistribution;
 kCrystCoeffParams = {1, 1};
+kCrystCoeffControlParams = {}; // use default values
 
 kDissCoeffDistribution = InverseGaussianDistribution;
 kDissCoeffParams = {1, 1};
+kDissCoeffControlParams = {}; // use default values
 (* ============================================== *)
 CrystDecayCoeffDistribution = InverseGaussianDistribution;
 CrystDecayCoeffParams = {1, 1};
+CrystDecayCoeffControlParams = {}; // use default values
 (* ============================================== *)
 DiastCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal},
-  retVal = RandomCoefficientValue[DiastCoeffDistribution, DiastCoeffParams];
+  retVal = RandomCoefficientValue[DiastCoeffDistribution, DiastCoeffParams, DiastCoeffControlParams];
   Return[retVal];
 ];
 (* ============================================== *)
 InvDiastCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal},
-  retVal = RandomCoefficientValue[InvDiastCoeffDistribution, InvDiastCoeffParams];
+  retVal = RandomCoefficientValue[InvDiastCoeffDistribution, InvDiastCoeffParams, InvDiastCoeffControlParams];
   Return[retVal];
 ];
 (* ============================================== *)
-If[!SilentRunValue, Print["TODO::CLM_Chain::rMaxCoefficientValue, kCrystCoefficientValue, kDissCoefficientValue - calculation of base should be updated..."]];
+(* TODO::CLM_Chain::rMaxCoefficientValue, kCrystCoefficientValue, kDissCoefficientValue - calculation of base should be updated...*)
+Print["TODO::CLM_Chain::rMaxCoefficientValue, kCrystCoefficientValue, kDissCoefficientValue - calculation of base should be updated..."];
 rMaxCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
   base = (GetChainLength[substAid] - 1) / 2;
-  retVal = RandomCoefficientValue[rMaxCoeffDistribution, rMaxCoeffParams, base];
+  retVal = RandomCoefficientValue[rMaxCoeffDistribution, rMaxCoeffParams, rMaxCoeffControlParams, base];
   Return[retVal];
 ];
 (* ============================================== *)
 kCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
   base = (GetChainLength[substAid] - 1) / 2;
-  retVal = RandomCoefficientValue[kCrystCoeffDistribution, kCrystCoeffParams, base];
+  retVal = RandomCoefficientValue[kCrystCoeffDistribution, kCrystCoeffParams, kCrystCoeffControlParams, base];
   Return[retVal];
 ];
 (* ============================================== *)
 kDissCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
   base = (GetChainLength[substAid] - 1) / 2;
-  retVal = RandomCoefficientValue[kDissCoeffDistribution, kDissCoeffParams, base];
+  retVal = RandomCoefficientValue[kDissCoeffDistribution, kDissCoeffParams, kDissCoeffControlParams, base];
   Return[retVal];
 ];
 (* ============================================== *)
 CrystDecayCoefficientValue[substAid_?IntegerQ] := Module[{retVal},
-  retVal = RandomCoefficientValue[CrystDecayCoeffDistribution, CrystDecayCoeffParams];
+  retVal = RandomCoefficientValue[CrystDecayCoeffDistribution, CrystDecayCoeffParams, CrystDecayCoeffControlParams];
   Return[retVal];
 ];
 (* ============================================== *)

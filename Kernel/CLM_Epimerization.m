@@ -31,10 +31,12 @@ AssignEpimCoefficientsValue = Indeterminate;
 (* Distribution parameters of total epimerization rate. *)
 EpimTotalRateDistribution = InverseGaussianDistribution;
 EpimTotalRateParams = {1, 1};
+EpimTotalRateControlParams = {}; // use default values
 (* ============================================== *)
 (* Distribution parameters of unweighted and not normalized epimerization coefficients. *)
 EpimCoeffDistribution = InverseGaussianDistribution;
 EpimCoeffParams = {1, 1};
+EpimCoeffControlParams = {}; // use default values
 (* ============================================== *)
 (* EpimUnstableAAweight: varies between 0 and 1 and determines how stable is AA substance. *)
 (* If value \[Equal] 0 then AA is completely stable (does not have any epimerization) and Aa is unstable. *)
@@ -82,14 +84,14 @@ EpimCoeffDiffWeight = Indeterminate;
 (* ============================================== *)
 (* EpimTotalRateValue returns random value of total epimerizaton rate (sum of 4 coefficients). *)
 EpimTotalRateValue[] := Module[{retVal},
-  retVal = RandomCoefficientValue[EpimTotalRateDistribution, EpimTotalRateParams];
+  retVal = RandomCoefficientValue[EpimTotalRateDistribution, EpimTotalRateParams, EpimTotalRateControlParams];
   Return[retVal];
 ];
 (* ============================================== *)
 (* EpimCoeffValue returns random UNWEIGHTED value of relative epimerization coefficient. *)
 (* See EpimCoeffRandom BELOW for further description. *)
 EpimCoeffValue[] := Module[{retVal},
-  retVal = RandomCoefficientValue[EpimCoeffDistribution, EpimCoeffParams];
+  retVal = RandomCoefficientValue[EpimCoeffDistribution, EpimCoeffParams, EpimCoeffControlParams];
   Return[retVal];
 ];
 (* ============================================== *)
