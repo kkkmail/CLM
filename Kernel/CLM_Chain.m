@@ -240,13 +240,14 @@ GetParetoK[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ, pLow_?NumericQ, pHi
   Return[k /. sol[[1]]];
 ];
 (* ============================================== *)
-(* All parameters of Pareto distribution ready to be used by RandomCoefficientValue *)
+(* All parameters of Pareto IV distribution ready to be used by RandomCoefficientValue *)
 GetParetoParams[qLow_?NumericQ, qHigh_?NumericQ] := GetParetoParams[qLow, qHigh, ParetoAlphaDefault, ParetoPLowDefault, ParetoPHighDefault];
 GetParetoParams[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ] := GetParetoParams[qLow, qHigh, alpha, ParetoPLowDefault, ParetoPHighDefault];
 GetParetoParams[qLow_?NumericQ, qHigh_?NumericQ, alpha_?NumericQ, pLow_?NumericQ, pHigh_?NumericQ] := { GetParetoK[qLow, qHigh, alpha, pLow, pHigh], alpha, GetParetoGamma[qLow, qHigh, alpha, pLow, pHigh], 0 };
 
-(* All control parameters of Pareto distribution ready to be used by RandomCoefficientValue *)
-GetParetoControlParams[qLow_?NumericQ, qHigh_?NumericQ] := {qLow * QLowDefaultMultiplier, qHigh};
+(* All control parameters of Pareto IV distribution ready to be used by RandomCoefficientValue *)
+GetParetoControlParams[qLow_?NumericQ, qHigh_?NumericQ] := GetParetoControlParams[qLow, qHigh, QLowDefaultMultiplier];
+GetParetoControlParams[qLow_?NumericQ, qHigh_?NumericQ, qLowMultiplier_?NumericQ] := {qLow * qLowMultiplier, qHigh};
 (* ============================================== *)
 (*
 (* Vector function to prepare distribution parameters *)
@@ -370,6 +371,25 @@ RandomCoefficientValue[distributionVec_?VectorQ, paramMatr_?MatrixQ, base_?Integ
 ];
 *)
 (* ============================================== *)
+(*
+(* NOT USED !!!*)
+(* Rescale value above xNotRescaledMax to fit between xNotRescaledMax and xMaxVal *)
+RescaleValue[x_?NumericQ, xNotRescaledMax_?NumericQ, xMaxVal_?NumericQ] := Module[{xMax, retVal, xScaled},
+  (* Can't do anything yet with non positive values *)
+  If[x <= xNotRescaledMax || xNotRescaledMax <= 0,
+    (
+      Return [x];
+    ),
+    (
+      xMax = Max[xNotRescaledMax + 0.01 * Abs[xNotRescaledMax], xMaxVal];
+      xScaled = (x - xNotRescaledMax) / xNotRescaledMax;
+      retval = xNotRescaledMax + (xMax - xNotRescaledMax) * (xScaled / (1 + xScaled));
+      Return[retval];
+    )
+  ];
+];
+*)
+(* ============================================== *)
 (* Function, which creates random value of a coefficient *)
 (* distribution is the name of random distribution, for example ParetoDistribution *)
 (* params is a vector of parameters for a given distribution *)
@@ -380,6 +400,7 @@ RandomCoefficientValue[distribution_, params_?VectorQ, controlParams_?VectorQ, b
   paramVals = PrepareDistributionParameters[distribution, params, base];
   shiftVal = PrepareDistributionShift[distribution, params, base];
   (* Impose min / max limits but do not want exact max value in case of "overflow". *)
+  randVal = RandomVariate[Apply[distribution, paramVals]] - shiftVal;
   randVal = Min[RandomVariate[Apply[distribution, paramVals]] - shiftVal, GetMaxRandomCoeffValue[controlParams] * (1 + GetMaxRandomValLeeway[controlParams] * RandomReal[])];
   retVal = If[randVal < GetMinRandomCoeffValue[controlParams], 0, randVal];
   Return[retVal];

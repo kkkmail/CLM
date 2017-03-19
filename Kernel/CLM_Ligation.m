@@ -166,7 +166,7 @@ GetInvLigDescriptor[substAid_?IntegerQ] := Module[{Aid, descr},
 
   If[!VectorQ[descr, NumericQ],
     (
-    (* Generating new value. *)
+      (* Generating new value. *)
       descr = Join[{InvLigTotalRateValue[]}, InvLigCoeffRandom[]];
       InvLigDescriptorFunc[Aid] = descr;
     )
@@ -234,12 +234,10 @@ Print["    GetLigDescriptor::descrA = ", descrA // MatrixForm];
 
       descr = Join[{rate}, coeff];
 
-      (*
-Print["    GetLigDescriptor::descrB = ", descrB // MatrixForm];
-Print["    GetLigDescriptor::rateA = ", rateA, ", rateB = ", rateB, ", rate = ", rate];
-Print["    GetLigDescriptor::coeffA = ", coeffA // MatrixForm, ", coeffB = ", coeffB // MatrixForm, ", coeff = ", coeff // MatrixForm];
-Print["    GetLigDescriptor::new descr = ", descr // MatrixForm];
-*)
+      (* Print["    GetLigDescriptor::descrB = ", descrB // MatrixForm]; *)
+      (* Print["    GetLigDescriptor::rateA = ", rateA, ", rateB = ", rateB, ", rate = ", rate]; *)
+      (* Print["    GetLigDescriptor::coeffA = ", coeffA // MatrixForm, ", coeffB = ", coeffB // MatrixForm, ", coeff = ", coeff // MatrixForm]; *)
+      (* Print["    GetLigDescriptor::new descr = ", descr // MatrixForm]; *)
 
       LigDescriptorFunc[Aid, Bid] = descr;
     )
@@ -416,7 +414,7 @@ InvLigCoeffRandom[] := Module[{coeff, ii, norm, kAAtoApA, kAatoApa},
 (* LigRate return ligation rate for A+B \[Rule] AB reactions. *)
 (* ============================================== *)
 LigRate[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{descr, Aid, Bid, substEAid, rate, ArightID, BleftID},
-(* Print["LigRate::Starting..."]; *)
+  (* Print["LigRate::Starting..."]; *)
   descr = GetLigDescriptor[substAid, substBid];
   substEAid = EnantiomerSubstanceID[substAid];
 
@@ -431,29 +429,25 @@ LigRate[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{descr, Aid, Bid, subs
     )
   ];
 
-  (*
-Print["LigRate::substAid = ", substAid, ", substBid = ", substBid, ", substAname = ", GetSubstanceName[substAid], ", substBname = ", GetSubstanceName[substBid]];
-Print["LigRate::Aid = ", Aid, ", Bid = ", Bid, ", nameA = ", GetSubstanceName[Aid], ", nameB = ", GetSubstanceName[Bid]];
-Print["LigRate::descr = ", descr // MatrixForm];
-*)
+  (* Print["LigRate::substAid = ", substAid, ", substBid = ", substBid, ", substAname = ", GetSubstanceName[substAid], ", substBname = ", GetSubstanceName[substBid]]; *)
+  (* Print["LigRate::Aid = ", Aid, ", Bid = ", Bid, ", nameA = ", GetSubstanceName[Aid], ", nameB = ", GetSubstanceName[Bid]]; *)
+  (* Print["LigRate::descr = ", descr // MatrixForm]; *)
 
   If[SameChiralPolarizationQ[GetRightAminoAcid[Aid], GetLeftAminoAcid[Bid]],
     (
-    (* We have something like A and B *)
-    (* Print["LigRate::We have something like A and B"]; *)
+      (* We have something like A and B *)
+      (* Print["LigRate::We have something like A and B"]; *)
       rate = GetLigTotalRate[descr] * GetLigkApBtoAB[descr];
     ),
     (
-    (* We have something like A and b *)
-    (* Print["We have something like A and b"]; *)
+      (* We have something like A and b *)
+      (* Print["We have something like A and b"]; *)
       rate = GetLigTotalRate[descr] * GetLigkApbtoAb[descr];
     )
   ];
 
-  (*
-Print["LigRate::rate = ",rate];
-Print[strSeparatorSmall];
-*)
+  (* Print["LigRate::rate = ",rate]; *)
+  (* Print[strSeparatorSmall]; *)
 
   Return[rate];
 ];

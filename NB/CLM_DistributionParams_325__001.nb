@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15018,        392]
-NotebookOptionsPosition[     14774,        379]
-NotebookOutlinePosition[     15117,        394]
-CellTagsIndexPosition[     15074,        391]
+NotebookDataLength[     15213,        397]
+NotebookOptionsPosition[     14969,        384]
+NotebookOutlinePosition[     15312,        399]
+CellTagsIndexPosition[     15269,        396]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -145,12 +145,13 @@ Cell[BoxData[
       "===", "===", "===", "==="}], "="}], "*)"}], "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
-    RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], "\n", 
+    RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], "*)"}], "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"silentRun", "=", "False"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
@@ -168,23 +169,22 @@ Cell[BoxData[
       RowBox[{"Path", "\[Rule]", "PathList"}]}], "]"}], ";"}], "\n", 
    RowBox[{
     RowBox[{"LoadModules", "[", 
-     RowBox[{"PathList", ",", "silentRun"}], "]"}], ";"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{
-     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], "*)"}], "\n", 
-   RowBox[{
-    RowBox[{"noOfPoints", "=", 
-     RowBox[{"10", "^", "5"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"nQuant", " ", "=", " ", "100"}], ";"}], "\n", 
+     RowBox[{"PathList", ",", "silentRun"}], "]"}], ";"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"noOfPoints", "=", 
+     RowBox[{"10", "^", "5"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nQuant", " ", "=", " ", "100"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"rndVal", "=", 
      RowBox[{"RandomInteger", "[", 
@@ -193,12 +193,12 @@ Cell[BoxData[
         RowBox[{"10", "^", "12"}]}], "}"}], "]"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"SeedRandomValue", "=", "rndVal"}], ";"}], "\n", 
+    RowBox[{"SeedRandomValue", "=", "rndVal"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], "*)"}], "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"distrName", "=", "ParetoDistribution"}], ";"}], "\n", 
    RowBox[{
@@ -210,13 +210,14 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"10", "^", "4"}], "/", "100"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"alphaVal", " ", "=", " ", "5"}], ";", " ", 
-    RowBox[{"(*", " ", 
-     RowBox[{
-     "alpha", " ", "around", " ", "5", " ", "does", " ", "not", " ", "result",
-       " ", "in", " ", "any", " ", "extremes", " ", "for", " ", "the", " ", 
-      "values", " ", "of", " ", "p", " ", "and", " ", "q", " ", "below"}], 
-     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"alphaVal", " ", "=", " ", "5"}], ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "alpha", " ", "around", " ", "5", " ", "does", " ", "not", " ", "result", 
+     " ", "in", " ", "any", " ", "extremes", " ", "for", " ", "the", " ", 
+     "values", " ", "of", " ", "p", " ", "and", " ", "q", " ", "below"}], " ",
+     "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"pLowVal", " ", "=", " ", "0.95"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"pHighVal", " ", "=", " ", "0.99"}], ";"}], "\[IndentingNewLine]",
@@ -260,7 +261,11 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"params", "=", 
      RowBox[{"GetParetoParams", "[", 
-      RowBox[{"qLowVal", ",", " ", "qHighVal"}], "]"}]}], ";"}], "\n", 
+      RowBox[{"qLowVal", ",", " ", "qHighVal"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<params = \>\"", ",", " ", "params"}], "]"}], ";"}], "\n", 
    RowBox[{
     RowBox[{"controlParams", "=", 
      RowBox[{"GetParetoControlParams", "[", 
@@ -284,12 +289,12 @@ Cell[BoxData[
         RowBox[{"ii", ",", "1", ",", "noOfPoints"}], "}"}]}], "]"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"PrintTimeUsed", "[", "]"}], ";"}], "\n", 
+    RowBox[{"PrintTimeUsed", "[", "]"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], "*)"}], "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"meanVal", " ", "=", " ", 
      RowBox[{"Mean", "[", "rndCoeff", "]"}]}], ";"}], "\[IndentingNewLine]", 
@@ -375,10 +380,10 @@ Cell[BoxData[
    3.6983629539886456`*^9, 3.6983629624532146`*^9}, {3.6983648965163403`*^9, 
    3.698364922937747*^9}, {3.6983650425781894`*^9, 3.6983650562005105`*^9}, {
    3.698365145847125*^9, 3.698365186265007*^9}, {3.6983668357209635`*^9, 
-   3.698366888005447*^9}}]
+   3.698366888005447*^9}, {3.6983794977323875`*^9, 3.6983795047280116`*^9}}]
 },
 WindowSize->{1087, 868},
-WindowMargins->{{Automatic, 11}, {-11, Automatic}},
+WindowMargins->{{Automatic, 369}, {18, Automatic}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -393,7 +398,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 14212, 357, 1472, "Input"]
+Cell[558, 20, 14407, 362, 1492, "Input"]
 }
 ]
 *)

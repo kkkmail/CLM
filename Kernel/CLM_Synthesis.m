@@ -219,9 +219,7 @@ AssignSynthReaction[IsEnantiomer_?BooleanQ, IsInverse_?BooleanQ, substAid_?Integ
           coeffIdxName = CoeffPrefixValue <> "Idx" <> nameA <> ToLetter <> nameB;
           coeffName = CoeffPrefixValue <> nameA <> ToLetter <> nameB;
 
-          (*
-Print["AssignSynthReaction::reacIdxName = ", reacIdxName, ", reacStringName = ", reacStringName, ", substIdxNameA = ", substIdxNameA, ", coeffName = ", coeffName, ", substIdxNameB = ", substIdxNameB];
-*)
+          (* Print["AssignSynthReaction::reacIdxName = ", reacIdxName, ", reacStringName = ", reacStringName, ", substIdxNameA = ", substIdxNameA, ", coeffName = ", coeffName, ", substIdxNameB = ", substIdxNameB]; *)
 
           ToExpression[reacIdxName <> "=AddReaction[{{StandardReaction,\"" <> reacStringName <> "\"},{{" <> substIdxNameA <> ",1}},{" <> coeffName <> ",1},{{" <> substIdxNameB <> ",1}}}]"];
 
@@ -268,11 +266,8 @@ InitializeAllSynthReactions[rawOpts___] := Module[{opts, ii, substAid, substBid,
           substBName = DigitArrayL[[ii]];
           substBid = GetSubstanceID[substBName];
 
-          (*
-Print["InitializeAllSynthReactions::substBName = ", substBName, ", substBid = ", substBid]; 
-
-Print["InitializeAllSynthReactions::substAid = ", substAid, ", substBName = ", substBName, ", substBid = ", substBid];
-*)
+          (* Print["InitializeAllSynthReactions::substBName = ", substBName, ", substBid = ", substBid]; *)
+          (* Print["InitializeAllSynthReactions::substAid = ", substAid, ", substBName = ", substBName, ", substBid = ", substBid]; *)
 
           AssignSynthReaction[False, False, substAid, substBid];
           AssignSynthReaction[False, True, substAid, substBid];
@@ -413,15 +408,11 @@ InitializeCatSynthReactions[substAid_, substBid_] := Module[{chainLenCnt, len, i
               catSubstName = AllChainsTbl[[chainLenCnt, ii]];
               catSubstID = GetSubstanceID[catSubstName];
 
-              (*
-Print["    InitializeCatSynthReactions::ii = ", ii, ", substAid = ", substAid, ", substBid = ", substBid, ", catSubstID = ", catSubstID, ", CatSynthReactionRecordCheck[",substAid,", ",substBid,", ",catSubstID,"] = ", CatSynthReactionRecordCheck[substAid,substBid,catSubstID]];
-*)
+              (* Print["    InitializeCatSynthReactions::ii = ", ii, ", substAid = ", substAid, ", substBid = ", substBid, ", catSubstID = ", catSubstID, ", CatSynthReactionRecordCheck[",substAid,", ",substBid,", ",catSubstID,"] = ", CatSynthReactionRecordCheck[substAid,substBid,catSubstID]]; *)
 
               reacInfo = CreateReactionInfo[substAid, substBid, catSubstID];
 
-              (*
-Print["InitializeCatSynthReactions::substAid = ", substAid, ", substBid = ", substBid, ", catSubstID = ", catSubstID, ", reacInfo = ", reacInfo];
-*)
+              (* Print["InitializeCatSynthReactions::substAid = ", substAid, ", substBid = ", substBid, ", catSubstID = ", catSubstID, ", reacInfo = ", reacInfo]; *)
 
               If[!CatSynthReactionRecordCheck[reacInfo],
                 (

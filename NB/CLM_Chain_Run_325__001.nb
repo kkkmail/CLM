@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    168455,       3351]
-NotebookOptionsPosition[    168208,       3338]
-NotebookOutlinePosition[    168551,       3353]
-CellTagsIndexPosition[    168508,       3350]
+NotebookDataLength[    171085,       3396]
+NotebookOptionsPosition[    170838,       3383]
+NotebookOutlinePosition[    171181,       3398]
+CellTagsIndexPosition[    171138,       3395]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -153,7 +153,7 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxEnantNumb", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxEnantNumb", "=", "1"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"maxChainLen", "=", "3"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -298,12 +298,12 @@ Cell[BoxData[
     RowBox[{"SynthMultiplier", "=", 
      RowBox[{"1", "*", 
       RowBox[{"10", "^", 
-       RowBox[{"-", "10"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+       RowBox[{"-", "2"}]}]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"DecayMultiplier", "=", 
      RowBox[{"1", "*", 
       RowBox[{"10", "^", 
-       RowBox[{"-", "10"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+       RowBox[{"-", "3"}]}]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1069,6 +1069,43 @@ Cell[BoxData[
     RowBox[{
     "Pareto", " ", "IV", " ", "is", " ", "neither", " ", "rescaled", " ", 
      "nor", " ", "shifted"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"See", " ", 
+      RowBox[{"CLM_Chain", ".", "m"}]}], ",", " ", 
+     RowBox[{"ParetoAlphaDefault", " ", "and", " ", "below", " ", "for", " ", 
+      RowBox[{"clarifications", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "If", " ", "default", " ", "values", " ", "are", " ", "not", " ", 
+      "saticfactory"}], ",", " ", 
+     RowBox[{"call", " ", "full", " ", 
+      RowBox[{"functions", ":"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "     ", 
+    RowBox[{"GetParetoParams", "[", 
+     RowBox[{
+     "qLow", ",", " ", "qHigh", ",", " ", "alpha", ",", " ", "pLow", ",", " ",
+       "pHigh"}], "]"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "     ", 
+    RowBox[{"GetParetoControlParams", "[", 
+     RowBox[{"qLow", ",", " ", "qHigh", ",", " ", "qLowMultiplier"}], "]"}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"If", " ", "default", " ", "values", " ", "are", " ", "used", " ", 
+     RowBox[{"then", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "     ", 
+    RowBox[{"kDirectCrystQLowVal", " ", "is", " ", "95", "%", " ", 
+     RowBox[{"quantile", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "     ", 
+    RowBox[{"kDirectCrystQHighVal", " ", "is", " ", "99", "%", " ", 
+     RowBox[{"quantile", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "     ", 
+    RowBox[{"Any", " ", "random", " ", "value", " ", "less", " ", "than", " ", 
+     RowBox[{"(", 
+      RowBox[{"kDirectCrystQLowVal", " ", "*", " ", "qLowMultiplier"}], ")"}],
+      " ", "will", " ", "be", " ", "treated", " ", "as", " ", "exact", " ", 
+     RowBox[{"zeros", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"kDirectCrystQLowVal", "=", 
      RowBox[{"10", "^", 
@@ -1102,44 +1139,42 @@ Cell[BoxData[
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{"Direct", " ", "SYNTHESIS", " ", "coefficients"}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"coeffYtoAValue", "=", 
-     RowBox[{"SynthMultiplier", "*", "1.0"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"coeffYtoBValue", "=", 
-     RowBox[{"SynthMultiplier", "*", "1.5"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"coeffYtoCValue", "=", 
-     RowBox[{"SynthMultiplier", "*", "2.0"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"coeffYtoDValue", "=", 
-     RowBox[{"SynthMultiplier", "*", "2.5"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"coeffYtoEValue", "=", 
-     RowBox[{"SynthMultiplier", "*", "3.0"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"coeffYtoFValue", "=", 
-     RowBox[{"SynthMultiplier", "*", "3.5"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Direct", " ", "SYNTHESIS", " ", "coefficients"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"coeffYtoAValue", "=", 
+      RowBox[{"SynthMultiplier", "*", "1.0"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffYtoBValue", "=", 
+      RowBox[{"SynthMultiplier", "*", "1.5"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffYtoCValue", "=", 
+      RowBox[{"SynthMultiplier", "*", "2.0"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffYtoDValue", "=", 
+      RowBox[{"SynthMultiplier", "*", "2.5"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffYtoEValue", "=", 
+      RowBox[{"SynthMultiplier", "*", "3.0"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffYtoFValue", "=", 
+      RowBox[{"SynthMultiplier", "*", "3.5"}]}], ";"}], "\[IndentingNewLine]",
+     "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{"Direct", " ", "DECAY", " ", "coefficients"}], " ", "*)"}], 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Direct", " ", "DECAY", " ", "coefficients"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"coeffStoYValue", "=", "DecayMultiplier"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dCoeffStoYValue", "=", 
+      RowBox[{"1.0", "*", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "2"}]}]}]}], ";"}], "\[IndentingNewLine]", "*)"}], 
    "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"coeffStoYValue", "=", "DecayMultiplier"}], ";"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"dCoeffStoYValue", "=", 
-     RowBox[{"1.0", "*", 
-      RowBox[{"10", "^", 
-       RowBox[{"-", "2"}]}]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1361,7 +1396,7 @@ Cell[BoxData[
        RowBox[{"InitializeSynthesis", " ", "\[Rule]", " ", "True"}], ",", 
        RowBox[{"InitializeCatSynthesis", " ", "\[Rule]", " ", "True"}], ",", 
        RowBox[{"UseCatSynthEnantGrouping", "\[Rule]", "True"}], ",", 
-       RowBox[{"AssignSynthCoefficients", " ", "\[Rule]", " ", "False"}], ",", 
+       RowBox[{"AssignSynthCoefficients", " ", "\[Rule]", " ", "True"}], ",", 
        RowBox[{"AssignCatSynthCoefficients", " ", "\[Rule]", " ", "False"}], 
        ",", 
        RowBox[{
@@ -1392,7 +1427,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"InitializeLigation", " ", "\[Rule]", " ", "True"}], ",", 
        RowBox[{"UseOnlySimpleLigation", "\[Rule]", " ", "True"}], ",", 
-       RowBox[{"AssignLigCoefficients", " ", "\[Rule]", " ", "False"}]}], 
+       RowBox[{"AssignLigCoefficients", " ", "\[Rule]", " ", "True"}]}], 
       "}"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
@@ -1761,7 +1796,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1994,7 +2030,7 @@ Cell[BoxData[
       RowBox[{"mAaa", "*", "\[CapitalGamma]\:02d7", 
        RowBox[{"(", 
         RowBox[{"1", "+", "\[Gamma]\:02d7"}], ")"}]}]}], ";"}], 
-    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "*)"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2103,14 +2139,13 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\n", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"If", "[", 
      RowBox[{"RunNDSolve", ",", "\[IndentingNewLine]", 
@@ -3334,7 +3369,17 @@ Cell[BoxData[
    3.6983480312893815`*^9, 3.6983480315996785`*^9}, {3.6983677907963886`*^9, 
    3.69836786365306*^9}, {3.6983679186091948`*^9, 3.6983679260956116`*^9}, 
    3.698368031370875*^9, {3.6983680974325647`*^9, 3.6983680976591897`*^9}, {
-   3.698368212674921*^9, 3.6983682133563385`*^9}}]
+   3.698368212674921*^9, 3.6983682133563385`*^9}, {3.698871350794139*^9, 
+   3.6988713508957443`*^9}, {3.6988714779121*^9, 3.6988714798797336`*^9}, {
+   3.69887169302147*^9, 3.698871713565221*^9}, {3.6988717868764143`*^9, 
+   3.698871837218708*^9}, 3.6988719203324647`*^9, {3.6988720892624493`*^9, 
+   3.698872119020108*^9}, {3.6988721555963345`*^9, 3.698872337094021*^9}, {
+   3.6988723779908304`*^9, 3.6988723991718655`*^9}, {3.6988769512805815`*^9, 
+   3.6988769524482327`*^9}, {3.6988771842349477`*^9, 
+   3.6988771865457554`*^9}, {3.698878724414464*^9, 3.698878730301117*^9}, {
+   3.698879087586154*^9, 3.6988790880235496`*^9}, {3.69888182895119*^9, 
+   3.698881833006318*^9}, {3.6988818796632533`*^9, 3.6988818799565597`*^9}, {
+   3.698881980235318*^9, 3.69888198116521*^9}}]
 },
 WindowSize->{1329, 742},
 WindowMargins->{{Automatic, 166}, {Automatic, 82}},
@@ -3352,7 +3397,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 167646, 3316, 10685, "Input"]
+Cell[558, 20, 170276, 3361, 10892, "Input"]
 }
 ]
 *)
