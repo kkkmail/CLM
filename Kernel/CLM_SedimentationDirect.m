@@ -48,10 +48,9 @@ kDirectCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{
 (* ============================================== *)
 (* Simplified direct sedimentation is A + B \[Rule] (NA + NB) * Y *)
 AssignDirectCrystReactions[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, multiplier_?IntegerQ, allocateCoeff_?BooleanQ] := Module[{substIDlst, substEiDlst, substId, subst1Id, name, name1, base, base1, substLen, substDecayID, substDecayName, retVal, nameCoeff, name1Coeff, baseSubstId, coeffIdxName, coeffName, reacStringName, reacIdxName},
+  (* Print["AssignDirectCrystReactions::Starting..."]; *)
+  (* We sort the substances in canonic ordering (by IDs) *)
 
-(* Print["AssignDirectCrystReactions::Starting..."]; *)
-
-(* We sort the substances in canonic ordering (by IDs) *)
   substIDlst = Sort[{substIdVal, subst1Id1Val}];
   substEiDlst = Sort[{EnantiomerSubstanceID[substIdVal], EnantiomerSubstanceID[subst1Id1Val]}];
 
@@ -96,9 +95,7 @@ AssignDirectCrystReactions[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, multipl
   reacStringName = name <> " + " <> name1 <> " -> " <> ToString[substLen] <> substDecayName;
   reacIdxName = ReactionPrefixValue <> name <> PlusLetter <> name1 <> ToLetter <> ToString[substLen] <> substDecayName;
 
-  (*
-Print["AssignDirectCrystReactions::reacIdxName = ", reacIdxName, ", reacStringName = ", reacStringName, ", coeffName = ", coeffName,", substId = ", substId, ", subst1Id = ", subst1Id];
-*)
+  (* Print["AssignDirectCrystReactions::reacIdxName = ", reacIdxName, ", reacStringName = ", reacStringName, ", coeffName = ", coeffName,", substId = ", substId, ", subst1Id = ", subst1Id]; *)
 
   If[allocateCoeff,
     (

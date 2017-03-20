@@ -49,18 +49,59 @@ InvCatSynthCoeffDistribution = ParetoDistribution;
 InvCatSynthCoeffParams = {1, 1};
 InvCatSynthCoeffControlParams = {}; // use default values
 (* ============================================== *)
-SynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
-  base = GetChainLength[substBid];
-  retVal = RandomCoefficientValue[SynthCoeffDistribution, SynthCoeffParams, SynthCoeffControlParams, base];
+SynthDescriptorGetCoeff[descr_?VectorQ]:=descr[[1]];
+InvSynthDescriptorGetCoeff[descr_?VectorQ]:=descr[[1]];
+(* ============================================== *)
+(* GetSynthDescriptor returns synthesis descriptor for a given substance. *)
+GetSynthDescriptor[substAid_?IntegerQ] := Module[{Aid, descr, base, rndVal},
+  Aid = Min[substAid, EnantiomerSubstanceID[substAid]];
+  descr = SynthDescriptorFunc[Aid];
+
+  If[!VectorQ[descr, NumericQ],
+    (
+    (* Generating new value. *)
+      base = GetChainLength[Aid];
+      rndVal = RandomCoefficientValue[SynthCoeffDistribution, SynthCoeffParams, SynthCoeffControlParams, base];
+      descr = {rndVal};
+      SynthDescriptorFunc[Aid] = descr;
+    )
+  ];
+
+  Return[descr];
+];
+(* ============================================== *)
+(* GetInvSynthDescriptor returns inverse synthesis descriptor for a given substance. *)
+GetInvSynthDescriptor[substAid_?IntegerQ] := Module[{Aid, descr, base, rndVal},
+  Aid = Min[substAid, EnantiomerSubstanceID[substAid]];
+  descr = InvSynthDescriptorFunc[Aid];
+
+  If[!VectorQ[descr, NumericQ],
+    (
+    (* Generating new value. *)
+      base = GetChainLength[Aid];
+      rndVal = RandomCoefficientValue[InvSynthCoeffDistribution, InvSynthCoeffParams, InvSynthCoeffControlParams, base];
+      descr = {rndVal};
+      InvSynthDescriptorFunc[Aid] = descr;
+    )
+  ];
+
+  Return[descr];
+];
+(* ============================================== *)
+SynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, descr},
+  descr = GetSynthDescriptor[substBid];
+  retVal = SynthDescriptorGetCoeff[descr];
   Return[retVal];
 ];
 (* ============================================== *)
 InvSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
-  base = GetChainLength[substBid];
-  retVal = RandomCoefficientValue[InvSynthCoeffDistribution, InvSynthCoeffParams, InvSynthCoeffControlParams, base];
+  descr = GetInvSynthDescriptor[substBid];
+  retVal = InvSynthDescriptorGetCoeff[descr];
   Return[retVal];
 ];
 (* ============================================== *)
+(* TODO :: CLM_Synthesis :: 20170319 :: SEED CatSynth / InvCatSynth then Gamma+ / Gamma-, then calculate all coefficients. *)
+Print["TODO :: CLM_Synthesis :: 20170319 :: SEED CatSynth / InvCatSynth then Gamma+ / Gamma-, then calculate all coefficients."];
 (* CatSynthCoefficientValue creates a value of catalytic synthesis coefficient *)
 CatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ, IsWrong_?BooleanQ] := Module[{retVal, base, groupDescr, reacDescr, reacDescrW, func, params},
   base = GetChainLength[catalystSubstID];
