@@ -49,6 +49,10 @@ InvCatSynthCoeffDistribution = ParetoDistribution;
 InvCatSynthCoeffParams = {1, 1};
 InvCatSynthCoeffControlParams = {}; // use default values
 (* ============================================== *)
+LambdaCatSynthDistribution = NormalDistribution;
+LambdaCatSynthCoeffParams = {0, 0.1};
+LambdaCatSynthCoeffControlParams = {}; // use default values
+(* ============================================== *)
 SynthDescriptorGetCoeff[descr_?VectorQ]:=descr[[1]];
 InvSynthDescriptorGetCoeff[descr_?VectorQ]:=descr[[1]];
 (* ============================================== *)
@@ -100,10 +104,63 @@ InvSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retV
   Return[retVal];
 ];
 (* ============================================== *)
-(* TODO :: CLM_Synthesis :: 20170319 :: SEED CatSynth / InvCatSynth then Gamma+ / Gamma-, then calculate all coefficients. *)
-Print["TODO :: CLM_Synthesis :: 20170319 :: SEED CatSynth / InvCatSynth then Gamma+ / Gamma-, then calculate all coefficients."];
+(* GenerateAllCatSynthCoeff - all descriptors are stored by Min[catalystSubstID, EnantiomerSubstanceID[catalystSubstID]] *)
+GenerateAllCatSynthCoeff[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ] := Module[
+  {aID, bID, catID, EaID, EbID, EcatID, descrCat, base, rndValCatSynth, rndValInvCatSynth, rndValLambdaPlusCatSynth, gammaPlusVal, kPlus, kMunus, EkPlus, EkMunus},
+  If[(EnantiomerSubstanceID[catalystSubstID] < catalystSubstID),
+    (
+      aID = EnantiomerSubstanceID[substAid];
+      bID = EnantiomerSubstanceID[substBid];
+      catID = EnantiomerSubstanceID[catalystSubstID];
+    ),
+    (
+      aID = substAid;
+      bID = substBid;
+      catID = catalystSubstID;
+    )
+  ];
+
+  EaID = EnantiomerSubstanceID[aID];
+  EbID = EnantiomerSubstanceID[bID];
+  EcatID = EnantiomerSubstanceID[catID];
+
+  descrCat = AllCatSynthDescriptorFunc[aID, bID, catID];
+
+  If[!VectorQ[descrCat, NumericQ],
+    (
+    (* Generating new values. *)
+      base = GetChainLength[catID];
+      rndValCatSynth = RandomCoefficientValue[CatSynthCoeffDistribution, CatSynthCoeffParams, CatSynthCoeffControlParams, base];
+      rndValInvCatSynth = RandomCoefficientValue[InvCatSynthCoeffDistribution, InvCatSynthCoeffParams, InvCatSynthCoeffControlParams, base];
+      rndValLambdaPlusCatSynth = RandomCoefficientValue[LambdaCatSynthDistribution, LambdaCatSynthCoeffParams, LambdaCatSynthCoeffControlParams, base];
+      gammaPlusVal = (2 * rndValLambdaPlusCatSynth) / (1 + Sqrt[1 + 4 * rndValLambdaPlusCatSynth^2]);
+
+      kPlus = rndValCatSynth * (1 + gammaPlusVal);
+      kMunus = rndValCatSynth * (1 + gammaPlusVal);
+
+      EkPlus = rndValCatSynth * (1 - gammaPlusVal);
+      EkMunus = rndValCatSynth * (1 - gammaPlusVal);
+
+      AllCatSynthDescriptorFunc[aID, bID, catID] = {kPlus, kMunus};
+      AllCatSynthDescriptorFunc[EaID, EbID, EcatID] = {kPlus, kMunus};
+
+      AllCatSynthDescriptorFunc[EaID, EbID, catID] = {EkPlus, EkMunus};
+      AllCatSynthDescriptorFunc[aID, bID, EcatID] = {EkPlus, EkMunus};
+    )
+  ];
+
+  Return[];
+];
+(* ============================================== *)
+AllCatSynthDescrGetCatSynchCoeff[descr_?VectorQ] := descr[[1]];
+AllCatSynthDescrGetInvCatSynchCoeff[descr_?VectorQ] := descr[[2]];
+(* ============================================== *)
+(* TODO :: CLM_Synthesis :: 20170319 :: SEED CatSynth / InvCatSynth then Gamma+ == -(Gamma-), then calculate all coefficients. *)
+Print["TODO :: CLM_Synthesis :: 20170319 :: SEED CatSynth / InvCatSynth then Gamma+ == -(Gamma-), then calculate all coefficients."];
 (* CatSynthCoefficientValue creates a value of catalytic synthesis coefficient *)
-CatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ, IsWrong_?BooleanQ] := Module[{retVal, base, groupDescr, reacDescr, reacDescrW, func, params},
+CatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ, IsWrong_?BooleanQ] := Module[{retVal, descr},
+  (* {retVal, base, groupDescr, reacDescr, reacDescrW, func, params}, *)
+  (*
   base = GetChainLength[catalystSubstID];
 
   (* retVal=RandomCoefficientValue[CatSynthCoeffDistribution,CatSynthCoeffParams,CatSynthCoeffControlParams,base]; *)
@@ -114,20 +171,34 @@ CatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID
   func = RandomCoefficientValue;
   params = {CatSynthCoeffDistribution, CatSynthCoeffParams, CatSynthCoeffControlParams, base};
   retVal = PairedCoefficientValue[reacDescr, reacDescrW, IsWrong, "CatSynthGroupCoeff", groupDescr, func, params];
+  *)
+
+  GenerateAllCatSynthCoeff[substAid, substBid, catalystSubstID];
+  descr = AllCatSynthDescriptorFunc[substAid, substBid, catalystSubstID];
+  retVal = AllCatSynthDescrGetCatSynchCoeff[descr];
+
   Return[retVal];
 ];
 (* ============================================== *)
-InvCatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ, IsWrong_?BooleanQ] := Module[{retVal, base, groupDescr, reacDescr, reacDescrW, func, params},
+InvCatSynthCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID_?IntegerQ, IsWrong_?BooleanQ] := Module[{retVal, descr},
+  (* {retVal, base, groupDescr, reacDescr, reacDescrW, func, params}, *)
   base = GetChainLength[catalystSubstID];
 
   (* retVal=RandomCoefficientValue[InvCatSynthCoeffDistribution,InvCatSynthCoeffParams,InvCatSynthCoeffControlParams,base]; *)
 
+  (*
   groupDescr = If[UseCatSynthEnantGroupingValue, CatSynthGroupMatrix[catalystSubstID], Indeterminate];
   reacDescr = {substAid, substBid, catalystSubstID};
   reacDescrW = {EnantiomerSubstanceID[substAid], EnantiomerSubstanceID[substBid], catalystSubstID};
   func = RandomCoefficientValue;
   params = {InvCatSynthCoeffDistribution, InvCatSynthCoeffParams, InvCatSynthCoeffControlParams, base};
   retVal = PairedCoefficientValue[reacDescr, reacDescrW, IsWrong, "InvCatSynthGroupCoeff", groupDescr, func, params];
+  *)
+
+  GenerateAllCatSynthCoeff[substAid, substBid, catalystSubstID];
+  descr = AllCatSynthDescriptorFunc[substAid, substBid, catalystSubstID];
+  retVal = AllCatSynthDescrGetInvCatSynchCoeff[descr];
+
   Return[retVal];
 ];
 (* ============================================== *)

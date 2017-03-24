@@ -1853,14 +1853,14 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
    RowBox[{"(*", "\n", 
     RowBox[{
      RowBox[{"coeff\:0df4A\:2794A\:066d", "=", "1"}], ";", "\n", 
      RowBox[{"coeff\:0df4A\:066d\:2794A", "=", 
       RowBox[{"10", "^", 
-       RowBox[{"-", "4"}]}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\n", 
+       RowBox[{"-", "4"}]}]}], ";"}], "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2178,8 +2178,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\n", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"If", "[", 
      RowBox[{"RunNDSolve", ",", "\[IndentingNewLine]", 
@@ -3420,8 +3420,8 @@ Cell[BoxData[
    3.6989704086672616`*^9}, {3.698970475080657*^9, 3.6989704754700327`*^9}, 
    3.69897059386048*^9, {3.698970663119054*^9, 3.6989706678473053`*^9}}]
 },
-WindowSize->{1329, 742},
-WindowMargins->{{Automatic, 166}, {Automatic, 82}},
+WindowSize->{1329, 844},
+WindowMargins->{{Automatic, 166}, {55, Automatic}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
 StyleDefinitions->"Default.nb"
 ]

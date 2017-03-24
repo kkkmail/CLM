@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" afterPath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NB/CLM_Chain_Run_325__001.nb" afterPath="$PROJECT_DIR$/NB/CLM_Chain_Run_325__001.nb" />
     </list>
@@ -28,7 +27,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="912">
               <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="33" />
-              <folding />
+              <folding>
+                <marker date="1489983460613" expanded="true" signature="3257:5926" ph="Module[...]" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -36,9 +37,13 @@
       <file leaf-file-name="CLM_Synthesis.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Kernel/CLM_Synthesis.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1077">
-              <caret line="102" column="122" lean-forward="false" selection-start-line="102" selection-start-column="122" selection-end-line="102" selection-end-column="122" />
-              <folding />
+            <state relative-caret-position="1054">
+              <caret line="199" column="54" lean-forward="true" selection-start-line="199" selection-start-column="54" selection-end-line="199" selection-end-column="54" />
+              <folding>
+                <element signature="e#3796#4249#0" expanded="false" />
+                <element signature="e#4369#4495#0" expanded="false" />
+                <element signature="e#4618#4749#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -670,7 +675,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
           <caret line="25" column="60" lean-forward="false" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
-          <folding />
+          <folding>
+            <marker date="1489983460613" expanded="true" signature="3257:5926" ph="Module[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -731,7 +738,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="33" />
-          <folding />
+          <folding>
+            <marker date="1489983460613" expanded="true" signature="3257:5926" ph="Module[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1021,7 +1030,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="912">
           <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="33" />
-          <folding />
+          <folding>
+            <marker date="1489983460613" expanded="true" signature="3257:5926" ph="Module[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1046,9 +1057,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Synthesis.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1077">
-          <caret line="102" column="122" lean-forward="false" selection-start-line="102" selection-start-column="122" selection-end-line="102" selection-end-column="122" />
-          <folding />
+        <state relative-caret-position="1054">
+          <caret line="199" column="54" lean-forward="true" selection-start-line="199" selection-start-column="54" selection-end-line="199" selection-end-column="54" />
+          <folding>
+            <element signature="e#3796#4249#0" expanded="false" />
+            <element signature="e#4369#4495#0" expanded="false" />
+            <element signature="e#4618#4749#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
