@@ -396,13 +396,15 @@ RescaleValue[x_?NumericQ, xNotRescaledMax_?NumericQ, xMaxVal_?NumericQ] := Modul
 (* controlParams is a vector of control parameters, like min or max allowed values *)
 RandomCoefficientValue[distribution_, params_?VectorQ, controlParams_?VectorQ] := RandomCoefficientValue[distribution, params, controlParams, 0];
 
-RandomCoefficientValue[distribution_, params_?VectorQ, controlParams_?VectorQ, base_?IntegerQ] := Module[{retVal, paramVals, shiftVal, randVal},
+RandomCoefficientValue[distribution_, params_?VectorQ, controlParams_?VectorQ, base_?IntegerQ] := Module[
+  {retVal, paramVals, shiftVal, randVal, randValAdj},
   paramVals = PrepareDistributionParameters[distribution, params, base];
   shiftVal = PrepareDistributionShift[distribution, params, base];
   (* Impose min / max limits but do not want exact max value in case of "overflow". *)
   randVal = RandomVariate[Apply[distribution, paramVals]] - shiftVal;
-  randVal = Min[RandomVariate[Apply[distribution, paramVals]] - shiftVal, GetMaxRandomCoeffValue[controlParams] * (1 + GetMaxRandomValLeeway[controlParams] * RandomReal[])];
-  retVal = If[randVal < GetMinRandomCoeffValue[controlParams], 0, randVal];
+  randValAdj = Min[RandomVariate[Apply[distribution, paramVals]] - shiftVal, GetMaxRandomCoeffValue[controlParams] * (1 + GetMaxRandomValLeeway[controlParams] * RandomReal[])];
+  retVal = If[randValAdj < GetMinRandomCoeffValue[controlParams], 0, randValAdj];
+  (* Print["RandomCoefficientValue::randVal = ", randVal, ", randValAdj = ", randValAdj, ", retVal = ", retVal]; *)
   Return[retVal];
 ];
 (* ============================================== *)

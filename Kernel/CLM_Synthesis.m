@@ -51,7 +51,7 @@ InvCatSynthCoeffControlParams = {}; // use default values
 (* ============================================== *)
 LambdaCatSynthDistribution = NormalDistribution;
 LambdaCatSynthCoeffParams = {0, 0.1};
-LambdaCatSynthCoeffControlParams = {}; // use default values
+LambdaCatSynthCoeffControlParams = {-10^4, 10^4, 0}; // Must set the lower range because we use normal distribution
 (* ============================================== *)
 SynthDescriptorGetCoeff[descr_?VectorQ]:=descr[[1]];
 InvSynthDescriptorGetCoeff[descr_?VectorQ]:=descr[[1]];
@@ -135,11 +135,13 @@ GenerateAllCatSynthCoeff[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID
       rndValLambdaPlusCatSynth = RandomCoefficientValue[LambdaCatSynthDistribution, LambdaCatSynthCoeffParams, LambdaCatSynthCoeffControlParams, base];
       gammaPlusVal = (2 * rndValLambdaPlusCatSynth) / (1 + Sqrt[1 + 4 * rndValLambdaPlusCatSynth^2]);
 
+      (* Print["rndValLambdaPlusCatSynth = ", N[rndValLambdaPlusCatSynth, 50], ", gammaPlusVal = ", N[gammaPlusVal, 50]]; *)
+
       kPlus = rndValCatSynth * (1 + gammaPlusVal);
-      kMunus = rndValCatSynth * (1 + gammaPlusVal);
+      kMunus = rndValInvCatSynth * (1 + gammaPlusVal);
 
       EkPlus = rndValCatSynth * (1 - gammaPlusVal);
-      EkMunus = rndValCatSynth * (1 - gammaPlusVal);
+      EkMunus = rndValInvCatSynth * (1 - gammaPlusVal);
 
       AllCatSynthDescriptorFunc[aID, bID, catID] = {kPlus, kMunus};
       AllCatSynthDescriptorFunc[EaID, EbID, EcatID] = {kPlus, kMunus};
