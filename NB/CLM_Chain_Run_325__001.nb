@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    172771,       3435]
-NotebookOptionsPosition[    172524,       3422]
-NotebookOutlinePosition[    172867,       3437]
-CellTagsIndexPosition[    172824,       3434]
+NotebookDataLength[    176266,       3512]
+NotebookOptionsPosition[    176019,       3499]
+NotebookOutlinePosition[    176362,       3514]
+CellTagsIndexPosition[    176319,       3511]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -153,7 +153,7 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxEnantNumb", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxEnantNumb", "=", "2"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"maxChainLen", "=", "3"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -1107,17 +1107,19 @@ Cell[BoxData[
    RowBox[{"(*", "     ", 
     RowBox[{
      RowBox[{
-     "kDirectCrystQLowVal", " ", "corresponds", " ", "to", " ", 
-      "ParetoPLowDefault"}], " ", "=", " ", 
-     RowBox[{"95", "%", " ", 
-      RowBox[{"quantile", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     "kDirectCrystQLowVal", " ", "corresponds", " ", "to", " ", "pLow"}], " ",
+      "=", " ", 
+     RowBox[{"ParetoPLowDefault", " ", "=", " ", 
+      RowBox[{"95", "%", " ", 
+       RowBox[{"quantile", "."}]}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", "     ", 
     RowBox[{
      RowBox[{
-     "kDirectCrystQHighVal", " ", "corresponds", " ", "to", " ", 
-      "ParetoPHighDefault"}], " ", "=", " ", 
-     RowBox[{"99", "%", " ", 
-      RowBox[{"quantile", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     "kDirectCrystQHighVal", " ", "corresponds", " ", "to", " ", "pLow"}], 
+     " ", "=", " ", 
+     RowBox[{"ParetoPHighDefault", " ", "=", " ", 
+      RowBox[{"99", "%", " ", 
+       RowBox[{"quantile", "."}]}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", "     ", 
     RowBox[{"Any", " ", "random", " ", "value", " ", "less", " ", "than", " ", 
      RowBox[{"(", 
@@ -1129,17 +1131,14 @@ Cell[BoxData[
     "Any", " ", "random", " ", "values", " ", "over", " ", 
      "kDirectCrystQHighVal", " ", "will", " ", "be", " ", "reseeded", " ", 
      "using", " ", "uniform", " ", "distribution", " ", "on"}], " ", "*)"}], 
-   RowBox[{"(*", 
-    RowBox[{
-     RowBox[{"         ", 
-      RowBox[{"interval", ":", " ", 
-       RowBox[{"kDirectCrystQHighVal", " ", "*", " ", 
-        RowBox[{"{", 
-         RowBox[{"1", ",", " ", 
-          RowBox[{"(", 
-           RowBox[{"1", " ", "+", " ", "MaxRandomValLeeway"}], ")"}]}]}]}]}], 
-      "]"}], " ", "if", " ", "defaults", " ", "are", " ", "used"}], " ", 
-    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "         ", 
+    RowBox[{"interval", ":", " ", 
+     RowBox[{"kDirectCrystQHighVal", " ", "*", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", " ", "+", " ", "MaxRandomValLeeway"}], ")"}]}], 
+       "}"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"kDirectCrystQLowVal", "=", 
      RowBox[{"10", "^", 
@@ -1216,34 +1215,105 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
-    RowBox[{"Catalytic", " ", "synthesis", " ", 
-     RowBox[{"parameters", ".", " ", "Default"}], " ", 
-     RowBox[{"distribution", ":", " ", 
-      RowBox[{"ParetoDistribution", "."}]}]}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"CatSynthCoeffParams", "=", 
-     RowBox[{"{", 
-      RowBox[{"CatSynthMultiplier", ",", 
-       RowBox[{"10", "^", "1"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"InvCatSynthCoeffParams", "=", 
-     RowBox[{"{", 
-      RowBox[{"InvCatSynthMultiplier", ",", 
-       RowBox[{"10", "^", "1"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
-    RowBox[{"Catalytic", " ", "ligation", " ", 
+    RowBox[{"Catalytic", " ", "synthesis", " ", 
      RowBox[{"parameters", ".", " ", "Default"}], " ", 
-     RowBox[{"distributions", ":", " ", 
+     RowBox[{"distribution", ":", " ", 
       RowBox[{"ParetoDistribution", "."}]}]}], " ", "*)"}], 
    "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"See", " ", "kDirectCrystQLowVal"}], ",", " ", 
+     "kDirectCrystQHighVal", ",", " ", 
+     RowBox[{
+      RowBox[{"etc", ".", " ", "for"}], " ", "detailed", " ", "comments"}]}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"CatSynthQLowVal", "=", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "2"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"CatSynthQHighVal", " ", "=", " ", 
+     RowBox[{"10", "^", "1"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"CatSynthCoeffParams", "=", 
+     RowBox[{"GetParetoParams", "[", 
+      RowBox[{"CatSynthQLowVal", ",", " ", "CatSynthQHighVal"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"CatSynthCoeffControlParams", "=", 
+     RowBox[{"GetParetoControlParams", "[", 
+      RowBox[{"CatSynthQLowVal", ",", " ", "CatSynthQHighVal"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"UseInvCathSynthMultiplier", ":=", "True"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Set", " ", "to", " ", "True", " ", "to", " ", "make", " ", "inverse", 
+      " ", "catalytic", " ", "synthesis", " ", "use", " ", "a", " ", 
+      "multiplier", " ", "instead", " ", "of", " ", "independent", " ", 
+      "distribution"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"(*", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"InvCatSynthQLowVal", "=", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "2"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"InvCatSynthQHighVal", " ", "=", " ", 
+       RowBox[{"10", "^", "4"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"InvCatSynthCoeffParams", "=", 
+       RowBox[{"GetParetoParams", "[", 
+        RowBox[{"InvCatSynthQLowVal", ",", " ", "InvCatSynthQHighVal"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"InvCatSynthCoeffControlParams", "=", 
+       RowBox[{"GetParetoControlParams", "[", 
+        RowBox[{"InvCatSynthQLowVal", ",", " ", "InvCatSynthQHighVal"}], 
+        "]"}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+    "InvCatSynthMultDistribution", "=", "InverseGaussianDistribution"}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{"InvCatSynthMultParams", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.02", ",", "1"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"InvCatSynthMultControlParams", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "10", ",", "0.5"}], "}"}]}], ";", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"InvCatSynthMultControlParams", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], " ", ">", " ", 
+      RowBox[{"1", " ", "effectively", " ", "allows", " ", "ingibitors"}]}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Catalytic", " ", "ligation", " ", 
+      RowBox[{"parameters", ".", " ", "Default"}], " ", 
+      RowBox[{"distributions", ":", " ", 
+       RowBox[{"ParetoDistribution", "."}]}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
     RowBox[{"CatLigCoeffParams", "=", 
      RowBox[{"{", 
       RowBox[{"CatLigMultiplier", ",", 
@@ -1848,7 +1918,7 @@ Cell[BoxData[
        RowBox[{"-", "6"}]}]}], ";", "\n", 
      RowBox[{"coeff\:0df4Y\:2794a", "=", "coeff\:0df4Y\:2794A"}], ";", "\n", 
      RowBox[{"coeff\:0df4a\:2794Y", "=", "coeff\:0df4A\:2794Y"}], ";"}], 
-    "\[IndentingNewLine]", "*)"}], "\n", 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2122,7 +2192,7 @@ Cell[BoxData[
      RowBox[{"kCryst$AA$aaa", "=", "\[CapitalSigma]\:02d6"}], ";", "\n", 
      RowBox[{"kDiss$AA$aaa", "=", "\[CapitalSigma]\:02d7"}], ";", "\n", 
      RowBox[{"coeff\:0df4$$$AA$aaa\:27945Y", "=", "\[CapitalDelta]\:02d7"}], 
-     ";"}], "\n", "*)"}], "\[IndentingNewLine]", 
+     ";"}], "\n", "*)"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2155,8 +2225,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{"TODO", " ", ":", " ", 
      RowBox[{"ProcessLCatInfo", " ", "-", " ", 
@@ -2173,7 +2242,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -3418,7 +3488,14 @@ Cell[BoxData[
    3.6989693057501755`*^9, 3.6989693693759947`*^9}, {3.6989695279915266`*^9, 
    3.6989695381606703`*^9}, 3.698969918149663*^9, {3.6989703517427363`*^9, 
    3.6989704086672616`*^9}, {3.698970475080657*^9, 3.6989704754700327`*^9}, 
-   3.69897059386048*^9, {3.698970663119054*^9, 3.6989706678473053`*^9}}]
+   3.69897059386048*^9, {3.698970663119054*^9, 3.6989706678473053`*^9}, {
+   3.6994855345257587`*^9, 3.6994855792775993`*^9}, {3.699485903463377*^9, 
+   3.6994859101837816`*^9}, {3.6994859803717194`*^9, 3.6994861542741423`*^9}, 
+   3.6994865667796526`*^9, 3.6994868605637026`*^9, {3.699488148669155*^9, 
+   3.699488148729213*^9}, {3.699488236633321*^9, 3.699488236749226*^9}, 
+   3.699488881009548*^9, {3.699488955527563*^9, 3.699488964048663*^9}, {
+   3.6994890518949957`*^9, 3.6994890923503685`*^9}, 3.6994891425933375`*^9, 
+   3.6994891936827836`*^9, 3.699489748081913*^9}]
 },
 WindowSize->{1329, 844},
 WindowMargins->{{Automatic, 166}, {55, Automatic}},
@@ -3436,7 +3513,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 171962, 3400, 10972, "Input"]
+Cell[558, 20, 175457, 3477, 11325, "Input"]
 }
 ]
 *)
