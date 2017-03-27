@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    176314,       3512]
-NotebookOptionsPosition[    176067,       3499]
-NotebookOutlinePosition[    176410,       3514]
-CellTagsIndexPosition[    176367,       3511]
+NotebookDataLength[    178441,       3556]
+NotebookOptionsPosition[    178194,       3543]
+NotebookOutlinePosition[    178537,       3558]
+CellTagsIndexPosition[    178494,       3555]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -157,7 +157,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"maxChainLen", "=", "3"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"silentRun", "=", "False"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"silentRun", "=", "True"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -231,11 +231,12 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"tMaxVal", "=", 
      RowBox[{"1", "*", 
-      RowBox[{"10", "^", "6"}]}]}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"10", "^", "2"}]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"tNoOfSteps", "=", "40"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"roTotInitVal", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"roTotInitVal", "=", 
+     RowBox[{"10", "^", "4"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"alphaVal", "=", 
      RowBox[{"(", 
@@ -247,7 +248,7 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"RunNDSolve", "=", "False"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"RunNDSolve", "=", "True"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -324,10 +325,12 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"LigMultiplier", "=", 
-     RowBox[{"10", "^", "0"}]}], ";"}], "\[IndentingNewLine]", 
+     RowBox[{"2", "*", 
+      RowBox[{"10", "^", "0"}]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"InvLigMultiplier", "=", 
-     RowBox[{"10", "^", "0"}]}], ";"}], "\[IndentingNewLine]", 
+     RowBox[{"2", "*", 
+      RowBox[{"10", "^", "0"}]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -740,12 +743,36 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
+     RowBox[{
+     "For", " ", "InverseGaussianDistribution", " ", "we", " ", "use", " ", 
+      "parameters", " ", "as", " ", "\[Mu]", " ", "and", " ", "\[Epsilon]", 
+      " ", "instead", " ", "of", " ", "\[Mu]", " ", "and", " ", "\[Lambda]", 
+      " ", "so", " ", "that", " ", "to", " ", "have", " ", "\[Lambda]"}], "=", 
+     RowBox[{"\[Mu]", "/", 
+      RowBox[{"\[Epsilon]", "^", "2"}]}]}], " ", "*)"}], 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "In", " ", "this", " ", "case", " ", "we", " ", "have", " ", 
+      "\[Epsilon]", " ", "as", " ", "a", " ", "dimensionless", " ", 
+      "\"\<width\>\"", " ", "of", " ", "the", " ", "distribution", " ", 
+      "with", " ", "the", " ", "variance", " ", 
+      RowBox[{"\[Sigma]", "^", "2"}]}], "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Epsilon]", " ", "\[Mu]"}], ")"}], "^", "2"}]}], " ", "*)"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
      RowBox[{"LigTotalRateDistribution", "=", "ParetoDistribution"}], ";"}], 
     " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"LigTotalRateDistribution", "=", "InverseGaussianDistribution"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"LigTotalRateParams", "=", 
      RowBox[{"{", 
-      RowBox[{"LigMultiplier", ",", "0.5"}], "}"}]}], ";"}], 
+      RowBox[{"LigMultiplier", ",", "0.1"}], "}"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
@@ -758,24 +785,31 @@ Cell[BoxData[
      RowBox[{"InvLigTotalRateDistribution", "=", "ParetoDistribution"}], 
      ";"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{
+    "InvLigTotalRateDistribution", "=", "InverseGaussianDistribution"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"InvLigTotalRateParams", "=", 
      RowBox[{"{", 
-      RowBox[{"InvLigMultiplier", ",", "0.5"}], "}"}]}], ";"}], 
+      RowBox[{"InvLigMultiplier", ",", "0.1"}], "}"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
-     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", 
-      "===", "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"LigCoeffDistribution", "=", "ParetoDistribution"}], ";"}], " ", 
     "*)"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"LigCoeffDistribution", "=", "InverseGaussianDistribution"}], 
+    ";"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"LigCoeffParams", "=", 
      RowBox[{"{", 
-      RowBox[{"1", ",", "0.5"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"1", ",", "0.01"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -787,9 +821,12 @@ Cell[BoxData[
      RowBox[{"InvLigCoeffDistribution", "=", "ParetoDistribution"}], ";"}], 
     " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"InvLigCoeffDistribution", "=", "InverseGaussianDistribution"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"InvLigCoeffParams", "=", 
      RowBox[{"{", 
-      RowBox[{"1", ",", "0.5"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"1", ",", "0.01"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -835,7 +872,7 @@ Cell[BoxData[
      "random", " ", "generation", " ", "of", " ", "values", " ", "of", " ", 
      RowBox[{"coefficients", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"LigNotAAweight", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"LigNotAAweight", "=", "0.5"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -872,7 +909,7 @@ Cell[BoxData[
       "\[Rule]", " ", 
       RowBox[{"A", "+", "a"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"InvLigAAweight", "=", "0.65"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"InvLigAAweight", "=", "0.5"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -924,10 +961,10 @@ Cell[BoxData[
     "The", " ", "same", " ", "applies", " ", "to", " ", "inverse", " ", 
      "ligation"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"LigTotalRateRandWeight", "=", "0"}], ";"}], 
+    RowBox[{"LigTotalRateRandWeight", "=", "0.5"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"InvLigTotalRateRandWeight", "=", "0"}], ";"}], 
+    RowBox[{"InvLigTotalRateRandWeight", "=", "0.5"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
@@ -967,12 +1004,19 @@ Cell[BoxData[
      RowBox[{
      "then", " ", "the", " ", "second", " ", "coefficient", " ", "is", " ", 
       "used"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"NOTE", ":", " ", 
+     RowBox[{
+      RowBox[{"The", " ", "values", " ", "were", " ", "set", " ", "to"}], " ",
+       "-", 
+      RowBox[{"1", " ", "in", " ", "previous", " ", "work"}]}]}], " ", "*)"}],
+    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"LigTotalRateDiffWeight", "=", 
-     RowBox[{"-", "1"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"LigTotalRateDiffWeight", "=", "0"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"InvLigTotalRateDiffWeight", "=", 
-     RowBox[{"-", "1"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"InvLigTotalRateDiffWeight", "=", "0"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1016,9 +1060,10 @@ Cell[BoxData[
     "The", " ", "same", " ", "applies", " ", "to", " ", "inverse", " ", 
      "ligation"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"LigCoeffRandWeight", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"LigCoeffRandWeight", "=", "0.5"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"InvLigCoeffRandWeight", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"InvLigCoeffRandWeight", "=", "0.5"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1057,12 +1102,17 @@ Cell[BoxData[
      RowBox[{
      "then", " ", "the", " ", "second", " ", "coefficient", " ", "is", " ", 
       "used"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"NOTE", ":", " ", 
+     RowBox[{
+      RowBox[{"The", " ", "values", " ", "were", " ", "set", " ", "to"}], " ",
+       "-", 
+      RowBox[{"1", " ", "in", " ", "previous", " ", "work"}]}]}], " ", "*)"}],
+    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"LigCoeffDiffWeight", "=", 
-     RowBox[{"-", "1"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"LigCoeffDiffWeight", "=", "0"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"InvLigCoeffDiffWeight", "=", 
-     RowBox[{"-", "1"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"InvLigCoeffDiffWeight", "=", "0"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1172,48 +1222,6 @@ Cell[BoxData[
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
-   RowBox[{"(*", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"Direct", " ", "SYNTHESIS", " ", "coefficients"}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"coeffYtoAValue", "=", 
-      RowBox[{"SynthMultiplier", "*", "1.0"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"coeffYtoBValue", "=", 
-      RowBox[{"SynthMultiplier", "*", "1.5"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"coeffYtoCValue", "=", 
-      RowBox[{"SynthMultiplier", "*", "2.0"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"coeffYtoDValue", "=", 
-      RowBox[{"SynthMultiplier", "*", "2.5"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"coeffYtoEValue", "=", 
-      RowBox[{"SynthMultiplier", "*", "3.0"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"coeffYtoFValue", "=", 
-      RowBox[{"SynthMultiplier", "*", "3.5"}]}], ";"}], "\[IndentingNewLine]",
-     "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{
-     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"Direct", " ", "DECAY", " ", "coefficients"}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"coeffStoYValue", "=", "DecayMultiplier"}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"dCoeffStoYValue", "=", 
-      RowBox[{"1.0", "*", 
-       RowBox[{"10", "^", 
-        RowBox[{"-", "2"}]}]}]}], ";"}], "\[IndentingNewLine]", "*)"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{
-     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1256,29 +1264,31 @@ Cell[BoxData[
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Set", " ", "to", " ", "True", " ", "to", " ", "make", " ", "inverse", 
+     " ", "catalytic", " ", "synthesis", " ", "use", " ", "a", " ", 
+     "multiplier", " ", "instead", " ", "of", " ", "independent", " ", 
+     "distribution"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"UseInvCathSynthMultiplier", ":=", "True"}], ";", " ", 
-    RowBox[{"(*", " ", 
-     RowBox[{
-     "Set", " ", "to", " ", "True", " ", "to", " ", "make", " ", "inverse", 
-      " ", "catalytic", " ", "synthesis", " ", "use", " ", "a", " ", 
-      "multiplier", " ", "instead", " ", "of", " ", "independent", " ", 
-      "distribution"}], " ", "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"(*", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"InvCatSynthQLowVal", "=", 
-       RowBox[{"10", "^", 
-        RowBox[{"-", "2"}]}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"InvCatSynthQHighVal", " ", "=", " ", 
-       RowBox[{"10", "^", "4"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"InvCatSynthCoeffParams", "=", 
-       RowBox[{"GetParetoParams", "[", 
-        RowBox[{"InvCatSynthQLowVal", ",", " ", "InvCatSynthQHighVal"}], 
-        "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"InvCatSynthCoeffControlParams", "=", 
-       RowBox[{"GetParetoControlParams", "[", 
-        RowBox[{"InvCatSynthQLowVal", ",", " ", "InvCatSynthQHighVal"}], 
-        "]"}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"UseInvCathSynthMultiplier", ":=", "True"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"InvCatSynthQLowVal", "=", 
+      RowBox[{"10", "^", 
+       RowBox[{"-", "2"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"InvCatSynthQHighVal", " ", "=", " ", 
+      RowBox[{"10", "^", "4"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"InvCatSynthCoeffParams", "=", 
+      RowBox[{"GetParetoParams", "[", 
+       RowBox[{"InvCatSynthQLowVal", ",", " ", "InvCatSynthQHighVal"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"InvCatSynthCoeffControlParams", "=", 
+      RowBox[{"GetParetoControlParams", "[", 
+       RowBox[{"InvCatSynthQLowVal", ",", " ", "InvCatSynthQHighVal"}], 
+       "]"}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{
     "InvCatSynthMultDistribution", "=", "InverseGaussianDistribution"}], 
     ";"}], "\n", 
@@ -1498,7 +1508,7 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{
        RowBox[{"InitializeSynthesis", " ", "\[Rule]", " ", "True"}], ",", 
-       RowBox[{"InitializeCatSynthesis", " ", "\[Rule]", " ", "True"}], ",", 
+       RowBox[{"InitializeCatSynthesis", " ", "\[Rule]", " ", "False"}], ",", 
        RowBox[{"UseCatSynthEnantGrouping", "\[Rule]", "True"}], ",", 
        RowBox[{"AssignSynthCoefficients", " ", "\[Rule]", " ", "True"}], ",", 
        RowBox[{"AssignCatSynthCoefficients", " ", "\[Rule]", " ", "True"}], 
@@ -1813,6 +1823,22 @@ Cell[BoxData[
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"printAllInfoOptions", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PrintSubstanceMatrix", "\[Rule]", "True"}], ",", 
+       RowBox[{"PrintAllChainsTbl", "\[Rule]", "False"}], ",", 
+       RowBox[{"PrintGetReactionInfo", "\[Rule]", "False"}], ",", 
+       RowBox[{"PrintCoeffArray", "\[Rule]", "True"}], ",", 
+       RowBox[{"PrintEqMatrix", "\[Rule]", "False"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"StepMonitorFunction", "\[RuleDelayed]", " ", "CalculateData"}], 
@@ -1866,7 +1892,8 @@ Cell[BoxData[
        "epimerizationOptions", ",", "initialValuesOptions", ",", 
        "debugOptions", ",", "NDSolveOptions", ",", "NDSolveMonitorOptions", 
        ",", "outputOptions", ",", "runChainModelOptions", ",", 
-       "plotSubstanceOptions", ",", "unknownOptions"}], "]"}]}], ";"}], 
+       "plotSubstanceOptions", ",", "unknownOptions", ",", " ", 
+       "printAllInfoOptions"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"Print", "[", 
@@ -1936,7 +1963,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"\[CapitalLambda]\:02d6", "=", "1"}], ";", "\[IndentingNewLine]", 
@@ -2138,8 +2166,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
    RowBox[{"(*", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"\[CapitalPi]\:02d6", "=", "10"}], ";", "\[IndentingNewLine]", 
@@ -2236,7 +2263,8 @@ Cell[BoxData[
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"ProcessLCatInfo", "[", 
-      RowBox[{"True", ",", "options"}], "]"}], ";"}], " ", "*)"}], "\n", 
+      RowBox[{"True", ",", "options"}], "]"}], ";"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2247,8 +2275,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"If", "[", 
      RowBox[{"RunNDSolve", ",", "\[IndentingNewLine]", 
@@ -3495,7 +3523,23 @@ Cell[BoxData[
    3.699488881009548*^9, {3.699488955527563*^9, 3.699488964048663*^9}, {
    3.6994890518949957`*^9, 3.6994890923503685`*^9}, 3.6994891425933375`*^9, 
    3.6994891936827836`*^9, 3.699489748081913*^9, {3.6995372842933593`*^9, 
-   3.699537293573305*^9}}]
+   3.699537293573305*^9}, {3.6995375974467273`*^9, 3.6995375975508027`*^9}, {
+   3.6995393506349506`*^9, 3.6995393844804068`*^9}, {3.699539418676594*^9, 
+   3.6995394887527356`*^9}, {3.699539522024259*^9, 3.699539537645691*^9}, {
+   3.6995396144946613`*^9, 3.6995396942935934`*^9}, {3.6995398825324965`*^9, 
+   3.6995399273289948`*^9}, {3.69953999550043*^9, 3.699539998040613*^9}, {
+   3.6995404664962378`*^9, 3.699540491650885*^9}, {3.699543049653099*^9, 
+   3.6995430503391876`*^9}, {3.6995431489076777`*^9, 
+   3.6995431492143707`*^9}, {3.6995431931637564`*^9, 3.699543193222814*^9}, {
+   3.6995538072986*^9, 3.6995538610387*^9}, 3.6995539423557444`*^9, {
+   3.699554120725044*^9, 3.6995541322372885`*^9}, {3.699554165380694*^9, 
+   3.6995541657681055`*^9}, {3.699554224718109*^9, 3.699554253700234*^9}, {
+   3.6995543041431484`*^9, 3.69955430447445*^9}, {3.699554340316011*^9, 
+   3.699554340361765*^9}, {3.699556137954591*^9, 3.699556138455072*^9}, {
+   3.6995570237092376`*^9, 3.6995570237477736`*^9}, {3.6995580705724*^9, 
+   3.699558077010436*^9}, {3.699558140406085*^9, 3.6995581411924973`*^9}, {
+   3.6995591240665016`*^9, 3.6995591244778943`*^9}, {3.6995597122590914`*^9, 
+   3.699559735194092*^9}}]
 },
 WindowSize->{1329, 844},
 WindowMargins->{{Automatic, 174}, {Automatic, 44}},
@@ -3513,7 +3557,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 175505, 3477, 11292, "Input"]
+Cell[558, 20, 177632, 3521, 11212, "Input"]
 }
 ]
 *)

@@ -30,9 +30,17 @@ If[!SilentRunValue, Print["TODO::GetChainLength is only valid for regular substa
 GetChainLength[chainInfo_?VectorQ] := StringLength[GetChainName[chainInfo]];
 GetChainLength[substID_?IntegerQ] := StringLength[ToDeactivated[GetSubstanceName[substID]]];
 
-GetChainNoOfL[chainInfo_?VectorQ] := chainInfo[[2]];
-GetChainNoOfD[chainInfo_?VectorQ] := chainInfo[[3]];
+GetChainNoOfL[chainInfo_?VectorQ] := Module[{retVal},
+  retVal = chainInfo[[2]];
+  (* Print["GetChainNoOfL::retVal = ", retVal]; *)
+  Return[retVal];
+];
 
+GetChainNoOfD[chainInfo_?VectorQ] := Module[{retVal},
+  retVal = chainInfo[[3]];
+  (* Print["GetChainNoOfD::retVal = ", retVal]; *)
+  Return[retVal];
+];
 GetChainNoOfL[substID_?IntegerQ] := GetChainNoOfL[GetChainInfo[substID]];
 GetChainNoOfD[substID_?IntegerQ] := GetChainNoOfD[GetChainInfo[substID]];
 GetChainNoOfLandD[substID_?IntegerQ] := (GetChainNoOfL[GetChainInfo[substID]] + GetChainNoOfD[GetChainInfo[substID]]);
@@ -114,6 +122,7 @@ CreateChainName[numb_?IntegerQ, length_?IntegerQ] := Module[{retVal, lst, strLst
 (* Function to convert substance ID into chain info *)
 GetChainInfo[substID_?IntegerQ] := Module[{retVal},
   retVal = SubstanceEnantiomericContentMatrix[substID];
+  (* Print["GetChainInfo::substID = ", substID, ", retVal = ", retVal]; *)
   Return[retVal];
 ];
 (* ============================================== *)

@@ -17,7 +17,7 @@
 (* If not, see <http://www.gnu.org/licenses/>. *)
 (* ============================================== *)
 (* ============================================== *)
-Options[CLMOutput] = {};
+Options[CLMOutput] = {PrintSubstanceMatrix -> True, PrintAllChainsTbl -> True, PrintGetReactionInfo -> True, PrintCoeffArray -> True, PrintEqMatrix -> True};
 (* ============================================== *)
 legendNames = {"x", "y", "z", "t", "v", "w", "a", "b", "c"};
 (* ============================================== *)
@@ -329,13 +329,21 @@ PrintIndexer[indexerFunc1_, indexerFunc2_, indexerFunc3_, maxCount_?IntegerQ] :=
 PrintIndexer[indexerFunc1_, indexerFunc2_, indexerFunc3_, indexerFunc4_, maxCount_?IntegerQ] := Print[ToString[indexerFunc1], ", ", ToString[indexerFunc2], ", ", ToString[indexerFunc3], ", ", ToString[indexerFunc4], " = ", ToTable[indexerFunc1, indexerFunc2, indexerFunc3, indexerFunc4, maxCount] // MatrixForm];
 (* ============================================== *)
 (* PrintAllInfo print information about substances, reactions, etc...*)
-PrintAllInfo[printInfo_?BooleanQ, prepareEqns_?BooleanQ, plotDistributions_?BooleanQ, rawOptions___] := Module[{},
+PrintAllInfo[printInfo_?BooleanQ, prepareEqns_?BooleanQ, plotDistributions_?BooleanQ, rawOptions___] := Module[
+  {opts, usePrintSubstanceMatrix, usePrintAllChainsTbl, usePrintGetReactionInfo, usePrintCoeffArray, usePrintEqMatrix},
+  opts = ProcessOptions[rawOptions];
+  usePrintSubstanceMatrix = PrintSubstanceMatrix /. opts /. Options[CLMOutput];
+  usePrintAllChainsTbl = PrintAllChainsTbl /. opts /. Options[CLMOutput];
+  usePrintGetReactionInfo = PrintGetReactionInfo /. opts /. Options[CLMOutput];
+  usePrintCoeffArray = PrintCoeffArray /. opts /. Options[CLMOutput];
+  usePrintEqMatrix = PrintEqMatrix /. opts /. Options[CLMOutput];
+
   If[printInfo,
     (
-      PrintIndexer[SubstanceMatrix, SubstanceDisplayMatrix, SubstanceEnantiomericContentMatrix, SubstanceTypeMatrix, NoSubstCnt];
-      Print["AllChainsTbl = ", AllChainsTbl // MatrixForm];
-      PrintIndexer[GetReactionInfo, NoCnt];
-      PrintIndexer[coeffArrayStringName, coeffArrayName, NoCoeffCnt];
+      If[usePrintSubstanceMatrix, PrintIndexer[SubstanceMatrix, SubstanceDisplayMatrix, SubstanceEnantiomericContentMatrix, SubstanceTypeMatrix, NoSubstCnt]];
+      If[usePrintAllChainsTbl, Print["AllChainsTbl = ", AllChainsTbl // MatrixForm]];
+      If[usePrintGetReactionInfo, PrintIndexer[GetReactionInfo, NoCnt]];
+      If[usePrintCoeffArray, PrintIndexer[coeffArrayStringName, coeffArrayName, NoCoeffCnt]];
 
       If[prepareEqns,
         (
@@ -345,7 +353,7 @@ PrintAllInfo[printInfo_?BooleanQ, prepareEqns_?BooleanQ, plotDistributions_?Bool
         )
       ];
 
-      PrintIndexer[EqMatrix, NoSubstCnt];
+      If[usePrintEqMatrix, PrintIndexer[EqMatrix, NoSubstCnt]];
     )
   ];
 
@@ -360,10 +368,8 @@ PrintAllInfo[printInfo_?BooleanQ, prepareEqns_?BooleanQ, plotDistributions_?Bool
       Print["Distributions."];
       PlotAllDistributions[];
 
-      (*
-Print["Logs of distributions."];
-PlotAllLogDistributions[];
-*)
+      (* Print["Logs of distributions."]; *)
+      (* PlotAllLogDistributions[]; *)
 
       PrintTimeUsed[];
     )

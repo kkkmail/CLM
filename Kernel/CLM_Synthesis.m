@@ -31,7 +31,7 @@ AssignWrongCatLigReactionsValue = Indeterminate;
 (* ============================================== *)
 SynthCoeffDistribution = InverseGaussianDistribution;
 SynthCoeffParams = {1, 1};
-SynthCoeffControlParams = {}; (* use default values *)
+SynthCoeffControlParams = {0, 10^2, 0.5}; (* use default values *)
 (* ============================================== *)
 InvSynthCoeffDistribution = InverseGaussianDistribution;
 InvSynthCoeffParams = {1, 1};
@@ -142,29 +142,40 @@ GenerateAllCatSynthCoeff[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID
       base = GetChainLength[catID];
       rndValCatSynth = RandomCoefficientValue[CatSynthCoeffDistribution, CatSynthCoeffParams, CatSynthCoeffControlParams, base];
 
-      If[UseInvCathSynthMultiplier,
+      If[rndValCatSynth > 0,
         (
-          (* Print["GenerateAllCatSynthCoeff::UseInvCathSynthMultiplier = ", UseInvCathSynthMultiplier]; *)
-          rndValInvCatSynthMult = RandomCoefficientValue[InvCatSynthMultDistribution, InvCatSynthMultParams, InvCatSynthMultControlParams, base];
-          rndValInvCatSynth = rndValCatSynth * rndValInvCatSynthMult;
-          (* Print["rndValCatSynth = ", rndValCatSynth, ", rndValInvCatSynthMult = ", rndValInvCatSynthMult, ", rndValInvCatSynth = ", rndValInvCatSynth]; *)
+          If[UseInvCathSynthMultiplier,
+            (
+            (* Print["GenerateAllCatSynthCoeff::UseInvCathSynthMultiplier = ", UseInvCathSynthMultiplier]; *)
+              rndValInvCatSynthMult = RandomCoefficientValue[InvCatSynthMultDistribution, InvCatSynthMultParams, InvCatSynthMultControlParams, base];
+              rndValInvCatSynth = rndValCatSynth * rndValInvCatSynthMult;
+            (* Print["rndValCatSynth = ", rndValCatSynth, ", rndValInvCatSynthMult = ", rndValInvCatSynthMult, ", rndValInvCatSynth = ", rndValInvCatSynth]; *)
+            ),
+            (
+            (* Print["GenerateAllCatSynthCoeff::UseInvCathSynthMultiplier = ", UseInvCathSynthMultiplier]; *)
+              rndValInvCatSynth = RandomCoefficientValue[InvCatSynthCoeffDistribution, InvCatSynthCoeffParams, InvCatSynthCoeffControlParams, base];
+            )
+          ];
+
+          rndValLambdaPlusCatSynth = RandomCoefficientValue[LambdaCatSynthDistribution, LambdaCatSynthCoeffParams, LambdaCatSynthCoeffControlParams, base];
+          gammaPlusVal = (2 * rndValLambdaPlusCatSynth) / (1 + Sqrt[1 + 4 * rndValLambdaPlusCatSynth^2]);
+
+          (* Print["rndValLambdaPlusCatSynth = ", N[rndValLambdaPlusCatSynth, 50], ", gammaPlusVal = ", N[gammaPlusVal, 50]]; *)
+
+          kPlus = rndValCatSynth * (1 + gammaPlusVal);
+          kMunus = rndValInvCatSynth * (1 + gammaPlusVal);
+
+          EkPlus = rndValCatSynth * (1 - gammaPlusVal);
+          EkMunus = rndValInvCatSynth * (1 - gammaPlusVal);
         ),
         (
-          (* Print["GenerateAllCatSynthCoeff::UseInvCathSynthMultiplier = ", UseInvCathSynthMultiplier]; *)
-          rndValInvCatSynth = RandomCoefficientValue[InvCatSynthCoeffDistribution, InvCatSynthCoeffParams, InvCatSynthCoeffControlParams, base];
+          kPlus = 0;
+          kMunus = 0;
+
+          EkPlus = 0;
+          EkMunus = 0;
         )
       ];
-
-      rndValLambdaPlusCatSynth = RandomCoefficientValue[LambdaCatSynthDistribution, LambdaCatSynthCoeffParams, LambdaCatSynthCoeffControlParams, base];
-      gammaPlusVal = (2 * rndValLambdaPlusCatSynth) / (1 + Sqrt[1 + 4 * rndValLambdaPlusCatSynth^2]);
-
-      (* Print["rndValLambdaPlusCatSynth = ", N[rndValLambdaPlusCatSynth, 50], ", gammaPlusVal = ", N[gammaPlusVal, 50]]; *)
-
-      kPlus = rndValCatSynth * (1 + gammaPlusVal);
-      kMunus = rndValInvCatSynth * (1 + gammaPlusVal);
-
-      EkPlus = rndValCatSynth * (1 - gammaPlusVal);
-      EkMunus = rndValInvCatSynth * (1 - gammaPlusVal);
 
       AllCatSynthDescriptorFunc[aID, bID, catID] = {kPlus, kMunus};
       AllCatSynthDescriptorFunc[EaID, EbID, EcatID] = {kPlus, kMunus};

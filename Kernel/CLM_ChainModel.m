@@ -374,23 +374,29 @@ InitGoodAllLDChainModel[roTotInitVal_?NumericQ, rawOptions___] := Module[{initVa
 (* InitRandMixLDChainModel creates a random mix of simple L and D substances *)
 InitRandMixLDChainModel[roTotInitVal_?NumericQ, rawOptions___] := Module[{initVal, substUsageLst, substIDlst, ii},
   Print["InitMixLDChainModel::Creating a random mix of simple L and D substances."];
-  substUsageLst = Table[If[GetChainNoOfD[ii] > 0 || GetChainNoOfL[ii] > 0 && ii <= NoSimpleSubstCnt, 1, 0, 0], {ii, 1, NoSubstCnt}];
+  substUsageLst = Table[If[((GetChainNoOfD[ii] + GetChainNoOfL[ii]) > 0) && ii <= NoSimpleSubstCnt, 1, 0, 0], {ii, 1, NoSubstCnt}];
+  (* Print["InitMixLDChainModel::substUsageLst = ", substUsageLst // MatrixForm]; *)
   initVal = InitGeneralChainModel[roTotInitVal, substUsageLst, rawOptions];
+  (* Print["InitMixLDChainModel::initVal created."]; *)
   Return[initVal];
 ];
 (* ============================================== *)
 (* InitPropMixLDChainModel creates a random mix of simple L and proportional to them D substances *)
-InitPropMixLDChainModel[roTotInitVal_?NumericQ, rawOptions___] := Module[{initVal, substUsageLst, substIDlst, ii, mult, opts},
-  Print["InitMixLDChainModel::Creating a random mix of simple L and proportional to them D substances."];
+InitPropMixLDChainModel[roTotInitVal_?NumericQ, rawOptions___] := Module[{initVal, substUsageLst, substIDlst, ii, mult, opts, testTbl},
+  Print["InitPropMixLDChainModel::Creating a random mix of simple L and proportional to them D substances."];
   opts = ProcessOptions[rawOptions];
   mult = InitDMultiplier /. opts /. Options[CLMChains];
 
-  substUsageLst = Table[If[GetChainNoOfD[ii] == 0 && GetChainNoOfL[ii] > 0 && ii <= NoSimpleSubstCnt, 1, 0, 0], {ii, 1, NoSubstCnt}];
+  (* substUsageLst = Table[If[GetChainNoOfD[ii] == 0 && GetChainNoOfL[ii] > 0 && ii <= NoSimpleSubstCnt, 1, 0, 0], {ii, 1, NoSubstCnt}]; *)
+  substUsageLst = Table[If[((GetChainNoOfD[ii] + GetChainNoOfL[ii]) > 0) && ii <= NoSimpleSubstCnt, 1, 0, 0], {ii, 1, NoSubstCnt}];
+
+  (* testTbl = Table[Join[{ii,GetChainNoOfD[ii], GetChainNoOfL[ii],(ii <= NoSimpleSubstCnt)}, SubstanceEnantiomericContentMatrix[ii]],{ii, 1, NoSubstCnt}]; *)
+  (* Print["InitPropMixLDChainModel::substUsageLst = ", substUsageLst // MatrixForm]; *)
   initVal = InitGeneralChainModel[roTotInitVal, substUsageLst, rawOptions];
 
   Do[
     (
-      If[substUsageLst[[ii]] == 1,
+      If[substUsageLst[[ii]] == 1 && EnantiomerSubstanceID[ii] > ii,
         (
           initVal[[EnantiomerSubstanceID[ii]]] = mult * initVal[[ii]];
         )
