@@ -543,3 +543,17 @@ ProcessLCatInfo[printInfo_?BooleanQ, rawOptions___] := Module[{ii, len, chainLen
   PrintTimeUsed[];
 ];
 (* ============================================== *)
+(* Returns substanct ID of leftmost or rightmost aminoacid in a substance. *)
+(* If such a substance is not an amino acid, then returns Indeterminate *)
+GetEndAminoAcid[substID_?IntegerQ, useLeft_?BooleanQ] := Module[{name, retVal, endSubstName, endSubstID},
+  name = GetSubstanceName[substID];
+  endSubstName = If[useLeft, StringTake[name, 1], StringTake[name, -1]];
+  endSubstID = GetSubstanceID[endSubstName];
+  retVal = If[endSubstID != EnantiomerSubstanceID[endSubstID], endSubstID, Indeterminate, Indeterminate];
+  (* Print["GetEndAminoAcid::substID = ", substID, ", useLeft = ", useLeft, ", name = ", name, ", endSubstName = ", endSubstName, ", retVal = ", retVal]; *)
+  Return[retVal];
+];
+(* ============================================== *)
+GetLeftMostAminoAcid[substID_?IntegerQ] := GetEndAminoAcid[substID, True];
+GetRightMostAminoAcid[substID_?IntegerQ] := GetEndAminoAcid[substID, False];
+(* ============================================== *)

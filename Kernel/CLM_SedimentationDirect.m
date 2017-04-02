@@ -30,12 +30,18 @@ kDirectCrystCoeffControlParams = {}; // use default values
 DirectCrystMinLen = 1;
 DirectCrystSecondSubstMinLen = 1;
 (* ============================================== *)
+(* If True, then consider that some substances serve as "matrices" to which any pepeide can attach by one of the ends to form a sediment *)
+UseMatrixDirectCryst := True;
+
+(* If True, then left ennd of peptide will "attach" to matrix. If False, then right *)
+UseLeftEndForDirectCryst :=True;
+(* ============================================== *)
 (* TODO : kDirectCrystCoefficientValue::base was supposed to be a length of one enantiomer in the pair
           Once the code was extended to support any pairs that assumtion can no longer be applied.
           Subsequently base = 0 is currently pushed down. *)
 
 Print["TODO::CLM_SedimentationDirect::kDirectCrystCoefficientValue::base was supposed to be a length of one enantiomer in the pair Once the code was extended to support any pairs that assumtion can no longer be applied. Subsequently base = 0 is currently pushed down."];
-kDirectCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
+kDirectCrystCoefficientValueSimple[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{retVal, base},
 
   (* base = (GetChainLength[substAid] - 1) / 2; *)
   base = 0;
@@ -45,9 +51,174 @@ kDirectCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{
   Return[retVal];
 ];
 (* ============================================== *)
+(* substAid is considered as a "sedimentation matrix". See description for UseMatrixDirectCryst *)
+GenerateAllkDirectCrystCoefficientMatrix[substAid_?IntegerQ, substBid_?IntegerQ] := Module[
+  {retVal, aID, bID, EaID, EbID, descr, base, rndAvgCoeff, rndAvgCoeffE, bEndID, EbEndID, ii, simpleSubstLst, MatchingEnantiomerQ, matchingSubstLst, multLst, multLstE, decrE, printTbl},
+
+  If[(EnantiomerSubstanceID[substAid] < substAid),
+    (
+      aID = EnantiomerSubstanceID[substAid];
+      bID = EnantiomerSubstanceID[substBid];
+    ),
+    (
+      aID = substAid;
+      bID = substBid;
+    )
+  ];
+
+  EaID = EnantiomerSubstanceID[aID];
+  EbID = EnantiomerSubstanceID[bID];
+
+  bEndID = GetEndAminoAcid[bID, UseLeftEndForDirectCryst];
+  EbEndID = GetEndAminoAcid[EbID, UseLeftEndForDirectCryst];
+
+  descr = AllDirectCrystDescriptorFunc[aID, bID];
+
+  If[!NumericQ[descr],
+    (
+      (* Generating new values. *)
+
+    (* Returns True is substances are matching bEndID *)
+      MatchingEnantiomerQ[substID_?IntegerQ] :=
+          If[NoOfL[bEndID] == NoOfL[GetEndAminoAcid[substID, UseLeftEndForDirectCryst]] && NoOfD[bEndID] == NoOfD[GetEndAminoAcid[substID, UseLeftEndForDirectCryst]], True, False, Indeterminate];
+
+      (* base is not used yet *)
+      base = 0;
+      (* Average coeff for substances like aID + bID *)
+      rndAvgCoeff = RandomCoefficientValue[kDirectCrystCoeffDistribution, kDirectCrystCoeffParams, kDirectCrystCoeffControlParams, base];
+
+      (* Average coeff for substances like aID + EbID *)
+      rndAvgCoeffE = RandomCoefficientValue[kDirectCrystCoeffDistribution, kDirectCrystCoeffParams, kDirectCrystCoeffControlParams, base];
+
+      (* All simple substances (peptides) *)
+      simpleSubstLst = Table[ii,{ii, 1, NoSimpleSubstCnt}];
+
+      (* Peptides, which have matching end. *)
+      matchingSubstLst = Select[simpleSubstLst, MatchingEnantiomerQ];
+
+      (* TODO - Add distribution *)
+      multLst = Table[RandomReal[],{ii, 1, Length[matchingSubstLst]}];
+      multLst = multLst / Mean[multLst];
+
+      multLstE = Table[RandomReal[],{ii, 1, Length[matchingSubstLst]}];
+      multLstE = multLst / Mean[multLst];
+
+      For[ii = 1, ii <= Length[matchingSubstLst], ii++,
+        (
+          descr = rndAvgCoeff * multLst[[ii]];
+          decrE = rndAvgCoeffE * multLstE[[ii]];
+          AllDirectCrystDescriptorFunc[aID, matchingSubstLst[[ii]]] = descr;
+          AllDirectCrystDescriptorFunc[EnantiomerSubstanceID[aID], EnantiomerSubstanceID[matchingSubstLst[[ii]]]] = descr;
+
+          AllDirectCrystDescriptorFunc[aID, EnantiomerSubstanceID[matchingSubstLst[[ii]]]] = decrE;
+          AllDirectCrystDescriptorFunc[EnantiomerSubstanceID[aID], matchingSubstLst[[ii]]] = decrE;
+        )
+      ];
+      (*
+      printTbl = Table[{ii, matchingSubstLst[[ii]], GetSubstanceName[matchingSubstLst[[ii]]], AllDirectCrystDescriptorFunc[aID, matchingSubstLst[[ii]]]},{ii,1, Length[matchingSubstLst]}];
+      Print["GenerateAllkDirectCrystCoefficientMatrix::substA = ", GetSubstanceName[substAid], ", substB = ", GetSubstanceName[substBid], ", matchingSubstLst = ", printTbl // MatrixForm];
+      *)
+    )
+  ];
+
+  Return[];
+];
+
+kDirectCrystCoefficientValueMatrix[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{descr},
+  GenerateAllkDirectCrystCoefficientMatrix[substAid, substBid];
+  descr = AllDirectCrystDescriptorFunc[substAid, substBid];
+  Return[descr];
+];
+(* ============================================== *)
+kDirectCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] :=
+    If[UseMatrixDirectCryst,
+      kDirectCrystCoefficientValueMatrix[substAid, substBid],
+      kDirectCrystCoefficientValueSimple[substAid, substBid],
+      kDirectCrystCoefficientValueSimple[substAid, substBid]
+    ];
 (* ============================================== *)
 (* Simplified direct sedimentation is A + B \[Rule] (NA + NB) * Y *)
-AssignDirectCrystReactions[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, multiplier_?IntegerQ, allocateCoeff_?BooleanQ] := Module[{substIDlst, substEiDlst, substId, subst1Id, name, name1, base, base1, substLen, substDecayID, substDecayName, retVal, nameCoeff, name1Coeff, baseSubstId, coeffIdxName, coeffName, reacStringName, reacIdxName},
+AssignDirectCrystReactions[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, multiplier_?IntegerQ, allocateCoeff_?BooleanQ] := Module[
+  {substIDlst, substEiDlst, substId, subst1Id, name, name1, base, base1, substLen, substDecayID, substDecayName, retVal, nameCoeff, name1Coeff, baseSubstId, coeffIdxName, coeffName, reacStringName, reacIdxName},
+  (* Print["AssignDirectCrystReactions::Starting..."]; *)
+
+  If[UseMatrixDirectCryst,
+    (
+      (* We DO NOT sort the substances in canonic ordering when UseMatrixDirectCryst = True *)
+      (* The first substance is considered as a "matrix" to which many substances can attach by one of the ends *)
+      substIDlst = {substIdVal, subst1Id1Val};
+      substEiDlst = {EnantiomerSubstanceID[substIdVal], EnantiomerSubstanceID[subst1Id1Val]};
+    ),
+    (
+    (* We sort the substances in canonic ordering (by IDs) *)
+      substIDlst = Sort[{substIdVal, subst1Id1Val}];
+      substEiDlst = Sort[{EnantiomerSubstanceID[substIdVal], EnantiomerSubstanceID[subst1Id1Val]}];
+    )
+  ];
+
+  substId = substIDlst[[1]];
+  subst1Id = substIDlst[[2]];
+
+  name = GetSubstanceName[substId];
+  name1 = GetSubstanceName[subst1Id];
+
+  base = GetChainLength[substId];
+  base1 = GetChainLength[subst1Id];
+  substLen = base + base1;
+
+  substDecayID = idxY;
+  substDecayName = GetSubstanceName[substDecayID];
+
+  retVal = {};
+
+  If[substId != subst1Id,
+    (
+      If[substIDlst[[1]] <= substEiDlst[[1]],
+        (
+          nameCoeff = name;
+          name1Coeff = name1;
+        ),
+        (
+          nameCoeff = GetSubstanceName[ substEiDlst[[1]]];
+          name1Coeff = GetSubstanceName[ substEiDlst[[2]]];
+        )
+      ];
+    ),
+    (
+      baseSubstId = Min[EnantiomerSubstanceID[substId], substId];
+      nameCoeff = GetSubstanceName[baseSubstId];
+      name1Coeff = nameCoeff;
+    )
+  ];
+
+  (* Direct crystallization  *)
+  coeffIdxName = CoeffPrefixValue <> "Idx" <> nameCoeff <> PlusLetter <> name1Coeff <> ToLetter <> ToString[substLen] <> substDecayName;
+  coeffName = CoeffPrefixValue <> nameCoeff <> PlusLetter <> name1Coeff <> ToLetter <> ToString[substLen] <> substDecayName;
+  reacStringName = name <> " + " <> name1 <> " -> " <> ToString[substLen] <> substDecayName;
+  reacIdxName = ReactionPrefixValue <> name <> PlusLetter <> name1 <> ToLetter <> ToString[substLen] <> substDecayName;
+
+  (* Print["AssignDirectCrystReactions::reacIdxName = ", reacIdxName, ", reacStringName = ", reacStringName, ", coeffName = ", coeffName,", substId = ", substId, ", subst1Id = ", subst1Id]; *)
+
+  If[allocateCoeff,
+    (
+      ToExpression[coeffIdxName <> "=AddCoeffName[" <> coeffName <> ",Subscript[k,\"" <> reacStringName <> "\"]]"];
+
+      If[AssignDirectCrystCoefficientsValue,
+        (
+          ToExpression[coeffName <> "=kDirectCrystCoefficientValue[" <> ToString[substId] <> ", " <> ToString[subst1Id] <> "]"];
+        )
+      ];
+    )
+  ];
+
+  ToExpression[reacIdxName <> "=AddReaction[{{DirectCrystReaction,\"" <> reacStringName <> "\"},{{" <> ToString[substId] <> ",1},{" <> ToString[subst1Id] <> ",1}},{" <> ToString[multiplier] <> coeffName <> ",1,1},{{" <> ToString[substDecayID] <> "," <> ToString[substLen] <> "}}}]"];
+
+  retVal = reacIdxName;
+  Return[retVal];
+];
+(* ============================================== *)
+(* Simplified direct sedimentation is A + B \[Rule] (NA + NB) * Y *)
+AssignDirectCrystReactionsOld[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, multiplier_?IntegerQ, allocateCoeff_?BooleanQ] := Module[{substIDlst, substEiDlst, substId, subst1Id, name, name1, base, base1, substLen, substDecayID, substDecayName, retVal, nameCoeff, name1Coeff, baseSubstId, coeffIdxName, coeffName, reacStringName, reacIdxName},
   (* Print["AssignDirectCrystReactions::Starting..."]; *)
   (* We sort the substances in canonic ordering (by IDs) *)
 

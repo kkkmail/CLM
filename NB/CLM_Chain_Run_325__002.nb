@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    178441,       3556]
-NotebookOptionsPosition[    178194,       3543]
-NotebookOutlinePosition[    178537,       3558]
-CellTagsIndexPosition[    178494,       3555]
+NotebookDataLength[    180906,       3606]
+NotebookOptionsPosition[    180659,       3593]
+NotebookOutlinePosition[    181002,       3608]
+CellTagsIndexPosition[    180959,       3605]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -153,7 +153,7 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxEnantNumb", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxEnantNumb", "=", "1"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"maxChainLen", "=", "3"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -248,7 +248,7 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"RunNDSolve", "=", "True"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"RunNDSolve", "=", "False"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2166,7 +2166,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"\[CapitalPi]\:02d6", "=", "10"}], ";", "\[IndentingNewLine]", 
@@ -2223,8 +2224,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2514,6 +2514,48 @@ Cell[BoxData[
           RowBox[{"DataHeader", "[", "]"}], ",", 
           "InterpolationMonitorArray"}], "]"}], " ", "//", " ", 
         "MatrixForm"}]}], "]"}], ";"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "\"\<Calling GetLeftMostAminoAcid, NoSimpleSubstCnt = \>\"", ",", " ", 
+       "NoSimpleSubstCnt"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"ii", "=", "1"}], ",", " ", 
+       RowBox[{"ii", " ", "\[LessEqual]", "NoSimpleSubstCnt"}], ",", " ", 
+       RowBox[{"ii", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"(", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{
+           "\"\<Calling GetLeftMostAminoAcid for ii = \>\"", ",", " ", "ii"}],
+            "]"}], ";"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"jj", "=", "1"}], ",", " ", 
+           RowBox[{"jj", " ", "\[LessEqual]", "NoSimpleSubstCnt"}], ",", " ", 
+           RowBox[{"jj", "++"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"GetLeftMostAminoAcid", "[", "ii", "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"GetRightMostAminoAcid", "[", "ii", "]"}], ";"}], 
+            "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"GenerateAllkDirectCrystCoefficientMatrix", "[", 
+             RowBox[{"ii", ",", "jj"}], "]"}], ";"}]}], "\[IndentingNewLine]",
+           "]"}], ";"}], "\[IndentingNewLine]", ")"}]}], 
+      "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -3539,7 +3581,15 @@ Cell[BoxData[
    3.6995570237092376`*^9, 3.6995570237477736`*^9}, {3.6995580705724*^9, 
    3.699558077010436*^9}, {3.699558140406085*^9, 3.6995581411924973`*^9}, {
    3.6995591240665016`*^9, 3.6995591244778943`*^9}, {3.6995597122590914`*^9, 
-   3.699559735194092*^9}}]
+   3.699559735194092*^9}, {3.7000539076863937`*^9, 3.700053914194519*^9}, {
+   3.700053968594792*^9, 3.700053968617614*^9}, {3.7000546292202225`*^9, 
+   3.700054674499025*^9}, {3.7000547146654863`*^9, 3.700054763067178*^9}, {
+   3.7000548180142183`*^9, 3.700054851297567*^9}, {3.7000549431683593`*^9, 
+   3.7000549603623466`*^9}, {3.7000587226099973`*^9, 3.700058733905591*^9}, {
+   3.700081290261325*^9, 3.7000813426515903`*^9}, {3.7000813943878155`*^9, 
+   3.700081405457137*^9}, {3.7000854580224805`*^9, 3.70008545828813*^9}, {
+   3.7000860657021065`*^9, 3.7000860740487213`*^9}, 3.700086197487546*^9, 
+   3.700086352171383*^9}]
 },
 WindowSize->{1329, 844},
 WindowMargins->{{Automatic, 174}, {Automatic, 44}},
@@ -3557,7 +3607,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 177632, 3521, 11212, "Input"]
+Cell[558, 20, 180097, 3571, 11532, "Input"]
 }
 ]
 *)

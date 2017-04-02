@@ -138,7 +138,7 @@ GenerateAllCatSynthCoeff[substAid_?IntegerQ, substBid_?IntegerQ, catalystSubstID
 
   If[!VectorQ[descrCat, NumericQ],
     (
-    (* Generating new values. *)
+      (* Generating new values. *)
       base = GetChainLength[catID];
       rndValCatSynth = RandomCoefficientValue[CatSynthCoeffDistribution, CatSynthCoeffParams, CatSynthCoeffControlParams, base];
 
