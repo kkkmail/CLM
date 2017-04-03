@@ -27,8 +27,8 @@ kDirectCrystCoeffDistribution = ParetoDistribution;
 kDirectCrystCoeffParams = {1, 1};
 kDirectCrystCoeffControlParams = {}; // use default values
 (* ============================================== *)
-DirectCrystMinLen = 1;
-DirectCrystSecondSubstMinLen = 1;
+DirectCrystMinLen := 1;
+DirectCrystSecondSubstMinLen := 1;
 (* ============================================== *)
 (* If True, then consider that some substances serve as "matrices" to which any pepeide can attach by one of the ends to form a sediment *)
 UseMatrixDirectCryst := True;
@@ -74,13 +74,20 @@ GenerateAllkDirectCrystCoefficientMatrix[substAid_?IntegerQ, substBid_?IntegerQ]
 
   descr = AllDirectCrystDescriptorFunc[aID, bID];
 
+  (* Print["GenerateAllkDirectCrystCoefficientMatrix::bEndID = ", bEndID, ", ", GetSubstanceName[bEndID]]; *)
+
   If[!NumericQ[descr],
     (
       (* Generating new values. *)
 
     (* Returns True is substances are matching bEndID *)
-      MatchingEnantiomerQ[substID_?IntegerQ] :=
-          If[NoOfL[bEndID] == NoOfL[GetEndAminoAcid[substID, UseLeftEndForDirectCryst]] && NoOfD[bEndID] == NoOfD[GetEndAminoAcid[substID, UseLeftEndForDirectCryst]], True, False, Indeterminate];
+      MatchingEnantiomerQ[substID_?IntegerQ] := Module[{retVal, endAminAcid},
+        endAminAcid = GetEndAminoAcid[substID, UseLeftEndForDirectCryst];
+        retVal = If[NoOfL[bEndID] == NoOfL[endAminAcid] && NoOfD[bEndID] == NoOfD[endAminAcid], True, False, Indeterminate];
+        (* Print["    MatchingEnantiomerQ::substID = ", substID, ", ", GetSubstanceName[substID], ", endAminAcid = ", endAminAcid, ", ", GetSubstanceName[endAminAcid], ", retVal = ", retVal]; *)
+        (* Print["    MatchingEnantiomerQ::NoOfL[bEndID] = ", NoOfL[bEndID], ", NoOfL[endAminAcid] = ", NoOfL[endAminAcid], ", NoOfD[bEndID] = ", NoOfD[bEndID], ", NoOfD[endAminAcid] = ", NoOfD[endAminAcid]]; *)
+        Return[retVal];
+      ];
 
       (* base is not used yet *)
       base = 0;
@@ -98,9 +105,12 @@ GenerateAllkDirectCrystCoefficientMatrix[substAid_?IntegerQ, substBid_?IntegerQ]
 
       (* TODO - Add distribution *)
       multLst = Table[RandomReal[],{ii, 1, Length[matchingSubstLst]}];
-      multLst = multLst / Mean[multLst];
-
       multLstE = Table[RandomReal[],{ii, 1, Length[matchingSubstLst]}];
+
+      (* multLst = Table[1.0,{ii, 1, Length[matchingSubstLst]}]; *)
+      (* multLstE = Table[1.0,{ii, 1, Length[matchingSubstLst]}]; *)
+
+      multLst = multLst / Mean[multLst];
       multLstE = multLst / Mean[multLst];
 
       For[ii = 1, ii <= Length[matchingSubstLst], ii++,
@@ -114,10 +124,9 @@ GenerateAllkDirectCrystCoefficientMatrix[substAid_?IntegerQ, substBid_?IntegerQ]
           AllDirectCrystDescriptorFunc[EnantiomerSubstanceID[aID], matchingSubstLst[[ii]]] = decrE;
         )
       ];
-      (*
+
       printTbl = Table[{ii, matchingSubstLst[[ii]], GetSubstanceName[matchingSubstLst[[ii]]], AllDirectCrystDescriptorFunc[aID, matchingSubstLst[[ii]]]},{ii,1, Length[matchingSubstLst]}];
-      Print["GenerateAllkDirectCrystCoefficientMatrix::substA = ", GetSubstanceName[substAid], ", substB = ", GetSubstanceName[substBid], ", matchingSubstLst = ", printTbl // MatrixForm];
-      *)
+      (* Print["GenerateAllkDirectCrystCoefficientMatrix::substA = ", GetSubstanceName[substAid], ", substB = ", GetSubstanceName[substBid], ", matchingSubstLst = ", printTbl // MatrixForm]; *)
     )
   ];
 
@@ -286,7 +295,8 @@ AssignDirectCrystReactionsOld[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, mult
   Return[retVal];
 ];
 (* ============================================== *)
-InitializeDirectCrystReactions[rawOpts___] := Module[{opts, ii, idxCval, idxChainStart, idxChainEnd, idxChain, len, reacAA, substPairAA, substCrystAA, reacaa, substPairaa, substCrystaa, reacAa, substPairAa, substCrystAa, idxChainB, substBlst, lenB, jj, substBid, idxB, BlstLen, Aid, Bid, enantAid, enantBid, kk},
+InitializeDirectCrystReactions[rawOpts___] := Module[
+  {opts, ii, idxCval, idxChainStart, idxChainEnd, idxChain, len, reacAA, substPairAA, substCrystAA, reacaa, substPairaa, substCrystaa, reacAa, substPairAa, substCrystAa, idxChainB, substBlst, lenB, jj, substBid, idxB, BlstLen, Aid, Bid, enantAid, enantBid, kk, idxChainBend},
   opts = ProcessOptions[rawOpts];
 
   InitializeDirectCrystallizationValue = InitializeDirectCrystallization /. opts /. Options[CLMChains];
@@ -308,8 +318,12 @@ InitializeDirectCrystReactions[rawOpts___] := Module[{opts, ii, idxCval, idxChai
   Do[
     (
       len = Length[AllChainsTbl[[idxChain]]] / 2;
+      (* Print["InitializeDirectCrystReactions::Used subst for idxChain = ", idxChain, " are ", Table[{ii, AllChainsTbl[[idxChain, ii]]}, {ii, 1, len}] // MatrixForm]; *)
       If[!SilentRunValue, Print["InitializeDirectCrystReactions::len = ", len]];
       If[!IntegerQ[len], Abort[]];
+
+      (* If the first substance is considered as a "matrix" then order matters and we have to consider all second substances *)
+      idxChainBend = If[UseMatrixDirectCryst, idxChainEnd, idxChain];
 
       Do[
         (
@@ -322,14 +336,24 @@ InitializeDirectCrystReactions[rawOpts___] := Module[{opts, ii, idxCval, idxChai
 
               Do[
                 (
-                  If[idxChainB == idxChain,
+                  If[UseMatrixDirectCryst,
                     (
-                      lenB = ii;
+                      (* Enantiomers will be picked up fuerther in this function. *)
+                      lenB = Length[AllChainsTbl[[idxChainB]]] / 2;
                     ),
                     (
-                      lenB = Length[AllChainsTbl[[idxChainB]]] / 2;
-                      If[!SilentRunValue, Print["InitializeDirectCrystReactions::lenB = ", lenB]];
-                      If[!IntegerQ[lenB], Abort[]];
+                      If[idxChainB == idxChain,
+                        (
+                          (* lenB = If[UseMatrixDirectCryst, Length[AllChainsTbl[[idxChainB]]] / 2, ii]; *)
+                          lenB = ii;
+                        ),
+                        (
+                          (* lenB = If[UseMatrixDirectCryst, Length[AllChainsTbl[[idxChainB]]], Length[AllChainsTbl[[idxChainB]]] / 2]; *)
+                          lenB = Length[AllChainsTbl[[idxChainB]]] / 2;
+                          If[!SilentRunValue, Print["InitializeDirectCrystReactions::lenB = ", lenB]];
+                          If[!IntegerQ[lenB], Abort[]];
+                        )
+                      ];
                     )
                   ];
 
@@ -341,7 +365,7 @@ InitializeDirectCrystReactions[rawOpts___] := Module[{opts, ii, idxCval, idxChai
                       substBlst = Join[substBlst, {substBid}];
                     ), {jj, 1, lenB}
                   ];
-                ), {idxChainB, DirectCrystSecondSubstMinLen, idxChain}
+                ), {idxChainB, DirectCrystSecondSubstMinLen, idxChainBend}
               ];
             ),
             (
@@ -350,6 +374,7 @@ InitializeDirectCrystReactions[rawOpts___] := Module[{opts, ii, idxCval, idxChai
           ];
 
           BlstLen = Length[substBlst];
+          (* Print["    Aid = ", Aid, ", ",  GetSubstanceName[Aid], ", substBlst =  ", Table[{ii, substBlst[[ii]], GetSubstanceName[substBlst[[ii]]]}, {ii, 1, BlstLen}] // MatrixForm]; *)
 
           If[!SilentRunValue, Print["InitializeDirectCrystReactions::A = ", SubstanceMatrix[Aid], ", substBlst = ", Table[{kk, substBlst[[kk]], SubstanceMatrix[substBlst[[kk]]]}, {kk, 1, BlstLen}] // MatrixForm]];
 

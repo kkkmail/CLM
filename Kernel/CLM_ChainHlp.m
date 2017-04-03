@@ -141,11 +141,15 @@ NoOfL[substName_?StringQ] := Module[{retVal},
   retVal = StringCount[substName, DigitArrayL];
   Return[retVal];
 ];
+
+NoOfL[substID_?IntegerQ] := NoOfL[GetSubstanceName[substID]];
 (* ============================================== *)
 NoOfD[substName_?StringQ] := Module[{retVal},
   retVal = StringCount[substName, DigitArrayD];
   Return[retVal];
 ];
+
+NoOfD[substID_?IntegerQ] := NoOfD[GetSubstanceName[substID]];
 (* ============================================== *)
 (* Returns total concentration of all chains of length N *)
 RoChainLevel[roVec_?VectorQ, level_?IntegerQ] := Module[{retVal, len, ii, levelLen},

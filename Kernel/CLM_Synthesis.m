@@ -422,7 +422,7 @@ InitializeAllSynthReactions[rawOpts___] := Module[{opts, ii, substAid, substBid,
           AssignSynthReaction[True, False, substAid, substBid];
           AssignSynthReaction[True, True, substAid, substBid];
 
-          InitializeCatSynthReactions[substAid, substBid];
+          If[InitializeCatSynthesisValue, InitializeCatSynthReactions[substAid, substBid]];
         )
       ];
     ),
@@ -432,7 +432,7 @@ InitializeAllSynthReactions[rawOpts___] := Module[{opts, ii, substAid, substBid,
   ];
 
   If[InitializeCatSynthesisValue,
-    (
+      (
       If[!SilentRunValue,
         (
           Print["InitializeAllSynthReactions::NoCatSynthAllCnt = ", NoCatSynthAllCnt];
