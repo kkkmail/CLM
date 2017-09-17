@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* ============================================== *)
 (* :Summary: Common CLM logic. *)
 (* ============================================== *)
@@ -125,7 +127,7 @@ GetVarName[var_] := Module[{s},
 SetAttributes[GetVarName, HoldAll];
 (* ============================================== *)
 (* Initialize performs initialization of various parameters. *)
-Initialize[rawOptions___] := Module[{opts},
+InitializeCommonParameters[rawOptions___] := Module[{opts},
   ResetAll[];
 
   opts = ProcessOptions[rawOptions];

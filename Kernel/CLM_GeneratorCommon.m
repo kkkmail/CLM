@@ -778,7 +778,7 @@ GeneratorInitializeModel[maxChainLen_?IntegerQ, useActivation_?BooleanQ, useNNT_
   (* ============================================== *)
   options = Join[generalOptions, synthesisOptions, activationOptions, ligationOptions, catLigationOptions, pairFormationOptions, crystallizationOptions, epimerizationOptions, initialValuesOptions, debugOptions, NDSolveOptions, NDSolveMonitorOptions, outputOptions, runChainModelOptions, plotSubstanceOptions, unknownOptions];
   (* ============================================== *)
-  Initialize[options];
+  InitializeCommonParameters[options];
   (* ============================================== *)
   InitializeChains[maxChainLen, maxEnantNumb, options];
   (* ============================================== *)
