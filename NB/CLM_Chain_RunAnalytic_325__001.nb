@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    344512,       6888]
-NotebookOptionsPosition[    341040,       6839]
-NotebookOutlinePosition[    341389,       6854]
-CellTagsIndexPosition[    341346,       6851]
+NotebookDataLength[    222799,       4414]
+NotebookOptionsPosition[    219331,       4365]
+NotebookOutlinePosition[    219681,       4380]
+CellTagsIndexPosition[    219638,       4377]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3305,75 +3305,74 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"crystMult = \"\>", "\[InvisibleSpace]", "14"}],
-  SequenceForm["crystMult = ", 14],
+  RowBox[{"\<\"crystMult = \"\>", "\[InvisibleSpace]", "6"}],
+  SequenceForm["crystMult = ", 6],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602847411728*^9},ExpressionUUID->"967b4b58-65d8-4c8e-a968-\
-ee3066ff54e6"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.71476102053666*^9},ExpressionUUID->"91d81fdf-bbfe-4595-b522-89494620fec4"],
 
 Cell[BoxData["\<\"TODO : CLM_Sedimentation::MinRandomCoeffValue / \
 MaxRandomCoeffValue - extend to be able to set individual min / max value for \
 each type of coefficients.\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602847934619*^9},ExpressionUUID->"45d55d56-8074-41e1-a34d-\
-cec743f49ad0"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610210814443`*^9},ExpressionUUID->"bd43ec86-7900-4a39-8c14-\
+51500e817bb2"],
 
 Cell[BoxData["\<\"CLM_Chain::TODO::Check GetTotalRoPairLL, GetTotalRoPairDD, \
 GetTotalRoPairLD, GetTotalRoCrystLL, GetTotalRoCrystDD, \
 GetTotalRoCrystLD...\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028479366226`*^9},ExpressionUUID->"5eac0f49-e696-474c-b1ef-\
-15280852e738"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610210834723`*^9},ExpressionUUID->"d7489c21-b622-40f1-8efe-\
+0aff5df375ec"],
 
 Cell[BoxData["\<\"TODO : ProcessLCatInfo - does not work properly as of \
 version 3.25 !!!\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028479956813`*^9},ExpressionUUID->"e0bed73a-4afa-4581-a419-\
-88c20b028bab"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610211879997`*^9},ExpressionUUID->"192cc942-cd0c-44ba-9294-\
+f257c94f003c"],
 
 Cell[BoxData["\<\"TODO :: CLM_Synthesis :: 20170319 :: SEED CatSynth / \
 InvCatSynth then Gamma+ == -(Gamma-), then calculate all coefficients.\"\>"], \
 "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848055089*^9},ExpressionUUID->"0ca4156c-6804-4bb6-8a38-\
-0cd779993c1c"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610212532015`*^9},ExpressionUUID->"4ef0bebc-8bb5-4b13-8d5a-\
+c1ef1734a790"],
 
 Cell[BoxData["\<\"TODO::CLM_Chain::rMaxCoefficientValue, \
 kCrystCoefficientValue, kDissCoefficientValue - calculation of base should be \
 updated...\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028481202197`*^9},ExpressionUUID->"060ac7ec-4f84-428d-9a69-\
-062b856465cb"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761021324926*^9},ExpressionUUID->"b20ad53c-1a2b-4ea4-a59e-\
+22f99a26637d"],
 
 Cell[BoxData["\<\"TODO::CLM_SedimentationDirect::kDirectCrystCoefficientValue:\
 :base was supposed to be a length of one enantiomer in the pair Once the code \
 was extended to support any pairs that assumtion can no longer be applied. \
 Subsequently base = 0 is currently pushed down.\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848178625*^9},ExpressionUUID->"af008973-13b2-4da6-abf0-\
-bad52f016dca"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610213852644`*^9},ExpressionUUID->"60eef2bd-5a8e-4417-9a2e-\
+f547f2e7be46"],
 
 Cell[BoxData["\<\"CLM_ChainModel::TODO::Fix stepMonitorFunctionVal in \
 QuitMonitorFunction.\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028485905232`*^9},ExpressionUUID->"939fff6d-3c46-4936-abcb-\
-267c009323b6"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761021810877*^9},ExpressionUUID->"cbce6472-324f-4a75-862c-\
+2b41d05b41a5"],
 
 Cell[BoxData["\<\"=============================================\\n\"\>"], \
 "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028489151525`*^9},ExpressionUUID->"ba55cb06-b4eb-4786-8322-\
-55027e32d398"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022158238*^9},ExpressionUUID->"1c078749-c860-443a-a274-\
+5182c97a08c3"],
 
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"CLM version: \"\>", "\[InvisibleSpace]", "\<\"3.25.001\"\>"}],
   SequenceForm["CLM version: ", "3.25.001"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028489166527`*^9},ExpressionUUID->"385f7222-75f1-4adb-a891-\
-46c6351df6ad"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610221597185`*^9},ExpressionUUID->"f4f54222-1050-4b83-badc-\
+bcdc65ce304a"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3381,14 +3380,13 @@ Cell[BoxData[
    "\[InvisibleSpace]", "\<\"2017/02/26\"\>"}],
   SequenceForm["Release date: ", "2017/02/26"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848917655*^9},ExpressionUUID->"45e9991f-9683-4d6b-9fb3-\
-be7b3593caa4"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.71476102216122*^9},ExpressionUUID->"69c86f32-f37d-4746-88ed-c91bf68ea2d6"],
 
 Cell[BoxData["\<\"Copyright: K^3, 2013 - 2017.\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848918672*^9},ExpressionUUID->"b12fa81e-6d4d-4383-98dc-\
-639bca5e5d38"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610221622353`*^9},ExpressionUUID->"a9733864-aca7-4f8b-9ab0-\
+ccbda59b5471"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3396,21 +3394,21 @@ Cell[BoxData[
    "\[InvisibleSpace]", "\<\"konstantin.k.konstantinov@gmail.com\"\>"}],
   SequenceForm["Email: ", "konstantin.k.konstantinov@gmail.com"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848919674*^9},ExpressionUUID->"329b8e1b-c243-4e30-bd64-\
-281886932c4d"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022163722*^9},ExpressionUUID->"c1d01758-b867-4f22-a009-\
+80cbe6d6d7a3"],
 
 Cell[BoxData["\<\"License type: GPL v3 or any later version, see \
 http://www.gnu.org/licenses/\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848920657*^9},ExpressionUUID->"c16d7776-b0a4-4ef7-a52d-\
-92e0b8067f23"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610221647224`*^9},ExpressionUUID->"0b0f0720-ef82-4fa2-bfbb-\
+bc3e8569a42c"],
 
 Cell[BoxData["\<\"=============================================\\n\"\>"], \
 "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028489221587`*^9},ExpressionUUID->"3d5b1b1f-d042-4263-b28c-\
-72505139bf25"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610221662245`*^9},ExpressionUUID->"db2f0d50-ab9b-4021-b243-\
+a082ac172b01"],
 
 Cell[BoxData["\<\"This program is free software: you can redistribute it \
 and/or modify it under the terms of the GNU General Public License as \
@@ -3421,23 +3419,24 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General \
 Public License for more details. You should have received a copy of the GNU \
 General Public License along with this program. If not, see \
 http://www.gnu.org/licenses/ .\"\>"], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.71460284892316*^9},ExpressionUUID->"69356fd0-6feb-4aeb-bb75-82cc0b9aa01e"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610221672263`*^9},ExpressionUUID->"59ba1039-3f1e-49a8-a661-\
+1e50b5d3bf1d"],
 
 Cell[BoxData["\<\"=============================================\\n\"\>"], \
 "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848924661*^9},ExpressionUUID->"7d591aae-b24d-41f8-9128-\
-c57092bbf3bd"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022169227*^9},ExpressionUUID->"e46eeabb-61ef-4cfa-80da-\
+3be7363a8896"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"SeedRandomValue = \"\>", "\[InvisibleSpace]", "470898625932"}],
-  SequenceForm["SeedRandomValue = ", 470898625932],
+  RowBox[{"\<\"SeedRandomValue = \"\>", "\[InvisibleSpace]", "398065100434"}],
+  SequenceForm["SeedRandomValue = ", 398065100434],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602848925662*^9},ExpressionUUID->"53406d42-9d0e-4ddb-815e-\
-a952f8a4c055"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610221704264`*^9},ExpressionUUID->"0cd200a6-5919-4e5f-8f90-\
+2735792f9a47"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3620,9 +3619,9 @@ $CellContext`r$$$aa$aAA}}, $CellContext`PrintGamma ->
     False, $CellContext`PrintCoeffArray -> True, $CellContext`PrintEqMatrix -> 
     True}],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028489491844`*^9},ExpressionUUID->"92162ca6-48c1-461f-a990-\
-580df97c5476"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610221952524`*^9},ExpressionUUID->"fa1cb45c-d63e-4dc5-a875-\
+996f97be66b5"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3666,39 +3665,7 @@ Cell[BoxData[
        {"8", "raa", 
         SubscriptBox["\[Rho]", "\<\"aa\"\>"], 
         RowBox[{"{", 
-         RowBox[{"\<\"aa\"\>", ",", "0", ",", "2"}], "}"}], "1"},
-       {"9", "rAAA", 
-        SubscriptBox["\[Rho]", "\<\"AAA\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"AAA\"\>", ",", "3", ",", "0"}], "}"}], "1"},
-       {"10", "rAAa", 
-        SubscriptBox["\[Rho]", "\<\"AAa\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"AAa\"\>", ",", "2", ",", "1"}], "}"}], "1"},
-       {"11", "rAaA", 
-        SubscriptBox["\[Rho]", "\<\"AaA\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"AaA\"\>", ",", "2", ",", "1"}], "}"}], "1"},
-       {"12", "rAaa", 
-        SubscriptBox["\[Rho]", "\<\"Aaa\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"Aaa\"\>", ",", "1", ",", "2"}], "}"}], "1"},
-       {"13", "raAA", 
-        SubscriptBox["\[Rho]", "\<\"aAA\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"aAA\"\>", ",", "2", ",", "1"}], "}"}], "1"},
-       {"14", "raAa", 
-        SubscriptBox["\[Rho]", "\<\"aAa\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"aAa\"\>", ",", "1", ",", "2"}], "}"}], "1"},
-       {"15", "raaA", 
-        SubscriptBox["\[Rho]", "\<\"aaA\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"aaA\"\>", ",", "1", ",", "2"}], "}"}], "1"},
-       {"16", "raaa", 
-        SubscriptBox["\[Rho]", "\<\"aaa\"\>"], 
-        RowBox[{"{", 
-         RowBox[{"\<\"aaa\"\>", ",", "0", ",", "3"}], "}"}], "1"}
+         RowBox[{"\<\"aa\"\>", ",", "0", ",", "2"}], "}"}], "1"}
       },
       GridBoxAlignment->{
        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
@@ -3730,27 +3697,11 @@ Cell[BoxData[
      7, $CellContext`raA, 
       Subscript[$CellContext`\[Rho], "aA"], {"aA", 1, 1}, 1}, {
      8, $CellContext`raa, 
-      Subscript[$CellContext`\[Rho], "aa"], {"aa", 0, 2}, 1}, {
-     9, $CellContext`rAAA, 
-      Subscript[$CellContext`\[Rho], "AAA"], {"AAA", 3, 0}, 1}, {
-     10, $CellContext`rAAa, 
-      Subscript[$CellContext`\[Rho], "AAa"], {"AAa", 2, 1}, 1}, {
-     11, $CellContext`rAaA, 
-      Subscript[$CellContext`\[Rho], "AaA"], {"AaA", 2, 1}, 1}, {
-     12, $CellContext`rAaa, 
-      Subscript[$CellContext`\[Rho], "Aaa"], {"Aaa", 1, 2}, 1}, {
-     13, $CellContext`raAA, 
-      Subscript[$CellContext`\[Rho], "aAA"], {"aAA", 2, 1}, 1}, {
-     14, $CellContext`raAa, 
-      Subscript[$CellContext`\[Rho], "aAa"], {"aAa", 1, 2}, 1}, {
-     15, $CellContext`raaA, 
-      Subscript[$CellContext`\[Rho], "aaA"], {"aaA", 1, 2}, 1}, {
-     16, $CellContext`raaa, 
-      Subscript[$CellContext`\[Rho], "aaa"], {"aaa", 0, 3}, 1}}]],
+      Subscript[$CellContext`\[Rho], "aa"], {"aa", 0, 2}, 1}}]],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602849026759*^9},ExpressionUUID->"c3db1428-6bc7-4fd0-834b-\
-32878a59a335"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610222268004`*^9},ExpressionUUID->"f3f7d69f-4498-46be-944d-\
+7563844f2478"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -3771,234 +3722,42 @@ Cell[BoxData[
         "coeff\:0df4a\:02d6A\:2794aA"},
        {"8", "\<\"coeff\:0df4aA\:2794a\:02d6A\"\>", 
         "coeff\:0df4aA\:2794a\:02d6A"},
-       {"9", "\<\"coeff\:0df4AA\:02d6A\:2794AAA\"\>", 
-        "coeff\:0df4AA\:02d6A\:2794AAA"},
-       {"10", "\<\"coeff\:0df4AAA\:2794AA\:02d6A\"\>", 
-        "coeff\:0df4AAA\:2794AA\:02d6A"},
-       {"11", "\<\"coeff\:0df4A\:02d6AA\:2794AAA\"\>", 
-        "coeff\:0df4A\:02d6AA\:2794AAA"},
-       {"12", "\<\"coeff\:0df4AAA\:2794A\:02d6AA\"\>", 
-        "coeff\:0df4AAA\:2794A\:02d6AA"},
-       {"13", "\<\"coeff\:0df4AA\:02d6a\:2794AAa\"\>", 
-        "coeff\:0df4AA\:02d6a\:2794AAa"},
-       {"14", "\<\"coeff\:0df4AAa\:2794AA\:02d6a\"\>", 
-        "coeff\:0df4AAa\:2794AA\:02d6a"},
-       {"15", "\<\"coeff\:0df4a\:02d6AA\:2794aAA\"\>", 
-        "coeff\:0df4a\:02d6AA\:2794aAA"},
-       {"16", "\<\"coeff\:0df4aAA\:2794a\:02d6AA\"\>", 
-        "coeff\:0df4aAA\:2794a\:02d6AA"},
-       {"17", "\<\"coeff\:0df4Aa\:02d6A\:2794AaA\"\>", 
-        "coeff\:0df4Aa\:02d6A\:2794AaA"},
-       {"18", "\<\"coeff\:0df4AaA\:2794Aa\:02d6A\"\>", 
-        "coeff\:0df4AaA\:2794Aa\:02d6A"},
-       {"19", "\<\"coeff\:0df4A\:02d6Aa\:2794AAa\"\>", 
-        "coeff\:0df4A\:02d6Aa\:2794AAa"},
-       {"20", "\<\"coeff\:0df4AAa\:2794A\:02d6Aa\"\>", 
-        "coeff\:0df4AAa\:2794A\:02d6Aa"},
-       {"21", "\<\"coeff\:0df4Aa\:02d6a\:2794Aaa\"\>", 
-        "coeff\:0df4Aa\:02d6a\:2794Aaa"},
-       {"22", "\<\"coeff\:0df4Aaa\:2794Aa\:02d6a\"\>", 
-        "coeff\:0df4Aaa\:2794Aa\:02d6a"},
-       {"23", "\<\"coeff\:0df4a\:02d6Aa\:2794aAa\"\>", 
-        "coeff\:0df4a\:02d6Aa\:2794aAa"},
-       {"24", "\<\"coeff\:0df4aAa\:2794a\:02d6Aa\"\>", 
-        "coeff\:0df4aAa\:2794a\:02d6Aa"},
-       {"25", "\<\"coeff\:0df4A\:02d6A\:27942Y\"\>", 
+       {"9", "\<\"coeff\:0df4A\:02d6A\:27942Y\"\>", 
         "coeff\:0df4A\:02d6A\:27942Y"},
-       {"26", "\<\"coeff\:0df4A\:02d6a\:27942Y\"\>", 
+       {"10", "\<\"coeff\:0df4A\:02d6a\:27942Y\"\>", 
         "coeff\:0df4A\:02d6a\:27942Y"},
-       {"27", "\<\"coeff\:0df4A\:02d6AA\:27943Y\"\>", 
+       {"11", "\<\"coeff\:0df4A\:02d6AA\:27943Y\"\>", 
         "coeff\:0df4A\:02d6AA\:27943Y"},
-       {"28", "\<\"coeff\:0df4A\:02d6aa\:27943Y\"\>", 
+       {"12", "\<\"coeff\:0df4A\:02d6aa\:27943Y\"\>", 
         "coeff\:0df4A\:02d6aa\:27943Y"},
-       {"29", "\<\"coeff\:0df4A\:02d6Aa\:27943Y\"\>", 
+       {"13", "\<\"coeff\:0df4A\:02d6Aa\:27943Y\"\>", 
         "coeff\:0df4A\:02d6Aa\:27943Y"},
-       {"30", "\<\"coeff\:0df4A\:02d6aA\:27943Y\"\>", 
+       {"14", "\<\"coeff\:0df4A\:02d6aA\:27943Y\"\>", 
         "coeff\:0df4A\:02d6aA\:27943Y"},
-       {"31", "\<\"coeff\:0df4A\:02d6AAA\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6AAA\:27944Y"},
-       {"32", "\<\"coeff\:0df4A\:02d6aaa\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6aaa\:27944Y"},
-       {"33", "\<\"coeff\:0df4A\:02d6AAa\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6AAa\:27944Y"},
-       {"34", "\<\"coeff\:0df4A\:02d6aaA\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6aaA\:27944Y"},
-       {"35", "\<\"coeff\:0df4A\:02d6AaA\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6AaA\:27944Y"},
-       {"36", "\<\"coeff\:0df4A\:02d6aAa\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6aAa\:27944Y"},
-       {"37", "\<\"coeff\:0df4A\:02d6Aaa\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6Aaa\:27944Y"},
-       {"38", "\<\"coeff\:0df4A\:02d6aAA\:27944Y\"\>", 
-        "coeff\:0df4A\:02d6aAA\:27944Y"},
-       {"39", "\<\"coeff\:0df4AA\:02d6A\:27943Y\"\>", 
+       {"15", "\<\"coeff\:0df4AA\:02d6A\:27943Y\"\>", 
         "coeff\:0df4AA\:02d6A\:27943Y"},
-       {"40", "\<\"coeff\:0df4AA\:02d6a\:27943Y\"\>", 
+       {"16", "\<\"coeff\:0df4AA\:02d6a\:27943Y\"\>", 
         "coeff\:0df4AA\:02d6a\:27943Y"},
-       {"41", "\<\"coeff\:0df4AA\:02d6AA\:27944Y\"\>", 
+       {"17", "\<\"coeff\:0df4AA\:02d6AA\:27944Y\"\>", 
         "coeff\:0df4AA\:02d6AA\:27944Y"},
-       {"42", "\<\"coeff\:0df4AA\:02d6aa\:27944Y\"\>", 
+       {"18", "\<\"coeff\:0df4AA\:02d6aa\:27944Y\"\>", 
         "coeff\:0df4AA\:02d6aa\:27944Y"},
-       {"43", "\<\"coeff\:0df4AA\:02d6Aa\:27944Y\"\>", 
+       {"19", "\<\"coeff\:0df4AA\:02d6Aa\:27944Y\"\>", 
         "coeff\:0df4AA\:02d6Aa\:27944Y"},
-       {"44", "\<\"coeff\:0df4AA\:02d6aA\:27944Y\"\>", 
+       {"20", "\<\"coeff\:0df4AA\:02d6aA\:27944Y\"\>", 
         "coeff\:0df4AA\:02d6aA\:27944Y"},
-       {"45", "\<\"coeff\:0df4AA\:02d6AAA\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6AAA\:27945Y"},
-       {"46", "\<\"coeff\:0df4AA\:02d6aaa\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6aaa\:27945Y"},
-       {"47", "\<\"coeff\:0df4AA\:02d6AAa\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6AAa\:27945Y"},
-       {"48", "\<\"coeff\:0df4AA\:02d6aaA\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6aaA\:27945Y"},
-       {"49", "\<\"coeff\:0df4AA\:02d6AaA\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6AaA\:27945Y"},
-       {"50", "\<\"coeff\:0df4AA\:02d6aAa\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6aAa\:27945Y"},
-       {"51", "\<\"coeff\:0df4AA\:02d6Aaa\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6Aaa\:27945Y"},
-       {"52", "\<\"coeff\:0df4AA\:02d6aAA\:27945Y\"\>", 
-        "coeff\:0df4AA\:02d6aAA\:27945Y"},
-       {"53", "\<\"coeff\:0df4Aa\:02d6A\:27943Y\"\>", 
+       {"21", "\<\"coeff\:0df4Aa\:02d6A\:27943Y\"\>", 
         "coeff\:0df4Aa\:02d6A\:27943Y"},
-       {"54", "\<\"coeff\:0df4Aa\:02d6a\:27943Y\"\>", 
+       {"22", "\<\"coeff\:0df4Aa\:02d6a\:27943Y\"\>", 
         "coeff\:0df4Aa\:02d6a\:27943Y"},
-       {"55", "\<\"coeff\:0df4Aa\:02d6AA\:27944Y\"\>", 
+       {"23", "\<\"coeff\:0df4Aa\:02d6AA\:27944Y\"\>", 
         "coeff\:0df4Aa\:02d6AA\:27944Y"},
-       {"56", "\<\"coeff\:0df4Aa\:02d6aa\:27944Y\"\>", 
+       {"24", "\<\"coeff\:0df4Aa\:02d6aa\:27944Y\"\>", 
         "coeff\:0df4Aa\:02d6aa\:27944Y"},
-       {"57", "\<\"coeff\:0df4Aa\:02d6Aa\:27944Y\"\>", 
+       {"25", "\<\"coeff\:0df4Aa\:02d6Aa\:27944Y\"\>", 
         "coeff\:0df4Aa\:02d6Aa\:27944Y"},
-       {"58", "\<\"coeff\:0df4Aa\:02d6aA\:27944Y\"\>", 
-        "coeff\:0df4Aa\:02d6aA\:27944Y"},
-       {"59", "\<\"coeff\:0df4Aa\:02d6AAA\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6AAA\:27945Y"},
-       {"60", "\<\"coeff\:0df4Aa\:02d6aaa\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6aaa\:27945Y"},
-       {"61", "\<\"coeff\:0df4Aa\:02d6AAa\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6AAa\:27945Y"},
-       {"62", "\<\"coeff\:0df4Aa\:02d6aaA\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6aaA\:27945Y"},
-       {"63", "\<\"coeff\:0df4Aa\:02d6AaA\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6AaA\:27945Y"},
-       {"64", "\<\"coeff\:0df4Aa\:02d6aAa\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6aAa\:27945Y"},
-       {"65", "\<\"coeff\:0df4Aa\:02d6Aaa\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6Aaa\:27945Y"},
-       {"66", "\<\"coeff\:0df4Aa\:02d6aAA\:27945Y\"\>", 
-        "coeff\:0df4Aa\:02d6aAA\:27945Y"},
-       {"67", "\<\"coeff\:0df4AAA\:02d6A\:27944Y\"\>", 
-        "coeff\:0df4AAA\:02d6A\:27944Y"},
-       {"68", "\<\"coeff\:0df4AAA\:02d6a\:27944Y\"\>", 
-        "coeff\:0df4AAA\:02d6a\:27944Y"},
-       {"69", "\<\"coeff\:0df4AAA\:02d6AA\:27945Y\"\>", 
-        "coeff\:0df4AAA\:02d6AA\:27945Y"},
-       {"70", "\<\"coeff\:0df4AAA\:02d6aa\:27945Y\"\>", 
-        "coeff\:0df4AAA\:02d6aa\:27945Y"},
-       {"71", "\<\"coeff\:0df4AAA\:02d6Aa\:27945Y\"\>", 
-        "coeff\:0df4AAA\:02d6Aa\:27945Y"},
-       {"72", "\<\"coeff\:0df4AAA\:02d6aA\:27945Y\"\>", 
-        "coeff\:0df4AAA\:02d6aA\:27945Y"},
-       {"73", "\<\"coeff\:0df4AAA\:02d6AAA\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6AAA\:27946Y"},
-       {"74", "\<\"coeff\:0df4AAA\:02d6aaa\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6aaa\:27946Y"},
-       {"75", "\<\"coeff\:0df4AAA\:02d6AAa\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6AAa\:27946Y"},
-       {"76", "\<\"coeff\:0df4AAA\:02d6aaA\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6aaA\:27946Y"},
-       {"77", "\<\"coeff\:0df4AAA\:02d6AaA\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6AaA\:27946Y"},
-       {"78", "\<\"coeff\:0df4AAA\:02d6aAa\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6aAa\:27946Y"},
-       {"79", "\<\"coeff\:0df4AAA\:02d6Aaa\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6Aaa\:27946Y"},
-       {"80", "\<\"coeff\:0df4AAA\:02d6aAA\:27946Y\"\>", 
-        "coeff\:0df4AAA\:02d6aAA\:27946Y"},
-       {"81", "\<\"coeff\:0df4AAa\:02d6A\:27944Y\"\>", 
-        "coeff\:0df4AAa\:02d6A\:27944Y"},
-       {"82", "\<\"coeff\:0df4AAa\:02d6a\:27944Y\"\>", 
-        "coeff\:0df4AAa\:02d6a\:27944Y"},
-       {"83", "\<\"coeff\:0df4AAa\:02d6AA\:27945Y\"\>", 
-        "coeff\:0df4AAa\:02d6AA\:27945Y"},
-       {"84", "\<\"coeff\:0df4AAa\:02d6aa\:27945Y\"\>", 
-        "coeff\:0df4AAa\:02d6aa\:27945Y"},
-       {"85", "\<\"coeff\:0df4AAa\:02d6Aa\:27945Y\"\>", 
-        "coeff\:0df4AAa\:02d6Aa\:27945Y"},
-       {"86", "\<\"coeff\:0df4AAa\:02d6aA\:27945Y\"\>", 
-        "coeff\:0df4AAa\:02d6aA\:27945Y"},
-       {"87", "\<\"coeff\:0df4AAa\:02d6AAA\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6AAA\:27946Y"},
-       {"88", "\<\"coeff\:0df4AAa\:02d6aaa\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6aaa\:27946Y"},
-       {"89", "\<\"coeff\:0df4AAa\:02d6AAa\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6AAa\:27946Y"},
-       {"90", "\<\"coeff\:0df4AAa\:02d6aaA\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6aaA\:27946Y"},
-       {"91", "\<\"coeff\:0df4AAa\:02d6AaA\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6AaA\:27946Y"},
-       {"92", "\<\"coeff\:0df4AAa\:02d6aAa\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6aAa\:27946Y"},
-       {"93", "\<\"coeff\:0df4AAa\:02d6Aaa\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6Aaa\:27946Y"},
-       {"94", "\<\"coeff\:0df4AAa\:02d6aAA\:27946Y\"\>", 
-        "coeff\:0df4AAa\:02d6aAA\:27946Y"},
-       {"95", "\<\"coeff\:0df4AaA\:02d6A\:27944Y\"\>", 
-        "coeff\:0df4AaA\:02d6A\:27944Y"},
-       {"96", "\<\"coeff\:0df4AaA\:02d6a\:27944Y\"\>", 
-        "coeff\:0df4AaA\:02d6a\:27944Y"},
-       {"97", "\<\"coeff\:0df4AaA\:02d6AA\:27945Y\"\>", 
-        "coeff\:0df4AaA\:02d6AA\:27945Y"},
-       {"98", "\<\"coeff\:0df4AaA\:02d6aa\:27945Y\"\>", 
-        "coeff\:0df4AaA\:02d6aa\:27945Y"},
-       {"99", "\<\"coeff\:0df4AaA\:02d6Aa\:27945Y\"\>", 
-        "coeff\:0df4AaA\:02d6Aa\:27945Y"},
-       {"100", "\<\"coeff\:0df4AaA\:02d6aA\:27945Y\"\>", 
-        "coeff\:0df4AaA\:02d6aA\:27945Y"},
-       {"101", "\<\"coeff\:0df4AaA\:02d6AAA\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6AAA\:27946Y"},
-       {"102", "\<\"coeff\:0df4AaA\:02d6aaa\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6aaa\:27946Y"},
-       {"103", "\<\"coeff\:0df4AaA\:02d6AAa\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6AAa\:27946Y"},
-       {"104", "\<\"coeff\:0df4AaA\:02d6aaA\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6aaA\:27946Y"},
-       {"105", "\<\"coeff\:0df4AaA\:02d6AaA\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6AaA\:27946Y"},
-       {"106", "\<\"coeff\:0df4AaA\:02d6aAa\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6aAa\:27946Y"},
-       {"107", "\<\"coeff\:0df4AaA\:02d6Aaa\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6Aaa\:27946Y"},
-       {"108", "\<\"coeff\:0df4AaA\:02d6aAA\:27946Y\"\>", 
-        "coeff\:0df4AaA\:02d6aAA\:27946Y"},
-       {"109", "\<\"coeff\:0df4Aaa\:02d6A\:27944Y\"\>", 
-        "coeff\:0df4Aaa\:02d6A\:27944Y"},
-       {"110", "\<\"coeff\:0df4Aaa\:02d6a\:27944Y\"\>", 
-        "coeff\:0df4Aaa\:02d6a\:27944Y"},
-       {"111", "\<\"coeff\:0df4Aaa\:02d6AA\:27945Y\"\>", 
-        "coeff\:0df4Aaa\:02d6AA\:27945Y"},
-       {"112", "\<\"coeff\:0df4Aaa\:02d6aa\:27945Y\"\>", 
-        "coeff\:0df4Aaa\:02d6aa\:27945Y"},
-       {"113", "\<\"coeff\:0df4Aaa\:02d6Aa\:27945Y\"\>", 
-        "coeff\:0df4Aaa\:02d6Aa\:27945Y"},
-       {"114", "\<\"coeff\:0df4Aaa\:02d6aA\:27945Y\"\>", 
-        "coeff\:0df4Aaa\:02d6aA\:27945Y"},
-       {"115", "\<\"coeff\:0df4Aaa\:02d6AAA\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6AAA\:27946Y"},
-       {"116", "\<\"coeff\:0df4Aaa\:02d6aaa\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6aaa\:27946Y"},
-       {"117", "\<\"coeff\:0df4Aaa\:02d6AAa\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6AAa\:27946Y"},
-       {"118", "\<\"coeff\:0df4Aaa\:02d6aaA\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6aaA\:27946Y"},
-       {"119", "\<\"coeff\:0df4Aaa\:02d6AaA\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6AaA\:27946Y"},
-       {"120", "\<\"coeff\:0df4Aaa\:02d6aAa\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6aAa\:27946Y"},
-       {"121", "\<\"coeff\:0df4Aaa\:02d6Aaa\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6Aaa\:27946Y"},
-       {"122", "\<\"coeff\:0df4Aaa\:02d6aAA\:27946Y\"\>", 
-        "coeff\:0df4Aaa\:02d6aAA\:27946Y"}
+       {"26", "\<\"coeff\:0df4Aa\:02d6aA\:27944Y\"\>", 
+        "coeff\:0df4Aa\:02d6aA\:27944Y"}
       },
       GridBoxAlignment->{
        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
@@ -4025,287 +3784,93 @@ $CellContext`coeff\:0df4AA\:2794A\:02d6A}, {
 $CellContext`coeff\:0df4a\:02d6A\:2794aA}, {
      8, "coeff\:0df4aA\:2794a\:02d6A", \
 $CellContext`coeff\:0df4aA\:2794a\:02d6A}, {
-     9, "coeff\:0df4AA\:02d6A\:2794AAA", $CellContext`coeff\:0df4AA\:02d6A\
-\:2794AAA}, {
-     10, "coeff\:0df4AAA\:2794AA\:02d6A", $CellContext`coeff\:0df4AAA\:2794AA\
-\:02d6A}, {
-     11, "coeff\:0df4A\:02d6AA\:2794AAA", $CellContext`coeff\:0df4A\:02d6AA\
-\:2794AAA}, {
-     12, "coeff\:0df4AAA\:2794A\:02d6AA", $CellContext`coeff\:0df4AAA\:2794A\
-\:02d6AA}, {
-     13, "coeff\:0df4AA\:02d6a\:2794AAa", $CellContext`coeff\:0df4AA\:02d6a\
-\:2794AAa}, {
-     14, "coeff\:0df4AAa\:2794AA\:02d6a", $CellContext`coeff\:0df4AAa\:2794AA\
-\:02d6a}, {
-     15, "coeff\:0df4a\:02d6AA\:2794aAA", $CellContext`coeff\:0df4a\:02d6AA\
-\:2794aAA}, {
-     16, "coeff\:0df4aAA\:2794a\:02d6AA", $CellContext`coeff\:0df4aAA\:2794a\
-\:02d6AA}, {
-     17, "coeff\:0df4Aa\:02d6A\:2794AaA", $CellContext`coeff\:0df4Aa\:02d6A\
-\:2794AaA}, {
-     18, "coeff\:0df4AaA\:2794Aa\:02d6A", $CellContext`coeff\:0df4AaA\:2794Aa\
-\:02d6A}, {
-     19, "coeff\:0df4A\:02d6Aa\:2794AAa", $CellContext`coeff\:0df4A\:02d6Aa\
-\:2794AAa}, {
-     20, "coeff\:0df4AAa\:2794A\:02d6Aa", $CellContext`coeff\:0df4AAa\:2794A\
-\:02d6Aa}, {
-     21, "coeff\:0df4Aa\:02d6a\:2794Aaa", $CellContext`coeff\:0df4Aa\:02d6a\
-\:2794Aaa}, {
-     22, "coeff\:0df4Aaa\:2794Aa\:02d6a", $CellContext`coeff\:0df4Aaa\:2794Aa\
-\:02d6a}, {
-     23, "coeff\:0df4a\:02d6Aa\:2794aAa", $CellContext`coeff\:0df4a\:02d6Aa\
-\:2794aAa}, {
-     24, "coeff\:0df4aAa\:2794a\:02d6Aa", $CellContext`coeff\:0df4aAa\:2794a\
-\:02d6Aa}, {
-     25, "coeff\:0df4A\:02d6A\:27942Y", \
+     9, "coeff\:0df4A\:02d6A\:27942Y", \
 $CellContext`coeff\:0df4A\:02d6A\:27942Y}, {
-     26, "coeff\:0df4A\:02d6a\:27942Y", \
+     10, "coeff\:0df4A\:02d6a\:27942Y", \
 $CellContext`coeff\:0df4A\:02d6a\:27942Y}, {
-     27, "coeff\:0df4A\:02d6AA\:27943Y", $CellContext`coeff\:0df4A\:02d6AA\
+     11, "coeff\:0df4A\:02d6AA\:27943Y", $CellContext`coeff\:0df4A\:02d6AA\
 \:27943Y}, {
-     28, "coeff\:0df4A\:02d6aa\:27943Y", $CellContext`coeff\:0df4A\:02d6aa\
+     12, "coeff\:0df4A\:02d6aa\:27943Y", $CellContext`coeff\:0df4A\:02d6aa\
 \:27943Y}, {
-     29, "coeff\:0df4A\:02d6Aa\:27943Y", $CellContext`coeff\:0df4A\:02d6Aa\
+     13, "coeff\:0df4A\:02d6Aa\:27943Y", $CellContext`coeff\:0df4A\:02d6Aa\
 \:27943Y}, {
-     30, "coeff\:0df4A\:02d6aA\:27943Y", $CellContext`coeff\:0df4A\:02d6aA\
+     14, "coeff\:0df4A\:02d6aA\:27943Y", $CellContext`coeff\:0df4A\:02d6aA\
 \:27943Y}, {
-     31, "coeff\:0df4A\:02d6AAA\:27944Y", $CellContext`coeff\:0df4A\:02d6AAA\
-\:27944Y}, {
-     32, "coeff\:0df4A\:02d6aaa\:27944Y", $CellContext`coeff\:0df4A\:02d6aaa\
-\:27944Y}, {
-     33, "coeff\:0df4A\:02d6AAa\:27944Y", $CellContext`coeff\:0df4A\:02d6AAa\
-\:27944Y}, {
-     34, "coeff\:0df4A\:02d6aaA\:27944Y", $CellContext`coeff\:0df4A\:02d6aaA\
-\:27944Y}, {
-     35, "coeff\:0df4A\:02d6AaA\:27944Y", $CellContext`coeff\:0df4A\:02d6AaA\
-\:27944Y}, {
-     36, "coeff\:0df4A\:02d6aAa\:27944Y", $CellContext`coeff\:0df4A\:02d6aAa\
-\:27944Y}, {
-     37, "coeff\:0df4A\:02d6Aaa\:27944Y", $CellContext`coeff\:0df4A\:02d6Aaa\
-\:27944Y}, {
-     38, "coeff\:0df4A\:02d6aAA\:27944Y", $CellContext`coeff\:0df4A\:02d6aAA\
-\:27944Y}, {
-     39, "coeff\:0df4AA\:02d6A\:27943Y", $CellContext`coeff\:0df4AA\:02d6A\
+     15, "coeff\:0df4AA\:02d6A\:27943Y", $CellContext`coeff\:0df4AA\:02d6A\
 \:27943Y}, {
-     40, "coeff\:0df4AA\:02d6a\:27943Y", $CellContext`coeff\:0df4AA\:02d6a\
+     16, "coeff\:0df4AA\:02d6a\:27943Y", $CellContext`coeff\:0df4AA\:02d6a\
 \:27943Y}, {
-     41, "coeff\:0df4AA\:02d6AA\:27944Y", $CellContext`coeff\:0df4AA\:02d6AA\
+     17, "coeff\:0df4AA\:02d6AA\:27944Y", $CellContext`coeff\:0df4AA\:02d6AA\
 \:27944Y}, {
-     42, "coeff\:0df4AA\:02d6aa\:27944Y", $CellContext`coeff\:0df4AA\:02d6aa\
+     18, "coeff\:0df4AA\:02d6aa\:27944Y", $CellContext`coeff\:0df4AA\:02d6aa\
 \:27944Y}, {
-     43, "coeff\:0df4AA\:02d6Aa\:27944Y", $CellContext`coeff\:0df4AA\:02d6Aa\
+     19, "coeff\:0df4AA\:02d6Aa\:27944Y", $CellContext`coeff\:0df4AA\:02d6Aa\
 \:27944Y}, {
-     44, "coeff\:0df4AA\:02d6aA\:27944Y", $CellContext`coeff\:0df4AA\:02d6aA\
+     20, "coeff\:0df4AA\:02d6aA\:27944Y", $CellContext`coeff\:0df4AA\:02d6aA\
 \:27944Y}, {
-     45, "coeff\:0df4AA\:02d6AAA\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6AAA\:27945Y}, {
-     46, "coeff\:0df4AA\:02d6aaa\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6aaa\:27945Y}, {
-     47, "coeff\:0df4AA\:02d6AAa\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6AAa\:27945Y}, {
-     48, "coeff\:0df4AA\:02d6aaA\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6aaA\:27945Y}, {
-     49, "coeff\:0df4AA\:02d6AaA\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6AaA\:27945Y}, {
-     50, "coeff\:0df4AA\:02d6aAa\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6aAa\:27945Y}, {
-     51, "coeff\:0df4AA\:02d6Aaa\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6Aaa\:27945Y}, {
-     52, "coeff\:0df4AA\:02d6aAA\:27945Y", \
-$CellContext`coeff\:0df4AA\:02d6aAA\:27945Y}, {
-     53, "coeff\:0df4Aa\:02d6A\:27943Y", $CellContext`coeff\:0df4Aa\:02d6A\
+     21, "coeff\:0df4Aa\:02d6A\:27943Y", $CellContext`coeff\:0df4Aa\:02d6A\
 \:27943Y}, {
-     54, "coeff\:0df4Aa\:02d6a\:27943Y", $CellContext`coeff\:0df4Aa\:02d6a\
+     22, "coeff\:0df4Aa\:02d6a\:27943Y", $CellContext`coeff\:0df4Aa\:02d6a\
 \:27943Y}, {
-     55, "coeff\:0df4Aa\:02d6AA\:27944Y", $CellContext`coeff\:0df4Aa\:02d6AA\
+     23, "coeff\:0df4Aa\:02d6AA\:27944Y", $CellContext`coeff\:0df4Aa\:02d6AA\
 \:27944Y}, {
-     56, "coeff\:0df4Aa\:02d6aa\:27944Y", $CellContext`coeff\:0df4Aa\:02d6aa\
+     24, "coeff\:0df4Aa\:02d6aa\:27944Y", $CellContext`coeff\:0df4Aa\:02d6aa\
 \:27944Y}, {
-     57, "coeff\:0df4Aa\:02d6Aa\:27944Y", $CellContext`coeff\:0df4Aa\:02d6Aa\
+     25, "coeff\:0df4Aa\:02d6Aa\:27944Y", $CellContext`coeff\:0df4Aa\:02d6Aa\
 \:27944Y}, {
-     58, "coeff\:0df4Aa\:02d6aA\:27944Y", $CellContext`coeff\:0df4Aa\:02d6aA\
-\:27944Y}, {
-     59, "coeff\:0df4Aa\:02d6AAA\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6AAA\:27945Y}, {
-     60, "coeff\:0df4Aa\:02d6aaa\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6aaa\:27945Y}, {
-     61, "coeff\:0df4Aa\:02d6AAa\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6AAa\:27945Y}, {
-     62, "coeff\:0df4Aa\:02d6aaA\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6aaA\:27945Y}, {
-     63, "coeff\:0df4Aa\:02d6AaA\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6AaA\:27945Y}, {
-     64, "coeff\:0df4Aa\:02d6aAa\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6aAa\:27945Y}, {
-     65, "coeff\:0df4Aa\:02d6Aaa\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6Aaa\:27945Y}, {
-     66, "coeff\:0df4Aa\:02d6aAA\:27945Y", \
-$CellContext`coeff\:0df4Aa\:02d6aAA\:27945Y}, {
-     67, "coeff\:0df4AAA\:02d6A\:27944Y", $CellContext`coeff\:0df4AAA\:02d6A\
-\:27944Y}, {
-     68, "coeff\:0df4AAA\:02d6a\:27944Y", $CellContext`coeff\:0df4AAA\:02d6a\
-\:27944Y}, {
-     69, "coeff\:0df4AAA\:02d6AA\:27945Y", \
-$CellContext`coeff\:0df4AAA\:02d6AA\:27945Y}, {
-     70, "coeff\:0df4AAA\:02d6aa\:27945Y", \
-$CellContext`coeff\:0df4AAA\:02d6aa\:27945Y}, {
-     71, "coeff\:0df4AAA\:02d6Aa\:27945Y", \
-$CellContext`coeff\:0df4AAA\:02d6Aa\:27945Y}, {
-     72, "coeff\:0df4AAA\:02d6aA\:27945Y", \
-$CellContext`coeff\:0df4AAA\:02d6aA\:27945Y}, {
-     73, "coeff\:0df4AAA\:02d6AAA\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6AAA\:27946Y}, {
-     74, "coeff\:0df4AAA\:02d6aaa\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6aaa\:27946Y}, {
-     75, "coeff\:0df4AAA\:02d6AAa\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6AAa\:27946Y}, {
-     76, "coeff\:0df4AAA\:02d6aaA\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6aaA\:27946Y}, {
-     77, "coeff\:0df4AAA\:02d6AaA\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6AaA\:27946Y}, {
-     78, "coeff\:0df4AAA\:02d6aAa\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6aAa\:27946Y}, {
-     79, "coeff\:0df4AAA\:02d6Aaa\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6Aaa\:27946Y}, {
-     80, "coeff\:0df4AAA\:02d6aAA\:27946Y", \
-$CellContext`coeff\:0df4AAA\:02d6aAA\:27946Y}, {
-     81, "coeff\:0df4AAa\:02d6A\:27944Y", $CellContext`coeff\:0df4AAa\:02d6A\
-\:27944Y}, {
-     82, "coeff\:0df4AAa\:02d6a\:27944Y", $CellContext`coeff\:0df4AAa\:02d6a\
-\:27944Y}, {
-     83, "coeff\:0df4AAa\:02d6AA\:27945Y", \
-$CellContext`coeff\:0df4AAa\:02d6AA\:27945Y}, {
-     84, "coeff\:0df4AAa\:02d6aa\:27945Y", \
-$CellContext`coeff\:0df4AAa\:02d6aa\:27945Y}, {
-     85, "coeff\:0df4AAa\:02d6Aa\:27945Y", \
-$CellContext`coeff\:0df4AAa\:02d6Aa\:27945Y}, {
-     86, "coeff\:0df4AAa\:02d6aA\:27945Y", \
-$CellContext`coeff\:0df4AAa\:02d6aA\:27945Y}, {
-     87, "coeff\:0df4AAa\:02d6AAA\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6AAA\:27946Y}, {
-     88, "coeff\:0df4AAa\:02d6aaa\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6aaa\:27946Y}, {
-     89, "coeff\:0df4AAa\:02d6AAa\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6AAa\:27946Y}, {
-     90, "coeff\:0df4AAa\:02d6aaA\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6aaA\:27946Y}, {
-     91, "coeff\:0df4AAa\:02d6AaA\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6AaA\:27946Y}, {
-     92, "coeff\:0df4AAa\:02d6aAa\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6aAa\:27946Y}, {
-     93, "coeff\:0df4AAa\:02d6Aaa\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6Aaa\:27946Y}, {
-     94, "coeff\:0df4AAa\:02d6aAA\:27946Y", \
-$CellContext`coeff\:0df4AAa\:02d6aAA\:27946Y}, {
-     95, "coeff\:0df4AaA\:02d6A\:27944Y", $CellContext`coeff\:0df4AaA\:02d6A\
-\:27944Y}, {
-     96, "coeff\:0df4AaA\:02d6a\:27944Y", $CellContext`coeff\:0df4AaA\:02d6a\
-\:27944Y}, {
-     97, "coeff\:0df4AaA\:02d6AA\:27945Y", \
-$CellContext`coeff\:0df4AaA\:02d6AA\:27945Y}, {
-     98, "coeff\:0df4AaA\:02d6aa\:27945Y", \
-$CellContext`coeff\:0df4AaA\:02d6aa\:27945Y}, {
-     99, "coeff\:0df4AaA\:02d6Aa\:27945Y", \
-$CellContext`coeff\:0df4AaA\:02d6Aa\:27945Y}, {
-     100, "coeff\:0df4AaA\:02d6aA\:27945Y", \
-$CellContext`coeff\:0df4AaA\:02d6aA\:27945Y}, {
-     101, "coeff\:0df4AaA\:02d6AAA\:27946Y", \
-$CellContext`coeff\:0df4AaA\:02d6AAA\:27946Y}, {
-     102, "coeff\:0df4AaA\:02d6aaa\:27946Y", \
-$CellContext`coeff\:0df4AaA\:02d6aaa\:27946Y}, {
-     103, "coeff\:0df4AaA\:02d6AAa\:27946Y", \
-$CellContext`coeff\:0df4AaA\:02d6AAa\:27946Y}, {
-     104, "coeff\:0df4AaA\:02d6aaA\:27946Y", \
-$CellContext`coeff\:0df4AaA\:02d6aaA\:27946Y}, {
-     105, 
-      "coeff\:0df4AaA\:02d6AaA\:27946Y", $CellContext`coeff\:0df4AaA\:02d6AaA\
-\:27946Y}, {
-     106, "coeff\:0df4AaA\:02d6aAa\:27946Y", \
-$CellContext`coeff\:0df4AaA\:02d6aAa\:27946Y}, {
-     107, "coeff\:0df4AaA\:02d6Aaa\:27946Y", \
-$CellContext`coeff\:0df4AaA\:02d6Aaa\:27946Y}, {
-     108, "coeff\:0df4AaA\:02d6aAA\:27946Y", \
-$CellContext`coeff\:0df4AaA\:02d6aAA\:27946Y}, {
-     109, "coeff\:0df4Aaa\:02d6A\:27944Y", $CellContext`coeff\:0df4Aaa\:02d6A\
-\:27944Y}, {
-     110, "coeff\:0df4Aaa\:02d6a\:27944Y", $CellContext`coeff\:0df4Aaa\:02d6a\
-\:27944Y}, {
-     111, "coeff\:0df4Aaa\:02d6AA\:27945Y", \
-$CellContext`coeff\:0df4Aaa\:02d6AA\:27945Y}, {
-     112, "coeff\:0df4Aaa\:02d6aa\:27945Y", \
-$CellContext`coeff\:0df4Aaa\:02d6aa\:27945Y}, {
-     113, "coeff\:0df4Aaa\:02d6Aa\:27945Y", \
-$CellContext`coeff\:0df4Aaa\:02d6Aa\:27945Y}, {
-     114, "coeff\:0df4Aaa\:02d6aA\:27945Y", \
-$CellContext`coeff\:0df4Aaa\:02d6aA\:27945Y}, {
-     115, "coeff\:0df4Aaa\:02d6AAA\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6AAA\:27946Y}, {
-     116, "coeff\:0df4Aaa\:02d6aaa\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6aaa\:27946Y}, {
-     117, "coeff\:0df4Aaa\:02d6AAa\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6AAa\:27946Y}, {
-     118, "coeff\:0df4Aaa\:02d6aaA\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6aaA\:27946Y}, {
-     119, "coeff\:0df4Aaa\:02d6AaA\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6AaA\:27946Y}, {
-     120, "coeff\:0df4Aaa\:02d6aAa\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6aAa\:27946Y}, {
-     121, "coeff\:0df4Aaa\:02d6Aaa\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6Aaa\:27946Y}, {
-     122, "coeff\:0df4Aaa\:02d6aAA\:27946Y", \
-$CellContext`coeff\:0df4Aaa\:02d6aAA\:27946Y}}]],
+     26, "coeff\:0df4Aa\:02d6aA\:27944Y", $CellContext`coeff\:0df4Aa\:02d6aA\
+\:27944Y}}]],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602849033264*^9},ExpressionUUID->"27d2c58e-07d2-403e-b681-\
-531adefe0153"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022229805*^9},ExpressionUUID->"71ad1908-0c77-4c8c-814a-\
+9e4ec539f6c1"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Sat 16 Sep 2017 22:07:29\"\>", 
+  RowBox[{"\<\"Mon 18 Sep 2017 18:03:42\"\>", 
    "\[InvisibleSpace]", "\<\", time used: \"\>", "\[InvisibleSpace]", 
-   "1.464`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
-   "\[InvisibleSpace]", "1", "\[InvisibleSpace]", "\<\".\"\>", 
+   "1.529`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
+   "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\".\"\>", 
    "\[InvisibleSpace]", "\<\"\\n---------------------------------------------\
 \"\>"}],
   SequenceForm[
-  "Sat 16 Sep 2017 22:07:29", ", time used: ", 1.464, ", total time used: ", 
-   1, ".", "\n---------------------------------------------"],
+  "Mon 18 Sep 2017 18:03:42", ", time used: ", 1.529, ", total time used: ", 
+   2, ".", "\n---------------------------------------------"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028490377693`*^9},ExpressionUUID->"b3f6e679-7c7e-4a34-8c68-\
-e0d3a9666251"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610222323093`*^9},ExpressionUUID->"62a3f4db-1aab-439b-ad5f-\
+ce36d4ac51cb"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Sat 16 Sep 2017 22:07:29\"\>", 
+  RowBox[{"\<\"Mon 18 Sep 2017 18:03:42\"\>", 
    "\[InvisibleSpace]", "\<\", time used: \"\>", "\[InvisibleSpace]", 
-   "0.024`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
-   "\[InvisibleSpace]", "1", "\[InvisibleSpace]", "\<\".\"\>", 
+   "0.006`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
+   "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\".\"\>", 
    "\[InvisibleSpace]", "\<\"\\n---------------------------------------------\
 \"\>"}],
   SequenceForm[
-  "Sat 16 Sep 2017 22:07:29", ", time used: ", 0.024, ", total time used: ", 
-   1, ".", "\n---------------------------------------------"],
+  "Mon 18 Sep 2017 18:03:42", ", time used: ", 0.006, ", total time used: ", 
+   2, ".", "\n---------------------------------------------"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028490522833`*^9},ExpressionUUID->"72b420ba-f91e-4cd6-8cd9-\
-42d059e302af"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610222338104`*^9},ExpressionUUID->"d49981ad-a097-4e1f-8ab4-\
+1e297892caa8"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Sat 16 Sep 2017 22:07:29\"\>", 
+  RowBox[{"\<\"Mon 18 Sep 2017 18:03:42\"\>", 
    "\[InvisibleSpace]", "\<\", time used: \"\>", "\[InvisibleSpace]", 
    "0.001`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
-   "\[InvisibleSpace]", "1", "\[InvisibleSpace]", "\<\".\"\>", 
+   "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\".\"\>", 
    "\[InvisibleSpace]", "\<\"\\n---------------------------------------------\
 \"\>"}],
   SequenceForm[
-  "Sat 16 Sep 2017 22:07:29", ", time used: ", 0.001, ", total time used: ", 
-   1, ".", "\n---------------------------------------------"],
+  "Mon 18 Sep 2017 18:03:42", ", time used: ", 0.001, ", total time used: ", 
+   2, ".", "\n---------------------------------------------"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602849053785*^9},ExpressionUUID->"fff048c3-f60b-4b70-8480-\
-e83165fa3c98"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.71476102223481*^9},ExpressionUUID->"ab54157b-338a-4a73-a906-7519c0f2b07e"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -4409,467 +3974,7 @@ Cell[BoxData[
          "4", " ", "coeff\:0df4AA\:02d6Aa\:27944Y", " ", "rAa", " ", "rAA"}], 
          "+", 
          RowBox[{"4", " ", "coeff\:0df4AA\:02d6AA\:27944Y", " ", 
-          SuperscriptBox["rAA", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6AAA\:27944Y", " ", "ra", " ", "raaa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAA\:02d6A\:27944Y", " ", "ra", " ", "raaa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aaa\:27944Y", " ", "rA", " ", "raaa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAA\:02d6a\:27944Y", " ", "rA", " ", "raaa"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6AAA\:27945Y", " ", "raa", " ", 
-          "raaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6AA\:27945Y", " ", "raa", " ", 
-          "raaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6AAA\:27945Y", " ", "raA", " ", 
-          "raaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6Aa\:27945Y", " ", "raA", " ", 
-          "raaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aaa\:27945Y", " ", "rAa", " ", 
-          "raaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6aA\:27945Y", " ", "rAa", " ", 
-          "raaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aaa\:27945Y", " ", "rAA", " ", 
-          "raaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6aa\:27945Y", " ", "rAA", " ", 
-          "raaa"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4AAA\:02d6AAA\:27946Y", " ", 
-          SuperscriptBox["raaa", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6AAa\:27944Y", " ", "ra", " ", "raaA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAa\:02d6A\:27944Y", " ", "ra", " ", "raaA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aaA\:27944Y", " ", "rA", " ", "raaA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAa\:02d6a\:27944Y", " ", "rA", " ", "raaA"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6AAa\:27945Y", " ", "raa", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6AA\:27945Y", " ", "raa", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6AAa\:27945Y", " ", "raA", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6Aa\:27945Y", " ", "raA", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aaA\:27945Y", " ", "rAa", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6aA\:27945Y", " ", "rAa", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aaA\:27945Y", " ", "rAA", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6aa\:27945Y", " ", "rAA", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6AAA\:27946Y", " ", "raaa", " ", 
-          "raaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6AAa\:27946Y", " ", "raaa", " ", 
-          "raaA"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4AAa\:02d6AAa\:27946Y", " ", 
-          SuperscriptBox["raaA", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6AaA\:27944Y", " ", "ra", " ", "raAa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AaA\:02d6A\:27944Y", " ", "ra", " ", "raAa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aAa\:27944Y", " ", "rA", " ", "raAa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AaA\:02d6a\:27944Y", " ", "rA", " ", "raAa"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6AaA\:27945Y", " ", "raa", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6AA\:27945Y", " ", "raa", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6AaA\:27945Y", " ", "raA", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6Aa\:27945Y", " ", "raA", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aAa\:27945Y", " ", "rAa", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6aA\:27945Y", " ", "rAa", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aAa\:27945Y", " ", "rAA", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6aa\:27945Y", " ", "rAA", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6AAA\:27946Y", " ", "raaa", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6AaA\:27946Y", " ", "raaa", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6AAa\:27946Y", " ", "raaA", " ", 
-          "raAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6AaA\:27946Y", " ", "raaA", " ", 
-          "raAa"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4AaA\:02d6AaA\:27946Y", " ", 
-          SuperscriptBox["raAa", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6Aaa\:27944Y", " ", "ra", " ", "raAA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4Aaa\:02d6A\:27944Y", " ", "ra", " ", "raAA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aAA\:27944Y", " ", "rA", " ", "raAA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4Aaa\:02d6a\:27944Y", " ", "rA", " ", "raAA"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6Aaa\:27945Y", " ", "raa", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6AA\:27945Y", " ", "raa", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6Aaa\:27945Y", " ", "raA", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6Aa\:27945Y", " ", "raA", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aAA\:27945Y", " ", "rAa", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6aA\:27945Y", " ", "rAa", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aAA\:27945Y", " ", "rAA", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6aa\:27945Y", " ", "rAA", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6AAA\:27946Y", " ", "raaa", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6Aaa\:27946Y", " ", "raaa", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6AAa\:27946Y", " ", "raaA", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6Aaa\:27946Y", " ", "raaA", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6AaA\:27946Y", " ", "raAa", " ", 
-          "raAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6Aaa\:27946Y", " ", "raAa", " ", 
-          "raAA"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4Aaa\:02d6Aaa\:27946Y", " ", 
-          SuperscriptBox["raAA", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aAA\:27944Y", " ", "ra", " ", "rAaa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4Aaa\:02d6a\:27944Y", " ", "ra", " ", "rAaa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6Aaa\:27944Y", " ", "rA", " ", "rAaa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4Aaa\:02d6A\:27944Y", " ", "rA", " ", "rAaa"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aAA\:27945Y", " ", "raa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6aa\:27945Y", " ", "raa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aAA\:27945Y", " ", "raA", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6aA\:27945Y", " ", "raA", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6Aaa\:27945Y", " ", "rAa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6Aa\:27945Y", " ", "rAa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6Aaa\:27945Y", " ", "rAA", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aaa\:02d6AA\:27945Y", " ", "rAA", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6aaa\:27946Y", " ", "raaa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6aAA\:27946Y", " ", "raaa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6aaA\:27946Y", " ", "raaA", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6aAA\:27946Y", " ", "raaA", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6aAa\:27946Y", " ", "raAa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6aAA\:27946Y", " ", "raAa", " ", 
-          "rAaa"}], "+", 
-         RowBox[{
-         "12", " ", "coeff\:0df4Aaa\:02d6aAA\:27946Y", " ", "raAA", " ", 
-          "rAaa"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4Aaa\:02d6Aaa\:27946Y", " ", 
-          SuperscriptBox["rAaa", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aAa\:27944Y", " ", "ra", " ", "rAaA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AaA\:02d6a\:27944Y", " ", "ra", " ", "rAaA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6AaA\:27944Y", " ", "rA", " ", "rAaA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AaA\:02d6A\:27944Y", " ", "rA", " ", "rAaA"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aAa\:27945Y", " ", "raa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6aa\:27945Y", " ", "raa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aAa\:27945Y", " ", "raA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6aA\:27945Y", " ", "raA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6AaA\:27945Y", " ", "rAa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6Aa\:27945Y", " ", "rAa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6AaA\:27945Y", " ", "rAA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AaA\:02d6AA\:27945Y", " ", "rAA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6aaa\:27946Y", " ", "raaa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6aAa\:27946Y", " ", "raaa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6aaA\:27946Y", " ", "raaA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6aAa\:27946Y", " ", "raaA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "12", " ", "coeff\:0df4AaA\:02d6aAa\:27946Y", " ", "raAa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6aAa\:27946Y", " ", "raAA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6aAA\:27946Y", " ", "raAA", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6AaA\:27946Y", " ", "rAaa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6Aaa\:27946Y", " ", "rAaa", " ", 
-          "rAaA"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4AaA\:02d6AaA\:27946Y", " ", 
-          SuperscriptBox["rAaA", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aaA\:27944Y", " ", "ra", " ", "rAAa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAa\:02d6a\:27944Y", " ", "ra", " ", "rAAa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6AAa\:27944Y", " ", "rA", " ", "rAAa"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAa\:02d6A\:27944Y", " ", "rA", " ", "rAAa"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aaA\:27945Y", " ", "raa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6aa\:27945Y", " ", "raa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aaA\:27945Y", " ", "raA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6aA\:27945Y", " ", "raA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6AAa\:27945Y", " ", "rAa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6Aa\:27945Y", " ", "rAa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6AAa\:27945Y", " ", "rAA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAa\:02d6AA\:27945Y", " ", "rAA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6aaa\:27946Y", " ", "raaa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6aaA\:27946Y", " ", "raaa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "12", " ", "coeff\:0df4AAa\:02d6aaA\:27946Y", " ", "raaA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6aaA\:27946Y", " ", "raAa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6aAa\:27946Y", " ", "raAa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6aaA\:27946Y", " ", "raAA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6aAA\:27946Y", " ", "raAA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6AAa\:27946Y", " ", "rAaa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6Aaa\:27946Y", " ", "rAaa", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6AAa\:27946Y", " ", "rAaA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6AaA\:27946Y", " ", "rAaA", " ", 
-          "rAAa"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4AAa\:02d6AAa\:27946Y", " ", 
-          SuperscriptBox["rAAa", "2"]}], "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6aaa\:27944Y", " ", "ra", " ", "rAAA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAA\:02d6a\:27944Y", " ", "ra", " ", "rAAA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4A\:02d6AAA\:27944Y", " ", "rA", " ", "rAAA"}], 
-         "+", 
-         RowBox[{
-         "4", " ", "coeff\:0df4AAA\:02d6A\:27944Y", " ", "rA", " ", "rAAA"}], 
-         "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6aaa\:27945Y", " ", "raa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6aa\:27945Y", " ", "raa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6aaa\:27945Y", " ", "raA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6aA\:27945Y", " ", "raA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4Aa\:02d6AAA\:27945Y", " ", "rAa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6Aa\:27945Y", " ", "rAa", " ", "rAAA"}]
-          , "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AA\:02d6AAA\:27945Y", " ", "rAA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "5", " ", "coeff\:0df4AAA\:02d6AA\:27945Y", " ", "rAA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "12", " ", "coeff\:0df4AAA\:02d6aaa\:27946Y", " ", "raaa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6aaa\:27946Y", " ", "raaA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6aaA\:27946Y", " ", "raaA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6aaa\:27946Y", " ", "raAa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6aAa\:27946Y", " ", "raAa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6aaa\:27946Y", " ", "raAA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6aAA\:27946Y", " ", "raAA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4Aaa\:02d6AAA\:27946Y", " ", "rAaa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6Aaa\:27946Y", " ", "rAaa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AaA\:02d6AAA\:27946Y", " ", "rAaA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6AaA\:27946Y", " ", "rAaA", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAa\:02d6AAA\:27946Y", " ", "rAAa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{
-         "6", " ", "coeff\:0df4AAA\:02d6AAa\:27946Y", " ", "rAAa", " ", 
-          "rAAA"}], "+", 
-         RowBox[{"6", " ", "coeff\:0df4AAA\:02d6AAA\:27946Y", " ", 
-          SuperscriptBox["rAAA", "2"]}], "-", 
+          SuperscriptBox["rAA", "2"]}], "-", 
          RowBox[{"coeff\:0df4Y\:2794a", " ", "rY"}], "-", 
          RowBox[{"coeff\:0df4Y\:2794A", " ", "rY"}]}]},
        {"3", 
@@ -4885,72 +3990,16 @@ Cell[BoxData[
          RowBox[{"2", " ", "coeff\:0df4A\:02d6A\:2794AA", " ", 
           SuperscriptBox["rA", "2"]}], "-", 
          RowBox[{"coeff\:0df4A\:02d6aa\:27943Y", " ", "rA", " ", "raa"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6a\:27943Y", " ", "rA", " ", "raa"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6AA\:2794aAA", " ", "rA", " ", "raa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6a\:2794AAa", " ", "rA", " ", "raa"}], 
-         "+", 
+         RowBox[{"coeff\:0df4AA\:02d6a\:27943Y", " ", "rA", " ", "raa"}], "+", 
          RowBox[{"coeff\:0df4aA\:2794a\:02d6A", " ", "raA"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6aA\:27943Y", " ", "rA", " ", "raA"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6a\:27943Y", " ", "rA", " ", "raA"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6Aa\:2794aAa", " ", "rA", " ", "raA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6a\:2794Aaa", " ", "rA", " ", "raA"}], 
-         "+", 
+         RowBox[{"coeff\:0df4Aa\:02d6a\:27943Y", " ", "rA", " ", "raA"}], "+", 
          RowBox[{"coeff\:0df4aA\:2794a\:02d6A", " ", "rAa"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6Aa\:27943Y", " ", "rA", " ", "rAa"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6A\:27943Y", " ", "rA", " ", "rAa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aa\:2794AAa", " ", "rA", " ", "rAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6A\:2794AaA", " ", "rA", " ", "rAa"}], 
-         "+", 
+         RowBox[{"coeff\:0df4Aa\:02d6A\:27943Y", " ", "rA", " ", "rAa"}], "+", 
          RowBox[{"2", " ", "coeff\:0df4AA\:2794A\:02d6A", " ", "rAA"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6AA\:27943Y", " ", "rA", " ", "rAA"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:27943Y", " ", "rA", " ", "rAA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AA\:2794AAA", " ", "rA", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:2794AAA", " ", "rA", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaa\:27944Y", " ", "rA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6a\:27944Y", " ", "rA", " ", "raaa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794AA\:02d6a", " ", "raaA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaA\:27944Y", " ", "rA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6a\:27944Y", " ", "rA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAa\:27944Y", " ", "rA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6a\:27944Y", " ", "rA", " ", "raAa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4Aaa\:2794Aa\:02d6a", " ", "raAA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAA\:27944Y", " ", "rA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6a\:27944Y", " ", "rA", " ", "raAA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAA\:2794a\:02d6AA", " ", "rAaa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aaa\:27944Y", " ", "rA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6A\:27944Y", " ", "rA", " ", "rAaa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAa\:2794a\:02d6Aa", " ", "rAaA"}], "+", 
-         RowBox[{"coeff\:0df4AaA\:2794Aa\:02d6A", " ", "rAaA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AaA\:27944Y", " ", "rA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6A\:27944Y", " ", "rA", " ", "rAaA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794A\:02d6Aa", " ", "rAAa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAa\:27944Y", " ", "rA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6A\:27944Y", " ", "rA", " ", "rAAa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAA\:2794A\:02d6AA", " ", "rAAA"}], "+", 
-         RowBox[{"coeff\:0df4AAA\:2794AA\:02d6A", " ", "rAAA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAA\:27944Y", " ", "rA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6A\:27944Y", " ", "rA", " ", "rAAA"}], 
-         "+", 
+         RowBox[{"coeff\:0df4AA\:02d6A\:27943Y", " ", "rA", " ", "rAA"}], "+", 
          RowBox[{"coeff\:0df4Y\:2794A", " ", "rY"}]}]},
        {"4", 
         RowBox[{
@@ -4966,71 +4015,15 @@ Cell[BoxData[
          "2", " ", "coeff\:0df4a\:02d6A\:2794aA", " ", "ra", " ", "rA"}], "+", 
          RowBox[{"2", " ", "coeff\:0df4AA\:2794A\:02d6A", " ", "raa"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6AA\:27943Y", " ", "ra", " ", "raa"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:27943Y", " ", "ra", " ", "raa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AA\:2794AAA", " ", "ra", " ", "raa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:2794AAA", " ", "ra", " ", "raa"}], 
-         "+", 
+         RowBox[{"coeff\:0df4AA\:02d6A\:27943Y", " ", "ra", " ", "raa"}], "+", 
          RowBox[{"coeff\:0df4aA\:2794a\:02d6A", " ", "raA"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6Aa\:27943Y", " ", "ra", " ", "raA"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6A\:27943Y", " ", "ra", " ", "raA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aa\:2794AAa", " ", "ra", " ", "raA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6A\:2794AaA", " ", "ra", " ", "raA"}], 
-         "+", 
+         RowBox[{"coeff\:0df4Aa\:02d6A\:27943Y", " ", "ra", " ", "raA"}], "+", 
          RowBox[{"coeff\:0df4aA\:2794a\:02d6A", " ", "rAa"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6aA\:27943Y", " ", "ra", " ", "rAa"}], "-", 
          RowBox[{"coeff\:0df4Aa\:02d6a\:27943Y", " ", "ra", " ", "rAa"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6Aa\:2794aAa", " ", "ra", " ", "rAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6a\:2794Aaa", " ", "ra", " ", "rAa"}], 
-         "-", 
          RowBox[{"coeff\:0df4A\:02d6aa\:27943Y", " ", "ra", " ", "rAA"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6a\:27943Y", " ", "ra", " ", "rAA"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6AA\:2794aAA", " ", "ra", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6a\:2794AAa", " ", "ra", " ", "rAA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAA\:2794A\:02d6AA", " ", "raaa"}], "+", 
-         RowBox[{"coeff\:0df4AAA\:2794AA\:02d6A", " ", "raaa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAA\:27944Y", " ", "ra", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6A\:27944Y", " ", "ra", " ", "raaa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794A\:02d6Aa", " ", "raaA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAa\:27944Y", " ", "ra", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6A\:27944Y", " ", "ra", " ", "raaA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAa\:2794a\:02d6Aa", " ", "raAa"}], "+", 
-         RowBox[{"coeff\:0df4AaA\:2794Aa\:02d6A", " ", "raAa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AaA\:27944Y", " ", "ra", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6A\:27944Y", " ", "ra", " ", "raAa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAA\:2794a\:02d6AA", " ", "raAA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aaa\:27944Y", " ", "ra", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6A\:27944Y", " ", "ra", " ", "raAA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4Aaa\:2794Aa\:02d6a", " ", "rAaa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAA\:27944Y", " ", "ra", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6a\:27944Y", " ", "ra", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAa\:27944Y", " ", "ra", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6a\:27944Y", " ", "ra", " ", "rAaA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794AA\:02d6a", " ", "rAAa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaA\:27944Y", " ", "ra", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6a\:27944Y", " ", "ra", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaa\:27944Y", " ", "ra", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6a\:27944Y", " ", "ra", " ", "rAAA"}], 
-         "+", 
+         RowBox[{"coeff\:0df4AA\:02d6a\:27943Y", " ", "ra", " ", "rAA"}], "+", 
          RowBox[{"coeff\:0df4Y\:2794a", " ", "rY"}]}]},
        {"5", 
         RowBox[{
@@ -5039,16 +4032,8 @@ Cell[BoxData[
          RowBox[{"coeff\:0df4AA\:2794A\:02d6A", " ", "rAA"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6aa\:27943Y", " ", "ra", " ", "rAA"}], "-", 
          RowBox[{"coeff\:0df4AA\:02d6a\:27943Y", " ", "ra", " ", "rAA"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6AA\:2794aAA", " ", "ra", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6a\:2794AAa", " ", "ra", " ", "rAA"}], 
-         "-", 
          RowBox[{"coeff\:0df4A\:02d6AA\:27943Y", " ", "rA", " ", "rAA"}], "-", 
          RowBox[{"coeff\:0df4AA\:02d6A\:27943Y", " ", "rA", " ", "rAA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AA\:2794AAA", " ", "rA", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:2794AAA", " ", "rA", " ", "rAA"}], 
-         "-", 
          RowBox[{
          "2", " ", "coeff\:0df4AA\:02d6aa\:27944Y", " ", "raa", " ", "rAA"}], 
          "-", 
@@ -5061,59 +4046,15 @@ Cell[BoxData[
          RowBox[{"coeff\:0df4AA\:02d6Aa\:27944Y", " ", "rAa", " ", "rAA"}], 
          "-", 
          RowBox[{"2", " ", "coeff\:0df4AA\:02d6AA\:27944Y", " ", 
-          SuperscriptBox["rAA", "2"]}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaa\:27945Y", " ", "rAA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6aa\:27945Y", " ", "rAA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaA\:27945Y", " ", "rAA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aa\:27945Y", " ", "rAA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAa\:27945Y", " ", "rAA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aa\:27945Y", " ", "rAA", " ", "raAa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAA\:2794a\:02d6AA", " ", "raAA"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAA\:27945Y", " ", "rAA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aa\:27945Y", " ", "rAA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6Aaa\:27945Y", " ", "rAA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6AA\:27945Y", " ", "rAA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AaA\:27945Y", " ", "rAA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6AA\:27945Y", " ", "rAA", " ", "rAaA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794AA\:02d6a", " ", "rAAa"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAa\:27945Y", " ", "rAA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6AA\:27945Y", " ", "rAA", " ", "rAAa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAA\:2794A\:02d6AA", " ", "rAAA"}], "+", 
-         RowBox[{"coeff\:0df4AAA\:2794AA\:02d6A", " ", "rAAA"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAA\:27945Y", " ", "rAA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AA\:27945Y", " ", "rAA", " ", "rAAA"}]}]},
+          SuperscriptBox["rAA", "2"]}]}]},
        {"6", 
         RowBox[{
          RowBox[{"coeff\:0df4a\:02d6A\:2794aA", " ", "ra", " ", "rA"}], "-", 
          RowBox[{"coeff\:0df4aA\:2794a\:02d6A", " ", "rAa"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6aA\:27943Y", " ", "ra", " ", "rAa"}], "-", 
          RowBox[{"coeff\:0df4Aa\:02d6a\:27943Y", " ", "ra", " ", "rAa"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6Aa\:2794aAa", " ", "ra", " ", "rAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6a\:2794Aaa", " ", "ra", " ", "rAa"}], 
-         "-", 
          RowBox[{"coeff\:0df4A\:02d6Aa\:27943Y", " ", "rA", " ", "rAa"}], "-", 
          RowBox[{"coeff\:0df4Aa\:02d6A\:27943Y", " ", "rA", " ", "rAa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aa\:2794AAa", " ", "rA", " ", "rAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6A\:2794AaA", " ", "rA", " ", "rAa"}], 
-         "-", 
          RowBox[{"coeff\:0df4Aa\:02d6aa\:27944Y", " ", "raa", " ", "rAa"}], 
          "-", 
          RowBox[{"coeff\:0df4AA\:02d6aA\:27944Y", " ", "raa", " ", "rAa"}], 
@@ -5125,60 +4066,15 @@ Cell[BoxData[
           SuperscriptBox["rAa", "2"]}], "-", 
          RowBox[{"coeff\:0df4Aa\:02d6AA\:27944Y", " ", "rAa", " ", "rAA"}], 
          "-", 
-         RowBox[{"coeff\:0df4AA\:02d6Aa\:27944Y", " ", "rAa", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaa\:27945Y", " ", "rAa", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6aA\:27945Y", " ", "rAa", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaA\:27945Y", " ", "rAa", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aA\:27945Y", " ", "rAa", " ", "raaA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAa\:2794a\:02d6Aa", " ", "raAa"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAa\:27945Y", " ", "rAa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aA\:27945Y", " ", "rAa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAA\:27945Y", " ", "rAa", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aA\:27945Y", " ", "rAa", " ", "raAA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4Aaa\:2794Aa\:02d6a", " ", "rAaa"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6Aaa\:27945Y", " ", "rAa", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6Aa\:27945Y", " ", "rAa", " ", "rAaa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AaA\:2794Aa\:02d6A", " ", "rAaA"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AaA\:27945Y", " ", "rAa", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6Aa\:27945Y", " ", "rAa", " ", "rAaA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794A\:02d6Aa", " ", "rAAa"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAa\:27945Y", " ", "rAa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6Aa\:27945Y", " ", "rAa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAA\:27945Y", " ", "rAa", " ", "rAAA"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6Aa\:27945Y", " ", "rAa", " ", "rAAA"}]}]},
+         RowBox[{"coeff\:0df4AA\:02d6Aa\:27944Y", " ", "rAa", " ", "rAA"}]}]},
        {"7", 
         RowBox[{
          RowBox[{"coeff\:0df4a\:02d6A\:2794aA", " ", "ra", " ", "rA"}], "-", 
          RowBox[{"coeff\:0df4aA\:2794a\:02d6A", " ", "raA"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6Aa\:27943Y", " ", "ra", " ", "raA"}], "-", 
          RowBox[{"coeff\:0df4Aa\:02d6A\:27943Y", " ", "ra", " ", "raA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aa\:2794AAa", " ", "ra", " ", "raA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6A\:2794AaA", " ", "ra", " ", "raA"}], 
-         "-", 
          RowBox[{"coeff\:0df4A\:02d6aA\:27943Y", " ", "rA", " ", "raA"}], "-", 
          RowBox[{"coeff\:0df4Aa\:02d6a\:27943Y", " ", "rA", " ", "raA"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6Aa\:2794aAa", " ", "rA", " ", "raA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6a\:2794Aaa", " ", "rA", " ", "raA"}], 
-         "-", 
          RowBox[{"coeff\:0df4Aa\:02d6AA\:27944Y", " ", "raa", " ", "raA"}], 
          "-", 
          RowBox[{"coeff\:0df4AA\:02d6Aa\:27944Y", " ", "raa", " ", "raA"}], 
@@ -5190,44 +4086,7 @@ Cell[BoxData[
          "-", 
          RowBox[{"coeff\:0df4Aa\:02d6aa\:27944Y", " ", "raA", " ", "rAA"}], 
          "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aA\:27944Y", " ", "raA", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAA\:27945Y", " ", "raA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6Aa\:27945Y", " ", "raA", " ", "raaa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794A\:02d6Aa", " ", "raaA"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAa\:27945Y", " ", "raA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6Aa\:27945Y", " ", "raA", " ", "raaA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AaA\:2794Aa\:02d6A", " ", "raAa"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AaA\:27945Y", " ", "raA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6Aa\:27945Y", " ", "raA", " ", "raAa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4Aaa\:2794Aa\:02d6a", " ", "raAA"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6Aaa\:27945Y", " ", "raA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6Aa\:27945Y", " ", "raA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAA\:27945Y", " ", "raA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aA\:27945Y", " ", "raA", " ", "rAaa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAa\:2794a\:02d6Aa", " ", "rAaA"}], "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAa\:27945Y", " ", "raA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aA\:27945Y", " ", "raA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaA\:27945Y", " ", "raA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aA\:27945Y", " ", "raA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaa\:27945Y", " ", "raA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aA\:27945Y", " ", "raA", " ", "rAAA"}]}]},
+         RowBox[{"coeff\:0df4AA\:02d6aA\:27944Y", " ", "raA", " ", "rAA"}]}]},
        {"8", 
         RowBox[{
          RowBox[{"coeff\:0df4A\:02d6A\:2794AA", " ", 
@@ -5235,16 +4094,8 @@ Cell[BoxData[
          RowBox[{"coeff\:0df4AA\:2794A\:02d6A", " ", "raa"}], "-", 
          RowBox[{"coeff\:0df4A\:02d6AA\:27943Y", " ", "ra", " ", "raa"}], "-", 
          RowBox[{"coeff\:0df4AA\:02d6A\:27943Y", " ", "ra", " ", "raa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AA\:2794AAA", " ", "ra", " ", "raa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:2794AAA", " ", "ra", " ", "raa"}], 
-         "-", 
          RowBox[{"coeff\:0df4A\:02d6aa\:27943Y", " ", "rA", " ", "raa"}], "-", 
          RowBox[{"coeff\:0df4AA\:02d6a\:27943Y", " ", "rA", " ", "raa"}], "-", 
-         RowBox[{"coeff\:0df4a\:02d6AA\:2794aAA", " ", "rA", " ", "raa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6a\:2794AAa", " ", "rA", " ", "raa"}], 
-         "-", 
          RowBox[{"2", " ", "coeff\:0df4AA\:02d6AA\:27944Y", " ", 
           SuperscriptBox["raa", "2"]}], "-", 
          RowBox[{"coeff\:0df4Aa\:02d6AA\:27944Y", " ", "raa", " ", "raA"}], 
@@ -5256,532 +4107,7 @@ Cell[BoxData[
          RowBox[{"coeff\:0df4AA\:02d6aA\:27944Y", " ", "raa", " ", "rAa"}], 
          "-", 
          RowBox[{
-         "2", " ", "coeff\:0df4AA\:02d6aa\:27944Y", " ", "raa", " ", "rAA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAA\:2794A\:02d6AA", " ", "raaa"}], "+", 
-         RowBox[{"coeff\:0df4AAA\:2794AA\:02d6A", " ", "raaa"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAA\:27945Y", " ", "raa", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6AA\:27945Y", " ", "raa", " ", "raaa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AAa\:2794AA\:02d6a", " ", "raaA"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAa\:27945Y", " ", "raa", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6AA\:27945Y", " ", "raa", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AaA\:27945Y", " ", "raa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6AA\:27945Y", " ", "raa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6Aaa\:27945Y", " ", "raa", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6AA\:27945Y", " ", "raa", " ", "raAA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4aAA\:2794a\:02d6AA", " ", "rAaa"}], "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAA\:27945Y", " ", "raa", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aa\:27945Y", " ", "raa", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAa\:27945Y", " ", "raa", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aa\:27945Y", " ", "raa", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaA\:27945Y", " ", "raa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aa\:27945Y", " ", "raa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaa\:27945Y", " ", "raa", " ", "rAAA"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aa\:27945Y", " ", "raa", " ", "rAAA"}]}]},
-       {"9", 
-        RowBox[{
-         RowBox[{"coeff\:0df4A\:02d6AA\:2794AAA", " ", "rA", " ", "rAA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:2794AAA", " ", "rA", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:2794A\:02d6AA", " ", "rAAA"}], "-", 
-         RowBox[{"coeff\:0df4AAA\:2794AA\:02d6A", " ", "rAAA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaa\:27944Y", " ", "ra", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6a\:27944Y", " ", "ra", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAA\:27944Y", " ", "rA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6A\:27944Y", " ", "rA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaa\:27945Y", " ", "raa", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6aa\:27945Y", " ", "raa", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaa\:27945Y", " ", "raA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6aA\:27945Y", " ", "raA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAA\:27945Y", " ", "rAa", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6Aa\:27945Y", " ", "rAa", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAA\:27945Y", " ", "rAA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6AA\:27945Y", " ", "rAA", " ", "rAAA"}], 
-         "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4AAA\:02d6aaa\:27946Y", " ", "raaa", " ", 
-          "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aaa\:27946Y", " ", "raaA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aaA\:27946Y", " ", "raaA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaa\:27946Y", " ", "raAa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAa\:27946Y", " ", "raAa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaa\:27946Y", " ", "raAA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAA\:27946Y", " ", "raAA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAA\:27946Y", " ", "rAaa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6Aaa\:27946Y", " ", "rAaa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAA\:27946Y", " ", "rAaA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AaA\:27946Y", " ", "rAaA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AAA\:27946Y", " ", "rAAa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AAa\:27946Y", " ", "rAAa", " ", "rAAA"}], "-", 
-         RowBox[{"2", " ", "coeff\:0df4AAA\:02d6AAA\:27946Y", " ", 
-          SuperscriptBox["rAAA", "2"]}]}]},
-       {"10", 
-        RowBox[{
-         RowBox[{"coeff\:0df4A\:02d6Aa\:2794AAa", " ", "rA", " ", "rAa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AA\:02d6a\:2794AAa", " ", "ra", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:2794A\:02d6Aa", " ", "rAAa"}], "-", 
-         RowBox[{"coeff\:0df4AAa\:2794AA\:02d6a", " ", "rAAa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaA\:27944Y", " ", "ra", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6a\:27944Y", " ", "ra", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAa\:27944Y", " ", "rA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6A\:27944Y", " ", "rA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaA\:27945Y", " ", "raa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aa\:27945Y", " ", "raa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaA\:27945Y", " ", "raA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aA\:27945Y", " ", "raA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAa\:27945Y", " ", "rAa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6Aa\:27945Y", " ", "rAa", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAa\:27945Y", " ", "rAA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6AA\:27945Y", " ", "rAA", " ", "rAAa"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aaa\:27946Y", " ", "raaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aaA\:27946Y", " ", "raaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4AAa\:02d6aaA\:27946Y", " ", "raaA", " ", 
-          "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaA\:27946Y", " ", "raAa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAa\:27946Y", " ", "raAa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaA\:27946Y", " ", "raAA", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAA\:27946Y", " ", "raAA", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAa\:27946Y", " ", "rAaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6Aaa\:27946Y", " ", "rAaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAa\:27946Y", " ", "rAaA", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AaA\:27946Y", " ", "rAaA", " ", "rAAa"}], "-", 
-         RowBox[{"2", " ", "coeff\:0df4AAa\:02d6AAa\:27946Y", " ", 
-          SuperscriptBox["rAAa", "2"]}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AAA\:27946Y", " ", "rAAa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AAa\:27946Y", " ", "rAAa", " ", "rAAA"}]}]},
-       {"11", 
-        RowBox[{
-         RowBox[{"coeff\:0df4a\:02d6Aa\:2794aAa", " ", "rA", " ", "raA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4Aa\:02d6A\:2794AaA", " ", "rA", " ", "rAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4aAa\:2794a\:02d6Aa", " ", "rAaA"}], "-", 
-         RowBox[{"coeff\:0df4AaA\:2794Aa\:02d6A", " ", "rAaA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAa\:27944Y", " ", "ra", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6a\:27944Y", " ", "ra", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6AaA\:27944Y", " ", "rA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6A\:27944Y", " ", "rA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAa\:27945Y", " ", "raa", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aa\:27945Y", " ", "raa", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAa\:27945Y", " ", "raA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aA\:27945Y", " ", "raA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AaA\:27945Y", " ", "rAa", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6Aa\:27945Y", " ", "rAa", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AaA\:27945Y", " ", "rAA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6AA\:27945Y", " ", "rAA", " ", "rAaA"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaa\:27946Y", " ", "raaa", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAa\:27946Y", " ", "raaa", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaA\:27946Y", " ", "raaA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAa\:27946Y", " ", "raaA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4AaA\:02d6aAa\:27946Y", " ", "raAa", " ", 
-          "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aAa\:27946Y", " ", "raAA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aAA\:27946Y", " ", "raAA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AaA\:27946Y", " ", "rAaa", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6Aaa\:27946Y", " ", "rAaa", " ", "rAaA"}], "-", 
-         RowBox[{"2", " ", "coeff\:0df4AaA\:02d6AaA\:27946Y", " ", 
-          SuperscriptBox["rAaA", "2"]}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAa\:27946Y", " ", "rAaA", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AaA\:27946Y", " ", "rAaA", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAA\:27946Y", " ", "rAaA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AaA\:27946Y", " ", "rAaA", " ", "rAAA"}]}]},
-       {"12", 
-        RowBox[{
-         RowBox[{"coeff\:0df4a\:02d6AA\:2794aAA", " ", "rA", " ", "raa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4Aa\:02d6a\:2794Aaa", " ", "ra", " ", "rAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4aAA\:2794a\:02d6AA", " ", "rAaa"}], "-", 
-         RowBox[{"coeff\:0df4Aaa\:2794Aa\:02d6a", " ", "rAaa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAA\:27944Y", " ", "ra", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6a\:27944Y", " ", "ra", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aaa\:27944Y", " ", "rA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6A\:27944Y", " ", "rA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAA\:27945Y", " ", "raa", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aa\:27945Y", " ", "raa", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAA\:27945Y", " ", "raA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aA\:27945Y", " ", "raA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6Aaa\:27945Y", " ", "rAa", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6Aa\:27945Y", " ", "rAa", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6Aaa\:27945Y", " ", "rAA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6AA\:27945Y", " ", "rAA", " ", "rAaa"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaa\:27946Y", " ", "raaa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAA\:27946Y", " ", "raaa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaA\:27946Y", " ", "raaA", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAA\:27946Y", " ", "raaA", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aAa\:27946Y", " ", "raAa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aAA\:27946Y", " ", "raAa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4Aaa\:02d6aAA\:27946Y", " ", "raAA", " ", 
-          "rAaa"}], "-", 
-         RowBox[{"2", " ", "coeff\:0df4Aaa\:02d6Aaa\:27946Y", " ", 
-          SuperscriptBox["rAaa", "2"]}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AaA\:27946Y", " ", "rAaa", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6Aaa\:27946Y", " ", "rAaa", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAa\:27946Y", " ", "rAaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6Aaa\:27946Y", " ", "rAaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAA\:27946Y", " ", "rAaa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6Aaa\:27946Y", " ", "rAaa", " ", "rAAA"}]}]},
-       {"13", 
-        RowBox[{
-         RowBox[{"coeff\:0df4Aa\:02d6a\:2794Aaa", " ", "rA", " ", "raA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4a\:02d6AA\:2794aAA", " ", "ra", " ", "rAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4aAA\:2794a\:02d6AA", " ", "raAA"}], "-", 
-         RowBox[{"coeff\:0df4Aaa\:2794Aa\:02d6a", " ", "raAA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6Aaa\:27944Y", " ", "ra", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6A\:27944Y", " ", "ra", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAA\:27944Y", " ", "rA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6a\:27944Y", " ", "rA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6Aaa\:27945Y", " ", "raa", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6AA\:27945Y", " ", "raa", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6Aaa\:27945Y", " ", "raA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6Aa\:27945Y", " ", "raA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAA\:27945Y", " ", "rAa", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aA\:27945Y", " ", "rAa", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAA\:27945Y", " ", "rAA", " ", "raAA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aaa\:02d6aa\:27945Y", " ", "rAA", " ", "raAA"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAA\:27946Y", " ", "raaa", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6Aaa\:27946Y", " ", "raaa", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAa\:27946Y", " ", "raaA", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6Aaa\:27946Y", " ", "raaA", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AaA\:27946Y", " ", "raAa", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6Aaa\:27946Y", " ", "raAa", " ", "raAA"}], "-", 
-         RowBox[{"2", " ", "coeff\:0df4Aaa\:02d6Aaa\:27946Y", " ", 
-          SuperscriptBox["raAA", "2"]}], "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4Aaa\:02d6aAA\:27946Y", " ", "raAA", " ", 
-          "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aAa\:27946Y", " ", "raAA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aAA\:27946Y", " ", "raAA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaA\:27946Y", " ", "raAA", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAA\:27946Y", " ", "raAA", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaa\:27946Y", " ", "raAA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAA\:27946Y", " ", "raAA", " ", "rAAA"}]}]},
-       {"14", 
-        RowBox[{
-         RowBox[{"coeff\:0df4Aa\:02d6A\:2794AaA", " ", "ra", " ", "raA"}], 
-         "+", 
-         RowBox[{"coeff\:0df4a\:02d6Aa\:2794aAa", " ", "ra", " ", "rAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4aAa\:2794a\:02d6Aa", " ", "raAa"}], "-", 
-         RowBox[{"coeff\:0df4AaA\:2794Aa\:02d6A", " ", "raAa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AaA\:27944Y", " ", "ra", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6A\:27944Y", " ", "ra", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aAa\:27944Y", " ", "rA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6a\:27944Y", " ", "rA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AaA\:27945Y", " ", "raa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6AA\:27945Y", " ", "raa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AaA\:27945Y", " ", "raA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6Aa\:27945Y", " ", "raA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aAa\:27945Y", " ", "rAa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aA\:27945Y", " ", "rAa", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aAa\:27945Y", " ", "rAA", " ", "raAa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AaA\:02d6aa\:27945Y", " ", "rAA", " ", "raAa"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAA\:27946Y", " ", "raaa", " ", "raAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AaA\:27946Y", " ", "raaa", " ", "raAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAa\:27946Y", " ", "raaA", " ", "raAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AaA\:27946Y", " ", "raaA", " ", "raAa"}], "-", 
-         RowBox[{"2", " ", "coeff\:0df4AaA\:02d6AaA\:27946Y", " ", 
-          SuperscriptBox["raAa", "2"]}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AaA\:27946Y", " ", "raAa", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6Aaa\:27946Y", " ", "raAa", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aAa\:27946Y", " ", "raAa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aAA\:27946Y", " ", "raAa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4AaA\:02d6aAa\:27946Y", " ", "raAa", " ", 
-          "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaA\:27946Y", " ", "raAa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAa\:27946Y", " ", "raAa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaa\:27946Y", " ", "raAa", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAa\:27946Y", " ", "raAa", " ", "rAAA"}]}]},
-       {"15", 
-        RowBox[{
-         RowBox[{"coeff\:0df4AA\:02d6a\:2794AAa", " ", "rA", " ", "raa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4A\:02d6Aa\:2794AAa", " ", "ra", " ", "raA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:2794A\:02d6Aa", " ", "raaA"}], "-", 
-         RowBox[{"coeff\:0df4AAa\:2794AA\:02d6a", " ", "raaA"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAa\:27944Y", " ", "ra", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6A\:27944Y", " ", "ra", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaA\:27944Y", " ", "rA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6a\:27944Y", " ", "rA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAa\:27945Y", " ", "raa", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6AA\:27945Y", " ", "raa", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAa\:27945Y", " ", "raA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6Aa\:27945Y", " ", "raA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaA\:27945Y", " ", "rAa", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aA\:27945Y", " ", "rAa", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaA\:27945Y", " ", "rAA", " ", "raaA"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAa\:02d6aa\:27945Y", " ", "rAA", " ", "raaA"}], 
-         "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AAA\:27946Y", " ", "raaa", " ", "raaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AAa\:27946Y", " ", "raaa", " ", "raaA"}], "-", 
-         RowBox[{"2", " ", "coeff\:0df4AAa\:02d6AAa\:27946Y", " ", 
-          SuperscriptBox["raaA", "2"]}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAa\:27946Y", " ", "raaA", " ", "raAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AaA\:27946Y", " ", "raaA", " ", "raAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAa\:27946Y", " ", "raaA", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6Aaa\:27946Y", " ", "raaA", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaA\:27946Y", " ", "raaA", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAA\:27946Y", " ", "raaA", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaA\:27946Y", " ", "raaA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aAa\:27946Y", " ", "raaA", " ", "rAaA"}], "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4AAa\:02d6aaA\:27946Y", " ", "raaA", " ", 
-          "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aaa\:27946Y", " ", "raaA", " ", "rAAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aaA\:27946Y", " ", "raaA", " ", "rAAA"}]}]},
-       {"16", 
-        RowBox[{
-         RowBox[{"coeff\:0df4A\:02d6AA\:2794AAA", " ", "ra", " ", "raa"}], 
-         "+", 
-         RowBox[{"coeff\:0df4AA\:02d6A\:2794AAA", " ", "ra", " ", "raa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:2794A\:02d6AA", " ", "raaa"}], "-", 
-         RowBox[{"coeff\:0df4AAA\:2794AA\:02d6A", " ", "raaa"}], "-", 
-         RowBox[{"coeff\:0df4A\:02d6AAA\:27944Y", " ", "ra", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6A\:27944Y", " ", "ra", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4A\:02d6aaa\:27944Y", " ", "rA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6a\:27944Y", " ", "rA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6AAA\:27945Y", " ", "raa", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6AA\:27945Y", " ", "raa", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6AAA\:27945Y", " ", "raA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6Aa\:27945Y", " ", "raA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4Aa\:02d6aaa\:27945Y", " ", "rAa", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6aA\:27945Y", " ", "rAa", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AA\:02d6aaa\:27945Y", " ", "rAA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"coeff\:0df4AAA\:02d6aa\:27945Y", " ", "rAA", " ", "raaa"}], 
-         "-", 
-         RowBox[{"2", " ", "coeff\:0df4AAA\:02d6AAA\:27946Y", " ", 
-          SuperscriptBox["raaa", "2"]}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6AAA\:27946Y", " ", "raaa", " ", "raaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AAa\:27946Y", " ", "raaa", " ", "raaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6AAA\:27946Y", " ", "raaa", " ", "raAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6AaA\:27946Y", " ", "raaa", " ", "raAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6AAA\:27946Y", " ", "raaa", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6Aaa\:27946Y", " ", "raaa", " ", "raAA"}], "-", 
-         RowBox[{
-         "coeff\:0df4Aaa\:02d6aaa\:27946Y", " ", "raaa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAA\:27946Y", " ", "raaa", " ", "rAaa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AaA\:02d6aaa\:27946Y", " ", "raaa", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aAa\:27946Y", " ", "raaa", " ", "rAaA"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAa\:02d6aaa\:27946Y", " ", "raaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "coeff\:0df4AAA\:02d6aaA\:27946Y", " ", "raaa", " ", "rAAa"}], "-", 
-         RowBox[{
-         "2", " ", "coeff\:0df4AAA\:02d6aaa\:27946Y", " ", "raaa", " ", 
-          "rAAA"}]}]}
+         "2", " ", "coeff\:0df4AA\:02d6aa\:27944Y", " ", "raa", " ", "rAA"}]}]}
       },
       GridBoxAlignment->{
        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
@@ -5858,311 +4184,7 @@ $CellContext`rAA +
 $CellContext`rAA + 
       4 $CellContext`coeff\:0df4AA\:02d6Aa\:27944Y $CellContext`rAa \
 $CellContext`rAA + 
-      4 $CellContext`coeff\:0df4AA\:02d6AA\:27944Y $CellContext`rAA^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6AAA\:27944Y $CellContext`ra \
-$CellContext`raaa + 
-      4 $CellContext`coeff\:0df4AAA\:02d6A\:27944Y $CellContext`ra \
-$CellContext`raaa + 
-      4 $CellContext`coeff\:0df4A\:02d6aaa\:27944Y $CellContext`rA \
-$CellContext`raaa + 
-      4 $CellContext`coeff\:0df4AAA\:02d6a\:27944Y $CellContext`rA \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4AA\:02d6AAA\:27945Y $CellContext`raa \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4AAA\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6AAA\:27945Y $CellContext`raA \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4AAA\:02d6Aa\:27945Y $CellContext`raA \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aaa\:27945Y $CellContext`rAa \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4AAA\:02d6aA\:27945Y $CellContext`rAa \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4AA\:02d6aaa\:27945Y $CellContext`rAA \
-$CellContext`raaa + 
-      5 $CellContext`coeff\:0df4AAA\:02d6aa\:27945Y $CellContext`rAA \
-$CellContext`raaa + 
-      6 $CellContext`coeff\:0df4AAA\:02d6AAA\:27946Y $CellContext`raaa^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6AAa\:27944Y $CellContext`ra \
-$CellContext`raaA + 
-      4 $CellContext`coeff\:0df4AAa\:02d6A\:27944Y $CellContext`ra \
-$CellContext`raaA + 
-      4 $CellContext`coeff\:0df4A\:02d6aaA\:27944Y $CellContext`rA \
-$CellContext`raaA + 
-      4 $CellContext`coeff\:0df4AAa\:02d6a\:27944Y $CellContext`rA \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4AA\:02d6AAa\:27945Y $CellContext`raa \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4AAa\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6AAa\:27945Y $CellContext`raA \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4AAa\:02d6Aa\:27945Y $CellContext`raA \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aaA\:27945Y $CellContext`rAa \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4AAa\:02d6aA\:27945Y $CellContext`rAa \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4AA\:02d6aaA\:27945Y $CellContext`rAA \
-$CellContext`raaA + 
-      5 $CellContext`coeff\:0df4AAa\:02d6aa\:27945Y $CellContext`rAA \
-$CellContext`raaA + 
-      6 $CellContext`coeff\:0df4AAa\:02d6AAA\:27946Y $CellContext`raaa \
-$CellContext`raaA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6AAa\:27946Y $CellContext`raaa \
-$CellContext`raaA + 
-      6 $CellContext`coeff\:0df4AAa\:02d6AAa\:27946Y $CellContext`raaA^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6AaA\:27944Y $CellContext`ra \
-$CellContext`raAa + 
-      4 $CellContext`coeff\:0df4AaA\:02d6A\:27944Y $CellContext`ra \
-$CellContext`raAa + 
-      4 $CellContext`coeff\:0df4A\:02d6aAa\:27944Y $CellContext`rA \
-$CellContext`raAa + 
-      4 $CellContext`coeff\:0df4AaA\:02d6a\:27944Y $CellContext`rA \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4AA\:02d6AaA\:27945Y $CellContext`raa \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4AaA\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6AaA\:27945Y $CellContext`raA \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4AaA\:02d6Aa\:27945Y $CellContext`raA \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aAa\:27945Y $CellContext`rAa \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4AaA\:02d6aA\:27945Y $CellContext`rAa \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4AA\:02d6aAa\:27945Y $CellContext`rAA \
-$CellContext`raAa + 
-      5 $CellContext`coeff\:0df4AaA\:02d6aa\:27945Y $CellContext`rAA \
-$CellContext`raAa + 
-      6 $CellContext`coeff\:0df4AaA\:02d6AAA\:27946Y $CellContext`raaa \
-$CellContext`raAa + 
-      6 $CellContext`coeff\:0df4AAA\:02d6AaA\:27946Y $CellContext`raaa \
-$CellContext`raAa + 
-      6 $CellContext`coeff\:0df4AaA\:02d6AAa\:27946Y $CellContext`raaA \
-$CellContext`raAa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6AaA\:27946Y $CellContext`raaA \
-$CellContext`raAa + 
-      6 $CellContext`coeff\:0df4AaA\:02d6AaA\:27946Y $CellContext`raAa^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6Aaa\:27944Y $CellContext`ra \
-$CellContext`raAA + 
-      4 $CellContext`coeff\:0df4Aaa\:02d6A\:27944Y $CellContext`ra \
-$CellContext`raAA + 
-      4 $CellContext`coeff\:0df4A\:02d6aAA\:27944Y $CellContext`rA \
-$CellContext`raAA + 
-      4 $CellContext`coeff\:0df4Aaa\:02d6a\:27944Y $CellContext`rA \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4AA\:02d6Aaa\:27945Y $CellContext`raa \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6Aaa\:27945Y $CellContext`raA \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6Aa\:27945Y $CellContext`raA \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aAA\:27945Y $CellContext`rAa \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6aA\:27945Y $CellContext`rAa \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4AA\:02d6aAA\:27945Y $CellContext`rAA \
-$CellContext`raAA + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6aa\:27945Y $CellContext`rAA \
-$CellContext`raAA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6AAA\:27946Y $CellContext`raaa \
-$CellContext`raAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6Aaa\:27946Y $CellContext`raaa \
-$CellContext`raAA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6AAa\:27946Y $CellContext`raaA \
-$CellContext`raAA + 
-      6 $CellContext`coeff\:0df4AAa\:02d6Aaa\:27946Y $CellContext`raaA \
-$CellContext`raAA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6AaA\:27946Y $CellContext`raAa \
-$CellContext`raAA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6Aaa\:27946Y $CellContext`raAa \
-$CellContext`raAA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6Aaa\:27946Y $CellContext`raAA^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6aAA\:27944Y $CellContext`ra \
-$CellContext`rAaa + 
-      4 $CellContext`coeff\:0df4Aaa\:02d6a\:27944Y $CellContext`ra \
-$CellContext`rAaa + 
-      4 $CellContext`coeff\:0df4A\:02d6Aaa\:27944Y $CellContext`rA \
-$CellContext`rAaa + 
-      4 $CellContext`coeff\:0df4Aaa\:02d6A\:27944Y $CellContext`rA \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4AA\:02d6aAA\:27945Y $CellContext`raa \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aAA\:27945Y $CellContext`raA \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6aA\:27945Y $CellContext`raA \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6Aaa\:27945Y $CellContext`rAa \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6Aa\:27945Y $CellContext`rAa \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4AA\:02d6Aaa\:27945Y $CellContext`rAA \
-$CellContext`rAaa + 
-      5 $CellContext`coeff\:0df4Aaa\:02d6AA\:27945Y $CellContext`rAA \
-$CellContext`rAaa + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6aaa\:27946Y $CellContext`raaa \
-$CellContext`rAaa + 
-      6 $CellContext`coeff\:0df4AAA\:02d6aAA\:27946Y $CellContext`raaa \
-$CellContext`rAaa + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6aaA\:27946Y $CellContext`raaA \
-$CellContext`rAaa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6aAA\:27946Y $CellContext`raaA \
-$CellContext`rAaa + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6aAa\:27946Y $CellContext`raAa \
-$CellContext`rAaa + 
-      6 $CellContext`coeff\:0df4AaA\:02d6aAA\:27946Y $CellContext`raAa \
-$CellContext`rAaa + 
-      12 $CellContext`coeff\:0df4Aaa\:02d6aAA\:27946Y $CellContext`raAA \
-$CellContext`rAaa + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6Aaa\:27946Y $CellContext`rAaa^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6aAa\:27944Y $CellContext`ra \
-$CellContext`rAaA + 
-      4 $CellContext`coeff\:0df4AaA\:02d6a\:27944Y $CellContext`ra \
-$CellContext`rAaA + 
-      4 $CellContext`coeff\:0df4A\:02d6AaA\:27944Y $CellContext`rA \
-$CellContext`rAaA + 
-      4 $CellContext`coeff\:0df4AaA\:02d6A\:27944Y $CellContext`rA \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4AA\:02d6aAa\:27945Y $CellContext`raa \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4AaA\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aAa\:27945Y $CellContext`raA \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4AaA\:02d6aA\:27945Y $CellContext`raA \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6AaA\:27945Y $CellContext`rAa \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4AaA\:02d6Aa\:27945Y $CellContext`rAa \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4AA\:02d6AaA\:27945Y $CellContext`rAA \
-$CellContext`rAaA + 
-      5 $CellContext`coeff\:0df4AaA\:02d6AA\:27945Y $CellContext`rAA \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6aaa\:27946Y $CellContext`raaa \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6aAa\:27946Y $CellContext`raaa \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6aaA\:27946Y $CellContext`raaA \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4AAa\:02d6aAa\:27946Y $CellContext`raaA \
-$CellContext`rAaA + 
-      12 $CellContext`coeff\:0df4AaA\:02d6aAa\:27946Y $CellContext`raAa \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6aAa\:27946Y $CellContext`raAA \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6aAA\:27946Y $CellContext`raAA \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6AaA\:27946Y $CellContext`rAaa \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6Aaa\:27946Y $CellContext`rAaa \
-$CellContext`rAaA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6AaA\:27946Y $CellContext`rAaA^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6aaA\:27944Y $CellContext`ra \
-$CellContext`rAAa + 
-      4 $CellContext`coeff\:0df4AAa\:02d6a\:27944Y $CellContext`ra \
-$CellContext`rAAa + 
-      4 $CellContext`coeff\:0df4A\:02d6AAa\:27944Y $CellContext`rA \
-$CellContext`rAAa + 
-      4 $CellContext`coeff\:0df4AAa\:02d6A\:27944Y $CellContext`rA \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4AA\:02d6aaA\:27945Y $CellContext`raa \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4AAa\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aaA\:27945Y $CellContext`raA \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4AAa\:02d6aA\:27945Y $CellContext`raA \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4Aa\:02d6AAa\:27945Y $CellContext`rAa \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4AAa\:02d6Aa\:27945Y $CellContext`rAa \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4AA\:02d6AAa\:27945Y $CellContext`rAA \
-$CellContext`rAAa + 
-      5 $CellContext`coeff\:0df4AAa\:02d6AA\:27945Y $CellContext`rAA \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6aaa\:27946Y $CellContext`raaa \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AAA\:02d6aaA\:27946Y $CellContext`raaa \
-$CellContext`rAAa + 
-      12 $CellContext`coeff\:0df4AAa\:02d6aaA\:27946Y $CellContext`raaA \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AaA\:02d6aaA\:27946Y $CellContext`raAa \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6aAa\:27946Y $CellContext`raAa \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6aaA\:27946Y $CellContext`raAA \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6aAA\:27946Y $CellContext`raAA \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6AAa\:27946Y $CellContext`rAaa \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6Aaa\:27946Y $CellContext`rAaa \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AaA\:02d6AAa\:27946Y $CellContext`rAaA \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6AaA\:27946Y $CellContext`rAaA \
-$CellContext`rAAa + 
-      6 $CellContext`coeff\:0df4AAa\:02d6AAa\:27946Y $CellContext`rAAa^2 + 
-      4 $CellContext`coeff\:0df4A\:02d6aaa\:27944Y $CellContext`ra \
-$CellContext`rAAA + 
-      4 $CellContext`coeff\:0df4AAA\:02d6a\:27944Y $CellContext`ra \
-$CellContext`rAAA + 
-      4 $CellContext`coeff\:0df4A\:02d6AAA\:27944Y $CellContext`rA \
-$CellContext`rAAA + 
-      4 $CellContext`coeff\:0df4AAA\:02d6A\:27944Y $CellContext`rA \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4AA\:02d6aaa\:27945Y $CellContext`raa \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4AAA\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6aaa\:27945Y $CellContext`raA \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4AAA\:02d6aA\:27945Y $CellContext`raA \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4Aa\:02d6AAA\:27945Y $CellContext`rAa \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4AAA\:02d6Aa\:27945Y $CellContext`rAa \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4AA\:02d6AAA\:27945Y $CellContext`rAA \
-$CellContext`rAAA + 
-      5 $CellContext`coeff\:0df4AAA\:02d6AA\:27945Y $CellContext`rAA \
-$CellContext`rAAA + 
-      12 $CellContext`coeff\:0df4AAA\:02d6aaa\:27946Y $CellContext`raaa \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAa\:02d6aaa\:27946Y $CellContext`raaA \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6aaA\:27946Y $CellContext`raaA \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6aaa\:27946Y $CellContext`raAa \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6aAa\:27946Y $CellContext`raAa \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6aaa\:27946Y $CellContext`raAA \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6aAA\:27946Y $CellContext`raAA \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4Aaa\:02d6AAA\:27946Y $CellContext`rAaa \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6Aaa\:27946Y $CellContext`rAaa \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AaA\:02d6AAA\:27946Y $CellContext`rAaA \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6AaA\:27946Y $CellContext`rAaA \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAa\:02d6AAA\:27946Y $CellContext`rAAa \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6AAa\:27946Y $CellContext`rAAa \
-$CellContext`rAAA + 
-      6 $CellContext`coeff\:0df4AAA\:02d6AAA\:27946Y $CellContext`rAAA^2 - \
+      4 $CellContext`coeff\:0df4AA\:02d6AA\:27944Y $CellContext`rAA^2 - \
 $CellContext`coeff\:0df4Y\:2794a $CellContext`rY - $CellContext`coeff\:0df4Y\
 \:2794A $CellContext`rY}, {
      3, -$CellContext`coeff\:0df4A\:2794Y $CellContext`rA - 
@@ -6173,48 +4195,16 @@ $CellContext`rA -
       2 $CellContext`coeff\:0df4A\:02d6A\:27942Y $CellContext`rA^2 - 
       2 $CellContext`coeff\:0df4A\:02d6A\:2794AA $CellContext`rA^2 - \
 $CellContext`coeff\:0df4A\:02d6aa\:27943Y $CellContext`rA $CellContext`raa - \
-$CellContext`coeff\:0df4AA\:02d6a\:27943Y $CellContext`rA $CellContext`raa - \
-$CellContext`coeff\:0df4a\:02d6AA\:2794aAA $CellContext`rA $CellContext`raa - \
-$CellContext`coeff\:0df4AA\:02d6a\:2794AAa $CellContext`rA $CellContext`raa + \
+$CellContext`coeff\:0df4AA\:02d6a\:27943Y $CellContext`rA $CellContext`raa + \
 $CellContext`coeff\:0df4aA\:2794a\:02d6A $CellContext`raA - \
 $CellContext`coeff\:0df4A\:02d6aA\:27943Y $CellContext`rA $CellContext`raA - \
-$CellContext`coeff\:0df4Aa\:02d6a\:27943Y $CellContext`rA $CellContext`raA - \
-$CellContext`coeff\:0df4a\:02d6Aa\:2794aAa $CellContext`rA $CellContext`raA - \
-$CellContext`coeff\:0df4Aa\:02d6a\:2794Aaa $CellContext`rA $CellContext`raA + \
+$CellContext`coeff\:0df4Aa\:02d6a\:27943Y $CellContext`rA $CellContext`raA + \
 $CellContext`coeff\:0df4aA\:2794a\:02d6A $CellContext`rAa - \
 $CellContext`coeff\:0df4A\:02d6Aa\:27943Y $CellContext`rA $CellContext`rAa - \
-$CellContext`coeff\:0df4Aa\:02d6A\:27943Y $CellContext`rA $CellContext`rAa - \
-$CellContext`coeff\:0df4A\:02d6Aa\:2794AAa $CellContext`rA $CellContext`rAa - \
-$CellContext`coeff\:0df4Aa\:02d6A\:2794AaA $CellContext`rA $CellContext`rAa + 
+$CellContext`coeff\:0df4Aa\:02d6A\:27943Y $CellContext`rA $CellContext`rAa + 
       2 $CellContext`coeff\:0df4AA\:2794A\:02d6A $CellContext`rAA - \
 $CellContext`coeff\:0df4A\:02d6AA\:27943Y $CellContext`rA $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6A\:27943Y $CellContext`rA $CellContext`rAA - \
-$CellContext`coeff\:0df4A\:02d6AA\:2794AAA $CellContext`rA $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6A\:2794AAA $CellContext`rA $CellContext`rAA - \
-$CellContext`coeff\:0df4A\:02d6aaa\:27944Y $CellContext`rA $CellContext`raaa - \
-$CellContext`coeff\:0df4AAA\:02d6a\:27944Y $CellContext`rA $CellContext`raaa + \
-$CellContext`coeff\:0df4AAa\:2794AA\:02d6a $CellContext`raaA - \
-$CellContext`coeff\:0df4A\:02d6aaA\:27944Y $CellContext`rA $CellContext`raaA - \
-$CellContext`coeff\:0df4AAa\:02d6a\:27944Y $CellContext`rA $CellContext`raaA - \
-$CellContext`coeff\:0df4A\:02d6aAa\:27944Y $CellContext`rA $CellContext`raAa - \
-$CellContext`coeff\:0df4AaA\:02d6a\:27944Y $CellContext`rA $CellContext`raAa + \
-$CellContext`coeff\:0df4Aaa\:2794Aa\:02d6a $CellContext`raAA - \
-$CellContext`coeff\:0df4A\:02d6aAA\:27944Y $CellContext`rA $CellContext`raAA - \
-$CellContext`coeff\:0df4Aaa\:02d6a\:27944Y $CellContext`rA $CellContext`raAA + \
-$CellContext`coeff\:0df4aAA\:2794a\:02d6AA $CellContext`rAaa - \
-$CellContext`coeff\:0df4A\:02d6Aaa\:27944Y $CellContext`rA $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aaa\:02d6A\:27944Y $CellContext`rA $CellContext`rAaa + \
-$CellContext`coeff\:0df4aAa\:2794a\:02d6Aa $CellContext`rAaA + \
-$CellContext`coeff\:0df4AaA\:2794Aa\:02d6A $CellContext`rAaA - \
-$CellContext`coeff\:0df4A\:02d6AaA\:27944Y $CellContext`rA $CellContext`rAaA - \
-$CellContext`coeff\:0df4AaA\:02d6A\:27944Y $CellContext`rA $CellContext`rAaA + \
-$CellContext`coeff\:0df4AAa\:2794A\:02d6Aa $CellContext`rAAa - \
-$CellContext`coeff\:0df4A\:02d6AAa\:27944Y $CellContext`rA $CellContext`rAAa - \
-$CellContext`coeff\:0df4AAa\:02d6A\:27944Y $CellContext`rA $CellContext`rAAa + \
-$CellContext`coeff\:0df4AAA\:2794A\:02d6AA $CellContext`rAAA + \
-$CellContext`coeff\:0df4AAA\:2794AA\:02d6A $CellContext`rAAA - \
-$CellContext`coeff\:0df4A\:02d6AAA\:27944Y $CellContext`rA $CellContext`rAAA - \
-$CellContext`coeff\:0df4AAA\:02d6A\:27944Y $CellContext`rA $CellContext`rAAA + \
+$CellContext`coeff\:0df4AA\:02d6A\:27943Y $CellContext`rA $CellContext`rAA + \
 $CellContext`coeff\:0df4Y\:2794A $CellContext`rY}, {
      4, -$CellContext`coeff\:0df4a\:2794Y $CellContext`ra - 
       2 $CellContext`coeff\:0df4A\:02d6A\:27942Y $CellContext`ra^2 - 
@@ -6225,620 +4215,156 @@ $CellContext`rA -
 $CellContext`rA + 
       2 $CellContext`coeff\:0df4AA\:2794A\:02d6A $CellContext`raa - \
 $CellContext`coeff\:0df4A\:02d6AA\:27943Y $CellContext`ra $CellContext`raa - \
-$CellContext`coeff\:0df4AA\:02d6A\:27943Y $CellContext`ra $CellContext`raa - \
-$CellContext`coeff\:0df4A\:02d6AA\:2794AAA $CellContext`ra $CellContext`raa - \
-$CellContext`coeff\:0df4AA\:02d6A\:2794AAA $CellContext`ra $CellContext`raa + \
+$CellContext`coeff\:0df4AA\:02d6A\:27943Y $CellContext`ra $CellContext`raa + \
 $CellContext`coeff\:0df4aA\:2794a\:02d6A $CellContext`raA - \
 $CellContext`coeff\:0df4A\:02d6Aa\:27943Y $CellContext`ra $CellContext`raA - \
-$CellContext`coeff\:0df4Aa\:02d6A\:27943Y $CellContext`ra $CellContext`raA - \
-$CellContext`coeff\:0df4A\:02d6Aa\:2794AAa $CellContext`ra $CellContext`raA - \
-$CellContext`coeff\:0df4Aa\:02d6A\:2794AaA $CellContext`ra $CellContext`raA + \
+$CellContext`coeff\:0df4Aa\:02d6A\:27943Y $CellContext`ra $CellContext`raA + \
 $CellContext`coeff\:0df4aA\:2794a\:02d6A $CellContext`rAa - \
 $CellContext`coeff\:0df4A\:02d6aA\:27943Y $CellContext`ra $CellContext`rAa - \
 $CellContext`coeff\:0df4Aa\:02d6a\:27943Y $CellContext`ra $CellContext`rAa - \
-$CellContext`coeff\:0df4a\:02d6Aa\:2794aAa $CellContext`ra $CellContext`rAa - \
-$CellContext`coeff\:0df4Aa\:02d6a\:2794Aaa $CellContext`ra $CellContext`rAa - \
 $CellContext`coeff\:0df4A\:02d6aa\:27943Y $CellContext`ra $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6a\:27943Y $CellContext`ra $CellContext`rAA - \
-$CellContext`coeff\:0df4a\:02d6AA\:2794aAA $CellContext`ra $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6a\:2794AAa $CellContext`ra $CellContext`rAA + \
-$CellContext`coeff\:0df4AAA\:2794A\:02d6AA $CellContext`raaa + \
-$CellContext`coeff\:0df4AAA\:2794AA\:02d6A $CellContext`raaa - \
-$CellContext`coeff\:0df4A\:02d6AAA\:27944Y $CellContext`ra $CellContext`raaa - \
-$CellContext`coeff\:0df4AAA\:02d6A\:27944Y $CellContext`ra $CellContext`raaa + \
-$CellContext`coeff\:0df4AAa\:2794A\:02d6Aa $CellContext`raaA - \
-$CellContext`coeff\:0df4A\:02d6AAa\:27944Y $CellContext`ra $CellContext`raaA - \
-$CellContext`coeff\:0df4AAa\:02d6A\:27944Y $CellContext`ra $CellContext`raaA + \
-$CellContext`coeff\:0df4aAa\:2794a\:02d6Aa $CellContext`raAa + \
-$CellContext`coeff\:0df4AaA\:2794Aa\:02d6A $CellContext`raAa - \
-$CellContext`coeff\:0df4A\:02d6AaA\:27944Y $CellContext`ra $CellContext`raAa - \
-$CellContext`coeff\:0df4AaA\:02d6A\:27944Y $CellContext`ra $CellContext`raAa + \
-$CellContext`coeff\:0df4aAA\:2794a\:02d6AA $CellContext`raAA - \
-$CellContext`coeff\:0df4A\:02d6Aaa\:27944Y $CellContext`ra $CellContext`raAA - \
-$CellContext`coeff\:0df4Aaa\:02d6A\:27944Y $CellContext`ra $CellContext`raAA + \
-$CellContext`coeff\:0df4Aaa\:2794Aa\:02d6a $CellContext`rAaa - \
-$CellContext`coeff\:0df4A\:02d6aAA\:27944Y $CellContext`ra $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aaa\:02d6a\:27944Y $CellContext`ra $CellContext`rAaa - \
-$CellContext`coeff\:0df4A\:02d6aAa\:27944Y $CellContext`ra $CellContext`rAaA - \
-$CellContext`coeff\:0df4AaA\:02d6a\:27944Y $CellContext`ra $CellContext`rAaA + \
-$CellContext`coeff\:0df4AAa\:2794AA\:02d6a $CellContext`rAAa - \
-$CellContext`coeff\:0df4A\:02d6aaA\:27944Y $CellContext`ra $CellContext`rAAa - \
-$CellContext`coeff\:0df4AAa\:02d6a\:27944Y $CellContext`ra $CellContext`rAAa - \
-$CellContext`coeff\:0df4A\:02d6aaa\:27944Y $CellContext`ra $CellContext`rAAA - \
-$CellContext`coeff\:0df4AAA\:02d6a\:27944Y $CellContext`ra $CellContext`rAAA + \
+$CellContext`coeff\:0df4AA\:02d6a\:27943Y $CellContext`ra $CellContext`rAA + \
 $CellContext`coeff\:0df4Y\:2794a $CellContext`rY}, {
      5, $CellContext`coeff\:0df4A\:02d6A\:2794AA $CellContext`rA^2 - \
 $CellContext`coeff\:0df4AA\:2794A\:02d6A $CellContext`rAA - \
 $CellContext`coeff\:0df4A\:02d6aa\:27943Y $CellContext`ra $CellContext`rAA - \
 $CellContext`coeff\:0df4AA\:02d6a\:27943Y $CellContext`ra $CellContext`rAA - \
-$CellContext`coeff\:0df4a\:02d6AA\:2794aAA $CellContext`ra $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6a\:2794AAa $CellContext`ra $CellContext`rAA - \
 $CellContext`coeff\:0df4A\:02d6AA\:27943Y $CellContext`rA $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6A\:27943Y $CellContext`rA $CellContext`rAA - \
-$CellContext`coeff\:0df4A\:02d6AA\:2794AAA $CellContext`rA $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6A\:2794AAA $CellContext`rA $CellContext`rAA - 
+$CellContext`coeff\:0df4AA\:02d6A\:27943Y $CellContext`rA $CellContext`rAA - 
       2 $CellContext`coeff\:0df4AA\:02d6aa\:27944Y $CellContext`raa \
 $CellContext`rAA - $CellContext`coeff\:0df4Aa\:02d6aa\:27944Y \
 $CellContext`raA $CellContext`rAA - \
 $CellContext`coeff\:0df4AA\:02d6aA\:27944Y $CellContext`raA $CellContext`rAA - \
 $CellContext`coeff\:0df4Aa\:02d6AA\:27944Y $CellContext`rAa $CellContext`rAA - \
 $CellContext`coeff\:0df4AA\:02d6Aa\:27944Y $CellContext`rAa $CellContext`rAA - 
-      2 $CellContext`coeff\:0df4AA\:02d6AA\:27944Y $CellContext`rAA^2 - \
-$CellContext`coeff\:0df4AA\:02d6aaa\:27945Y $CellContext`rAA \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raaa - \
-$CellContext`coeff\:0df4AA\:02d6aaA\:27945Y $CellContext`rAA \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raaA - \
-$CellContext`coeff\:0df4AA\:02d6aAa\:27945Y $CellContext`rAA \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raAa + \
-$CellContext`coeff\:0df4aAA\:2794a\:02d6AA $CellContext`raAA - \
-$CellContext`coeff\:0df4AA\:02d6aAA\:27945Y $CellContext`rAA \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raAA - \
-$CellContext`coeff\:0df4AA\:02d6Aaa\:27945Y $CellContext`rAA \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAaa - \
-$CellContext`coeff\:0df4AA\:02d6AaA\:27945Y $CellContext`rAA \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAaA + \
-$CellContext`coeff\:0df4AAa\:2794AA\:02d6a $CellContext`rAAa - \
-$CellContext`coeff\:0df4AA\:02d6AAa\:27945Y $CellContext`rAA \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAAa + \
-$CellContext`coeff\:0df4AAA\:2794A\:02d6AA $CellContext`rAAA + \
-$CellContext`coeff\:0df4AAA\:2794AA\:02d6A $CellContext`rAAA - \
-$CellContext`coeff\:0df4AA\:02d6AAA\:27945Y $CellContext`rAA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAAA}, {
+      2 $CellContext`coeff\:0df4AA\:02d6AA\:27944Y $CellContext`rAA^2}, {
      6, $CellContext`coeff\:0df4a\:02d6A\:2794aA $CellContext`ra \
 $CellContext`rA - $CellContext`coeff\:0df4aA\:2794a\:02d6A $CellContext`rAa - \
 $CellContext`coeff\:0df4A\:02d6aA\:27943Y $CellContext`ra $CellContext`rAa - \
 $CellContext`coeff\:0df4Aa\:02d6a\:27943Y $CellContext`ra $CellContext`rAa - \
-$CellContext`coeff\:0df4a\:02d6Aa\:2794aAa $CellContext`ra $CellContext`rAa - \
-$CellContext`coeff\:0df4Aa\:02d6a\:2794Aaa $CellContext`ra $CellContext`rAa - \
 $CellContext`coeff\:0df4A\:02d6Aa\:27943Y $CellContext`rA $CellContext`rAa - \
 $CellContext`coeff\:0df4Aa\:02d6A\:27943Y $CellContext`rA $CellContext`rAa - \
-$CellContext`coeff\:0df4A\:02d6Aa\:2794AAa $CellContext`rA $CellContext`rAa - \
-$CellContext`coeff\:0df4Aa\:02d6A\:2794AaA $CellContext`rA $CellContext`rAa - \
 $CellContext`coeff\:0df4Aa\:02d6aa\:27944Y $CellContext`raa $CellContext`rAa - \
 $CellContext`coeff\:0df4AA\:02d6aA\:27944Y $CellContext`raa $CellContext`rAa - 
       2 $CellContext`coeff\:0df4Aa\:02d6aA\:27944Y $CellContext`raA \
 $CellContext`rAa - 
       2 $CellContext`coeff\:0df4Aa\:02d6Aa\:27944Y $CellContext`rAa^2 - \
 $CellContext`coeff\:0df4Aa\:02d6AA\:27944Y $CellContext`rAa $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6Aa\:27944Y $CellContext`rAa $CellContext`rAA - \
-$CellContext`coeff\:0df4Aa\:02d6aaa\:27945Y $CellContext`rAa \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raaa - \
-$CellContext`coeff\:0df4Aa\:02d6aaA\:27945Y $CellContext`rAa \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raaA + \
-$CellContext`coeff\:0df4aAa\:2794a\:02d6Aa $CellContext`raAa - \
-$CellContext`coeff\:0df4Aa\:02d6aAa\:27945Y $CellContext`rAa \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raAa - \
-$CellContext`coeff\:0df4Aa\:02d6aAA\:27945Y $CellContext`rAa \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raAA + \
-$CellContext`coeff\:0df4Aaa\:2794Aa\:02d6a $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aa\:02d6Aaa\:27945Y $CellContext`rAa \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAaa + \
-$CellContext`coeff\:0df4AaA\:2794Aa\:02d6A $CellContext`rAaA - \
-$CellContext`coeff\:0df4Aa\:02d6AaA\:27945Y $CellContext`rAa \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAaA + \
-$CellContext`coeff\:0df4AAa\:2794A\:02d6Aa $CellContext`rAAa - \
-$CellContext`coeff\:0df4Aa\:02d6AAa\:27945Y $CellContext`rAa \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAAa - \
-$CellContext`coeff\:0df4Aa\:02d6AAA\:27945Y $CellContext`rAa \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAAA}, {
+$CellContext`coeff\:0df4AA\:02d6Aa\:27944Y $CellContext`rAa \
+$CellContext`rAA}, {
      7, $CellContext`coeff\:0df4a\:02d6A\:2794aA $CellContext`ra \
 $CellContext`rA - $CellContext`coeff\:0df4aA\:2794a\:02d6A $CellContext`raA - \
 $CellContext`coeff\:0df4A\:02d6Aa\:27943Y $CellContext`ra $CellContext`raA - \
 $CellContext`coeff\:0df4Aa\:02d6A\:27943Y $CellContext`ra $CellContext`raA - \
-$CellContext`coeff\:0df4A\:02d6Aa\:2794AAa $CellContext`ra $CellContext`raA - \
-$CellContext`coeff\:0df4Aa\:02d6A\:2794AaA $CellContext`ra $CellContext`raA - \
 $CellContext`coeff\:0df4A\:02d6aA\:27943Y $CellContext`rA $CellContext`raA - \
 $CellContext`coeff\:0df4Aa\:02d6a\:27943Y $CellContext`rA $CellContext`raA - \
-$CellContext`coeff\:0df4a\:02d6Aa\:2794aAa $CellContext`rA $CellContext`raA - \
-$CellContext`coeff\:0df4Aa\:02d6a\:2794Aaa $CellContext`rA $CellContext`raA - \
 $CellContext`coeff\:0df4Aa\:02d6AA\:27944Y $CellContext`raa $CellContext`raA - \
 $CellContext`coeff\:0df4AA\:02d6Aa\:27944Y $CellContext`raa $CellContext`raA - 
       2 $CellContext`coeff\:0df4Aa\:02d6Aa\:27944Y $CellContext`raA^2 - 
       2 $CellContext`coeff\:0df4Aa\:02d6aA\:27944Y $CellContext`raA \
 $CellContext`rAa - $CellContext`coeff\:0df4Aa\:02d6aa\:27944Y \
 $CellContext`raA $CellContext`rAA - \
-$CellContext`coeff\:0df4AA\:02d6aA\:27944Y $CellContext`raA $CellContext`rAA - \
-$CellContext`coeff\:0df4Aa\:02d6AAA\:27945Y $CellContext`raA \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raaa + \
-$CellContext`coeff\:0df4AAa\:2794A\:02d6Aa $CellContext`raaA - \
-$CellContext`coeff\:0df4Aa\:02d6AAa\:27945Y $CellContext`raA \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raaA + \
-$CellContext`coeff\:0df4AaA\:2794Aa\:02d6A $CellContext`raAa - \
-$CellContext`coeff\:0df4Aa\:02d6AaA\:27945Y $CellContext`raA \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raAa + \
-$CellContext`coeff\:0df4Aaa\:2794Aa\:02d6a $CellContext`raAA - \
-$CellContext`coeff\:0df4Aa\:02d6Aaa\:27945Y $CellContext`raA \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raAA - \
-$CellContext`coeff\:0df4Aa\:02d6aAA\:27945Y $CellContext`raA \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAaa + \
-$CellContext`coeff\:0df4aAa\:2794a\:02d6Aa $CellContext`rAaA - \
-$CellContext`coeff\:0df4Aa\:02d6aAa\:27945Y $CellContext`raA \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAaA - \
-$CellContext`coeff\:0df4Aa\:02d6aaA\:27945Y $CellContext`raA \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAAa - \
-$CellContext`coeff\:0df4Aa\:02d6aaa\:27945Y $CellContext`raA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAAA}, {
+$CellContext`coeff\:0df4AA\:02d6aA\:27944Y $CellContext`raA \
+$CellContext`rAA}, {
      8, $CellContext`coeff\:0df4A\:02d6A\:2794AA $CellContext`ra^2 - \
 $CellContext`coeff\:0df4AA\:2794A\:02d6A $CellContext`raa - \
 $CellContext`coeff\:0df4A\:02d6AA\:27943Y $CellContext`ra $CellContext`raa - \
 $CellContext`coeff\:0df4AA\:02d6A\:27943Y $CellContext`ra $CellContext`raa - \
-$CellContext`coeff\:0df4A\:02d6AA\:2794AAA $CellContext`ra $CellContext`raa - \
-$CellContext`coeff\:0df4AA\:02d6A\:2794AAA $CellContext`ra $CellContext`raa - \
 $CellContext`coeff\:0df4A\:02d6aa\:27943Y $CellContext`rA $CellContext`raa - \
-$CellContext`coeff\:0df4AA\:02d6a\:27943Y $CellContext`rA $CellContext`raa - \
-$CellContext`coeff\:0df4a\:02d6AA\:2794aAA $CellContext`rA $CellContext`raa - \
-$CellContext`coeff\:0df4AA\:02d6a\:2794AAa $CellContext`rA $CellContext`raa - 
+$CellContext`coeff\:0df4AA\:02d6a\:27943Y $CellContext`rA $CellContext`raa - 
       2 $CellContext`coeff\:0df4AA\:02d6AA\:27944Y $CellContext`raa^2 - \
 $CellContext`coeff\:0df4Aa\:02d6AA\:27944Y $CellContext`raa $CellContext`raA - \
 $CellContext`coeff\:0df4AA\:02d6Aa\:27944Y $CellContext`raa $CellContext`raA - \
 $CellContext`coeff\:0df4Aa\:02d6aa\:27944Y $CellContext`raa $CellContext`rAa - \
 $CellContext`coeff\:0df4AA\:02d6aA\:27944Y $CellContext`raa $CellContext`rAa - 
       2 $CellContext`coeff\:0df4AA\:02d6aa\:27944Y $CellContext`raa \
-$CellContext`rAA + $CellContext`coeff\:0df4AAA\:2794A\:02d6AA \
-$CellContext`raaa + $CellContext`coeff\:0df4AAA\:2794AA\:02d6A \
-$CellContext`raaa - $CellContext`coeff\:0df4AA\:02d6AAA\:27945Y \
-$CellContext`raa $CellContext`raaa - \
-$CellContext`coeff\:0df4AAA\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raaa + $CellContext`coeff\:0df4AAa\:2794AA\:02d6a \
-$CellContext`raaA - $CellContext`coeff\:0df4AA\:02d6AAa\:27945Y \
-$CellContext`raa $CellContext`raaA - \
-$CellContext`coeff\:0df4AAa\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raaA - $CellContext`coeff\:0df4AA\:02d6AaA\:27945Y \
-$CellContext`raa $CellContext`raAa - \
-$CellContext`coeff\:0df4AaA\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raAa - $CellContext`coeff\:0df4AA\:02d6Aaa\:27945Y \
-$CellContext`raa $CellContext`raAA - \
-$CellContext`coeff\:0df4Aaa\:02d6AA\:27945Y $CellContext`raa \
-$CellContext`raAA + $CellContext`coeff\:0df4aAA\:2794a\:02d6AA \
-$CellContext`rAaa - $CellContext`coeff\:0df4AA\:02d6aAA\:27945Y \
-$CellContext`raa $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aaa\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAaa - $CellContext`coeff\:0df4AA\:02d6aAa\:27945Y \
-$CellContext`raa $CellContext`rAaA - \
-$CellContext`coeff\:0df4AaA\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAaA - $CellContext`coeff\:0df4AA\:02d6aaA\:27945Y \
-$CellContext`raa $CellContext`rAAa - \
-$CellContext`coeff\:0df4AAa\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAAa - $CellContext`coeff\:0df4AA\:02d6aaa\:27945Y \
-$CellContext`raa $CellContext`rAAA - \
-$CellContext`coeff\:0df4AAA\:02d6aa\:27945Y $CellContext`raa \
-$CellContext`rAAA}, {
-     9, $CellContext`coeff\:0df4A\:02d6AA\:2794AAA $CellContext`rA \
-$CellContext`rAA + $CellContext`coeff\:0df4AA\:02d6A\:2794AAA $CellContext`rA \
-$CellContext`rAA - $CellContext`coeff\:0df4AAA\:2794A\:02d6AA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:2794AA\:02d6A \
-$CellContext`rAAA - $CellContext`coeff\:0df4A\:02d6aaa\:27944Y \
-$CellContext`ra $CellContext`rAAA - \
-$CellContext`coeff\:0df4AAA\:02d6a\:27944Y $CellContext`ra $CellContext`rAAA - \
-$CellContext`coeff\:0df4A\:02d6AAA\:27944Y $CellContext`rA $CellContext`rAAA - \
-$CellContext`coeff\:0df4AAA\:02d6A\:27944Y $CellContext`rA $CellContext`rAAA - \
-$CellContext`coeff\:0df4AA\:02d6aaa\:27945Y $CellContext`raa \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6aa\:27945Y \
-$CellContext`raa $CellContext`rAAA - \
-$CellContext`coeff\:0df4Aa\:02d6aaa\:27945Y $CellContext`raA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAAA - \
-$CellContext`coeff\:0df4Aa\:02d6AAA\:27945Y $CellContext`rAa \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAAA - \
-$CellContext`coeff\:0df4AA\:02d6AAA\:27945Y $CellContext`rAA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAAA - 
-      2 $CellContext`coeff\:0df4AAA\:02d6aaa\:27946Y $CellContext`raaa \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAa\:02d6aaa\:27946Y \
-$CellContext`raaA $CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6aaA\
-\:27946Y $CellContext`raaA $CellContext`rAAA - $CellContext`coeff\:0df4AaA\
-\:02d6aaa\:27946Y $CellContext`raAa $CellContext`rAAA - $CellContext`coeff\
-\:0df4AAA\:02d6aAa\:27946Y $CellContext`raAa $CellContext`rAAA - \
-$CellContext`coeff\:0df4Aaa\:02d6aaa\:27946Y $CellContext`raAA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6aAA\:27946Y \
-$CellContext`raAA $CellContext`rAAA - $CellContext`coeff\:0df4Aaa\:02d6AAA\
-\:27946Y $CellContext`rAaa $CellContext`rAAA - $CellContext`coeff\:0df4AAA\
-\:02d6Aaa\:27946Y $CellContext`rAaa $CellContext`rAAA - $CellContext`coeff\
-\:0df4AaA\:02d6AAA\:27946Y $CellContext`rAaA $CellContext`rAAA - \
-$CellContext`coeff\:0df4AAA\:02d6AaA\:27946Y $CellContext`rAaA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAa\:02d6AAA\:27946Y \
-$CellContext`rAAa $CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6AAa\
-\:27946Y $CellContext`rAAa $CellContext`rAAA - 
-      2 $CellContext`coeff\:0df4AAA\:02d6AAA\:27946Y $CellContext`rAAA^2}, {
-     10, $CellContext`coeff\:0df4A\:02d6Aa\:2794AAa $CellContext`rA \
-$CellContext`rAa + $CellContext`coeff\:0df4AA\:02d6a\:2794AAa $CellContext`ra \
-$CellContext`rAA - $CellContext`coeff\:0df4AAa\:2794A\:02d6Aa \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:2794AA\:02d6a \
-$CellContext`rAAa - $CellContext`coeff\:0df4A\:02d6aaA\:27944Y \
-$CellContext`ra $CellContext`rAAa - \
-$CellContext`coeff\:0df4AAa\:02d6a\:27944Y $CellContext`ra $CellContext`rAAa - \
-$CellContext`coeff\:0df4A\:02d6AAa\:27944Y $CellContext`rA $CellContext`rAAa - \
-$CellContext`coeff\:0df4AAa\:02d6A\:27944Y $CellContext`rA $CellContext`rAAa - \
-$CellContext`coeff\:0df4AA\:02d6aaA\:27945Y $CellContext`raa \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6aa\:27945Y \
-$CellContext`raa $CellContext`rAAa - \
-$CellContext`coeff\:0df4Aa\:02d6aaA\:27945Y $CellContext`raA \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAAa - \
-$CellContext`coeff\:0df4Aa\:02d6AAa\:27945Y $CellContext`rAa \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAAa - \
-$CellContext`coeff\:0df4AA\:02d6AAa\:27945Y $CellContext`rAA \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6aaa\
-\:27946Y $CellContext`raaa $CellContext`rAAa - $CellContext`coeff\:0df4AAA\
-\:02d6aaA\:27946Y $CellContext`raaa $CellContext`rAAa - 
-      2 $CellContext`coeff\:0df4AAa\:02d6aaA\:27946Y $CellContext`raaA \
-$CellContext`rAAa - $CellContext`coeff\:0df4AaA\:02d6aaA\:27946Y \
-$CellContext`raAa $CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6aAa\
-\:27946Y $CellContext`raAa $CellContext`rAAa - $CellContext`coeff\:0df4Aaa\
-\:02d6aaA\:27946Y $CellContext`raAA $CellContext`rAAa - $CellContext`coeff\
-\:0df4AAa\:02d6aAA\:27946Y $CellContext`raAA $CellContext`rAAa - \
-$CellContext`coeff\:0df4Aaa\:02d6AAa\:27946Y $CellContext`rAaa \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6Aaa\:27946Y \
-$CellContext`rAaa $CellContext`rAAa - $CellContext`coeff\:0df4AaA\:02d6AAa\
-\:27946Y $CellContext`rAaA $CellContext`rAAa - $CellContext`coeff\:0df4AAa\
-\:02d6AaA\:27946Y $CellContext`rAaA $CellContext`rAAa - 
-      2 $CellContext`coeff\:0df4AAa\:02d6AAa\:27946Y $CellContext`rAAa^2 - \
-$CellContext`coeff\:0df4AAa\:02d6AAA\:27946Y $CellContext`rAAa \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6AAa\:27946Y \
-$CellContext`rAAa $CellContext`rAAA}, {
-     11, $CellContext`coeff\:0df4a\:02d6Aa\:2794aAa $CellContext`rA \
-$CellContext`raA + $CellContext`coeff\:0df4Aa\:02d6A\:2794AaA $CellContext`rA \
-$CellContext`rAa - $CellContext`coeff\:0df4aAa\:2794a\:02d6Aa \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:2794Aa\:02d6A \
-$CellContext`rAaA - $CellContext`coeff\:0df4A\:02d6aAa\:27944Y \
-$CellContext`ra $CellContext`rAaA - \
-$CellContext`coeff\:0df4AaA\:02d6a\:27944Y $CellContext`ra $CellContext`rAaA - \
-$CellContext`coeff\:0df4A\:02d6AaA\:27944Y $CellContext`rA $CellContext`rAaA - \
-$CellContext`coeff\:0df4AaA\:02d6A\:27944Y $CellContext`rA $CellContext`rAaA - \
-$CellContext`coeff\:0df4AA\:02d6aAa\:27945Y $CellContext`raa \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6aa\:27945Y \
-$CellContext`raa $CellContext`rAaA - \
-$CellContext`coeff\:0df4Aa\:02d6aAa\:27945Y $CellContext`raA \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAaA - \
-$CellContext`coeff\:0df4Aa\:02d6AaA\:27945Y $CellContext`rAa \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAaA - \
-$CellContext`coeff\:0df4AA\:02d6AaA\:27945Y $CellContext`rAA \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6aaa\
-\:27946Y $CellContext`raaa $CellContext`rAaA - $CellContext`coeff\:0df4AAA\
-\:02d6aAa\:27946Y $CellContext`raaa $CellContext`rAaA - $CellContext`coeff\
-\:0df4AaA\:02d6aaA\:27946Y $CellContext`raaA $CellContext`rAaA - \
-$CellContext`coeff\:0df4AAa\:02d6aAa\:27946Y $CellContext`raaA \
-$CellContext`rAaA - 
-      2 $CellContext`coeff\:0df4AaA\:02d6aAa\:27946Y $CellContext`raAa \
-$CellContext`rAaA - $CellContext`coeff\:0df4Aaa\:02d6aAa\:27946Y \
-$CellContext`raAA $CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6aAA\
-\:27946Y $CellContext`raAA $CellContext`rAaA - $CellContext`coeff\:0df4Aaa\
-\:02d6AaA\:27946Y $CellContext`rAaa $CellContext`rAaA - $CellContext`coeff\
-\:0df4AaA\:02d6Aaa\:27946Y $CellContext`rAaa $CellContext`rAaA - 
-      2 $CellContext`coeff\:0df4AaA\:02d6AaA\:27946Y $CellContext`rAaA^2 - \
-$CellContext`coeff\:0df4AaA\:02d6AAa\:27946Y $CellContext`rAaA \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6AaA\:27946Y \
-$CellContext`rAaA $CellContext`rAAa - $CellContext`coeff\:0df4AaA\:02d6AAA\
-\:27946Y $CellContext`rAaA $CellContext`rAAA - $CellContext`coeff\:0df4AAA\
-\:02d6AaA\:27946Y $CellContext`rAaA $CellContext`rAAA}, {
-     12, $CellContext`coeff\:0df4a\:02d6AA\:2794aAA $CellContext`rA \
-$CellContext`raa + $CellContext`coeff\:0df4Aa\:02d6a\:2794Aaa $CellContext`ra \
-$CellContext`rAa - $CellContext`coeff\:0df4aAA\:2794a\:02d6AA \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:2794Aa\:02d6a \
-$CellContext`rAaa - $CellContext`coeff\:0df4A\:02d6aAA\:27944Y \
-$CellContext`ra $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aaa\:02d6a\:27944Y $CellContext`ra $CellContext`rAaa - \
-$CellContext`coeff\:0df4A\:02d6Aaa\:27944Y $CellContext`rA $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aaa\:02d6A\:27944Y $CellContext`rA $CellContext`rAaa - \
-$CellContext`coeff\:0df4AA\:02d6aAA\:27945Y $CellContext`raa \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6aa\:27945Y \
-$CellContext`raa $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aa\:02d6aAA\:27945Y $CellContext`raA \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6aA\:27945Y \
-$CellContext`raA $CellContext`rAaa - \
-$CellContext`coeff\:0df4Aa\:02d6Aaa\:27945Y $CellContext`rAa \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6Aa\:27945Y \
-$CellContext`rAa $CellContext`rAaa - \
-$CellContext`coeff\:0df4AA\:02d6Aaa\:27945Y $CellContext`rAA \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6AA\:27945Y \
-$CellContext`rAA $CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6aaa\
-\:27946Y $CellContext`raaa $CellContext`rAaa - $CellContext`coeff\:0df4AAA\
-\:02d6aAA\:27946Y $CellContext`raaa $CellContext`rAaa - $CellContext`coeff\
-\:0df4Aaa\:02d6aaA\:27946Y $CellContext`raaA $CellContext`rAaa - \
-$CellContext`coeff\:0df4AAa\:02d6aAA\:27946Y $CellContext`raaA \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6aAa\:27946Y \
-$CellContext`raAa $CellContext`rAaa - $CellContext`coeff\:0df4AaA\:02d6aAA\
-\:27946Y $CellContext`raAa $CellContext`rAaa - 
-      2 $CellContext`coeff\:0df4Aaa\:02d6aAA\:27946Y $CellContext`raAA \
-$CellContext`rAaa - 
-      2 $CellContext`coeff\:0df4Aaa\:02d6Aaa\:27946Y $CellContext`rAaa^2 - \
-$CellContext`coeff\:0df4Aaa\:02d6AaA\:27946Y $CellContext`rAaa \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6Aaa\:27946Y \
-$CellContext`rAaa $CellContext`rAaA - $CellContext`coeff\:0df4Aaa\:02d6AAa\
-\:27946Y $CellContext`rAaa $CellContext`rAAa - $CellContext`coeff\:0df4AAa\
-\:02d6Aaa\:27946Y $CellContext`rAaa $CellContext`rAAa - $CellContext`coeff\
-\:0df4Aaa\:02d6AAA\:27946Y $CellContext`rAaa $CellContext`rAAA - \
-$CellContext`coeff\:0df4AAA\:02d6Aaa\:27946Y $CellContext`rAaa \
-$CellContext`rAAA}, {
-     13, $CellContext`coeff\:0df4Aa\:02d6a\:2794Aaa $CellContext`rA \
-$CellContext`raA + $CellContext`coeff\:0df4a\:02d6AA\:2794aAA $CellContext`ra \
-$CellContext`rAA - $CellContext`coeff\:0df4aAA\:2794a\:02d6AA \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:2794Aa\:02d6a \
-$CellContext`raAA - $CellContext`coeff\:0df4A\:02d6Aaa\:27944Y \
-$CellContext`ra $CellContext`raAA - \
-$CellContext`coeff\:0df4Aaa\:02d6A\:27944Y $CellContext`ra $CellContext`raAA - \
-$CellContext`coeff\:0df4A\:02d6aAA\:27944Y $CellContext`rA $CellContext`raAA - \
-$CellContext`coeff\:0df4Aaa\:02d6a\:27944Y $CellContext`rA $CellContext`raAA - \
-$CellContext`coeff\:0df4AA\:02d6Aaa\:27945Y $CellContext`raa \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6AA\:27945Y \
-$CellContext`raa $CellContext`raAA - \
-$CellContext`coeff\:0df4Aa\:02d6Aaa\:27945Y $CellContext`raA \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raAA - \
-$CellContext`coeff\:0df4Aa\:02d6aAA\:27945Y $CellContext`rAa \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raAA - \
-$CellContext`coeff\:0df4AA\:02d6aAA\:27945Y $CellContext`rAA \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6AAA\
-\:27946Y $CellContext`raaa $CellContext`raAA - $CellContext`coeff\:0df4AAA\
-\:02d6Aaa\:27946Y $CellContext`raaa $CellContext`raAA - $CellContext`coeff\
-\:0df4Aaa\:02d6AAa\:27946Y $CellContext`raaA $CellContext`raAA - \
-$CellContext`coeff\:0df4AAa\:02d6Aaa\:27946Y $CellContext`raaA \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6AaA\:27946Y \
-$CellContext`raAa $CellContext`raAA - $CellContext`coeff\:0df4AaA\:02d6Aaa\
-\:27946Y $CellContext`raAa $CellContext`raAA - 
-      2 $CellContext`coeff\:0df4Aaa\:02d6Aaa\:27946Y $CellContext`raAA^2 - 
-      2 $CellContext`coeff\:0df4Aaa\:02d6aAA\:27946Y $CellContext`raAA \
-$CellContext`rAaa - $CellContext`coeff\:0df4Aaa\:02d6aAa\:27946Y \
-$CellContext`raAA $CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6aAA\
-\:27946Y $CellContext`raAA $CellContext`rAaA - $CellContext`coeff\:0df4Aaa\
-\:02d6aaA\:27946Y $CellContext`raAA $CellContext`rAAa - $CellContext`coeff\
-\:0df4AAa\:02d6aAA\:27946Y $CellContext`raAA $CellContext`rAAa - \
-$CellContext`coeff\:0df4Aaa\:02d6aaa\:27946Y $CellContext`raAA \
-$CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6aAA\:27946Y \
-$CellContext`raAA $CellContext`rAAA}, {
-     14, $CellContext`coeff\:0df4Aa\:02d6A\:2794AaA $CellContext`ra \
-$CellContext`raA + $CellContext`coeff\:0df4a\:02d6Aa\:2794aAa $CellContext`ra \
-$CellContext`rAa - $CellContext`coeff\:0df4aAa\:2794a\:02d6Aa \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:2794Aa\:02d6A \
-$CellContext`raAa - $CellContext`coeff\:0df4A\:02d6AaA\:27944Y \
-$CellContext`ra $CellContext`raAa - \
-$CellContext`coeff\:0df4AaA\:02d6A\:27944Y $CellContext`ra $CellContext`raAa - \
-$CellContext`coeff\:0df4A\:02d6aAa\:27944Y $CellContext`rA $CellContext`raAa - \
-$CellContext`coeff\:0df4AaA\:02d6a\:27944Y $CellContext`rA $CellContext`raAa - \
-$CellContext`coeff\:0df4AA\:02d6AaA\:27945Y $CellContext`raa \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6AA\:27945Y \
-$CellContext`raa $CellContext`raAa - \
-$CellContext`coeff\:0df4Aa\:02d6AaA\:27945Y $CellContext`raA \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raAa - \
-$CellContext`coeff\:0df4Aa\:02d6aAa\:27945Y $CellContext`rAa \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raAa - \
-$CellContext`coeff\:0df4AA\:02d6aAa\:27945Y $CellContext`rAA \
-$CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raAa - $CellContext`coeff\:0df4AaA\:02d6AAA\
-\:27946Y $CellContext`raaa $CellContext`raAa - $CellContext`coeff\:0df4AAA\
-\:02d6AaA\:27946Y $CellContext`raaa $CellContext`raAa - $CellContext`coeff\
-\:0df4AaA\:02d6AAa\:27946Y $CellContext`raaA $CellContext`raAa - \
-$CellContext`coeff\:0df4AAa\:02d6AaA\:27946Y $CellContext`raaA \
-$CellContext`raAa - 
-      2 $CellContext`coeff\:0df4AaA\:02d6AaA\:27946Y $CellContext`raAa^2 - \
-$CellContext`coeff\:0df4Aaa\:02d6AaA\:27946Y $CellContext`raAa \
-$CellContext`raAA - $CellContext`coeff\:0df4AaA\:02d6Aaa\:27946Y \
-$CellContext`raAa $CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6aAa\
-\:27946Y $CellContext`raAa $CellContext`rAaa - $CellContext`coeff\:0df4AaA\
-\:02d6aAA\:27946Y $CellContext`raAa $CellContext`rAaa - 
-      2 $CellContext`coeff\:0df4AaA\:02d6aAa\:27946Y $CellContext`raAa \
-$CellContext`rAaA - $CellContext`coeff\:0df4AaA\:02d6aaA\:27946Y \
-$CellContext`raAa $CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6aAa\
-\:27946Y $CellContext`raAa $CellContext`rAAa - $CellContext`coeff\:0df4AaA\
-\:02d6aaa\:27946Y $CellContext`raAa $CellContext`rAAA - $CellContext`coeff\
-\:0df4AAA\:02d6aAa\:27946Y $CellContext`raAa $CellContext`rAAA}, {
-     15, $CellContext`coeff\:0df4AA\:02d6a\:2794AAa $CellContext`rA \
-$CellContext`raa + $CellContext`coeff\:0df4A\:02d6Aa\:2794AAa $CellContext`ra \
-$CellContext`raA - $CellContext`coeff\:0df4AAa\:2794A\:02d6Aa \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:2794AA\:02d6a \
-$CellContext`raaA - $CellContext`coeff\:0df4A\:02d6AAa\:27944Y \
-$CellContext`ra $CellContext`raaA - \
-$CellContext`coeff\:0df4AAa\:02d6A\:27944Y $CellContext`ra $CellContext`raaA - \
-$CellContext`coeff\:0df4A\:02d6aaA\:27944Y $CellContext`rA $CellContext`raaA - \
-$CellContext`coeff\:0df4AAa\:02d6a\:27944Y $CellContext`rA $CellContext`raaA - \
-$CellContext`coeff\:0df4AA\:02d6AAa\:27945Y $CellContext`raa \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6AA\:27945Y \
-$CellContext`raa $CellContext`raaA - \
-$CellContext`coeff\:0df4Aa\:02d6AAa\:27945Y $CellContext`raA \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raaA - \
-$CellContext`coeff\:0df4Aa\:02d6aaA\:27945Y $CellContext`rAa \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raaA - \
-$CellContext`coeff\:0df4AA\:02d6aaA\:27945Y $CellContext`rAA \
-$CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raaA - $CellContext`coeff\:0df4AAa\:02d6AAA\
-\:27946Y $CellContext`raaa $CellContext`raaA - $CellContext`coeff\:0df4AAA\
-\:02d6AAa\:27946Y $CellContext`raaa $CellContext`raaA - 
-      2 $CellContext`coeff\:0df4AAa\:02d6AAa\:27946Y $CellContext`raaA^2 - \
-$CellContext`coeff\:0df4AaA\:02d6AAa\:27946Y $CellContext`raaA \
-$CellContext`raAa - $CellContext`coeff\:0df4AAa\:02d6AaA\:27946Y \
-$CellContext`raaA $CellContext`raAa - $CellContext`coeff\:0df4Aaa\:02d6AAa\
-\:27946Y $CellContext`raaA $CellContext`raAA - $CellContext`coeff\:0df4AAa\
-\:02d6Aaa\:27946Y $CellContext`raaA $CellContext`raAA - $CellContext`coeff\
-\:0df4Aaa\:02d6aaA\:27946Y $CellContext`raaA $CellContext`rAaa - \
-$CellContext`coeff\:0df4AAa\:02d6aAA\:27946Y $CellContext`raaA \
-$CellContext`rAaa - $CellContext`coeff\:0df4AaA\:02d6aaA\:27946Y \
-$CellContext`raaA $CellContext`rAaA - $CellContext`coeff\:0df4AAa\:02d6aAa\
-\:27946Y $CellContext`raaA $CellContext`rAaA - 
-      2 $CellContext`coeff\:0df4AAa\:02d6aaA\:27946Y $CellContext`raaA \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAa\:02d6aaa\:27946Y \
-$CellContext`raaA $CellContext`rAAA - $CellContext`coeff\:0df4AAA\:02d6aaA\
-\:27946Y $CellContext`raaA $CellContext`rAAA}, {
-     16, $CellContext`coeff\:0df4A\:02d6AA\:2794AAA $CellContext`ra \
-$CellContext`raa + $CellContext`coeff\:0df4AA\:02d6A\:2794AAA $CellContext`ra \
-$CellContext`raa - $CellContext`coeff\:0df4AAA\:2794A\:02d6AA \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:2794AA\:02d6A \
-$CellContext`raaa - $CellContext`coeff\:0df4A\:02d6AAA\:27944Y \
-$CellContext`ra $CellContext`raaa - \
-$CellContext`coeff\:0df4AAA\:02d6A\:27944Y $CellContext`ra $CellContext`raaa - \
-$CellContext`coeff\:0df4A\:02d6aaa\:27944Y $CellContext`rA $CellContext`raaa - \
-$CellContext`coeff\:0df4AAA\:02d6a\:27944Y $CellContext`rA $CellContext`raaa - \
-$CellContext`coeff\:0df4AA\:02d6AAA\:27945Y $CellContext`raa \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:02d6AA\:27945Y \
-$CellContext`raa $CellContext`raaa - \
-$CellContext`coeff\:0df4Aa\:02d6AAA\:27945Y $CellContext`raA \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:02d6Aa\:27945Y \
-$CellContext`raA $CellContext`raaa - \
-$CellContext`coeff\:0df4Aa\:02d6aaa\:27945Y $CellContext`rAa \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:02d6aA\:27945Y \
-$CellContext`rAa $CellContext`raaa - \
-$CellContext`coeff\:0df4AA\:02d6aaa\:27945Y $CellContext`rAA \
-$CellContext`raaa - $CellContext`coeff\:0df4AAA\:02d6aa\:27945Y \
-$CellContext`rAA $CellContext`raaa - 
-      2 $CellContext`coeff\:0df4AAA\:02d6AAA\:27946Y $CellContext`raaa^2 - \
-$CellContext`coeff\:0df4AAa\:02d6AAA\:27946Y $CellContext`raaa \
-$CellContext`raaA - $CellContext`coeff\:0df4AAA\:02d6AAa\:27946Y \
-$CellContext`raaa $CellContext`raaA - $CellContext`coeff\:0df4AaA\:02d6AAA\
-\:27946Y $CellContext`raaa $CellContext`raAa - $CellContext`coeff\:0df4AAA\
-\:02d6AaA\:27946Y $CellContext`raaa $CellContext`raAa - $CellContext`coeff\
-\:0df4Aaa\:02d6AAA\:27946Y $CellContext`raaa $CellContext`raAA - \
-$CellContext`coeff\:0df4AAA\:02d6Aaa\:27946Y $CellContext`raaa \
-$CellContext`raAA - $CellContext`coeff\:0df4Aaa\:02d6aaa\:27946Y \
-$CellContext`raaa $CellContext`rAaa - $CellContext`coeff\:0df4AAA\:02d6aAA\
-\:27946Y $CellContext`raaa $CellContext`rAaa - $CellContext`coeff\:0df4AaA\
-\:02d6aaa\:27946Y $CellContext`raaa $CellContext`rAaA - $CellContext`coeff\
-\:0df4AAA\:02d6aAa\:27946Y $CellContext`raaa $CellContext`rAaA - \
-$CellContext`coeff\:0df4AAa\:02d6aaa\:27946Y $CellContext`raaa \
-$CellContext`rAAa - $CellContext`coeff\:0df4AAA\:02d6aaA\:27946Y \
-$CellContext`raaa $CellContext`rAAa - 
-      2 $CellContext`coeff\:0df4AAA\:02d6aaa\:27946Y $CellContext`raaa \
-$CellContext`rAAA}}]],
+$CellContext`rAA}}]],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602849083813*^9},ExpressionUUID->"3b3f1082-55cf-4d69-a70e-\
-198f50af4713"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022241297*^9},ExpressionUUID->"0aeb7c90-5f11-4eaa-b72e-\
+3a4e3a04dcd1"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Length[SubstanceMatrix] = \"\>", "\[InvisibleSpace]", "16"}],
-  SequenceForm["Length[SubstanceMatrix] = ", 16],
+  RowBox[{"\<\"Length[SubstanceMatrix] = \"\>", "\[InvisibleSpace]", "8"}],
+  SequenceForm["Length[SubstanceMatrix] = ", 8],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028491068354`*^9},ExpressionUUID->"0f3e267a-0e72-4753-9402-\
-101717d22690"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610222608156`*^9},ExpressionUUID->"f1678e31-de9d-4f96-851b-\
+0e4b16edfc8a"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Length[AllChainsTbl] = \"\>", "\[InvisibleSpace]", "14"}],
-  SequenceForm["Length[AllChainsTbl] = ", 14],
+  RowBox[{"\<\"Length[AllChainsTbl] = \"\>", "\[InvisibleSpace]", "6"}],
+  SequenceForm["Length[AllChainsTbl] = ", 6],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602849116845*^9},ExpressionUUID->"63e3ee6f-b93f-4a1f-96e8-\
-7b7c51b38429"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610222623363`*^9},ExpressionUUID->"87d08978-4ae4-47b9-8d05-\
+705719a97bc0"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Length[ReactionMatrix] = \"\>", "\[InvisibleSpace]", "240"}],
-  SequenceForm["Length[ReactionMatrix] = ", 240],
+  RowBox[{"\<\"Length[ReactionMatrix] = \"\>", "\[InvisibleSpace]", "48"}],
+  SequenceForm["Length[ReactionMatrix] = ", 48],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028491183467`*^9},ExpressionUUID->"df5789d7-996e-4b33-a11a-\
-0e20bddaee0a"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022263339*^9},ExpressionUUID->"af0ae26f-fc62-4027-b882-\
+fb01eb1c5828"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Length[coeffArrayName] = \"\>", "\[InvisibleSpace]", "122"}],
-  SequenceForm["Length[coeffArrayName] = ", 122],
+  RowBox[{"\<\"Length[coeffArrayName] = \"\>", "\[InvisibleSpace]", "26"}],
+  SequenceForm["Length[coeffArrayName] = ", 26],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028491193476`*^9},ExpressionUUID->"c483f74d-22de-4f38-bb73-\
-8da330a4e4a3"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.7147610222693443`*^9},ExpressionUUID->"74434639-7562-44bb-a794-\
+71c299fcc644"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Sat 16 Sep 2017 22:07:29\"\>", 
+  RowBox[{"\<\"Mon 18 Sep 2017 18:03:42\"\>", 
    "\[InvisibleSpace]", "\<\", time used: \"\>", "\[InvisibleSpace]", 
-   "0.022`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
+   "0.002`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
    "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\".\"\>", 
    "\[InvisibleSpace]", "\<\"\\n---------------------------------------------\
 \"\>"}],
   SequenceForm[
-  "Sat 16 Sep 2017 22:07:29", ", time used: ", 0.022, ", total time used: ", 
+  "Mon 18 Sep 2017 18:03:42", ", time used: ", 0.002, ", total time used: ", 
    2, ".", "\n---------------------------------------------"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028491208487`*^9},ExpressionUUID->"7d517586-a9e4-4ba4-950b-\
-cb514ff34783"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022270347*^9},ExpressionUUID->"8be39ffd-2744-4dd4-ac03-\
+d6bbc8a43a3e"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Sat 16 Sep 2017 22:07:29\"\>", 
+  RowBox[{"\<\"Mon 18 Sep 2017 18:03:42\"\>", 
    "\[InvisibleSpace]", "\<\", time used: \"\>", "\[InvisibleSpace]", 
    "0.006`", "\[InvisibleSpace]", "\<\", total time used: \"\>", 
    "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\".\"\>", 
    "\[InvisibleSpace]", "\<\"\\n---------------------------------------------\
 \"\>"}],
   SequenceForm[
-  "Sat 16 Sep 2017 22:07:29", ", time used: ", 0.006, ", total time used: ", 
+  "Mon 18 Sep 2017 18:03:42", ", time used: ", 0.006, ", total time used: ", 
    2, ".", "\n---------------------------------------------"],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.7146028491223507`*^9},ExpressionUUID->"2dd2010b-e092-490a-9c89-\
-a889e3703ec0"],
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022271846*^9},ExpressionUUID->"5608e3c5-bc13-4380-a28e-\
+baf0401bbfa6"],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"SeedRandomValue = \"\>", "\[InvisibleSpace]", "470898625932"}],
-  SequenceForm["SeedRandomValue = ", 470898625932],
+  RowBox[{"\<\"SeedRandomValue = \"\>", "\[InvisibleSpace]", "398065100434"}],
+  SequenceForm["SeedRandomValue = ", 398065100434],
   Editable->False]], "Print",
- CellChangeTimes->{3.7145910361445413`*^9, 
-  3.714602849123351*^9},ExpressionUUID->"32c2621b-10b7-4696-b893-\
-265d1a5af6a7"]
+ CellChangeTimes->{3.7145910361445413`*^9, 3.714602847411728*^9, 
+  3.714761022273349*^9},ExpressionUUID->"bbcc36eb-79e4-4c4c-8429-\
+4b85b161cd85"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1333, 844},
-WindowMargins->{{Automatic, 144}, {Automatic, 41}},
+WindowMargins->{{Automatic, 227}, {-36, Automatic}},
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -6856,38 +4382,38 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 167179, 3279, 8199, "Input",ExpressionUUID->"1eab54df-b90d-4eaa-a4ce-b8a0b049e56d"],
 Cell[CellGroupData[{
-Cell[167784, 3305, 288, 7, 22, "Print",ExpressionUUID->"967b4b58-65d8-4c8e-a968-ee3066ff54e6"],
-Cell[168075, 3314, 316, 5, 22, "Print",ExpressionUUID->"45d55d56-8074-41e1-a34d-cec743f49ad0"],
-Cell[168394, 3321, 301, 5, 22, "Print",ExpressionUUID->"5eac0f49-e696-474c-b1ef-15280852e738"],
-Cell[168698, 3328, 234, 4, 22, "Print",ExpressionUUID->"e0bed73a-4afa-4581-a419-88c20b028bab"],
-Cell[168935, 3334, 287, 5, 22, "Print",ExpressionUUID->"0ca4156c-6804-4bb6-8a38-0cd779993c1c"],
-Cell[169225, 3341, 293, 5, 22, "Print",ExpressionUUID->"060ac7ec-4f84-428d-9a69-062b856465cb"],
-Cell[169521, 3348, 426, 6, 41, "Print",ExpressionUUID->"af008973-13b2-4da6-abf0-bad52f016dca"],
-Cell[169950, 3356, 236, 4, 22, "Print",ExpressionUUID->"939fff6d-3c46-4936-abcb-267c009323b6"],
-Cell[170189, 3362, 212, 4, 41, "Print",ExpressionUUID->"ba55cb06-b4eb-4786-8322-55027e32d398"],
-Cell[170404, 3368, 314, 7, 22, "Print",ExpressionUUID->"385f7222-75f1-4adb-a891-46c6351df6ad"],
-Cell[170721, 3377, 322, 8, 22, "Print",ExpressionUUID->"45e9991f-9683-4d6b-9fb3-be7b3593caa4"],
-Cell[171046, 3387, 188, 3, 22, "Print",ExpressionUUID->"b12fa81e-6d4d-4383-98dc-639bca5e5d38"],
-Cell[171237, 3392, 358, 8, 22, "Print",ExpressionUUID->"329b8e1b-c243-4e30-bd64-281886932c4d"],
-Cell[171598, 3402, 237, 4, 22, "Print",ExpressionUUID->"c16d7776-b0a4-4ef7-a52d-92e0b8067f23"],
-Cell[171838, 3408, 212, 4, 41, "Print",ExpressionUUID->"3d5b1b1f-d042-4263-b28c-72505139bf25"],
-Cell[172053, 3414, 762, 10, 77, "Print",ExpressionUUID->"69356fd0-6feb-4aeb-bb75-82cc0b9aa01e"],
-Cell[172818, 3426, 210, 4, 41, "Print",ExpressionUUID->"7d591aae-b24d-41f8-9128-c57092bbf3bd"],
-Cell[173031, 3432, 320, 7, 22, "Print",ExpressionUUID->"53406d42-9d0e-4ddb-815e-a952f8a4c055"],
-Cell[173354, 3441, 9921, 183, 341, "Print",ExpressionUUID->"92162ca6-48c1-461f-a990-580df97c5476"],
-Cell[183278, 3626, 5308, 126, 277, "Print",ExpressionUUID->"c3db1428-6bc7-4fd0-834b-32878a59a335"],
-Cell[188589, 3754, 24214, 505, 1835, "Print",ExpressionUUID->"27d2c58e-07d2-403e-b681-531adefe0153"],
-Cell[212806, 4261, 684, 14, 41, "Print",ExpressionUUID->"b3f6e679-7c7e-4a34-8c68-e0d3a9666251"],
-Cell[213493, 4277, 684, 14, 41, "Print",ExpressionUUID->"72b420ba-f91e-4cd6-8cd9-42d059e302af"],
-Cell[214180, 4293, 682, 14, 41, "Print",ExpressionUUID->"fff048c3-f60b-4b70-8480-e83165fa3c98"],
-Cell[214865, 4309, 123174, 2449, 290, "Print",ExpressionUUID->"3b3f1082-55cf-4d69-a70e-198f50af4713"],
-Cell[338042, 6760, 318, 7, 22, "Print",ExpressionUUID->"0f3e267a-0e72-4753-9402-101717d22690"],
-Cell[338363, 6769, 310, 7, 22, "Print",ExpressionUUID->"63e3ee6f-b93f-4a1f-96e8-7b7c51b38429"],
-Cell[338676, 6778, 318, 7, 22, "Print",ExpressionUUID->"df5789d7-996e-4b33-a11a-0e20bddaee0a"],
-Cell[338997, 6787, 318, 7, 22, "Print",ExpressionUUID->"c483f74d-22de-4f38-bb73-8da330a4e4a3"],
-Cell[339318, 6796, 684, 14, 41, "Print",ExpressionUUID->"7d517586-a9e4-4ba4-950b-cb514ff34783"],
-Cell[340005, 6812, 684, 14, 41, "Print",ExpressionUUID->"2dd2010b-e092-490a-9c89-a889e3703ec0"],
-Cell[340692, 6828, 320, 7, 22, "Print",ExpressionUUID->"32c2621b-10b7-4696-b893-265d1a5af6a7"]
+Cell[167784, 3305, 305, 6, 22, "Print",ExpressionUUID->"91d81fdf-bbfe-4595-b522-89494620fec4"],
+Cell[168092, 3313, 340, 5, 22, "Print",ExpressionUUID->"bd43ec86-7900-4a39-8c14-51500e817bb2"],
+Cell[168435, 3320, 323, 5, 22, "Print",ExpressionUUID->"d7489c21-b622-40f1-8efe-0aff5df375ec"],
+Cell[168761, 3327, 256, 4, 22, "Print",ExpressionUUID->"192cc942-cd0c-44ba-9294-f257c94f003c"],
+Cell[169020, 3333, 311, 5, 22, "Print",ExpressionUUID->"4ef0bebc-8bb5-4b13-8d5a-c1ef1734a790"],
+Cell[169334, 3340, 313, 5, 22, "Print",ExpressionUUID->"b20ad53c-1a2b-4ea4-a59e-22f99a26637d"],
+Cell[169650, 3347, 450, 6, 41, "Print",ExpressionUUID->"60eef2bd-5a8e-4417-9a2e-f547f2e7be46"],
+Cell[170103, 3355, 256, 4, 22, "Print",ExpressionUUID->"cbce6472-324f-4a75-862c-2b41d05b41a5"],
+Cell[170362, 3361, 232, 4, 41, "Print",ExpressionUUID->"1c078749-c860-443a-a274-5182c97a08c3"],
+Cell[170597, 3367, 336, 7, 22, "Print",ExpressionUUID->"f4f54222-1050-4b83-badc-bcdc65ce304a"],
+Cell[170936, 3376, 341, 7, 22, "Print",ExpressionUUID->"69c86f32-f37d-4746-88ed-c91bf68ea2d6"],
+Cell[171280, 3385, 212, 3, 22, "Print",ExpressionUUID->"a9733864-aca7-4f8b-9ab0-ccbda59b5471"],
+Cell[171495, 3390, 380, 8, 22, "Print",ExpressionUUID->"c1d01758-b867-4f22-a009-80cbe6d6d7a3"],
+Cell[171878, 3400, 261, 4, 22, "Print",ExpressionUUID->"0b0f0720-ef82-4fa2-bfbb-bc3e8569a42c"],
+Cell[172142, 3406, 234, 4, 41, "Print",ExpressionUUID->"db2f0d50-ab9b-4021-b243-a082ac172b01"],
+Cell[172379, 3412, 789, 11, 77, "Print",ExpressionUUID->"59ba1039-3f1e-49a8-a661-1e50b5d3bf1d"],
+Cell[173171, 3425, 232, 4, 41, "Print",ExpressionUUID->"e46eeabb-61ef-4cfa-80da-3be7363a8896"],
+Cell[173406, 3431, 344, 7, 22, "Print",ExpressionUUID->"0cd200a6-5919-4e5f-8f90-2735792f9a47"],
+Cell[173753, 3440, 9943, 183, 341, "Print",ExpressionUUID->"fa1cb45c-d63e-4dc5-a875-996f97be66b5"],
+Cell[183699, 3625, 3294, 78, 141, "Print",ExpressionUUID->"f3f7d69f-4498-46be-944d-7563844f2478"],
+Cell[186996, 3705, 5655, 120, 395, "Print",ExpressionUUID->"71ad1908-0c77-4c8c-814a-9e4ec539f6c1"],
+Cell[192654, 3827, 706, 14, 41, "Print",ExpressionUUID->"62a3f4db-1aab-439b-ad5f-ce36d4ac51cb"],
+Cell[193363, 3843, 706, 14, 41, "Print",ExpressionUUID->"d49981ad-a097-4e1f-8ab4-1e297892caa8"],
+Cell[194072, 3859, 701, 13, 41, "Print",ExpressionUUID->"ab54157b-338a-4a73-a906-7519c0f2b07e"],
+Cell[194776, 3874, 21412, 410, 146, "Print",ExpressionUUID->"0aeb7c90-5f11-4eaa-b72e-3a4e3a04dcd1"],
+Cell[216191, 4286, 338, 7, 22, "Print",ExpressionUUID->"f1678e31-de9d-4f96-851b-0e4b16edfc8a"],
+Cell[216532, 4295, 332, 7, 22, "Print",ExpressionUUID->"87d08978-4ae4-47b9-8d05-705719a97bc0"],
+Cell[216867, 4304, 336, 7, 22, "Print",ExpressionUUID->"af0ae26f-fc62-4027-b882-fb01eb1c5828"],
+Cell[217206, 4313, 338, 7, 22, "Print",ExpressionUUID->"74434639-7562-44bb-a794-71c299fcc644"],
+Cell[217547, 4322, 704, 14, 41, "Print",ExpressionUUID->"8be39ffd-2744-4dd4-ac03-d6bbc8a43a3e"],
+Cell[218254, 4338, 704, 14, 41, "Print",ExpressionUUID->"5608e3c5-bc13-4380-a28e-baf0401bbfa6"],
+Cell[218961, 4354, 342, 7, 22, "Print",ExpressionUUID->"bbcc36eb-79e4-4c4c-8429-4b85b161cd85"]
 }, Open  ]]
 }, Open  ]]
 }
