@@ -1,0 +1,565 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22320,        556]
+NotebookOptionsPosition[     22076,        543]
+NotebookOutlinePosition[     22419,        558]
+CellTagsIndexPosition[     22376,        555]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " \[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"950.226", ",", "1.09502"}], "}"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"0.950226", ",", "1.09502"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kVal", "=", "950.226"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"aVal", "=", "1.09502"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"kVal", "=", "0.950226"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"aVal", "=", "1.09502"}], ";"}], "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<Mean[ParetoDistribution[\>\"", ",", "kVal", ",", "\"\<,\>\"", ",", 
+      "aVal", ",", "\"\<]]\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Mean", "[", 
+    RowBox[{"ParetoDistribution", "[", 
+     RowBox[{"kVal", ",", "aVal"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<Median[ParetoDistribution[\>\"", ",", "kVal", ",", "\"\<,\>\"", ",",
+       "aVal", ",", "\"\<]]\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Median", "[", 
+    RowBox[{"ParetoDistribution", "[", 
+     RowBox[{"kVal", ",", "aVal"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<PDF[ParetoDistribution[\>\"", ",", "kVal", ",", "\"\<,\>\"", ",", 
+      "aVal", ",", "\"\<],x]\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"PDF", "[", 
+      RowBox[{
+       RowBox[{"ParetoDistribution", "[", 
+        RowBox[{"kVal", ",", "aVal"}], "]"}], ",", 
+       RowBox[{"x", "+", "kVal"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "20000"}], "}"}], ",", " ", 
+     RowBox[{"PlotRange", " ", "\[Rule]", " ", "All"}], ",", " ", 
+     RowBox[{"Frame", " ", "\[Rule]", " ", "True"}], ",", " ", 
+     RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Mean", "[", 
+      RowBox[{"ParetoDistribution", "[", 
+       RowBox[{"k", ",", "a"}], "]"}], "]"}], "\[IndentingNewLine]", 
+     RowBox[{"FullSimplify", "[", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Median", "[", 
+         RowBox[{"ParetoDistribution", "[", 
+          RowBox[{"k", ",", "a"}], "]"}], "]"}], "-", "k"}], ")"}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"Evaluate", "@", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"PDF", "[", 
+           RowBox[{
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"3", ",", "\[Alpha]"}], "]"}], ",", "x"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"\[Alpha]", ",", 
+            RowBox[{"{", 
+             RowBox[{"0.5", ",", "1", ",", "2"}], "}"}]}], "}"}]}], "]"}]}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "3", ",", 
+         RowBox[{"3", "+", "4"}]}], "}"}], ",", " ", 
+       RowBox[{"PlotRange", " ", "\[Rule]", " ", "All"}], ",", " ", 
+       RowBox[{"Frame", " ", "\[Rule]", " ", "True"}], ",", " ", 
+       RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"Evaluate", "@", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"PDF", "[", 
+           RowBox[{
+            RowBox[{"ParetoDistribution", "[", 
+             RowBox[{"k", ",", "2", ",", "1"}], "]"}], ",", "x"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", 
+            RowBox[{"{", 
+             RowBox[{".5", ",", "1", ",", "2"}], "}"}]}], "}"}]}], "]"}]}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "1", ",", "2"}], "}"}], ",", " ", 
+       RowBox[{"PlotRange", " ", "\[Rule]", " ", "All"}], ",", " ", 
+       RowBox[{"Frame", " ", "\[Rule]", " ", "True"}], ",", " ", 
+       RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"Evaluate", "@", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"PDF", "[", 
+         RowBox[{
+          RowBox[{"ParetoDistribution", "[", 
+           RowBox[{"3", ",", "2", ",", "\[Gamma]", ",", "1"}], "]"}], ",", 
+          "x"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Gamma]", ",", 
+          RowBox[{"{", 
+           RowBox[{"0.5", ",", "1.0", ",", "20.0"}], "}"}]}], "}"}]}], 
+       "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "1", ",", "4"}], "}"}], ",", " ", 
+     RowBox[{"Frame", " ", "\[Rule]", " ", "True"}], ",", " ", 
+     RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{
+     RowBox[{"PDF", "[", 
+      RowBox[{
+       RowBox[{"ParetoDistribution", "[", 
+        RowBox[{"3", ",", "2", ",", 
+         RowBox[{"1", "/", "\[CapitalGamma]"}], ",", "1"}], "]"}], ",", 
+       RowBox[{"x", "+", "1"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"x", " ", ">", " ", "0"}], " ", "&&", " ", 
+      RowBox[{"\[CapitalGamma]", " ", ">", " ", "0"}]}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", "\"\<Mean[ParetoDistribution[k,\[Alpha]]]\>\"", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Mean", "[", 
+    RowBox[{"ParetoDistribution", "[", 
+     RowBox[{"k", ",", "\[Alpha]"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", "\"\<Median[ParetoDistribution[k,\[Alpha]]]\>\"", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Median", "[", 
+    RowBox[{"ParetoDistribution", "[", 
+     RowBox[{"k", ",", "\[Alpha]"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Mean[ParetoDistribution[k,\[Alpha],1/\[CapitalGamma],0]]\>\"", 
+     "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Mean", "[", 
+    RowBox[{"ParetoDistribution", "[", 
+     RowBox[{"k", ",", "\[Alpha]", ",", 
+      RowBox[{"1", "/", "\[CapitalGamma]"}], ",", "0"}], "]"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Median[ParetoDistribution[k,\[Alpha],1/\[CapitalGamma],0]]\>\"", 
+     "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Median", "[", 
+    RowBox[{"ParetoDistribution", "[", 
+     RowBox[{"k", ",", "\[Alpha]", ",", 
+      RowBox[{"1", "/", "\[CapitalGamma]"}], ",", "0"}], "]"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<PDF[ParetoDistribution[k,\[Alpha],1/\[CapitalGamma],0],x]\>\"", 
+     "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"PDF", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"k", ",", "\[Alpha]", ",", 
+       RowBox[{"1", "/", "\[CapitalGamma]"}], ",", "0"}], "]"}], ",", "x"}], 
+    "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", "\"\<PDF[ParetoDistribution[k,\[Alpha]],x]\>\"", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"PDF", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"k", ",", "\[Alpha]"}], "]"}], ",", "x"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<k*PDF[ParetoDistribution[k,\[Alpha],1/\[CapitalGamma],0],x*k]\>\"", 
+     "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{
+     RowBox[{"k", "*", 
+      RowBox[{"PDF", "[", 
+       RowBox[{
+        RowBox[{"ParetoDistribution", "[", 
+         RowBox[{"k", ",", "\[Alpha]", ",", 
+          RowBox[{"1", "/", "\[CapitalGamma]"}], ",", "0"}], "]"}], ",", 
+        RowBox[{"x", "*", "k"}]}], "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"x", " ", ">", " ", "0"}], " ", "&&", " ", 
+      RowBox[{"k", " ", ">", " ", "0"}]}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Simplify", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", "\[CapitalGamma]"}], ")"}], "+", 
+     RowBox[{"\[CapitalGamma]", "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "-", "\[Alpha]"}], ")"}]}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Median\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ParetoMedian", "[", 
+      RowBox[{"\[Alpha]_", ",", "\[CapitalGamma]_"}], "]"}], ":=", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        SuperscriptBox["2", 
+         FractionBox["1", "\[Alpha]"]]}], ")"}], 
+      FractionBox["1", "\[CapitalGamma]"]]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"sol", "=", 
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", 
+          SuperscriptBox["2", 
+           FractionBox["1", "\[Alpha]"]]}], ")"}], 
+        FractionBox["1", "\[CapitalGamma]"]], "\[Equal]", " ", "1"}], ",", 
+      "\[Alpha]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"Plot3D", "[", 
+         RowBox[{
+          RowBox[{"ParetoMedian", "[", 
+           RowBox[{"\[Alpha]", ",", "\[CapitalGamma]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"\[Alpha]", ",", "0.01", ",", "0.1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"\[CapitalGamma]", ",", "0.1", ",", "20"}], "}"}]}], "]"}],
+         "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "sol"}], "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Solve", "[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              SuperscriptBox["2", 
+               FractionBox["1", "\[Alpha]"]]}], ")"}], 
+            FractionBox["1", "\[CapitalGamma]"]], "\[Equal]", " ", "c"}], ",",
+           "\[Alpha]"}], "]"}], "\[IndentingNewLine]", 
+        RowBox[{"alpha", "[", 
+         RowBox[{"c_", ",", "\[CapitalGamma]_"}], "]"}]}], ":=", 
+       FractionBox[
+        RowBox[{"Log", "[", "2", "]"}], 
+        RowBox[{"Log", "[", 
+         RowBox[{"1", "+", 
+          SuperscriptBox["c", "\[CapitalGamma]"]}], "]"}]]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"Plot3D", "[", 
+       RowBox[{
+        RowBox[{"alpha", "[", 
+         RowBox[{"c", ",", "\[CapitalGamma]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"c", ",", "0.01", ",", "10"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[CapitalGamma]", ",", "0.1", ",", "20"}], "}"}]}], "]"}], 
+      "]"}]}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<RandomVariate\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Alpha]Val", "=", "10.1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[CapitalGamma]val", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<Mean[ParetoDistribution[1,\>\"", ",", "\[Alpha]Val", ",", 
+      "\"\<,\>\"", ",", 
+      RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "\"\<,0]]\>\""}], "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"mean", "=", 
+    RowBox[{"Mean", "[", 
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"1", ",", "\[Alpha]Val", ",", 
+       RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "0"}], "]"}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<Median[ParetoDistribution[1,\>\"", ",", "\[Alpha]Val", ",", 
+      "\"\<,\>\"", ",", 
+      RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "\"\<,0]]\>\""}], "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"median", "=", 
+    RowBox[{"Median", "[", 
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"1", ",", "\[Alpha]Val", ",", 
+       RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "0"}], "]"}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"qt", "=", 
+     RowBox[{"99", "/", "100"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<qt = \>\"", ",", " ", "qt"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<Quantile[ParetoDistribution[1,\>\"", ",", "\[Alpha]Val", ",", 
+      "\"\<,\>\"", ",", 
+      RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "\"\<,0],\>\"", ",", 
+      "qt", ",", "\"\<]\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Quantile", "[", 
+    RowBox[{
+     RowBox[{"ParetoDistribution", "[", 
+      RowBox[{"1", ",", "\[Alpha]Val", ",", 
+       RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "0"}], "]"}], ",", 
+     "qt"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<divisor\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"divisor", "=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"NumericQ", "[", "mean", "]"}], ",", "mean", ",", "median"}], 
+      "]"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"divisor", "=", "1"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<PDF[ParetoDistribution[\>\"", ",", 
+      RowBox[{"1", "/", "divisor"}], ",", "\"\<,\>\"", ",", "\[Alpha]Val", 
+      ",", "\"\<,\>\"", ",", 
+      RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "\"\<,0],x]\>\""}], 
+     "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{
+     RowBox[{"PDF", "[", 
+      RowBox[{
+       RowBox[{"ParetoDistribution", "[", 
+        RowBox[{
+         RowBox[{"1", "/", "divisor"}], ",", "\[Alpha]Val", ",", 
+         RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "0"}], "]"}], ",", 
+       "x"}], "]"}], ",", 
+     RowBox[{"x", " ", ">", "0"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"PDF", "[", 
+      RowBox[{
+       RowBox[{"ParetoDistribution", "[", 
+        RowBox[{
+         RowBox[{"1", "/", "divisor"}], ",", "\[Alpha]Val", ",", 
+         RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "0"}], "]"}], ",", 
+       "x"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "10"}], "}"}], ",", 
+     RowBox[{"Frame", " ", "\[Rule]", " ", "True"}], ",", " ", 
+     RowBox[{"GridLines", "\[Rule]", "Automatic"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NNN", "=", "100000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<rndVars\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rndVars", "=", 
+     RowBox[{"RandomVariate", "[", 
+      RowBox[{
+       RowBox[{"ParetoDistribution", "[", 
+        RowBox[{
+         RowBox[{"1", "/", "divisor"}], ",", "\[Alpha]Val", ",", 
+         RowBox[{"1", "/", "\[CapitalGamma]val"}], ",", "0"}], "]"}], ",", 
+       "NNN"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Sort", "[", 
+     RowBox[{"Chop", "[", 
+      RowBox[{"rndVars", ",", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "6"}]}]}], "]"}], "]"}], " ", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"meanSample", "=", 
+     RowBox[{"Mean", "[", "rndVars", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<meanSample = \>\"", ",", " ", "meanSample"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"medianSample", "=", 
+     RowBox[{"Median", "[", "rndVars", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<medianSample = \>\"", ",", " ", "medianSample"}], "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"quantileSample", "=", 
+     RowBox[{"Quantile", "[", 
+      RowBox[{"rndVars", ",", "qt"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<quantileSample = \>\"", ",", " ", "quantileSample"}], "]"}],
+     ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"topQT", "=", 
+     RowBox[{"Take", "[", 
+      RowBox[{
+       RowBox[{"Sort", "[", "rndVars", "]"}], ",", 
+       RowBox[{"-", 
+        RowBox[{"Ceiling", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "-", "qt"}], ")"}], "*", "NNN"}], "]"}]}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Length[topQT] = \>\"", ",", " ", 
+      RowBox[{"Length", "[", "topQT", "]"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<topQT = \>\"", ",", " ", "topQT"}], "]"}], ";"}], " ", 
+    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"topQT", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"Round", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"Length", "[", "topQT", "]"}], "-", "1"}], ")"}], "*", 
+            "x"}], "]"}], "+", "1"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", " ", 
+       RowBox[{"Frame", " ", "\[Rule]", " ", "True"}], ",", " ", 
+       RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "Thick"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<max value = \>\"", ",", " ", 
+      RowBox[{"topQT", "[", 
+       RowBox[{"[", 
+        RowBox[{"Length", "[", "topQT", "]"}], "]"}], "]"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6197793943927193`*^9, 3.6197794082125483`*^9}, {
+   3.61977943939631*^9, 3.619779443755212*^9}, {3.619779596265748*^9, 
+   3.619779613547253*^9}, {3.6197796528580685`*^9, 3.6197797439233236`*^9}, {
+   3.6197798454969482`*^9, 3.6197798764835787`*^9}, {3.619779979671275*^9, 
+   3.6197801348876143`*^9}, {3.6197811518206472`*^9, 
+   3.6197813029719152`*^9}, {3.6197813525309095`*^9, 3.619781397298714*^9}, {
+   3.6197815943549056`*^9, 3.619781631305509*^9}, {3.6197817016063128`*^9, 
+   3.6197817089101753`*^9}, {3.619781846520791*^9, 3.6197818746835423`*^9}, {
+   3.619786742551092*^9, 3.619786829460955*^9}, 3.619786910806113*^9, {
+   3.6197869618320837`*^9, 3.619786982636935*^9}, 3.6197870137516494`*^9, {
+   3.619787047120864*^9, 3.619787232707033*^9}, {3.619787279799385*^9, 
+   3.6197873164728003`*^9}, {3.6197874055432096`*^9, 3.619787436784011*^9}, {
+   3.619787486881362*^9, 3.6197874870184546`*^9}, {3.6197877088371315`*^9, 
+   3.619787877060872*^9}, 3.6197879084758906`*^9, {3.619787941584936*^9, 
+   3.6197879975321813`*^9}, {3.6197880400645733`*^9, 
+   3.6197880596165905`*^9}, {3.6197881857916946`*^9, 
+   3.6197882125745254`*^9}, {3.6197884478056226`*^9, 
+   3.6197884546727095`*^9}, {3.6197886060955076`*^9, 3.61978862724759*^9}, {
+   3.6197886933455963`*^9, 3.619788756077362*^9}, {3.6197888390896263`*^9, 
+   3.619788839224716*^9}, 3.6197889017513437`*^9, {3.6197889355598593`*^9, 
+   3.619788936142748*^9}, {3.6197890396812816`*^9, 3.6197890769132166`*^9}, {
+   3.61978910771284*^9, 3.619789116692918*^9}, {3.6197891680092006`*^9, 
+   3.6197891981863823`*^9}, {3.619789443535525*^9, 3.6197894604147625`*^9}, {
+   3.61978953502043*^9, 3.6197895651384835`*^9}, {3.6197896144152884`*^9, 
+   3.6197896321490946`*^9}, {3.6197896832751336`*^9, 3.619789685453585*^9}, {
+   3.6197923990642033`*^9, 3.619792510793586*^9}, {3.6197925819369507`*^9, 
+   3.6197926027548103`*^9}, 3.619792646409876*^9, {3.6197926951703396`*^9, 
+   3.6197926968004246`*^9}, {3.6197927611242466`*^9, 3.619792805254629*^9}, 
+   3.619792838926046*^9, {3.619792900788232*^9, 3.619792926679469*^9}, {
+   3.6197929869495945`*^9, 3.61979298819242*^9}, {3.619793158582859*^9, 
+   3.6197932427639065`*^9}, {3.6197933237137976`*^9, 
+   3.6197933511860876`*^9}, {3.619794105175064*^9, 3.6197941178184834`*^9}, {
+   3.619794263905741*^9, 3.6197943061558723`*^9}, {3.61979436237486*^9, 
+   3.6197943624859366`*^9}, {3.6197944000179944`*^9, 
+   3.6197944346490493`*^9}, {3.6197944867917643`*^9, 
+   3.6197945473110557`*^9}, {3.6197945791872787`*^9, 3.6197946356188483`*^9}, 
+   3.619794699330265*^9, {3.6197947535783834`*^9, 3.6197947540176735`*^9}, {
+   3.619794786222113*^9, 3.6197948156226873`*^9}, {3.6197948477330656`*^9, 
+   3.6197948482033806`*^9}, {3.619794885031898*^9, 3.619794886277727*^9}, {
+   3.6198005380654774`*^9, 3.6198007474028463`*^9}, {3.6198007875025444`*^9, 
+   3.619800801038557*^9}, {3.619800834542861*^9, 3.619800877356365*^9}, 
+   3.6198009107005663`*^9}]
+},
+WindowSize->{1280, 1016},
+WindowMargins->{{Automatic, 141}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 21514, 521, 2323, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
