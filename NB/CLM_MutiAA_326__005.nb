@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     23873,        581]
-NotebookOptionsPosition[     23548,        567]
-NotebookOutlinePosition[     23917,        583]
-CellTagsIndexPosition[     23874,        580]
+NotebookDataLength[     24670,        596]
+NotebookOptionsPosition[     24345,        582]
+NotebookOutlinePosition[     24714,        598]
+CellTagsIndexPosition[     24671,        595]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -142,45 +142,56 @@ Cell[BoxData[
        RowBox[{"\[Delta]AR", "\[Rule]", "0"}], ",", 
        RowBox[{"\[Delta]BL", "\[Rule]", "0"}], ",", 
        RowBox[{"\[Delta]BR", "\[Rule]", "0"}]}], "}"}]}], ";"}], 
-   "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"coeffRule", " ", "=", " ", 
-     RowBox[{"{", " ", 
-      RowBox[{
-       RowBox[{"Pab", " ", "\[Rule]", " ", "0"}], ",", " ", 
-       RowBox[{"Mab", " ", "\[Rule]", " ", "0"}], ",", " ", 
-       RowBox[{"Pba", " ", "\[Rule]", " ", "0"}], ",", " ", 
-       RowBox[{"Mba", " ", "\[Rule]", " ", "0"}], ",", " ", 
-       RowBox[{"Pa", " ", "\[Rule]", " ", "0"}], ",", " ", 
-       RowBox[{"Ma", " ", "\[Rule]", " ", "0"}], ",", " ", 
-       RowBox[{"Pb", " ", "\[Rule]", " ", "0"}], ",", " ", 
-       RowBox[{"Mb", " ", "\[Rule]", " ", "0"}], " ", ",", " ", 
-       RowBox[{"Caa", " ", "\[Rule]", " ", "c"}], ",", " ", 
-       RowBox[{"Cbb", " ", "\[Rule]", " ", "c"}], ",", " ", 
-       "\[IndentingNewLine]", 
-       RowBox[{"Maa", " ", "\[Rule]", " ", "m"}], ",", " ", 
-       RowBox[{"Paa", " ", "\[Rule]", " ", "p"}], ",", " ", 
-       RowBox[{"Mbb", " ", "\[Rule]", " ", 
-        RowBox[{"m", "*", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{"1", "+", "bSign"}], ")"}], "/", "2"}]}]}], ",", " ", 
-       RowBox[{"Pbb", " ", "\[Rule]", " ", 
-        RowBox[{"p", "*", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{"1", "+", "bSign"}], ")"}], "/", "2"}]}]}], ",", " ", 
-       RowBox[{"Mbb1", " ", "\[Rule]", " ", 
-        RowBox[{"m", "*", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{"1", "-", "bSign"}], ")"}], "/", "2"}]}]}], ",", " ", 
-       RowBox[{"Pbb1", " ", "\[Rule]", " ", 
-        RowBox[{"p", "*", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{"1", "-", "bSign"}], ")"}], "/", "2"}]}]}]}], "}"}]}], 
-    ";"}], "\[IndentingNewLine]", 
+    RowBox[{"coeffRule", " ", "=", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Pa", " ", "\[Rule]", " ", "0"}], ",", " ", 
+        RowBox[{"Ma", " ", "\[Rule]", " ", "0"}], ",", " ", 
+        RowBox[{"Pb", " ", "\[Rule]", " ", "0"}], ",", " ", 
+        RowBox[{"Mb", " ", "\[Rule]", " ", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Pab", " ", "\[Rule]", 
+         RowBox[{"0", "*", " ", "\[Alpha]", " ", "p"}]}], ",", " ", 
+        RowBox[{"Mab", " ", "\[Rule]", 
+         RowBox[{"0", "*", " ", "\[Beta]", " ", "m"}]}], ",", " ", 
+        RowBox[{"Pba", " ", "\[Rule]", 
+         RowBox[{"0", "*", " ", "\[Alpha]", " ", "p"}]}], ",", " ", 
+        RowBox[{"Mba", " ", "\[Rule]", 
+         RowBox[{"0", "*", "\[Beta]", " ", "m"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Caa", " ", "\[Rule]", " ", "c"}], ",", " ", 
+        RowBox[{"Cbb", " ", "\[Rule]", " ", "c"}], ",", " ", 
+        RowBox[{"Cab", " ", "\[Rule]", " ", 
+         RowBox[{"\[Gamma]", " ", "c"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Paa", " ", "\[Rule]", " ", "p"}], ",", " ", 
+        RowBox[{"Maa", " ", "\[Rule]", " ", "m"}], ",", " ", 
+        RowBox[{"Pbb", " ", "\[Rule]", " ", 
+         RowBox[{"p", "*", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "+", "bSign"}], ")"}], "/", "2"}]}]}], ",", " ", 
+        RowBox[{"Mbb", " ", "\[Rule]", " ", 
+         RowBox[{"m", "*", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "+", "bSign"}], ")"}], "/", "2"}]}]}], ",", " ", 
+        RowBox[{"Pbb1", " ", "\[Rule]", " ", 
+         RowBox[{"p", "*", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", "bSign"}], ")"}], "/", "2"}]}]}], ",", " ", 
+        RowBox[{"Mbb1", " ", "\[Rule]", " ", 
+         RowBox[{"m", "*", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", "bSign"}], ")"}], "/", "2"}]}]}]}], "}"}], " ", 
+      "/.", " ", 
+      RowBox[{"{", 
+       RowBox[{"m", " ", "\[Rule]", " ", "0"}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
@@ -562,8 +573,12 @@ Cell[BoxData[
    3.7163259565073843`*^9}, {3.7163362522054625`*^9, 3.71633627009832*^9}, 
    3.716336339061325*^9, {3.7163363711773987`*^9, 3.716336554143512*^9}, {
    3.7163440786268024`*^9, 3.7163441202990446`*^9}, {3.7163442233652096`*^9, 
-   3.716344255787348*^9}},ExpressionUUID->"5115a03f-e8f8-4856-93bc-\
-f4361f9f99f0"]
+   3.716344255787348*^9}, {3.716350167065027*^9, 3.7163501870600405`*^9}, {
+   3.7163502234632225`*^9, 3.716350344932932*^9}, {3.7163505148000145`*^9, 
+   3.716350527076905*^9}, {3.716377882451152*^9, 3.716377883688842*^9}, {
+   3.716378036762021*^9, 
+   3.7163780455875425`*^9}},ExpressionUUID->"63d432e3-0adf-4793-921d-\
+627408cea349"]
 },
 WindowSize->{1729, 845},
 WindowMargins->{{53, Automatic}, {Automatic, 21}},
@@ -582,7 +597,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 22986, 545, 2556, "Input",ExpressionUUID->"5115a03f-e8f8-4856-93bc-f4361f9f99f0"]
+Cell[558, 20, 23783, 560, 2676, "Input",ExpressionUUID->"63d432e3-0adf-4793-921d-627408cea349"]
 }
 ]
 *)
