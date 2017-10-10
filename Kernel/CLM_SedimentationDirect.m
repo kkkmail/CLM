@@ -5,7 +5,7 @@
 (* :Email: konstantin.k.konstantinov@gmail.com *)
 (* :License type: GPL v3 or any later version, see http://www.gnu.org/licenses/ *)
 (* :Copyright: K^3, 2013 - 2017 *)
-(* :Version: 3.25 .001, Date : 2017/02/26 *)
+(* :Version: 3.26.001, Date : 2017/10/09 *)
 (* :Mathematica Version: 10.0 *)
 (* ============================================== *)
 (* This program is free software: you can redistribute it and/or modify it under the terms *)
@@ -47,7 +47,7 @@ kDirectCrystCoefficientValueSimple[substAid_?IntegerQ, substBid_?IntegerQ] := Mo
   base = 0;
 
   retVal = RandomCoefficientValue[kDirectCrystCoeffDistribution, kDirectCrystCoeffParams, kDirectCrystCoeffControlParams, base];
-  (* Print["kDirectCrystCoefficientValue:: substAid = ", substAid, ", GetChainLength[substAid] = ", GetChainLength[substAid], ", substBid = ", substBid, ", GetChainLength[substBid] = ", GetChainLength[substBid], ", base = ", base, ", retVal = ", retVal]; *)
+  (* If[!SilentRunValue, Print["kDirectCrystCoefficientValueSimple:: substAid = ", substAid, ", GetChainLength[substAid] = ", GetChainLength[substAid], ", substBid = ", substBid, ", GetChainLength[substBid] = ", GetChainLength[substBid], ", base = ", base, ", retVal = ", retVal]]; *)
   Return[retVal];
 ];
 (* ============================================== *)
@@ -134,6 +134,7 @@ GenerateAllkDirectCrystCoefficientMatrix[substAid_?IntegerQ, substBid_?IntegerQ]
 ];
 
 kDirectCrystCoefficientValueMatrix[substAid_?IntegerQ, substBid_?IntegerQ] := Module[{descr},
+  (* If[!SilentRunValue, Print["kDirectCrystCoefficientValueMatrix:: substAid = ", substAid, ", GetChainLength[substAid] = ", GetChainLength[substAid], ", substBid = ", substBid, ", GetChainLength[substBid] = ", GetChainLength[substBid]]]; *)
   GenerateAllkDirectCrystCoefficientMatrix[substAid, substBid];
   descr = AllDirectCrystDescriptorFunc[substAid, substBid];
   Return[descr];
@@ -149,7 +150,12 @@ kDirectCrystCoefficientValue[substAid_?IntegerQ, substBid_?IntegerQ] :=
 (* Simplified direct sedimentation is A + B \[Rule] (NA + NB) * Y *)
 AssignDirectCrystReactions[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, multiplier_?IntegerQ, allocateCoeff_?BooleanQ] := Module[
   {substIDlst, substEiDlst, substId, subst1Id, name, name1, base, base1, substLen, substDecayID, substDecayName, retVal, nameCoeff, name1Coeff, baseSubstId, coeffIdxName, coeffName, reacStringName, reacIdxName},
-  (* Print["AssignDirectCrystReactions::Starting..."]; *)
+(*
+  If[!SilentRunValue,
+    Print["AssignDirectCrystReactions::Starting..."];
+    Print["AssignDirectCrystReactions::substIdVal = ", substIdVal, ", subst1Id1Val = ", subst1Id1Val, ", multiplier = ", multiplier, ", allocateCoeff = ", allocateCoeff];
+  ];
+*)
 
   If[UseMatrixDirectCryst,
     (
@@ -206,14 +212,16 @@ AssignDirectCrystReactions[substIdVal_?IntegerQ, subst1Id1Val_?IntegerQ, multipl
   reacStringName = name <> " + " <> name1 <> " -> " <> ToString[substLen] <> substDecayName;
   reacIdxName = ReactionPrefixValue <> name <> PlusLetter <> name1 <> ToLetter <> ToString[substLen] <> substDecayName;
 
-  (* Print["AssignDirectCrystReactions::reacIdxName = ", reacIdxName, ", reacStringName = ", reacStringName, ", coeffName = ", coeffName,", substId = ", substId, ", subst1Id = ", subst1Id]; *)
+  (* If[!SilentRunValue, Print["AssignDirectCrystReactions::reacIdxName = ", reacIdxName, ", reacStringName = ", reacStringName, ", coeffName = ", coeffName,", substId = ", substId, ", subst1Id = ", subst1Id]]; *)
 
   If[allocateCoeff,
     (
+      (* If[!SilentRunValue, Print["AssignDirectCrystReactions::Allocating coefficient..."]]; *)
       ToExpression[coeffIdxName <> "=AddCoeffName[" <> coeffName <> ",Subscript[k,\"" <> reacStringName <> "\"]]"];
 
       If[AssignDirectCrystCoefficientsValue,
         (
+          (* If[!SilentRunValue, Print["AssignDirectCrystReactions::Calling kDirectCrystCoefficientValue..."]]; *)
           ToExpression[coeffName <> "=kDirectCrystCoefficientValue[" <> ToString[substId] <> ", " <> ToString[subst1Id] <> "]"];
         )
       ];
@@ -350,14 +358,14 @@ InitializeDirectCrystReactions[rawOpts___] := Module[
                         (
                           (* lenB = If[UseMatrixDirectCryst, Length[AllChainsTbl[[idxChainB]]], Length[AllChainsTbl[[idxChainB]]] / 2]; *)
                           lenB = Length[AllChainsTbl[[idxChainB]]] / 2;
-                          If[!SilentRunValue, Print["InitializeDirectCrystReactions::lenB = ", lenB]];
+                          (* If[!SilentRunValue, Print["InitializeDirectCrystReactions::lenB = ", lenB]]; *)
                           If[!IntegerQ[lenB], Abort[]];
                         )
                       ];
                     )
                   ];
 
-                  If[!SilentRunValue, Print["InitializeDirectCrystReactions::idxChain = ", idxChain, ", ii = ", ii, ", idxChainB = ", idxChainB, ", lenB = ", lenB]];
+                  (* If[!SilentRunValue, Print["InitializeDirectCrystReactions::idxChain = ", idxChain, ", ii = ", ii, ", idxChainB = ", idxChainB, ", lenB = ", lenB]]; *)
 
                   Do[
                     (
@@ -376,7 +384,7 @@ InitializeDirectCrystReactions[rawOpts___] := Module[
           BlstLen = Length[substBlst];
           (* Print["    Aid = ", Aid, ", ",  GetSubstanceName[Aid], ", substBlst =  ", Table[{ii, substBlst[[ii]], GetSubstanceName[substBlst[[ii]]]}, {ii, 1, BlstLen}] // MatrixForm]; *)
 
-          If[!SilentRunValue, Print["InitializeDirectCrystReactions::A = ", SubstanceMatrix[Aid], ", substBlst = ", Table[{kk, substBlst[[kk]], SubstanceMatrix[substBlst[[kk]]]}, {kk, 1, BlstLen}] // MatrixForm]];
+          (* If[!SilentRunValue, Print["InitializeDirectCrystReactions::A = ", SubstanceMatrix[Aid], ", substBlst = ", Table[{kk, substBlst[[kk]], SubstanceMatrix[substBlst[[kk]]]}, {kk, 1, BlstLen}] // MatrixForm]]; *)
 
           Do[
             (
