@@ -88,7 +88,7 @@ Options[CLMS] =
       MultStoNS -> 1, MultBsstoBlr -> 1, MultBlrtoBss -> 1, MultCsstoClr -> 1, MultClrtoCss -> 1, UseGamma -> False,
       UseGammaPlus -> False, UseGammaMinus -> False, Print\[Rho]AllFuncInfo -> False, Print\[Rho]AllFuncInfoTrigger -> True,
       \[Rho]AllFuncDescription -> "", NDSolveMaxSteps -> Infinity, NDSolveStepSize -> None (*10^-4*),
-      NDSolveMethod -> {"FixedStep", Method -> {"ExplicitRungeKutta", "DifferenceOrder" -> 5, "StiffnessTest" -> False}},
+      NDSolveMethod -> {} (* {"FixedStep", Method -> {"ExplicitRungeKutta", "DifferenceOrder" -> 5, "StiffnessTest" -> False}} *),
       NDSolveAccuracyGoal -> None, NDSolvePrecisionGoal -> None, NDSolveWorkingPrecision -> None,
       NDSolveUseDerivativeForAggregateSubst -> False, NDSolveUseFuncForAggregateSubst -> True,
       NDSolveUseNumericFuncForAggregateSubst -> True, ModelDescriptorValue -> Undefined, RotateXY -> False,
