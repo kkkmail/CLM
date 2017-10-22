@@ -5,7 +5,7 @@
 (* :Email: konstantin.k.konstantinov@gmail.com *)
 (* :License type: GPL v3 or any later version, see http://www.gnu.org/licenses/ *)
 (* :Copyright: K^3, 2013 - 2017 *)
-(* :Version: 3.26.001, Date : 2017/10/09 *)
+(* :Version: 3.26.001, Date : 2017/10/21 *)
 (* :Mathematica Version: 10.0 *)
 (* ============================================== *)
 (* This program is free software: you can redistribute it and/or modify it under the terms *)
@@ -196,6 +196,8 @@ InitializeReactions[rawOpts___] := Module[{},
 
   If[!SilentRunValue,
     (
+      PrintTimeUsed[];
+
       Print["InitializeReactions::Final LCatSynthReactionCnt = ", LCatSynthReactionCnt];
 
       Print["InitializeReactions::Final LCatSynthCatalystCnt = ", Table[{ii, LCatSynthCatalystCnt[ii]}, {ii, 1, MaxChainLength}] // MatrixForm];
