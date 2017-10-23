@@ -1,0 +1,59 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      1500,         51]
+NotebookOptionsPosition[      1201,         38]
+NotebookOutlinePosition[      1548,         53]
+CellTagsIndexPosition[      1505,         50]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", "=", 
+   RowBox[{"{", 
+    RowBox[{"A", "\[TensorProduct]", "A"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"y", "=", "coeff\:0df4A\:02d6A\:2794Y\:02d6A"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"yASCII", "=", "coeff\:0df4A\:02d6A\:2794Y\:02d6A"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\n"}], "Input",
+ CellChangeTimes->{{3.717619501802566*^9, 3.717619506058935*^9}, {
+  3.7176195855332794`*^9, 3.7176195952028704`*^9}, {3.7176199093309307`*^9, 
+  3.71761990966185*^9}},ExpressionUUID->"4464e10e-c27e-4d88-a52d-\
+e54105984148"]
+},
+WindowSize->{775, 872},
+WindowMargins->{{25, Automatic}, {Automatic, 31}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 639, 16, 124, "Input",ExpressionUUID->"4464e10e-c27e-4d88-a52d-e54105984148"]
+}
+]
+*)
+

@@ -5,7 +5,7 @@
 (* :Email: konstantin.k.konstantinov@gmail.com *)
 (* :License type: GPL v3 or any later version, see http://www.gnu.org/licenses/ *)
 (* :Copyright: K^3, 2013 - 2017 *)
-(* :Version: 3.25 .001, Date : 2017/02/26 *)
+(* :Version: 3.26.001, Date : 2017/10/21 *)
 (* :Mathematica Version: 10.0 *)
 (* ============================================== *)
 (* This program is free software: you can redistribute it and/or modify it under the terms *)
@@ -17,7 +17,12 @@
 (* If not, see <http://www.gnu.org/licenses/>. *)
 (* ============================================== *)
 (* ============================================== *)
-EvolutionGeneratorVersion = "3.25.001";
+EvolutionGeneratorVersion = "3.26.001";
+(* ============================================== *)
+Options[CLMEvolutionGenerator] :=
+    {
+      CalculateSubstDisplMatrix -> True
+    };
 (* ============================================== *)
 EvRunTypeNone = 0;
 EvRunTypeAll = 1;
@@ -27,6 +32,7 @@ EvRunTypeRange = 3;
 IsInitializedEvol = False;
 PrintInfoEval = False;
 RunChainModelPlotRangeValEval = Automatic;
+CalculateSubstDisplMatrixValue = CalculateSubstDisplMatrix /. Options[CLMEvolutionGenerator];
 (* ============================================== *)
 SubstLstEvolNameLevelFunc[maxChainLen_?IntegerQ] := Module[{retVal, ii, len, prev},
   If[maxChainLen <= 1,
@@ -59,8 +65,11 @@ SubstLstEvolFunc[maxChainLen_?IntegerQ] := Module[{nameLst, len, ii, retVal},
 (* ============================================== *)
 EvolutionInitialize[maxChainLen_?IntegerQ, useActivation_?BooleanQ, useNNT_?BooleanQ, useDirectCryst_?BooleanQ] := EvolutionInitialize[maxChainLen, useActivation, useNNT, useDirectCryst, True];
 
-EvolutionInitialize[maxChainLen_?IntegerQ, useActivation_?BooleanQ, useNNT_?BooleanQ, useDirectCryst_?BooleanQ, runNDSolveVal_?BooleanQ] := Module[{len, ii, lenPair, s},
+EvolutionInitialize[maxChainLen_?IntegerQ, useActivation_?BooleanQ, useNNT_?BooleanQ, useDirectCryst_?BooleanQ, runNDSolveVal_?BooleanQ, rawOpts___] := Module[{len, ii, lenPair, s, opts},
   Print["EvolutionGeneratorVersion = ", EvolutionGeneratorVersion];
+  opts = ProcessOptions[rawOpts];
+  CalculateSubstDisplMatrixValue = CalculateSubstDisplMatrix /. opts /. Options[CLMEvolutionGenerator];
+
   Print[strSeparator];
 
   RunNDSolve = runNDSolveVal;
@@ -123,7 +132,7 @@ EvolutionInitialize[maxChainLen_?IntegerQ, useActivation_?BooleanQ, useNNT_?Bool
   GeneratorInitializeModel[maxChainLen, useActivation, useNNT];
   MaxCatCntEvol = If[CatSynthEnantSel == EnantSelNoReaction && InvCatSynthEnantSel == EnantSelNoReaction, 1, len];
 
-  If[maxChainLen <= 5,
+  If[maxChainLen <= 5 && CalculateSubstDisplMatrixValue,
     (
       Print["EvolutionInitialize::Initializing display matrices..."];
       substDisplMatrix = If[MaxCatCntEvol == 1, (Table[{jj, TensorProduct[GetSubstanceName[SubstPairsLstEvol[[jj, 1]]] , GetSubstanceName[SubstPairsLstEvol[[jj, 2]]]]}, {jj, 1, SubstPairsLstCntEvol}]), (Join[Table[{jj}, {jj, 1, SubstPairsLstCntEvol}], Table[GetSubstanceName[SubstLstEvol[[ii]]] ** TensorProduct[GetSubstanceName[SubstPairsLstEvol[[jj, 1]]] , GetSubstanceName[SubstPairsLstEvol[[jj, 2]]]], {jj, 1, SubstPairsLstCntEvol}, {ii, 1, len}], 2])];
@@ -137,6 +146,9 @@ EvolutionInitialize[maxChainLen_?IntegerQ, useActivation_?BooleanQ, useNNT_?Bool
       substDisplMatrixMM = If[MaxCatCntEvol == 1, (Table[{jj, TensorProduct[GetSubstanceName[EnantSubstPairsLstEvol[[jj, 1]]] , GetSubstanceName[EnantSubstPairsLstEvol[[jj, 2]]]]}, {jj, 1, SubstPairsLstCntEvol}]), (Join[Table[{jj}, {jj, 1, SubstPairsLstCntEvol}], Table[GetSubstanceName[EnantSubstLstEvol[[ii]]] ** TensorProduct[GetSubstanceName[EnantSubstPairsLstEvol[[jj, 1]]] , GetSubstanceName[EnantSubstPairsLstEvol[[jj, 2]]]], {jj, 1, SubstPairsLstCntEvol}, {ii, 1, len}], 2])];
       Print["EvolutionInitialize:: ... done."];
       PrintSubstMatrixEvol[];
+    ),
+    (
+      Print["EvolutionInitialize::NOT initializing display matrices."];
     )
   ];
 

@@ -1,0 +1,1726 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     72864,       1718]
+NotebookOptionsPosition[     72588,       1704]
+NotebookOutlinePosition[     72962,       1720]
+CellTagsIndexPosition[     72919,       1717]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+      "===", "===", "===", "==="}], "="}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "sep", "=", "\"\<==============================================\>\""}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"dAL", " ", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pa", "*", "rY"}], "-", 
+       RowBox[{"Ma", "*", "rAL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Paa", "*", "rY", "*", "rAL"}], "-", 
+       RowBox[{"Maa", "*", "rAL", "*", "rAL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Paa1", "*", "rY", "*", "rAR"}], "-", 
+       RowBox[{"Maa1", "*", "rAL", "*", "rAR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pab", "*", "rY", "*", "rBL"}], "-", 
+       RowBox[{"Mab", "*", "rAL", "*", "rBL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pab1", "*", "rY", "*", "rBR"}], "-", 
+       RowBox[{"Mab1", "*", "rAL", "*", "rBR"}]}], ")"}], "-", 
+     RowBox[{"Caa", "*", "rAL", "*", "rAR"}], "-", 
+     RowBox[{"Caa1", "*", "rAL", "*", "rAL"}], "-", 
+     RowBox[{"Cab", "*", "rAL", "*", "rBR"}], "-", 
+     RowBox[{"Cab1", "*", "rAL", "*", "rBL"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{"dAR", " ", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pa", "*", "rY"}], "-", 
+       RowBox[{"Ma", "*", "rAR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Paa", "*", "rY", "*", "rAR"}], "-", 
+       RowBox[{"Maa", "*", "rAR", "*", "rAR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Paa1", "*", "rY", "*", "rAL"}], "-", 
+       RowBox[{"Maa1", "*", "rAR", "*", "rAL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pab", "*", "rY", "*", "rBR"}], "-", 
+       RowBox[{"Mab", "*", "rAR", "*", "rBR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pab1", "*", "rY", "*", "rBL"}], "-", 
+       RowBox[{"Mab1", "*", "rAR", "*", "rBL"}]}], ")"}], "-", 
+     RowBox[{"Caa", "*", "rAL", "*", "rAR"}], "-", 
+     RowBox[{"Caa1", "*", "rAR", "*", "rAR"}], "-", 
+     RowBox[{"Cab", "*", "rAR", "*", "rBL"}], "-", 
+     RowBox[{"Cab1", "*", "rAR", "*", "rBR"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{"dBL", " ", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pb", "*", "rY"}], "-", 
+       RowBox[{"Mb", "*", "rBL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pbb", "*", "rY", "*", "rBL"}], "-", 
+       RowBox[{"Mbb", "*", "rBL", "*", "rBL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pbb1", "*", "rY", "*", "rBR"}], "-", 
+       RowBox[{"Mbb1", "*", "rBL", "*", "rBR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pba", "*", "rY", "*", "rAL"}], "-", 
+       RowBox[{"Mba", "*", "rBL", "*", "rAL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pba1", "*", "rY", "*", "rAR"}], "-", 
+       RowBox[{"Mba1", "*", "rBL", "*", "rAR"}]}], ")"}], "-", 
+     RowBox[{"Cbb", "*", "rBL", "*", "rBR"}], "-", 
+     RowBox[{"Cbb1", "*", "rBL", "*", "rBL"}], "-", 
+     RowBox[{"Cba", "*", "rBL", "*", "rAR"}], "-", 
+     RowBox[{"Cba1", "*", "rBL", "*", "rAL"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{"dBR", " ", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pb", "*", "rY"}], "-", 
+       RowBox[{"Mb", "*", "rBR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pbb", "*", "rY", "*", "rBR"}], "-", 
+       RowBox[{"Mbb", "*", "rBR", "*", "rBR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pbb1", "*", "rY", "*", "rBL"}], "-", 
+       RowBox[{"Mbb1", "*", "rBR", "*", "rBL"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pba", "*", "rY", "*", "rAR"}], "-", 
+       RowBox[{"Mba", "*", "rBR", "*", "rAR"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Pba1", "*", "rY", "*", "rAL"}], "-", 
+       RowBox[{"Mba1", "*", "rBR", "*", "rAL"}]}], ")"}], "-", 
+     RowBox[{"Cbb", "*", "rBL", "*", "rBR"}], "-", 
+     RowBox[{"Cbb1", "*", "rBR", "*", "rBR"}], "-", 
+     RowBox[{"Cba", "*", "rBR", "*", "rAL"}], "-", 
+     RowBox[{"Cba1", "*", "rBR", "*", "rAR"}]}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rule", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"rY", " ", "\[Rule]", " ", 
+        RowBox[{"rY", "-", 
+         RowBox[{"(", 
+          RowBox[{
+          "\[Delta]AL", "+", "\[Delta]AR", "+", "\[Delta]BL", "+", 
+           "\[Delta]BR"}], ")"}]}]}], ",", 
+       RowBox[{"rAL", " ", "\[Rule]", " ", 
+        RowBox[{"\[Theta]A", "+", "\[Delta]AL"}]}], ",", " ", 
+       RowBox[{"rAR", " ", "\[Rule]", " ", 
+        RowBox[{"\[Theta]A", "+", "\[Delta]AR"}]}], ",", " ", 
+       RowBox[{"rBL", " ", "\[Rule]", 
+        RowBox[{"\[Theta]B", "+", "\[Delta]BL"}]}], " ", ",", " ", 
+       RowBox[{"rBR", " ", "\[Rule]", 
+        RowBox[{"\[Theta]B", "+", "\[Delta]BR"}]}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"deltaZeroRule", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Delta]AL", "\[Rule]", "0"}], ",", 
+       RowBox[{"\[Delta]AR", "\[Rule]", "0"}], ",", 
+       RowBox[{"\[Delta]BL", "\[Rule]", "0"}], ",", 
+       RowBox[{"\[Delta]BR", "\[Rule]", "0"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "\"\<p0 and c+/-\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", " ",
+          "0"}]}], "\[IndentingNewLine]", "}"}]}], ";"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "\"\<p0 and m0\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ","}], " ", 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", " ",
+          "0"}]}], "\[IndentingNewLine]", "}"}]}], ";"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "\"\<p0 and \[CapitalSigma]0\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ",
+            "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", " ",
+          "0"}]}], "\[IndentingNewLine]", "}"}]}], ";"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "\"\<p0, p1, \[CapitalSigma]ab\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ","}], " ",
+          "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", 
+           " ", "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", " ",
+          "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"dummy", " ", "\[Rule]", " ", "0"}]}], "\[IndentingNewLine]", 
+       "}"}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+     "Print", "[", "\"\<p0, \[CapitalSigma]ab, \[CapitalSigma]1ab\>\"", "]"}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", 
+           " ", "0"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", 
+           " ", "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"dummy", " ", "\[Rule]", " ", "0"}]}], "\[IndentingNewLine]", 
+       "}"}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+     "Print", "[", "\"\<p0, p1, \[CapitalSigma]ab, \[CapitalSigma]1ab\>\"", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ","}], " ",
+          "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", 
+           " ", "0"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", 
+           " ", "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"dummy", " ", "\[Rule]", " ", "0"}]}], "\[IndentingNewLine]", 
+       "}"}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "\"\<p0, p1, \[CapitalSigma]0\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}], " ", "\[Rule]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ","}], " ", 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ","}],
+          " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], " ", ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ","}], " ",
+          "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ",
+            "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", " ", 
+         "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", " ",
+          "0"}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"dummy", " ", "\[Rule]", " ", "0"}]}], "\[IndentingNewLine]", 
+       "}"}]}], ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<No c, no m\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"coeffZeroRule", "=", "\[IndentingNewLine]", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"c", ",", "\:02d6"}], "]"}], " ", "\[Rule]", " ", "0"}], ",",
+        "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"c", ",", "\:02d7"}], "]"}], " ", "\[Rule]", " ", "0"}], ",",
+        "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"m", ",", "0"}], "]"}], "\[Rule]", "0"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"m", ",", "1"}], "]"}], " ", "\[Rule]", " ", "0"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"m", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", " ", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"m1", ",", "ab"}], "]"}], "\[Rule]", "0"}], ",", " ", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "1"}], "]"}], "\[Rule]", " ", "0"}], ","}], " ", 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "ab"}], "]"}], "\[Rule]", "0"}], ","}], " ", 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p1", ",", "ab"}], "]"}], "\[Rule]", "0"}], ","}], " ", 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}], " ", "\[Rule]", " ", 
+          "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "1"}], "]"}], " ", "\[Rule]", " ", 
+          "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}], " ", "\[Rule]", " ",
+           "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}], " ", "\[Rule]", 
+          " ", "0"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"dummy", " ", "\[Rule]", " ", "0"}]}], "\[IndentingNewLine]", 
+      "}"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<coeffRule - standard\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"coeffRule", " ", "=", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Pa", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}]}], ",", " ", 
+        RowBox[{"Ma", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Pb", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d6"}], "]"}]}], ",", " ", 
+        RowBox[{"Mb", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"c", ",", "\:02d7"}], "]"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Paa", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "0"}], "]"}]}], ",", " ", 
+        RowBox[{"Maa", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "0"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"Pbb", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "0"}], "]"}]}], ",", " ", 
+        RowBox[{"Mbb", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "0"}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Paa1", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "1"}], "]"}]}], ",", " ", 
+        RowBox[{"Maa1", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Pbb1", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "1"}], "]"}]}], ",", " ", 
+        RowBox[{"Mbb1", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Pab", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}]}], ",", " ", 
+        RowBox[{"Mab", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Pab1", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p1", ",", "ab"}], "]"}]}], ",", " ", 
+        RowBox[{"Mab1", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m1", ",", "ab"}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Pba", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p", ",", "ab"}], "]"}]}], ",", " ", 
+        RowBox[{"Mba", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m", ",", "ab"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"Pba1", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"p1", ",", "ab"}], "]"}]}], ",", " ", 
+        RowBox[{"Mba1", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"m1", ",", "ab"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"Caa", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}]}], ",", " ", 
+        RowBox[{"Cbb", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Caa1", " ", "\[Rule]", " ", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "1"}], "]"}]}], ",", " ", 
+        RowBox[{"Cbb1", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "1"}], "]"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Cab", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}]}], ",", " ", 
+        RowBox[{"Cba", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Cab1", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}]}], ",", 
+        RowBox[{"Cba1", " ", "\[Rule]", 
+         RowBox[{"Subscript", "[", 
+          RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}]}]}], 
+       "\[IndentingNewLine]", "}"}], " ", "/.", " ", "coeffZeroRule"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+     "Print", "[", "\"\<coeffRule - B is opposite of A in cat synthesis\>\"", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coeffRule", " ", "=", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Pa", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d6"}], "]"}]}], ",", " ", 
+         RowBox[{"Ma", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d7"}], "]"}]}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Pb", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d6"}], "]"}]}], ",", " ", 
+         RowBox[{"Mb", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d7"}], "]"}]}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Paa", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "0"}], "]"}]}], ",", " ", 
+         RowBox[{"Maa", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "0"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+         RowBox[{"Pbb", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "1"}], "]"}]}], ",", " ", 
+         RowBox[{"Mbb", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Paa1", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "1"}], "]"}]}], ",", " ", 
+         RowBox[{"Maa1", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Pbb1", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "0"}], "]"}]}], ",", " ", 
+         RowBox[{"Mbb1", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "0"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Pab", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "ab"}], "]"}]}], ",", " ", 
+         RowBox[{"Mab", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "ab"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Pba", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "ab"}], "]"}]}], ",", " ", 
+         RowBox[{"Mba", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "ab"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+         RowBox[{"Caa", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}]}], ",", " ", 
+         RowBox[{"Cbb", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}]}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Cab", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}]}], ",", " ", 
+         RowBox[{"Cba", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "ab"}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Cab1", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}]}], ",", 
+         RowBox[{"Cba1", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]1", ",", "ab"}], "]"}]}]}], 
+        "\[IndentingNewLine]", "}"}], " ", "/.", " ", "coeffZeroRule"}]}], 
+     ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "\"\<coeffRule - no B\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coeffRule", " ", "=", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Pa", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d6"}], "]"}]}], ",", " ", 
+         RowBox[{"Ma", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d7"}], "]"}]}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Pb", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d6"}], "]"}]}], ",", " ", 
+         RowBox[{"Mb", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"c", ",", "\:02d7"}], "]"}]}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Paa", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "0"}], "]"}]}], ",", " ", 
+         RowBox[{"Maa", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "0"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+         RowBox[{"Pbb", " ", "\[Rule]", "0"}], ",", " ", 
+         RowBox[{"Mbb", " ", "\[Rule]", " ", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Paa1", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "1"}], "]"}]}], ",", " ", 
+         RowBox[{"Maa1", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"m", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Pbb1", " ", "\[Rule]", " ", "0"}], ",", " ", 
+         RowBox[{"Mbb1", " ", "\[Rule]", " ", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Pab", " ", "\[Rule]", "0"}], ",", " ", 
+         RowBox[{"Mab", " ", "\[Rule]", "0"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Pba", " ", "\[Rule]", "0"}], ",", " ", 
+         RowBox[{"Mba", " ", "\[Rule]", "0"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Caa", " ", "\[Rule]", " ", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}]}], ",", " ", 
+         RowBox[{"Cbb", " ", "\[Rule]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "0"}], "]"}]}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Cab", " ", "\[Rule]", "0"}], ",", 
+         RowBox[{"Cba", " ", "\[Rule]", " ", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Cab1", " ", "\[Rule]", "0"}], ",", 
+         RowBox[{"Cba1", " ", "\[Rule]", "0"}]}], "\[IndentingNewLine]", 
+        "}"}], " ", "/.", " ", "coeffZeroRule"}]}], ";"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<ruleSol\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ruleSol", "=", 
+    RowBox[{
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "\[Alpha]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "0"], "-", 
+           SubscriptBox["p", "1"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Delta]", ",", "\[Alpha]"}], "]"}]}], ",", " ", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "\[Beta]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "ab"], "-", 
+           SubscriptBox["p1", "ab"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Delta]", ",", "\[Beta]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "0"], "+", 
+           SubscriptBox["\[CapitalSigma]", "1"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "\[Alpha]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "0"], "-", 
+           SubscriptBox["\[CapitalSigma]", "1"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Sigma]", ",", "\[Alpha]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "ab"], "+", 
+           SubscriptBox["\[CapitalSigma]1", "ab"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "\[Beta]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "ab"], "-", 
+           SubscriptBox["\[CapitalSigma]1", "ab"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Sigma]", ",", "\[Beta]"}], "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["p", "0"], ",", 
+         SubscriptBox["p", "1"], ",", " ", 
+         SubscriptBox["p", "ab"], ",", 
+         SubscriptBox["p1", "ab"], ",", 
+         SubscriptBox["\[CapitalSigma]", "0"], ",", 
+         SubscriptBox["\[CapitalSigma]", "1"], ",", 
+         SubscriptBox["\[CapitalSigma]", "ab"], ",", 
+         SubscriptBox["\[CapitalSigma]1", "ab"]}], "}"}]}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ruleSolInv", "=", 
+    RowBox[{
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "\[Alpha]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "0"], "-", 
+           SubscriptBox["p", "1"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Delta]", ",", "\[Alpha]"}], "]"}]}], ",", " ", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"p", ",", "\[Beta]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["p", "ab"], "-", 
+           SubscriptBox["p1", "ab"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Delta]", ",", "\[Beta]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "0"], "+", 
+           SubscriptBox["\[CapitalSigma]", "1"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "\[Alpha]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "0"], "-", 
+           SubscriptBox["\[CapitalSigma]", "1"]}], "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Sigma]", ",", "\[Alpha]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "ab"], "+", 
+           SubscriptBox["\[CapitalSigma]1", "ab"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[CapitalSigma]", ",", "\[Beta]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "ab"], "-", 
+           SubscriptBox["\[CapitalSigma]1", "ab"]}], " ", "\[Equal]", 
+          RowBox[{"Subscript", "[", 
+           RowBox[{"\[Sigma]", ",", "\[Beta]"}], "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["p", "\[Alpha]"], ",", 
+         SubscriptBox["\[Delta]", "\[Alpha]"], ",", 
+         SubscriptBox["p", "\[Beta]"], ",", 
+         SubscriptBox["\[Delta]", "\[Beta]"], ",", 
+         SubscriptBox["\[Sigma]", "\[Alpha]"], ",", 
+         SubscriptBox["\[CapitalSigma]", "\[Alpha]"], ",", 
+         SubscriptBox["\[Sigma]", "\[Beta]"], ",", 
+         SubscriptBox["\[CapitalSigma]", "\[Beta]"]}], "}"}]}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Apply deltaZeroRule\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"eqdAL", "=", 
+    RowBox[{
+     RowBox[{"Collect", "[", 
+      RowBox[{
+       RowBox[{"Expand", "[", 
+        RowBox[{"FullSimplify", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dAL", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "/.",
+           " ", "deltaZeroRule"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Theta]A", "^", "2"}], ",", 
+         RowBox[{"\[Theta]B", "^", "2"}], ",", 
+         RowBox[{"\[Theta]A", " ", "*", "\[Theta]B"}]}], "}"}]}], "]"}], "/.",
+      "ruleSol"}]}], "\[IndentingNewLine]", 
+   RowBox[{"eqdAR", "=", 
+    RowBox[{
+     RowBox[{"Collect", "[", 
+      RowBox[{
+       RowBox[{"Expand", "[", 
+        RowBox[{"FullSimplify", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dAR", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "/.",
+           " ", "deltaZeroRule"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Theta]A", "^", "2"}], ",", 
+         RowBox[{"\[Theta]B", "^", "2"}], ",", 
+         RowBox[{"\[Theta]A", " ", "*", "\[Theta]B"}]}], "}"}]}], "]"}], "/.",
+      "ruleSol"}]}], "\[IndentingNewLine]", 
+   RowBox[{"eqdBL", "=", 
+    RowBox[{
+     RowBox[{"Collect", "[", 
+      RowBox[{
+       RowBox[{"Expand", "[", 
+        RowBox[{"FullSimplify", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dBL", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "/.",
+           " ", "deltaZeroRule"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Theta]A", "^", "2"}], ",", 
+         RowBox[{"\[Theta]B", "^", "2"}], ",", 
+         RowBox[{"\[Theta]A", " ", "*", "\[Theta]B"}]}], "}"}]}], "]"}], "/.",
+      "ruleSol"}]}], "\[IndentingNewLine]", 
+   RowBox[{"eqdBR", "=", 
+    RowBox[{
+     RowBox[{"Collect", "[", 
+      RowBox[{
+       RowBox[{"Expand", "[", 
+        RowBox[{"FullSimplify", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dBR", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "/.",
+           " ", "deltaZeroRule"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Theta]A", "^", "2"}], ",", 
+         RowBox[{"\[Theta]B", "^", "2"}], ",", 
+         RowBox[{"\[Theta]A", " ", "*", "\[Theta]B"}]}], "}"}]}], "]"}], "/.",
+      "ruleSol"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<eqAB\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"solAB", "=", 
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"eqdAL", "\[Equal]", "0"}], ",", 
+         RowBox[{"eqdBL", "\[Equal]", "0"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Theta]A", ",", "\[Theta]B"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"solAB", "=", 
+    RowBox[{"FullSimplify", "[", "solAB", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<...\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"vars", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "\[Delta]AL", ",", "\[Delta]AR", ",", "\[Delta]BL", ",", "\[Delta]BR"}], 
+     "}"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"zeroSqRule1", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[Delta]AL", "^", "2"}], " ", "\[Rule]", " ", "0"}], ",", 
+       " ", 
+       RowBox[{
+        RowBox[{"\[Delta]AR", "^", "2"}], " ", "\[Rule]", " ", "0"}], ",", 
+       " ", 
+       RowBox[{
+        RowBox[{"\[Delta]BL", "^", "2"}], " ", "\[Rule]", " ", "0"}], ",", 
+       " ", 
+       RowBox[{
+        RowBox[{"\[Delta]BR", "^", "2"}], " ", "\[Rule]", " ", "0"}], ",", 
+       RowBox[{
+        RowBox[{"\[Delta]AL", " ", "\[Delta]AR"}], "\[Rule]", "0"}], ",", " ", 
+       RowBox[{
+        RowBox[{"\[Delta]AL", " ", "\[Delta]BL"}], "\[Rule]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"\[Delta]AR", " ", "\[Delta]BR"}], "\[Rule]", "0"}], ",", " ", 
+       RowBox[{
+        RowBox[{"\[Delta]BL", " ", "\[Delta]BR"}], "\[Rule]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"\[Delta]AL", " ", "\[Delta]BR"}], "\[Rule]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"\[Delta]AR", " ", "\[Delta]BL"}], " ", "\[Rule]", " ", 
+        "0"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"eAL", "=", 
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{
+      RowBox[{"Expand", "[", 
+       RowBox[{
+        RowBox[{"dAL", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "]"}], 
+      " ", "/.", " ", "zeroSqRule1"}], " ", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"eAR", "=", 
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{
+      RowBox[{"Expand", "[", 
+       RowBox[{
+        RowBox[{"dAR", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "]"}], 
+      " ", "/.", " ", "zeroSqRule1"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"eBL", "=", 
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{
+      RowBox[{"Expand", "[", 
+       RowBox[{
+        RowBox[{"dBL", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "]"}], 
+      " ", "/.", " ", "zeroSqRule1"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"eBR", "=", 
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{
+      RowBox[{"Expand", "[", 
+       RowBox[{
+        RowBox[{"dBR", " ", "/.", " ", "rule"}], "/.", "coeffRule"}], "]"}], 
+      " ", "/.", " ", "zeroSqRule1"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<coeffs\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eqAll", "=", 
+     RowBox[{"{", 
+      RowBox[{"eAL", ",", "eAR", ",", "eBL", ",", "eBR"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FullSimplify", "[", "eqAll", "]"}], "//", " ", "MatrixForm"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"coeffs", " ", "=", " ", 
+     RowBox[{"FullSimplify", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Coefficient", "[", 
+         RowBox[{
+          RowBox[{"eqAll", "[", 
+           RowBox[{"[", "ii", "]"}], "]"}], ",", 
+          RowBox[{"vars", "[", 
+           RowBox[{"[", "jj", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"ii", ",", "1", ",", "4"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"jj", ",", "1", ",", "4"}], "}"}]}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"coeffs", "//", "MatrixForm"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Expand", "[", "coeffs", "]"}], "//", "MatrixForm"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mult", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["\[CapitalSigma]", "\[Alpha]"], "+", 
+          SubscriptBox["\[CapitalSigma]", "\[Beta]"]}], ")"}]}], ")"}], "/", 
+      "rY"}]}], " ", ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"coeff1", "=", 
+     RowBox[{"FullSimplify", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"mult", "*", "coeffs"}], ")"}], " ", "/.", " ", "ruleSol"}],
+         " ", "/.", " ", 
+        RowBox[{"solAB", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "/.", " ", "ruleSolInv"}], "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{"coeff1", " ", "//", "MatrixForm"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ruleFwdVal", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SubsuperscriptBox["p", "0", "2"], "+", 
+          RowBox[{
+           SubscriptBox["p", "0"], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"2", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["p", "1"], "+", 
+                SubscriptBox["p", "ab"], "+", 
+                SubscriptBox["p1", "ab"]}], ")"}]}], "+", 
+             SubscriptBox["\[CapitalSigma]", "1"]}], ")"}]}], "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             SubscriptBox["p", "1"], "+", 
+             SubscriptBox["p", "ab"], "+", 
+             SubscriptBox["p1", "ab"]}], ")"}], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             SubscriptBox["p", "1"], "+", 
+             SubscriptBox["p", "ab"], "+", 
+             SubscriptBox["p1", "ab"], "+", 
+             SubscriptBox["\[CapitalSigma]", "0"], "+", 
+             RowBox[{"2", " ", 
+              SubscriptBox["\[CapitalSigma]", "1"]}], "+", 
+             SubscriptBox["\[CapitalSigma]", "ab"], "+", 
+             SubscriptBox["\[CapitalSigma]1", "ab"]}], ")"}]}]}], ")"}]}], 
+       " ", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "2"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"], "+", 
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], ")"}]}], "-", 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"], "+", 
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"], "+", 
+           SubscriptBox["\[CapitalSigma]", "0"]}], ")"}]}], "+", 
+        RowBox[{"2", " ", 
+         SubscriptBox["p", "1"], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "0"], "+", 
+           SubscriptBox["\[CapitalSigma]", "1"], "+", 
+           SubscriptBox["\[CapitalSigma]", "ab"], "+", 
+           SubscriptBox["\[CapitalSigma]1", "ab"]}], ")"}]}]}], ",", 
+       RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SubsuperscriptBox["p", "0", "2"], "+", 
+          SubsuperscriptBox["p", "1", "2"], "+", 
+          SubsuperscriptBox["p", "ab", "2"], "+", 
+          RowBox[{"2", " ", 
+           SubscriptBox["p", "ab"], " ", 
+           SubscriptBox["p1", "ab"]}], "+", 
+          SubsuperscriptBox["p1", "ab", "2"], "-", 
+          RowBox[{
+           SubscriptBox["p", "ab"], " ", 
+           SubscriptBox["\[CapitalSigma]", "0"]}], "-", 
+          RowBox[{
+           SubscriptBox["p", "ab"], " ", 
+           SubscriptBox["\[CapitalSigma]", "1"]}], "-", 
+          RowBox[{
+           SubscriptBox["p", "ab"], " ", 
+           SubscriptBox["\[CapitalSigma]", "ab"]}], "+", 
+          RowBox[{
+           SubscriptBox["p1", "ab"], " ", 
+           SubscriptBox["\[CapitalSigma]1", "ab"]}], "+", 
+          RowBox[{
+           SubscriptBox["p", "1"], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"2", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["p", "ab"], "+", 
+                SubscriptBox["p1", "ab"]}], ")"}]}], "+", 
+             SubscriptBox["\[CapitalSigma]1", "ab"]}], ")"}]}], "+", 
+          RowBox[{
+           SubscriptBox["p", "0"], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"2", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["p", "1"], "+", 
+                SubscriptBox["p", "ab"], "+", 
+                SubscriptBox["p1", "ab"]}], ")"}]}], "+", 
+             SubscriptBox["\[CapitalSigma]1", "ab"]}], ")"}]}]}], ")"}]}], 
+       ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "2"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"], "+", 
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], ")"}]}], "-", 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"], "+", 
+           SubscriptBox["p", "ab"], "+", 
+           SubscriptBox["p1", "ab"]}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["p", "0"], "+", 
+           SubscriptBox["p", "1"], "+", 
+           SubscriptBox["\[CapitalSigma]", "ab"]}], ")"}]}], "+", 
+        RowBox[{"2", " ", 
+         SubscriptBox["p1", "ab"], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["\[CapitalSigma]", "0"], "+", 
+           SubscriptBox["\[CapitalSigma]", "1"], "+", 
+           SubscriptBox["\[CapitalSigma]", "ab"], "+", 
+           SubscriptBox["\[CapitalSigma]1", "ab"]}], ")"}]}]}]}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"val", "=", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ruleFwd", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"ruleFwdVal", "[", 
+        RowBox[{"[", "ii", "]"}], "]"}], "\[Rule]", 
+       RowBox[{"val", "[", 
+        RowBox[{"[", "ii", "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"ii", ",", " ", "4"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"ruleInv", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"val", "[", 
+        RowBox[{"[", "ii", "]"}], "]"}], " ", "\[Rule]", " ", 
+       RowBox[{"ruleFwdVal", "[", 
+        RowBox[{"[", "ii", "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"ii", ",", " ", "4"}], "}"}]}], "]"}]}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{"coeff2", "=", 
+    RowBox[{"coeff1", " ", "/.", " ", "ruleFwd"}]}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"coeff2", "//", " ", "MatrixForm"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{"Det", "[", "coeff2", "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eVal", " ", "=", " ", 
+     RowBox[{"Eigenvalues", "[", "coeff2", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eVec", " ", "=", " ", 
+     RowBox[{"Eigenvectors", "[", "coeff2", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<eVal\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"eVal", " ", "//", " ", "MatrixForm"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<eVec\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"eVec", " ", "//", " ", "MatrixForm"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<eVal\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eVal1", "=", 
+     RowBox[{"FullSimplify", "[", 
+      RowBox[{"eVal", " ", "/.", "ruleInv"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"eVal1", "//", " ", "MatrixForm"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"paramVec", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["p", "0"], ",", 
+       SubscriptBox["p", "1"], ",", " ", 
+       SubscriptBox["p", "ab"], ",", 
+       SubscriptBox["p1", "ab"], ",", 
+       SubscriptBox["\[CapitalSigma]", "0"], ",", 
+       SubscriptBox["\[CapitalSigma]", "1"], ",", 
+       SubscriptBox["\[CapitalSigma]", "ab"], ",", 
+       SubscriptBox["\[CapitalSigma]1", "ab"]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"paramNewVec", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "pp", ",", "pm", ",", "p1p", ",", "p1m", ",", "\[CapitalSigma]p", ",", 
+       "\[CapitalSigma]m", ",", "\[CapitalSigma]1p", ",", 
+       "\[CapitalSigma]1m"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"trfMatr", "=", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {"1", "1", "0", "0", "0", "0", "0", "0"},
+         {"1", 
+          RowBox[{"-", "1"}], "0", "0", "0", "0", "0", "0"},
+         {"0", "0", "1", "1", "0", "0", "0", "0"},
+         {"0", "0", "1", 
+          RowBox[{"-", "1"}], "0", "0", "0", "0"},
+         {"0", "0", "0", "0", "1", "1", "0", "0"},
+         {"0", "0", "0", "0", "1", 
+          RowBox[{"-", "1"}], "0", "0"},
+         {"0", "0", "0", "0", "0", "0", "1", "1"},
+         {"0", "0", "0", "0", "0", "0", "1", 
+          RowBox[{"-", "1"}]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"trfMatr", "//", " ", "MatrixForm"}], "\[IndentingNewLine]", 
+   RowBox[{"Det", "[", "trfMatr", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"trfMatr", " ", ".", " ", "paramVec"}], " ", "//", " ", 
+    "MatrixForm"}], "\[IndentingNewLine]", 
+   RowBox[{"eq", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"trfMatr", " ", ".", " ", "paramVec"}], ")"}], "[", 
+        RowBox[{"[", "ii", "]"}], "]"}], "==", 
+       RowBox[{"paramNewVec", "[", 
+        RowBox[{"[", "ii", "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"ii", ",", "1", ",", "8"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"sol", "=", 
+    RowBox[{
+     RowBox[{"Solve", "[", 
+      RowBox[{"eq", ",", "paramVec"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{"eVal1", "/.", " ", "sol"}], "]"}], " ", "//", " ", 
+    "MatrixForm"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "sep", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<a-b\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"a", "-", "b"}], ")"}], " ", "/.", " ", "ruleInv"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<c-d\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"c", "-", "d"}], ")"}], " ", "/.", " ", "ruleInv"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"FullSimplify", "[", 
+      RowBox[{"coeff1", " ", "/.", " ", "sol"}], "]"}], " ", "//", " ", 
+     "MatrixForm"}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "\"\<Tr\>\"", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FullSimplify", "[", 
+       RowBox[{"Tr", "[", "coeffs", "]"}], "]"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<Det\>\"", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"FullSimplify", "[", 
+       RowBox[{"Det", "[", "coeffs", "]"}], "]"}], "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "sep", "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ProcessCoeff", "[", 
+       RowBox[{"idx_", "?", "IntegerQ"}], "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"c", ",", "ev", ",", "evec"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<coeff for idx = \>\"", ",", " ", "idx"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"FullSimplify", "[", 
+           RowBox[{"solAB", "[", 
+            RowBox[{"[", "idx", "]"}], "]"}], "]"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"c", "=", 
+          RowBox[{"FullSimplify", "[", 
+           RowBox[{"coeffs", " ", "/.", 
+            RowBox[{"solAB", "[", 
+             RowBox[{"[", "idx", "]"}], "]"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"c", " ", "//", " ", "MatrixForm"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<Det[c] = \>\"", ",", " ", 
+           RowBox[{"FullSimplify", "[", 
+            RowBox[{"Det", "[", "c", "]"}], "]"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<Tr[c] = \>\"", ",", " ", 
+           RowBox[{"FullSimplify", "[", 
+            RowBox[{"Tr", "[", "c", "]"}], "]"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ev", " ", "=", " ", 
+          RowBox[{"Eigenvalues", "[", "c", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<ev = \>\"", ",", " ", 
+           RowBox[{
+            RowBox[{"Simplify", "[", "ev", "]"}], " ", "//", " ", 
+            "MatrixForm"}]}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"evec", "=", 
+          RowBox[{"Eigenvectors", "[", "c", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<evec = \>\"", ",", 
+           RowBox[{
+            RowBox[{"Simplify", "[", " ", "evec", "]"}], " ", "//", " ", 
+            "MatrixForm"}]}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", "sep", "]"}], ";"}]}], "\[IndentingNewLine]", 
+       "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ProcessCoeff", "[", "1", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ProcessCoeff", "[", "2", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ProcessCoeff", "[", "3", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ProcessCoeff", "[", "4", "]"}], ";"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ProcessCoeff", "[", "3", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ProcessCoeff", "[", "1", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ProcessCoeff", "[", "4", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ProcessCoeff", "[", "2", "]"}], ";"}], "\[IndentingNewLine]", 
+     "*)"}], "\[IndentingNewLine]", "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.7163121828415937`*^9, 3.7163121866523046`*^9}, {
+   3.7163122612114906`*^9, 3.7163124787841024`*^9}, {3.7163125593037767`*^9, 
+   3.7163125613354826`*^9}, {3.716312598034877*^9, 3.7163127183306413`*^9}, {
+   3.7163127650520086`*^9, 3.7163128902254505`*^9}, {3.7163129221950874`*^9, 
+   3.716313031873633*^9}, {3.7163130725065937`*^9, 3.716313288809806*^9}, {
+   3.716313378977796*^9, 3.7163134383769054`*^9}, {3.71631350319621*^9, 
+   3.7163135853401585`*^9}, {3.7163136975535226`*^9, 
+   3.7163137251734447`*^9}, {3.716317652321811*^9, 3.716317932895604*^9}, {
+   3.716318080861125*^9, 3.716318129308219*^9}, {3.716318164098992*^9, 
+   3.7163181805544395`*^9}, {3.716318265558242*^9, 3.7163183021250753`*^9}, {
+   3.716318426698235*^9, 3.7163184700242953`*^9}, {3.7163185108009257`*^9, 
+   3.716318600607093*^9}, {3.7163186514844837`*^9, 3.7163186602467833`*^9}, {
+   3.716318953188469*^9, 3.7163190826309433`*^9}, {3.7163191167986727`*^9, 
+   3.71631914887811*^9}, {3.7163193522528915`*^9, 3.7163193578684*^9}, {
+   3.716319569901657*^9, 3.716319584112353*^9}, {3.7163199380954924`*^9, 
+   3.716320072225754*^9}, {3.7163201151988664`*^9, 3.7163201170722713`*^9}, {
+   3.7163201696467657`*^9, 3.716320199310874*^9}, {3.716320531406415*^9, 
+   3.7163206196740203`*^9}, {3.7163206611341476`*^9, 3.716320804789692*^9}, {
+   3.7163208348317966`*^9, 3.7163209980912113`*^9}, {3.7163210399095078`*^9, 
+   3.716321049697298*^9}, 3.7163211283578568`*^9, {3.7163211682225575`*^9, 
+   3.7163212286875668`*^9}, {3.716321286598585*^9, 3.716321413690873*^9}, {
+   3.7163214499861374`*^9, 3.7163214985371785`*^9}, {3.7163215325537863`*^9, 
+   3.7163218446132917`*^9}, {3.7163218826445026`*^9, 3.716321884532699*^9}, {
+   3.7163219205870695`*^9, 3.716322090666588*^9}, {3.716322148347102*^9, 
+   3.716322148628374*^9}, {3.716322278892974*^9, 3.7163222903236027`*^9}, {
+   3.7163226683277416`*^9, 3.7163226836377325`*^9}, {3.716323078648575*^9, 
+   3.7163231062354765`*^9}, {3.716323314192886*^9, 3.7163235059158735`*^9}, {
+   3.7163235794487085`*^9, 3.716323625280757*^9}, {3.7163238346242733`*^9, 
+   3.716323938670954*^9}, {3.716323990944937*^9, 3.716323993244952*^9}, {
+   3.7163241709170427`*^9, 3.7163242292000837`*^9}, {3.71632426951788*^9, 
+   3.716324352414095*^9}, {3.716324388759472*^9, 3.716324511713173*^9}, {
+   3.716324579376666*^9, 3.716324617174765*^9}, {3.7163246693811035`*^9, 
+   3.716324675191518*^9}, {3.7163247179039836`*^9, 3.716324767191351*^9}, {
+   3.7163248093997707`*^9, 3.716324855949421*^9}, {3.7163250072361526`*^9, 
+   3.716325010692167*^9}, {3.716325105025606*^9, 3.7163251093210526`*^9}, {
+   3.7163252934118333`*^9, 3.7163252997251263`*^9}, {3.716325450889006*^9, 
+   3.7163254647996054`*^9}, {3.716325684055581*^9, 3.716325691555687*^9}, {
+   3.716325723348767*^9, 3.7163257660485845`*^9}, {3.716325949127019*^9, 
+   3.7163259565073843`*^9}, {3.7163362522054625`*^9, 3.71633627009832*^9}, 
+   3.716336339061325*^9, {3.7163363711773987`*^9, 3.716336554143512*^9}, {
+   3.7163440786268024`*^9, 3.7163441202990446`*^9}, {3.7163442233652096`*^9, 
+   3.716344255787348*^9}, {3.716350167065027*^9, 3.7163501870600405`*^9}, {
+   3.7163502234632225`*^9, 3.716350344932932*^9}, {3.7163505148000145`*^9, 
+   3.716350527076905*^9}, {3.716377882451152*^9, 3.716377883688842*^9}, {
+   3.716378036762021*^9, 3.7163780455875425`*^9}, {3.716382224931559*^9, 
+   3.716382270514344*^9}, {3.716382309753823*^9, 3.716382453113536*^9}, {
+   3.7163825212098427`*^9, 3.716382540409568*^9}, {3.7163826518751955`*^9, 
+   3.7163826537950344`*^9}, {3.7163828046820116`*^9, 3.716382806481734*^9}, {
+   3.7163831693781414`*^9, 3.716383183354037*^9}, {3.716384985107679*^9, 
+   3.7163850294824543`*^9}, {3.7163865662030077`*^9, 
+   3.7163867368028393`*^9}, {3.7163867846034923`*^9, 
+   3.7163867865148087`*^9}, {3.716386923121748*^9, 3.7163869418336926`*^9}, {
+   3.7163904095803638`*^9, 3.7163904504105635`*^9}, 3.7163904827395887`*^9, {
+   3.716390523501263*^9, 3.7163905523731403`*^9}, {3.7163905959225383`*^9, 
+   3.7163906057789855`*^9}, {3.716390667924286*^9, 3.7163906789710193`*^9}, {
+   3.7164033961899023`*^9, 3.7164034579341264`*^9}, {3.7164035201933446`*^9, 
+   3.716403568398678*^9}, {3.7164037222884936`*^9, 3.716403841126981*^9}, {
+   3.7164038740933037`*^9, 3.7164038860386868`*^9}, {3.7164039706698823`*^9, 
+   3.7164039788297873`*^9}, {3.71640403265624*^9, 3.7164040892782917`*^9}, {
+   3.716404130989623*^9, 3.716404170334035*^9}, {3.716404216637849*^9, 
+   3.716404241951324*^9}, {3.7164043263035154`*^9, 3.7164045025600367`*^9}, 
+   3.71640453339828*^9, {3.7164045872213326`*^9, 3.7164045910134907`*^9}, {
+   3.7164046570223475`*^9, 3.7164047981344643`*^9}, {3.71640495539995*^9, 
+   3.7164050314818964`*^9}, {3.716405194191757*^9, 3.716405206983107*^9}, {
+   3.716405241985914*^9, 3.716405255335739*^9}, 3.7164053277914267`*^9, {
+   3.716405449887806*^9, 3.7164054747667756`*^9}, {3.7164055408006907`*^9, 
+   3.7164055534704533`*^9}, {3.716405613072672*^9, 3.716405653832052*^9}, {
+   3.716405802264183*^9, 3.7164058236062455`*^9}, {3.7164058577750993`*^9, 
+   3.7164059273352532`*^9}, {3.7164066594870358`*^9, 3.716406686400485*^9}, {
+   3.7164067798236003`*^9, 3.716406792062559*^9}, {3.7164085972400303`*^9, 
+   3.7164086417686896`*^9}, {3.7164087612962403`*^9, 3.7164088147056*^9}, {
+   3.716408878335352*^9, 3.716408896857305*^9}, {3.7164092755992517`*^9, 
+   3.716409285176433*^9}, {3.7164093469058857`*^9, 3.7164093475284863`*^9}, {
+   3.7164104868275795`*^9, 3.7164105499696245`*^9}, {3.716410589513193*^9, 
+   3.7164106005442724`*^9}, {3.7164373208373013`*^9, 3.716437431437094*^9}, {
+   3.7164374669866867`*^9, 3.7164375232136106`*^9}, 3.7164376084136457`*^9, {
+   3.7164377743025656`*^9, 3.7164377868789835`*^9}, {3.716554966854782*^9, 
+   3.716555244610032*^9}, {3.716555322963153*^9, 3.7165553705143065`*^9}, {
+   3.71655544840843*^9, 3.7165555226570263`*^9}, {3.716555570440742*^9, 
+   3.7165556239858584`*^9}, {3.716555661304959*^9, 3.716555695162331*^9}, {
+   3.7165557301310015`*^9, 3.716555730784371*^9}, {3.716555803474906*^9, 
+   3.7165558204582615`*^9}, {3.7165558605480547`*^9, 3.716555946218006*^9}, {
+   3.7165559979508305`*^9, 3.716556000985943*^9}, {3.7165560579020243`*^9, 
+   3.7165560872986937`*^9}, {3.71655611987704*^9, 3.7165561635467415`*^9}, 
+   3.7165562129553604`*^9, {3.716556250245683*^9, 3.7165562912341633`*^9}, {
+   3.7165563493777094`*^9, 3.716556711953292*^9}, {3.7165567446620646`*^9, 
+   3.716556793426114*^9}, {3.716556832786625*^9, 3.7165568811610484`*^9}, {
+   3.7165569430328903`*^9, 3.716556968568158*^9}, {3.7165570395781436`*^9, 
+   3.7165570469221845`*^9}, {3.7165571578340025`*^9, 3.716557195388055*^9}, {
+   3.716557384137088*^9, 3.716557498172779*^9}, 3.7165583022455873`*^9, {
+   3.7165583545574055`*^9, 3.716558392276061*^9}, {3.7165586565259285`*^9, 
+   3.7165586817054625`*^9}, {3.716558828362363*^9, 3.716558858469215*^9}, {
+   3.7165588947314625`*^9, 3.7165589532514625`*^9}, {3.716558984588645*^9, 
+   3.7165590847075615`*^9}, {3.716559197330117*^9, 3.7165592095776997`*^9}, {
+   3.7165592581257133`*^9, 3.7165595105154657`*^9}, {3.7165595451757746`*^9, 
+   3.71655956125797*^9}, {3.716559616089901*^9, 3.71655967954578*^9}, {
+   3.7165600190269403`*^9, 3.7165600405151396`*^9}, {3.716560557315098*^9, 
+   3.716560649738064*^9}, {3.7165606875964465`*^9, 3.7165608110625362`*^9}, 
+   3.716560846781087*^9, {3.71656089475791*^9, 3.716560895480434*^9}, {
+   3.716560938890485*^9, 3.7165611702988167`*^9}, {3.7165612094761114`*^9, 
+   3.716561249093889*^9}, {3.7165612791804404`*^9, 3.7165612811108427`*^9}, {
+   3.716561321443123*^9, 3.716561324123021*^9}, {3.716561398020239*^9, 
+   3.7165613987012386`*^9}, {3.7165615217036*^9, 3.716561540524088*^9}, {
+   3.7165615936751165`*^9, 3.7165616460592804`*^9}, {3.716561760511341*^9, 
+   3.71656177730816*^9}, {3.716561841967381*^9, 3.716561851499028*^9}, {
+   3.7165662958114047`*^9, 3.7165663391662097`*^9}, {3.7165663711670656`*^9, 
+   3.7165663724229345`*^9}, {3.716566614933099*^9, 3.716566623143993*^9}},
+ ExpressionUUID -> "ea997132-5bc6-4e50-8a95-8b838affe6e9"]
+},
+WindowSize->{1701, 845},
+WindowMargins->{{41, Automatic}, {-27, Automatic}},
+Magnification:>1.15 Inherited,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 72026, 1682, 7788, "Input"]
+}
+]
+*)
+

@@ -475,8 +475,9 @@ RunChainModel[chainModelNo_?IntegerQ, tMaxVal_?NumericQ, roTotInitVal_?NumericQ,
 
           If[!doNotUseInterpolationFunctionVal,
             (
-              Print["RunChainModel::TODO::Hardcoded calls to Plot..."];
+              Print["RunChainModel::TODO::Hardcoded calls to Plot WAS COMMENTED OUT!!!"];
 
+            (*
               If[InitializePairFormationValue,
                 (
                   Print["Total pairs LL, DD, LD."];
@@ -485,6 +486,7 @@ RunChainModel[chainModelNo_?IntegerQ, tMaxVal_?NumericQ, roTotInitVal_?NumericQ,
                   Print[Plot[{GetTotalRoPairLL[Evaluate[(substLst /. interpFunc[[1]]) / roTotalNormVal]], GetTotalRoPairDD[Evaluate[(substLst /. interpFunc[[1]]) / roTotalNormVal]], GetTotalRoPairLD[Evaluate[(substLst /. interpFunc[[1]]) / roTotalNormVal]]}, {tt, tPlotStart, tPlot}, Evaluate[plotOptsT]]];
                 )
               ];
+            *)
             )
           ];
         )

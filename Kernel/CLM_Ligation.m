@@ -854,7 +854,8 @@ PrintTimeUsed[];
   ];
   If[!SilentRunValue,
     (
-      Print["LLigReactionCnt, ..."];
+      Print["InitializeAllLigationReactions::LLigReactionCnt, ..."];
+      PrintTimeUsed[];
       Print["InitializeAllLigationReactions::Final number of reactions = ", NoCnt];
     )
   ];

@@ -7,7 +7,7 @@
 (* :Email: konstantin.k.konstantinov@gmail.com *)
 (* :License type: GPL v3 or any later version, see http://www.gnu.org/licenses/ *)
 (* :Copyright: K^3, 2013 - 2017 *)
-(* :Version: 3.25 .001, Date : 2017/02/26 *)
+(* :Version: 3.26 .001, Date : 2017/10/21 *)
 (* :Mathematica Version: 10.0 *)
 (* ============================================== *)
 (* This program is free software: you can redistribute it and/or modify it under the terms *)
@@ -19,8 +19,8 @@
 (* If not, see <http://www.gnu.org/licenses/>. *)
 (* ============================================== *)
 (* ============================================== *)
-CLMVersionMain = "3.25.001";
-CLMReleaseDateMain = "2017/02/26";
+CLMVersionMain = "3.26.001";
+CLMReleaseDateMain = "2017/10/21";
 CLMCopyrightStr = "Copyright: K^3, 2013 - 2017.";
 CLMEmailStr = "konstantin.k.konstantinov@gmail.com"
 CLMLicenseStr = "License type: GPL v3 or any later version, see http://www.gnu.org/licenses/";
@@ -88,7 +88,9 @@ Options[CLMS] =
       MultStoNS -> 1, MultBsstoBlr -> 1, MultBlrtoBss -> 1, MultCsstoClr -> 1, MultClrtoCss -> 1, UseGamma -> False,
       UseGammaPlus -> False, UseGammaMinus -> False, Print\[Rho]AllFuncInfo -> False, Print\[Rho]AllFuncInfoTrigger -> True,
       \[Rho]AllFuncDescription -> "", NDSolveMaxSteps -> Infinity, NDSolveStepSize -> None (*10^-4*),
-      NDSolveMethod -> {"FixedStep", Method -> {"ExplicitRungeKutta", "DifferenceOrder" -> 5, "StiffnessTest" -> False}},
+      NDSolveMethod -> {"DAEInitialization" -> {"Collocation","CollocationDirection" -> "Forward"}}
+      (* {"EquationSimplification" -> "Residual"} *)
+      (* {"FixedStep", Method -> {"ExplicitRungeKutta", "DifferenceOrder" -> 5, "StiffnessTest" -> False}} *),
       NDSolveAccuracyGoal -> None, NDSolvePrecisionGoal -> None, NDSolveWorkingPrecision -> None,
       NDSolveUseDerivativeForAggregateSubst -> False, NDSolveUseFuncForAggregateSubst -> True,
       NDSolveUseNumericFuncForAggregateSubst -> True, ModelDescriptorValue -> Undefined, RotateXY -> False,
@@ -98,7 +100,8 @@ Options[CLMS] =
       MonitorPrintFrequency -> 1, MonitorPrintAllFirst -> 20, NStorage -> 1000, NStorageMultiplier -> 10, RoTotalNorm -> 1,
       MonitorPlotFunction -> None, DynamicStepMonitor -> None, QuitMonitor -> None, UseAllSubstForCryst -> True,
       AllSubstForCrystType -> AllSubstForCrystVolumeAllocation, AllSubstForCrystAlpha -> (1 / 2), UseWhenEvent -> False,
-      UseAnalyticNonNegatieX -> True, NonNegativeType -> NonNegativeTypeAnalytic
+      UseAnalyticNonNegatieX -> True, NonNegativeType -> NonNegativeTypeAnalytic,
+      PrepareEquationsRemoveZeros -> True
     };
 (* ============================================== *)
 NStorageValue = 0;
@@ -854,11 +857,12 @@ Print["StandardReaction::inptLen = ", inptLen, ", paramLen = ", paramLen, ", rat
   Return[retVal];
 ];
 (* ============================================== *)
-PrepareEquations[rawOptions___] := Module[{reactionCnt, react, inpt, outpt, params, reaction, inptLen, inputReagentCnt, inptReag, inptIdx, inptQuant, outptLen, outputReagentCnt, outptReag, outptIdx, outptQuant, reactionRec, opts, printPrepareEquationsInfoVal, ii, jj, EqMatrixPlusCounter, EqMatrixMinusCounter, EqMatrixPlus, EqMatrixMinus, substID, func},
+PrepareEquations[rawOptions___] := Module[{reactionCnt, react, inpt, outpt, params, reaction, inptLen, inputReagentCnt, inptReag, inptIdx, inptQuant, outptLen, outputReagentCnt, outptReag, outptIdx, outptQuant, reactionRec, opts, printPrepareEquationsInfoVal, ii, jj, EqMatrixPlusCounter, EqMatrixMinusCounter, EqMatrixPlus, EqMatrixMinus, substID, func, prepareEquationsRemoveZerosVal, noCntNonZero},
   If[!SilentRunValue, Print[strSeparatorCRLF, strSeparatorCRLF, "Preparing Equations..."]];
 
   opts = ProcessOptions[rawOptions];
   printPrepareEquationsInfoVal = PrintPrepareEquationsInfo /. opts /. Options[CLMS];
+  prepareEquationsRemoveZerosVal = PrepareEquationsRemoveZeros /. opts /. Options[CLMS];
 
   Do[
     (
@@ -868,6 +872,8 @@ PrepareEquations[rawOptions___] := Module[{reactionCnt, react, inpt, outpt, para
       If[printPrepareEquationsInfoVal, Print["EqMatrixPlusCounter[", ii, "] = ", EqMatrixPlusCounter[ii]]];
     ), {ii, 1, NoSubstCnt}
   ];
+
+  noCntNonZero = NoCnt;
 
   For[reactionCnt = 1, reactionCnt <= NoCnt, reactionCnt++,
     reactionRec = GetReactionInfo[reactionCnt];
