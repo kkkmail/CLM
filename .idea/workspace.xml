@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_ChainInit.m" afterPath="$PROJECT_DIR$/Kernel/CLM_ChainInit.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_ChainModel.m" afterPath="$PROJECT_DIR$/Kernel/CLM_ChainModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Common.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Common.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m" afterPath="$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_Ligation.m" afterPath="$PROJECT_DIR$/Kernel/CLM_Ligation.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" afterPath="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NB/CLM_Chain_RunMulti_326__003.nb" afterPath="$PROJECT_DIR$/NB/CLM_Chain_RunMulti_326__003.nb" />
-    </list>
+    <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
