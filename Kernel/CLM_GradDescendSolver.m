@@ -11,7 +11,7 @@
 
 RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]:=
     Module[{opts, coeffRuleTbl, applyCoeffRuleVal, substMatrix, eqTbl, minFunc, initCond, nonNegCond, allEq, sol,
-      substConservCond, substConservVal, stabMatr, evTbl, ev, precision},
+      substConservCond, substConservVal, stabMatr, evTbl, ev, precision, findMinOptions, accuracy, mult},
 
       If[!SilentRunValue,
         (
@@ -27,20 +27,25 @@ RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]
 
       applyCoeffRuleVal=ApplyCoeffRule /. opts /. Options[CLMS];
 
-      precision = 50;
+      precision = 200;
+      accuracy = 100;
+      mult = 10^9;
 
       coeffRuleTbl = If[applyCoeffRuleVal,(Table[coeffArrayName[ii] -> coeffValues[[ii]],{ii,1,NoCoeffCnt}] /. tauRule),{}];
       substMatrix = Table[SubstanceMatrix[ii], {ii, 2, NoSubstCnt}];
       eqTbl = Table[SetPrecision[EqMatrix[ii], precision], {ii, 2, NoSubstCnt}];
-      minFunc = Sum[eqTbl[[ii]]^2,{ii, 1, NoSubstCnt - 1}];
+      minFunc = mult * Sum[eqTbl[[ii]]^2,{ii, 1, NoSubstCnt - 1}];
       initCond = Table[{SubstanceMatrix[ii], SetPrecision[initValues[[ii]], precision]}, {ii, 2, NoSubstCnt}];
       nonNegCond = Table[SubstanceMatrix[ii] >= 0, {ii, 2, NoSubstCnt}];
       substConservCond = Sum[GetNoOfAtomsInSubstance[ii, 1] * SubstanceMatrix[ii], {ii, 2, NoSubstCnt}];
       substConservVal = Sum[GetNoOfAtomsInSubstance[ii, 1] * SetPrecision[initValues[[ii]], precision], {ii, 2, NoSubstCnt}];
       stabMatr = Table[D[eqTbl[[ii]], substMatrix[[jj]]], {ii, 1, NoSubstCnt - 1}, {jj, 1, NoSubstCnt - 1}];
 
-      allEq = {Join[{minFunc, substConservCond == substConservVal}, nonNegCond], initCond, WorkingPrecision -> precision};
+      findMinOptions = {WorkingPrecision -> precision, MaxIterations -> 100000, AccuracyGoal -> accuracy, PrecisionGoal -> accuracy};
 
+      allEq = Join[{Join[{minFunc, substConservCond == substConservVal}, nonNegCond], initCond}, findMinOptions];
+
+      (*
       Print["RunGraduateDescentSolver::coeffRuleTbl = ", coeffRuleTbl];
       Print["RunGraduateDescentSolver::substMatrix = ", substMatrix];
       Print["RunGraduateDescentSolver::eqTbl = ", eqTbl // MatrixForm];
@@ -51,15 +56,23 @@ RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]
       Print["RunGraduateDescentSolver::substConservCond = ", substConservCond];
       Print["RunGraduateDescentSolver::substConservVal = ", substConservVal];
       Print["RunGraduateDescentSolver::stabMatr = ", stabMatr // MatrixForm];
+      *)
 
       sol = Apply[FindMinimum, allEq];
-      Print["RunGraduateDescentSolver::sol = ", sol];
+      Print["RunGraduateDescentSolver::sol[[1]] = ", N[sol[[1]]/mult]];
+      Print["RunGraduateDescentSolver::sol[[2]] = ", N[sol[[2]]] // MatrixForm];
 
       evTbl = stabMatr /. sol[[2]];
-      Print["RunGraduateDescentSolver::evTbl = ", evTbl // MatrixForm];
+      (* )Print["RunGraduateDescentSolver::evTbl = ", evTbl // MatrixForm]; *)
 
       ev = Eigenvalues[evTbl];
-      Print["RunGraduateDescentSolver::ev = ", ev // MatrixForm];
+      Print["RunGraduateDescentSolver::ev = ", Chop[N[ev]] // MatrixForm];
+
+      roVec = Join[{0}, substMatrix /. sol[[2]]];
+      rLVal = TotalRoL[roVec];
+      rRVal = TotalRoD[roVec];
+      retVal = nuValue[rLVal,rRVal];
+
 
       Return[sol];
     ];
