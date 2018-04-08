@@ -1,5 +1,5 @@
 (* ============================================== *)
-(* :Summary: CLM Graduate Descent Solver. *)
+(* :Summary: CLM Gradient Descent Solver. *)
 (* ============================================== *)
 (* :Author: Konstantin K. Konstantinov *)
 (* :Email: konstantin.k.konstantinov@gmail.com *)
@@ -8,30 +8,26 @@
 (* :Version: 3.27.001, Date : 2018/04/07 *)
 (* :Mathematica Version: 10.0 - 11.0 *)
 (* ============================================== *)
+GetAllEquationsGDS[allGDS_]:=allGDS[[1]];
+GetStabilityMatrixGDS[allGDS_]:=allGDS[[2]];
 
-RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]:=
-    Module[{opts, coeffRuleTbl, applyCoeffRuleVal, substMatrix, eqTbl, minFunc, initCond, nonNegCond, allEq, sol,
-      substConservCond, substConservVal, stabMatr, evTbl, ev, precision, findMinOptions, accuracy, mult},
+(* RunGradientDescentSolver[coeffValues_, initValues_, rawOptions___]:= *)
+PrepareGradientDescentSolver[mult_?NumericQ, randomSeed_?IntegerQ, rawOptions___]:=
+    Module[{opts, substMatrix, eqTbl, minFunc, initCond, nonNegCond, allEq, sol,
+      substConservCond, substConservVal, stabMatr, evTbl, ev, precision, findMinOptions, accuracy},
 
-      If[!SilentRunValue,
-        (
-          Print["RunGraduateDescentSolver::Starting..."];
-          PrintTimeUsed[];
-        )
-      ];
-
-      If[coeffLen!= NoCoeffCnt,(Print["RunGraduateDescentSolver::Invalid coeffValues."]; Return[Indeterminate];)];
-      If[initLen!= NoSubstCnt,(Print["RunGraduateDescentSolver::Invalid initValues."]; Return[Indeterminate];)];
+      SeedRandomValue = randomSeed;
+      InitializeChains[maxChainLen, maxEnantNumb, options];
+      PrepareEquations[options];
 
       opts = ProcessOptions[rawOptions];
 
-      applyCoeffRuleVal=ApplyCoeffRule /. opts /. Options[CLMS];
+      precision = 20;
+      accuracy = 10;
 
-      precision = 200;
-      accuracy = 100;
-      mult = 10^9;
+      initValues = ChainModelInitFuncList[[ChainModelID]][roTotInitVal, rawOptions];
+      Print["PrepareGradientDescentSolver::initValues = ", initValues];
 
-      coeffRuleTbl = If[applyCoeffRuleVal,(Table[coeffArrayName[ii] -> coeffValues[[ii]],{ii,1,NoCoeffCnt}] /. tauRule),{}];
       substMatrix = Table[SubstanceMatrix[ii], {ii, 2, NoSubstCnt}];
       eqTbl = Table[SetPrecision[EqMatrix[ii], precision], {ii, 2, NoSubstCnt}];
       minFunc = mult * Sum[eqTbl[[ii]]^2,{ii, 1, NoSubstCnt - 1}];
@@ -46,18 +42,21 @@ RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]
       allEq = Join[{Join[{minFunc, substConservCond == substConservVal}, nonNegCond], initCond}, findMinOptions];
 
       (*
-      Print["RunGraduateDescentSolver::coeffRuleTbl = ", coeffRuleTbl];
-      Print["RunGraduateDescentSolver::substMatrix = ", substMatrix];
-      Print["RunGraduateDescentSolver::eqTbl = ", eqTbl // MatrixForm];
-      Print["RunGraduateDescentSolver::initCond = ", initCond];
-      Print["RunGraduateDescentSolver::minFunc = ", minFunc];
-      Print["RunGraduateDescentSolver::nonNegCond = ", nonNegCond];
-      Print["RunGraduateDescentSolver::allEq = ", allEq];
-      Print["RunGraduateDescentSolver::substConservCond = ", substConservCond];
-      Print["RunGraduateDescentSolver::substConservVal = ", substConservVal];
-      Print["RunGraduateDescentSolver::stabMatr = ", stabMatr // MatrixForm];
+      Print["PrepareGradientDescentSolver::substMatrix = ", substMatrix];
+      Print["PrepareGradientDescentSolver::eqTbl = ", eqTbl // MatrixForm];
+      Print["PrepareGradientDescentSolver::initCond = ", initCond];
+      Print["PrepareGradientDescentSolver::minFunc = ", minFunc];
+      Print["PrepareGradientDescentSolver::nonNegCond = ", nonNegCond];
+      Print["PrepareGradientDescentSolver::allEq = ", allEq];
+      Print["PrepareGradientDescentSolver::substConservCond = ", substConservCond];
+      Print["PrepareGradientDescentSolver::substConservVal = ", substConservVal];
+      Print["PrepareGradientDescentSolver::stabMatr = ", stabMatr // MatrixForm];
       *)
 
+      Return[{allEq, stabMatr}];
+
+
+      (*
       sol = Apply[FindMinimum, allEq];
       Print["RunGraduateDescentSolver::sol[[1]] = ", N[sol[[1]]/mult]];
       Print["RunGraduateDescentSolver::sol[[2]] = ", N[sol[[2]]] // MatrixForm];
@@ -73,7 +72,32 @@ RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]
       rRVal = TotalRoD[roVec];
       retVal = nuValue[rLVal,rRVal];
 
-
       Return[sol];
+      *)
     ];
+
+(* Runs Gradient Descend Solver using the equations prepared by PrepareGradientDescentSolver *)
+RunGradientDescentSolver1[mult_?NumericQ, allGDS_]:= Module[
+  {sol, allEq, stabMatr, nu},
+
+  allEq = GetAllEquationsGDS[allGDS];
+  stabMatr = GetStabilityMatrixGDS[allGDS];
+
+  sol = Apply[FindMinimum, allEq];
+  Print["RunGraduateDescentSolver::sol[[1]] = ", N[sol[[1]]/mult]];
+  Print["RunGraduateDescentSolver::sol[[2]] = ", N[sol[[2]]] // MatrixForm];
+
+  evTbl = stabMatr /. sol[[2]];
+  (* )Print["RunGraduateDescentSolver::evTbl = ", evTbl // MatrixForm]; *)
+
+  ev = Eigenvalues[evTbl];
+  Print["RunGraduateDescentSolver::ev = ", Chop[N[ev]] // MatrixForm];
+
+  roVec = Join[{0}, substMatrix /. sol[[2]]];
+  rLVal = TotalRoL[roVec];
+  rRVal = TotalRoD[roVec];
+  nu = nuValue[rLVal,rRVal];
+
+  Return[Join{{nu}, sol}];
+];
 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    100540,       2466]
-NotebookOptionsPosition[    100210,       2452]
-NotebookOutlinePosition[    100583,       2468]
-CellTagsIndexPosition[    100540,       2465]
+NotebookDataLength[    105251,       2574]
+NotebookOptionsPosition[    104919,       2560]
+NotebookOutlinePosition[    105293,       2576]
+CellTagsIndexPosition[    105250,       2573]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -153,9 +153,9 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxEnantNumb", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxEnantNumb", "=", "1"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxChainLen", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxChainLen", "=", "2"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -164,6 +164,9 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"silentRun", "=", "True"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"findMinMultiplier", " ", "=", " ", 
+     RowBox[{"10", "^", "9"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
     "Total", " ", "number", " ", "of", " ", "different", " ", "peptides"}], 
@@ -251,6 +254,10 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"SeedRandomValue", "=", "975715398727"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SeedRandomValue2", "=", 
+     RowBox[{"SeedRandomValue", " ", "+", " ", "1"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
@@ -1951,8 +1958,28 @@ Cell[BoxData[
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"Initialize", "[", "options", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Initialize", "[", "options", "]"}], ";"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Generates", " ", "all", " ", "coefficients", " ", "for", " ", "which", 
+     " ", "options", " ", "specity", " ", 
+     RowBox[{"that", ".", " ", "All"}], " ", "other", " ", "must", " ", "be", 
+     " ", "assigned", " ", "by", " ", 
+     RowBox[{"hands", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"InitializeChains", "[", 
+      RowBox[{"maxChainLen", ",", "maxEnantNumb", ",", "options"}], "]"}], 
+     ";"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -1960,43 +1987,111 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"InitializeChains", "[", 
-     RowBox[{"maxChainLen", ",", "maxEnantNumb", ",", "options"}], "]"}], 
-    ";"}], "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{
-     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+    RowBox[{"PrintTimeUsed", "[", "]"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"PrepareEquations", "[", "options", "]"}], ";"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{"PrintAllInfo", "[", 
+    RowBox[{"allGDS1", " ", "=", " ", 
+     RowBox[{"PrepareGradientDescentSolver", "[", 
       RowBox[{
-       RowBox[{"If", "[", 
-        RowBox[{
-         RowBox[{
-         "MaxChainLength", "\[LessEqual]", "MaxDetailedOutputChainLen"}], ",",
-          "True", ",", "False"}], "]"}], ",", "True", ",", 
-       "plotDistributionsVal", ",", "options"}], "]"}], ";"}], " ", "*)"}], 
+      "finMinMultiplier", ",", " ", "SeedRandomValue", ",", " ", "options"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<allGDS1 = \>\"", ",", " ", "allGDS1"}], "]"}], ";"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PrintTimeUsed", "[", "]"}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"coeffNewValAll", "=", 
-     RowBox[{"CreateZeroCoefficientValues", "[", "]"}]}], ";"}], "\n", 
+    RowBox[{"allGDS2", " ", "=", " ", 
+     RowBox[{"PrepareGradientDescentSolver", "[", 
+      RowBox[{
+      "finMinMultiplier", ",", " ", "SeedRandomValue2", ",", " ", "options"}],
+       "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<allGDS2 = \>\"", ",", " ", "allGDS2"}], "]"}], ";"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"initVal", "=", 
+    RowBox[{"PrintTimeUsed", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
      RowBox[{
-      RowBox[{"ChainModelInitFuncList", "[", 
-       RowBox[{"[", "ChainModelID", "]"}], "]"}], "[", 
-      RowBox[{"roTotInitVal", ",", "options"}], "]"}]}], ";"}], "\n", 
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"RunGraduateDescentSolver", "[", 
-     RowBox[{"coeffNewValAll", ",", "initVal", ",", "options"}], "]"}], ";"}],
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", "\"\<Running allGDS1...\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sol1", "=", 
+     RowBox[{"RunGradientDescentSolver1", "[", 
+      RowBox[{"findMinMultiplier", ",", "allGDS1"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<sol1 = \>\"", ",", " ", "sol1"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PrintTimeUsed", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Running allGDS2...\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sol2", "=", 
+     RowBox[{"RunGradientDescentSolver1", "[", 
+      RowBox[{"findMinMultiplier", ",", "allGDS2"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<sol2 = \>\"", ",", " ", "sol2"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PrintTimeUsed", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"PrepareEquations", "[", "options", "]"}], ";", "\n", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{"PrintAllInfo", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+           "MaxChainLength", "\[LessEqual]", "MaxDetailedOutputChainLen"}], 
+           ",", "True", ",", "False"}], "]"}], ",", "True", ",", 
+         "plotDistributionsVal", ",", "options"}], "]"}], ";"}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{"coeffNewValAll", "=", 
+        RowBox[{"CreateZeroCoefficientValues", "[", "]"}]}], ";"}], " ", 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"initVal", "=", 
+      RowBox[{
+       RowBox[{"ChainModelInitFuncList", "[", 
+        RowBox[{"[", "ChainModelID", "]"}], "]"}], "[", 
+       RowBox[{"roTotInitVal", ",", "options"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<coeffNewValAll = \>\"", ",", " ", "coeffNewValAll"}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<initVal = \>\"", ",", " ", "initVal"}], "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"PrintTimeUsed", "[", "]"}], ";", "\n", 
+     RowBox[{"RunGraduateDescentSolver", "[", 
+      RowBox[{"coeffNewValAll", ",", "initVal", ",", "options"}], "]"}], 
+     ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -2431,8 +2526,8 @@ Cell[BoxData[
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   "\n"}]}]], "Input",
+   "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.7321239950282164`*^9, 3.732123999089321*^9}, {
    3.7321240447343264`*^9, 3.7321240476907635`*^9}, {3.732124110472905*^9, 
    3.732124112951694*^9}, {3.732124182191616*^9, 3.732124194760564*^9}, {
@@ -2447,11 +2542,24 @@ Cell[BoxData[
    3.7321386121435013`*^9, 3.732138622471428*^9}, {3.732138677033431*^9, 
    3.7321387174537907`*^9}, 3.732138813570652*^9, {3.7321681865142317`*^9, 
    3.7321682070843954`*^9}, {3.732178185042948*^9, 3.7321781929757147`*^9}, {
-   3.732178363724476*^9, 3.732178432515334*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
+   3.732178363724476*^9, 3.732178432515334*^9}, {3.7322038755675507`*^9, 
+   3.7322038759791994`*^9}, {3.7322048978350644`*^9, 
+   3.7322049070272827`*^9}, {3.7322058395281377`*^9, 
+   3.7322058777214336`*^9}, {3.73220615230857*^9, 3.7322061565669575`*^9}, {
+   3.7322092101931705`*^9, 3.732209215362252*^9}, {3.7322102967902536`*^9, 
+   3.7322103339756546`*^9}, {3.732210666628175*^9, 3.732210674900905*^9}, {
+   3.7322165680176563`*^9, 3.7322165981640244`*^9}, {3.7322166283846045`*^9, 
+   3.7322166609598684`*^9}, {3.732216696925628*^9, 3.7322167337940197`*^9}, {
+   3.732218873047182*^9, 3.732218880004858*^9}, {3.7322189632724495`*^9, 
+   3.732218992667025*^9}, {3.732219061124177*^9, 3.732219064144313*^9}, {
+   3.732219106370365*^9, 3.73221917032354*^9}, {3.732219528809309*^9, 
+   3.732219536501339*^9}, {3.732219591571618*^9, 3.7322196353070097`*^9}, {
+   3.732219672596592*^9, 3.732219681226432*^9}, {3.7322198079876537`*^9, 
+   3.732219942298114*^9}},ExpressionUUID->"d25254be-fd65-4e89-a40d-\
+9592ddf0d892"]
 },
 WindowSize->{1133, 597},
-WindowMargins->{{Automatic, -4}, {Automatic, 34}},
+WindowMargins->{{Automatic, 100}, {Automatic, 52}},
 Magnification:>0.9 Inherited,
 FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
@@ -2467,7 +2575,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 99648, 2430, 9222, "Input",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
+Cell[558, 20, 104357, 2538, 9711, "Input",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
 }
 ]
 *)
