@@ -10,7 +10,7 @@
 (* ============================================== *)
 
 RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]:=
-    Module[{opts, coeffRuleTbl, applyCoeffRuleVal, substMatrix},
+    Module[{opts, coeffRuleTbl, applyCoeffRuleVal, substMatrix, eqTbl},
       If[!SilentRunValue,
         (
           Print["RunGraduateDescentSolver::Starting..."];
@@ -27,9 +27,11 @@ RunGraduateDescentSolver[coeffValues_?VectorQ,initValues_?VectorQ,rawOptions___]
 
       coeffRuleTbl=If[applyCoeffRuleVal,(Table[coeffArrayName[ii] -> coeffValues[[ii]],{ii,1,NoCoeffCnt}] /. tauRule),{}];
       substMatrix=Table[SubstanceMatrix[ii],{ii,1,NoSubstCnt}];
+      eqTbl = Table[EqMatrix[ii],{ii,1,NoSubstCnt}];
 
-      Print["coeffRuleTbl = ", coeffRuleTbl];
-      Print["substMatrix = ", substMatrix];
+      Print["RunGraduateDescentSolver::coeffRuleTbl = ", coeffRuleTbl];
+      Print["RunGraduateDescentSolver::substMatrix = ", substMatrix];
+      Print["RunGraduateDescentSolver::eqTbl = ", eqTbl // MatrixForm];
 
       Return[];
     ];

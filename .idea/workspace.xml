@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Kernel/CLM_Init.m" beforeDir="false" afterPath="$PROJECT_DIR$/Kernel/CLM_Init.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" beforeDir="false" afterPath="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NB/CLM_RunGraduateDescentSolver_327__001.nb" beforeDir="false" afterPath="$PROJECT_DIR$/NB/CLM_RunGraduateDescentSolver_327__001.nb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +20,7 @@
     <favorites_list name="CLM" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4607646">
+    <splitter split-orientation="horizontal" split-proportion="0.62709594">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
           <file leaf-file-name="CLM_SedimentationDirect.m" pinned="false" current-in-tab="false">
@@ -74,8 +75,8 @@
           <file leaf-file-name="CLM_GradDescendSolver.m" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="80" />
+                <state relative-caret-position="544">
+                  <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
                 </state>
               </provider>
             </entry>
@@ -159,8 +160,8 @@
           <file leaf-file-name="CLM_Calc.m" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="254">
-                  <caret line="681" column="39" selection-start-line="681" selection-start-column="32" selection-end-line="681" selection-end-column="39" />
+                <state relative-caret-position="426">
+                  <caret line="532" column="6" lean-forward="true" selection-start-line="532" selection-end-line="532" selection-end-column="6" />
                   <folding>
                     <element signature="e#21362#21368#0" expanded="true" />
                   </folding>
@@ -242,7 +243,6 @@
         <option value="$PROJECT_DIR$/Kernel/CLM_Output.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Synthesis.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_ChainHlp.m" />
-        <option value="$PROJECT_DIR$/Kernel/CLM_Calc.m" />
         <option value="$PROJECT_DIR$/PlugIn_Issues/UTF8_issue.wl" />
         <option value="$PROJECT_DIR$/Kernel/CLM_EvolutionGenerator.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Common.m" />
@@ -250,8 +250,9 @@
         <option value="$PROJECT_DIR$/Kernel/CLM_ChainInit.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_SedimentationDirect.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_ChainModel.m" />
-        <option value="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" />
         <option value="$PROJECT_DIR$/Kernel/CLM_Init.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_Calc.m" />
+        <option value="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" />
       </list>
     </option>
   </component>
@@ -828,8 +829,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Ligation.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="14535">
+          <caret line="855" column="5" selection-start-line="855" selection-start-column="5" selection-end-line="855" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -875,13 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Chain.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3719">
@@ -891,11 +885,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_Calc.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="681" column="39" selection-start-line="681" selection-start-column="32" selection-end-line="681" selection-end-column="39" />
+        <state relative-caret-position="426">
+          <caret line="532" column="6" lean-forward="true" selection-start-line="532" selection-end-line="532" selection-end-column="6" />
           <folding>
             <element signature="e#21362#21368#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
         </state>
       </provider>
     </entry>

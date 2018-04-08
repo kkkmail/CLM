@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     99527,       2441]
-NotebookOptionsPosition[     99228,       2428]
-NotebookOutlinePosition[     99570,       2443]
-CellTagsIndexPosition[     99527,       2440]
+NotebookDataLength[     99887,       2449]
+NotebookOptionsPosition[     99588,       2436]
+NotebookOutlinePosition[     99930,       2451]
+CellTagsIndexPosition[     99887,       2448]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -323,7 +323,7 @@ Cell[BoxData[
      " ", "ChainModelGoodAllLD", ",", " ", "ChainModelRandMixLD", ",", " ", 
      "ChainModelPropMixLD"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"ChainModelID", "=", "ChainModelPropMixLD"}], ";"}], 
+    RowBox[{"ChainModelID", "=", "ChainModelRandMixLD"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
@@ -367,13 +367,13 @@ Cell[BoxData[
     RowBox[{"DirectCrystSecondSubstMinLen", " ", ":=", "1"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"UseMatrixDirectCryst", ":=", "True"}], ";"}], " ", 
-   "\[IndentingNewLine]", 
+    RowBox[{"UseMatrixDirectCryst", ":=", "True"}], ";"}], " ", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"SynthCoeffParams", "=", 
      RowBox[{"{", 
@@ -1985,11 +1985,17 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"coeffNewValAll", "=", 
-     RowBox[{"CreateZeroCoefficientValues", "[", "]"}]}], ";"}], "\n", "\n", 
+     RowBox[{"CreateZeroCoefficientValues", "[", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"initVal", "=", 
+     RowBox[{
+      RowBox[{"ChainModelInitFuncList", "[", 
+       RowBox[{"[", "ChainModelID", "]"}], "]"}], "[", 
+      RowBox[{"roTotInitVal", ",", "options"}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"RunGraduateDescentSolver", "[", 
-     RowBox[{"coeffNewValAll", ",", 
-      RowBox[{"initValues_", "?", "VectorQ"}], ",", "options"}], "]"}], ";"}],
+     RowBox[{"coeffNewValAll", ",", "initVal", ",", "options"}], "]"}], ";"}],
     "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
@@ -2422,9 +2428,11 @@ Cell[BoxData[
    3.7321273731697273`*^9}, {3.7321274381035166`*^9, 3.7321274383482313`*^9}, 
    3.732127470820863*^9, {3.7321276064930315`*^9, 3.7321276496275992`*^9}, {
    3.732127710805874*^9, 3.7321277113076735`*^9}, {3.732134215436224*^9, 
-   3.732134224995182*^9}, {3.732134384560568*^9, 
-   3.7321343941048307`*^9}},ExpressionUUID->"d25254be-fd65-4e89-a40d-\
-9592ddf0d892"]
+   3.732134224995182*^9}, {3.732134384560568*^9, 3.7321343941048307`*^9}, {
+   3.7321386121435013`*^9, 3.732138622471428*^9}, {3.732138677033431*^9, 
+   3.7321387174537907`*^9}, 3.732138813570652*^9},
+ CellLabel->
+  "In[689]:=",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
 },
 WindowSize->{1133, 597},
 WindowMargins->{{Automatic, 41}, {0, Automatic}},
@@ -2442,7 +2450,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 98666, 2406, 9681, "Input",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
+Cell[558, 20, 99026, 2414, 9700, "Input",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
 }
 ]
 *)
