@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" beforeDir="false" afterPath="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB/CLM_RunGraduateDescentSolver_327__001.nb" beforeDir="false" afterPath="$PROJECT_DIR$/NB/CLM_RunGraduateDescentSolver_327__001.nb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,8 +74,8 @@
           <file leaf-file-name="CLM_GradDescendSolver.m" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="544">
-                  <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+                <state relative-caret-position="405">
+                  <caret line="38" column="101" selection-start-line="38" selection-start-column="101" selection-end-line="38" selection-end-column="101" />
                 </state>
               </provider>
             </entry>
@@ -895,8 +894,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+        <state relative-caret-position="405">
+          <caret line="38" column="101" selection-start-line="38" selection-start-column="101" selection-end-line="38" selection-end-column="101" />
         </state>
       </provider>
     </entry>
