@@ -4,9 +4,9 @@
 (* :Author: Konstantin K. Konstantinov *)
 (* :Email: konstantin.k.konstantinov@gmail.com *)
 (* :License type: GPL v3 or any later version, see http://www.gnu.org/licenses/ *)
-(* :Copyright: K^3, 2013 - 2017 *)
-(* :Version: 3.25 .001, Date : 2017/02/26 *)
-(* :Mathematica Version: 10.0 *)
+(* :Copyright: K^3, 2013 - 2018 *)
+(* :Version: 3.27.001, Date : 2018/04/07 *)
+(* :Mathematica Version: 10.0 - 11.0 *)
 (* ============================================== *)
 (* This program is free software: you can redistribute it and/or modify it under the terms *)
 (* of the GNU General Public License as published by the Free Software Foundation, *)
@@ -47,6 +47,7 @@ LoadModules[pathListVal_, silentRunVal_?BooleanQ] := Module[{},
   Get["CLM_GeneratorCommon.m", Path -> pathListVal];
   Get["CLM_BifurcationGenerator.m", Path -> pathListVal];
   Get["CLM_EvolutionGenerator.m", Path -> pathListVal];
+  Get["CLM_GradDescendSolver.m", Path -> pathListVal];
 
   Get["CLM_CommonPostFix.m", Path -> pathListVal];
 
