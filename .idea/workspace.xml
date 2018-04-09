@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" beforeDir="false" afterPath="$PROJECT_DIR$/Kernel/CLM_GradDescendSolver.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB/CLM_RunGraduateDescentSolver_327__001.nb" beforeDir="false" afterPath="$PROJECT_DIR$/NB/CLM_RunGraduateDescentSolver_327__001.nb" afterDir="false" />
-    </list>
+    <list default="true" id="3419d04b-112c-4a47-9d45-aa1ccf06612e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
