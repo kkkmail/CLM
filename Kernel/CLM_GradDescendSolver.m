@@ -77,11 +77,12 @@ PrepareGradientDescentSolver[mult_?NumericQ, randomSeed_?IntegerQ, rawOptions___
     ];
 
 (* Runs Gradient Descend Solver using the equations prepared by PrepareGradientDescentSolver *)
-RunGradientDescentSolver1[mult_?NumericQ, allGDS_]:= Module[
-  {sol, allEq, stabMatr, nu},
+RunGradientDescentSolver[mult_?NumericQ, allGDS_]:= Module[
+  {sol, allEq, stabMatr, nu, substMatrix},
 
   allEq = GetAllEquationsGDS[allGDS];
   stabMatr = GetStabilityMatrixGDS[allGDS];
+  substMatrix = Table[SubstanceMatrix[ii], {ii, 2, NoSubstCnt}];
 
   sol = Apply[FindMinimum, allEq];
   Print["RunGraduateDescentSolver::sol[[1]] = ", N[sol[[1]]/mult]];
@@ -98,6 +99,12 @@ RunGradientDescentSolver1[mult_?NumericQ, allGDS_]:= Module[
   rRVal = TotalRoD[roVec];
   nu = nuValue[rLVal,rRVal];
 
-  Return[Join{{nu}, sol}];
+  Return[Join[{nu}, sol]];
 ];
+
+(* Returns Nu, minimm value and {r<XYZ> -> number} rules. *)
+GdsGetNu[allSol_]:=allSol[[1]];
+GdsGetMinVal[allSol_]:=allSol[[2]];
+GdsGetRules[allSol_]:=allSol[[3]];
+(* GdsGetRandomSeed[allSol_]:=allSol[[3]]; *)
 
