@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    109922,       2679]
-NotebookOptionsPosition[    109589,       2665]
-NotebookOutlinePosition[    109963,       2681]
-CellTagsIndexPosition[    109920,       2678]
+NotebookDataLength[    109947,       2679]
+NotebookOptionsPosition[    109614,       2665]
+NotebookOutlinePosition[    109988,       2681]
+CellTagsIndexPosition[    109945,       2678]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -153,9 +153,9 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxEnantNumb", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxEnantNumb", "=", "2"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxChainLen", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxChainLen", "=", "3"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -163,7 +163,7 @@ Cell[BoxData[
        "===", "===", "===", "==="}], "="}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"noOfRuns", " ", "=", " ", "20"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"noOfRuns", " ", "=", " ", "100"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
@@ -382,13 +382,13 @@ Cell[BoxData[
     RowBox[{"DirectCrystSecondSubstMinLen", " ", ":=", "1"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"UseMatrixDirectCryst", ":=", "True"}], ";"}], " ", 
-   "\[IndentingNewLine]", 
+    RowBox[{"UseMatrixDirectCryst", ":=", "True"}], ";"}], " ", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{
      "===", "===", "===", "===", "===", "===", "===", "===", "===", "===", "===",
-       "===", "===", "===", "==="}], "="}], " ", "*)"}], "\n", 
+       "===", "===", "===", "==="}], "="}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"SynthCoeffParams", "=", 
      RowBox[{"{", 
@@ -2659,9 +2659,9 @@ Cell[BoxData[
    3.732225995732339*^9, 3.7322260455199842`*^9}, {3.7322261035934334`*^9, 
    3.732226107902487*^9}, {3.73222614470938*^9, 3.7322261525324836`*^9}, {
    3.7322264627548513`*^9, 3.732226498837398*^9}, {3.732226763143235*^9, 
-   3.732226794618739*^9}},
- CellLabel->
-  "In[126]:=",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
+   3.732226794618739*^9}, {3.732307736674903*^9, 
+   3.732307743178404*^9}},ExpressionUUID->"d25254be-fd65-4e89-a40d-\
+9592ddf0d892"]
 },
 WindowSize->{1133, 597},
 WindowMargins->{{Automatic, 100}, {Automatic, 52}},
@@ -2680,7 +2680,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 109027, 2643, 10089, "Input",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
+Cell[558, 20, 109052, 2643, 10089, "Input",ExpressionUUID->"d25254be-fd65-4e89-a40d-9592ddf0d892"]
 }
 ]
 *)
