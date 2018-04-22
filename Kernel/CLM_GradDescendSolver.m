@@ -22,8 +22,8 @@ PrepareGradientDescentSolver[mult_?NumericQ, randomSeed_?IntegerQ, rawOptions___
 
       opts = ProcessOptions[rawOptions];
 
-      precision = 20;
-      accuracy = 10;
+      precision = 50;
+      accuracy = 20;
 
       initValues = ChainModelInitFuncList[[ChainModelID]][roTotInitVal, rawOptions];
       Print["PrepareGradientDescentSolver::initValues = ", initValues];
@@ -37,7 +37,8 @@ PrepareGradientDescentSolver[mult_?NumericQ, randomSeed_?IntegerQ, rawOptions___
       substConservVal = Sum[GetNoOfAtomsInSubstance[ii, 1] * SetPrecision[initValues[[ii]], precision], {ii, 2, NoSubstCnt}];
       stabMatr = Table[D[eqTbl[[ii]], substMatrix[[jj]]], {ii, 1, NoSubstCnt - 1}, {jj, 1, NoSubstCnt - 1}];
 
-      findMinOptions = {WorkingPrecision -> precision, MaxIterations -> 100000, AccuracyGoal -> accuracy, PrecisionGoal -> accuracy};
+      (* findMinOptions = {WorkingPrecision -> precision, MaxIterations -> 100000, AccuracyGoal -> accuracy, PrecisionGoal -> accuracy}; *)
+      findMinOptions = {WorkingPrecision -> precision, MaxIterations -> 5000, AccuracyGoal -> accuracy, PrecisionGoal -> accuracy};
 
       allEq = Join[{Join[{minFunc, substConservCond == substConservVal}, nonNegCond], initCond}, findMinOptions];
 
