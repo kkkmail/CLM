@@ -2,10 +2,6 @@
 
 module Substances = 
 
-    [<Literal>]
-    let MaxPeptideLength = 3
-
-
     type NumberOfAminoAcids = 
         | OneAminoAcid
         | TwoAminoAcids
@@ -13,6 +9,25 @@ module Substances =
         | FourAminoAcids
         | FiveAminoAcids
         | SixAminoAcids
+
+        member this.length = 
+            match this with
+            | OneAminoAcid -> 1
+            | TwoAminoAcids -> 2
+            | ThreeAminoAcids -> 3
+            | FourAminoAcids -> 4
+            | FiveAminoAcids -> 5
+            | SixAminoAcids -> 6
+
+
+    type MaxPeptideLength = 
+        | TwoMax
+        | ThreeMax
+
+        member this.length = 
+            match this with 
+            | TwoMax -> 2
+            | ThreeMax -> 3
 
 
     type FoodSubst =
@@ -25,23 +40,24 @@ module Substances =
     type AminoAcid = 
         | A
         | B
-        //| C
-        //| D
-        //| E
-        //| F
+        | C
+        | D
+        | E
+        | F
 
         static member private all = 
             [
                 A
                 B
-                //C
-                //B
-                //E
-                //F
+                C
+                B
+                E
+                F
             ]
 
         static member getAminoAcids (n :NumberOfAminoAcids) = 
             AminoAcid.all
+            |> List.take n.length
 
 
     type ChiralAminoAcid = 
@@ -49,6 +65,13 @@ module Substances =
         | R of AminoAcid
 
         member __.length = 1
+
+        member aminoAcid.isL = 
+            match aminoAcid with 
+            | L _ -> true
+            | R _ -> false
+
+        member aminoAcid.isR = aminoAcid.isL |> not
 
         member aminoAcid.enantiomer = 
             match aminoAcid with 
@@ -61,7 +84,7 @@ module Substances =
             (AminoAcid.getAminoAcids n |> List.map (fun a -> R a))
 
 
-    /// TODO 20181029 Check. Perhaps it is a default comparision anyway.
+    /// TODO 20181029 Check.
     let orderPairs (a : list<ChiralAminoAcid>, b : list<ChiralAminoAcid>) = 
         if a.Length < b.Length
         then (a, b)
@@ -109,22 +132,22 @@ module Substances =
             |> makePeptide []
             |> List.map (fun e -> Peptide e)
 
-        // Peptides start from length 2.
-        static member getPeptides m n = 
-            [ for i in 2..m -> Peptide.create i n]
+        /// Peptides start from length 2.
+        static member getPeptides (m : MaxPeptideLength) n = 
+            [ for i in 2..m.length -> Peptide.create i n]
             |> List.concat
 
 
     type Substance = 
         | Food of FoodSubst
         | Chiral of ChiralAminoAcid
-        | Peptide of Peptide
+        | PeptideChain of Peptide
 
         member substance.enantiomer = 
             match substance with 
             | Food f -> f |> Food
             | Chiral c -> c.enantiomer |> Chiral
-            | Peptide p -> p.enantiomer |> Peptide
+            | PeptideChain p -> p.enantiomer |> PeptideChain
 
 
     type ReactionType = 
@@ -232,8 +255,14 @@ module Substances =
             | Reversible r -> r.enantiomer |> Reversible
 
 
+    let fromList (a : list<ChiralAminoAcid>) = 
+        match a.Length with 
+        | 1 -> Chiral a.Head
+        | _ -> Peptide a |> PeptideChain
+
+
     let synthesisReactions n g = 
-        let createSynthesisReaction g a = 
+        let create g a = 
             let i = 
                 {
                     reactionType = Synthesis
@@ -246,7 +275,7 @@ module Substances =
             | None -> None
 
         AminoAcid.getAminoAcids n
-        |> List.map (fun e -> createSynthesisReaction g e)
+        |> List.map (fun e -> create g e)
         |> List.choose id
         |> List.concat
 
@@ -256,8 +285,58 @@ module Substances =
         let p = a @ (Peptide.getPeptides m n |> List.map (fun p -> p.aminoAcids))
 
         let pairs = 
-            List.zip p p
+            List.allPairs p p
             |> List.map (fun (a, b) -> orderPairs (a, b))
+            |> List.filter (fun (a, b) -> a.Length + b.Length <= m.length)
+            |> List.filter (fun (a, _) -> a.Head.isL)
+            |> List.distinct
+
+        let create g (a, b) = 
+            let i = 
+                {
+                    reactionType = Ligation
+                    input = [ (fromList a, 1); (fromList b, 1) ]
+                    output = [ (fromList (a @ b), 1) ]
+                }
+
+            match ReversibleReaction.tryCreate g i with 
+            | Some r -> Some [ r; r.enantiomer ]
+            | None -> None
+
+        printfn "ligationReactions::pairs = %A" pairs
+
+        pairs
+        |> List.map (fun e -> create g e)
+        |> List.choose id
+        |> List.concat
 
 
-        0
+    let sedimentationReactions m n g = 
+        let a = ChiralAminoAcid.getAminoAcids n |> List.map (fun a -> [ a ])
+        let p = a @ (Peptide.getPeptides m n |> List.map (fun p -> p.aminoAcids))
+
+        let pairs = 
+            List.allPairs p p
+            |> List.map (fun (a, b) -> orderPairs (a, b))
+            |> List.filter (fun (a, _) -> a.Head.isL)
+            |> List.distinct
+
+        let create g (a, b) = 
+            let i = 
+                {
+                    reactionType = Sedimentation
+                    input = [ (fromList a, 1); (fromList b, 1) ]
+                    output = [ (FoodSubst.y |> Food, a.Length + b.Length) ]
+                }
+
+            match ForwardReaction.tryCreate g i with 
+            | Some r -> Some [ r; r.enantiomer ]
+            | None -> None
+
+        printfn "sedimentationReactions::pairs = %A" pairs
+
+        pairs
+        |> List.map (fun e -> create g e)
+        |> List.choose id
+        |> List.concat
+

@@ -2,9 +2,14 @@
 <doc>
 <assembly><name>Clm</name></assembly>
 <members>
+<member name="M:Clm.Substances.Peptide.getPeptides(Clm.Substances.MaxPeptideLength,Clm.Substances.NumberOfAminoAcids)">
+<summary>
+ Peptides start from length 2.
+</summary>
+</member>
 <member name="M:Clm.Substances.orderPairs(Microsoft.FSharp.Collections.FSharpList{Clm.Substances.ChiralAminoAcid},Microsoft.FSharp.Collections.FSharpList{Clm.Substances.ChiralAminoAcid})">
 <summary>
- TODO 20181029 Check. Perhaps it is a default comparision anyway.
+ TODO 20181029 Check.
 </summary>
 </member>
 </members>
