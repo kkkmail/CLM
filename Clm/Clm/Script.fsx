@@ -1,8 +1,12 @@
-﻿// Learn more about F# at http://fsharp.org
-// See the 'F# Tutorial' project for more help.
+﻿#load "Substances.fs"
+open Clm.Substances
 
-#load "Library1.fs"
-open Clm
+let n = NumberOfAminoAcids.TwoAminoAcids
+let m = 2
 
-// Define your library scripting code here
+let subst = ChiralAminoAcid.getAminoAcids n
+printfn "subst = %A" subst
+
+let peptides = Peptide.getPeptides m n 
+printfn "peptides = %A" peptides
 

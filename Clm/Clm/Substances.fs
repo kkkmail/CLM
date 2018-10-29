@@ -18,25 +18,26 @@ module Substances =
     type FoodSubst =
         | FoodSubst
 
+        member __.length = 0
         static member y = FoodSubst
 
 
     type AminoAcid = 
         | A
         | B
-        | C
-        | D
-        | E
-        | F
+        //| C
+        //| D
+        //| E
+        //| F
 
         static member private all = 
             [
                 A
                 B
-                C
-                B
-                E
-                F
+                //C
+                //B
+                //E
+                //F
             ]
 
         static member getAminoAcids (n :NumberOfAminoAcids) = 
@@ -46,6 +47,8 @@ module Substances =
     type ChiralAminoAcid = 
         | L of AminoAcid
         | R of AminoAcid
+
+        member __.length = 1
 
         member aminoAcid.enantiomer = 
             match aminoAcid with 
@@ -58,8 +61,20 @@ module Substances =
             (AminoAcid.getAminoAcids n |> List.map (fun a -> R a))
 
 
+    /// TODO 20181029 Check. Perhaps it is a default comparision anyway.
+    let orderPairs (a : list<ChiralAminoAcid>, b : list<ChiralAminoAcid>) = 
+        if a.Length < b.Length
+        then (a, b)
+        else 
+            if a.Length > b.Length
+            then (b, a)
+            else 
+                if a <= b then (a, b)
+                else (b, a)
+
+
     type Peptide = 
-        | Peptide of List<ChiralAminoAcid>
+        | Peptide of list<ChiralAminoAcid>
 
         member peptide.length = 
             let (Peptide p) = peptide
@@ -69,14 +84,19 @@ module Substances =
             let (Peptide p) = peptide
             p |> List.map (fun a -> a.enantiomer) |> Peptide
 
-        static member create m n = 
+        member peptide.aminoAcids = 
+            let (Peptide p) = peptide
+            p
+
+        static member private create m n = 
             let rec makePeptide acc l = 
                 match l with 
                 | [] -> acc
                 | h :: t -> makePeptide (List.allPairs h acc |> List.map (fun (a, e) -> a :: e)) t
 
+            // Peptides start from length 2.
             let aa = ChiralAminoAcid.getAminoAcids n
-            [ for _ in 1..m -> aa ]
+            [ for _ in 2..m -> aa ]
             |> makePeptide []
             |> List.map (fun e -> Peptide e)
 
@@ -109,12 +129,12 @@ module Substances =
     type ReactionInfo =
         {
             reactionType : ReactionType
-            input : List<Substance * int>
-            output : List<Substance * int>
+            input : list<Substance * int>
+            output : list<Substance * int>
         }
 
         member info.enantiomer = 
-            let e (i : List<Substance * int>) = i |> List.map (fun (s, n) -> (s.enantiomer, n))
+            let e (i : list<Substance * int>) = i |> List.map (fun (s, n) -> (s.enantiomer, n))
 
             {
                 reactionType = info.reactionType
@@ -221,6 +241,13 @@ module Substances =
         |> List.concat
 
 
-    let ligationReactions n m g = 
+    let ligationReactions m n g = 
+        let a = ChiralAminoAcid.getAminoAcids n |> List.map (fun a -> [ a ])
+        let p = a @ (Peptide.getPeptides m n |> List.map (fun p -> p.aminoAcids))
+
+        let pairs = 
+            List.zip p p
+            |> List.map (fun (a, b) -> orderPairs (a, b))
+
 
         0
