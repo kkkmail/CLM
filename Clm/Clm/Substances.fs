@@ -90,18 +90,28 @@ module Substances =
 
         static member private create m n = 
             let rec makePeptide acc l = 
+                //printfn "makePeptide::l = %A" l
+                //printfn "makePeptide::acc = %A" acc
                 match l with 
                 | [] -> acc
-                | h :: t -> makePeptide (List.allPairs h acc |> List.map (fun (a, e) -> a :: e)) t
+                | h :: t -> 
+                    match acc with 
+                    | [] -> makePeptide (h |> List.map (fun e -> [e])) t
+                    | _ -> 
+                        //let pairs = (List.allPairs h acc)
+                        //printfn "makePeptide::pairs = %A" pairs
+                        //let x = pairs |> List.map (fun e -> e)
+                        makePeptide ((List.allPairs h acc) |> List.map (fun (a, e) -> a :: e)) t
 
-            // Peptides start from length 2.
             let aa = ChiralAminoAcid.getAminoAcids n
-            [ for _ in 2..m -> aa ]
+            //printfn "aa = %A" aa
+            [ for _ in 1..m -> aa ]
             |> makePeptide []
             |> List.map (fun e -> Peptide e)
 
+        // Peptides start from length 2.
         static member getPeptides m n = 
-            [ for i in 1..m -> Peptide.create i n]
+            [ for i in 2..m -> Peptide.create i n]
             |> List.concat
 
 
