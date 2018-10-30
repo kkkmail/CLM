@@ -1,0 +1,8 @@
+(* :Summary: CLM find minimum logic. *)
+(* :Author: Konstantin K. Konstantinov *)
+(* :Email: konstantin.k.konstantinov@gmail.com *)
+(* :License type: GPL *)
+(* :Copyright: K^3, 2013 - 2014 *)
+(* :Version: Revision: 2.13.001, Date: 2014/09/26 *)
+(* :Mathematica Version: 7.0 - 10.0 *)
+(* ============================================== *)
