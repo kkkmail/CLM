@@ -4,6 +4,24 @@ open Clm.Substances
 let n = NumberOfAminoAcids.OneAminoAcid
 let m = MaxPeptideLength.TwoMax
 
+let rates = 
+    [
+         (Synthesis, (fun __ -> (Some (ReactionRate 1.0), None)) |> ReactionRateProvider)
+         (CatalyticSynthesis, (fun __ -> (Some (ReactionRate 1.0), None)) |> ReactionRateProvider)
+         (Ligation, (fun __ -> (Some (ReactionRate 1.0), None)) |> ReactionRateProvider)
+         (SedimentationDirect, (fun __ -> (Some (ReactionRate 1.0), None)) |> ReactionRateProvider)
+    ]
+
+
+let modelParams = 
+    {
+        numberOfAminoAcids = n
+        maxPeptideLength = m
+        reactionRates = rates
+    }
+
+let model = ClmModel modelParams
+
 let subst = ChiralAminoAcid.getAminoAcids n
 printfn "subst = %A" subst
 
@@ -11,15 +29,12 @@ printfn "subst = %A" subst
 //printfn "peptides = %A" peptides
 //printfn "peptides (sorted) = %A" (peptides |> List.sort)
 
-let g0 = (fun __ -> Some 1.0)
-let g = (fun __ -> (None, Some 1.0))
-
 //let synth = synthesisReactions n g
 //printfn "synth = %A" synth
 
 //let lig = ligationReactions m n g
 //printfn "lig = %A" lig
 
-let sed = sedimentationReactions m n g0
+let sed = model.sedimentationReactions
 printfn "sed = %A" sed
 

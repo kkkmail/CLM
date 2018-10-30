@@ -9,6 +9,16 @@ module Substances =
         | FourAminoAcids
         | FiveAminoAcids
         | SixAminoAcids
+        | SevenAminoAcids
+        | EightAminoAcids
+        | NineAminoAcids
+        | TenAminoAcids
+        | ElevenAminoAcids
+        | TwelveAminoAcids
+        | ThirteenAminoAcids
+        | FourteenAminoAcids
+        | FifteenAminoAcids
+        | SixteenAminoAcids
 
         member this.length = 
             match this with
@@ -18,6 +28,16 @@ module Substances =
             | FourAminoAcids -> 4
             | FiveAminoAcids -> 5
             | SixAminoAcids -> 6
+            | SevenAminoAcids -> 7
+            | EightAminoAcids -> 8
+            | NineAminoAcids -> 9
+            | TenAminoAcids -> 10
+            | ElevenAminoAcids -> 11
+            | TwelveAminoAcids -> 12
+            | ThirteenAminoAcids -> 13
+            | FourteenAminoAcids -> 14
+            | FifteenAminoAcids -> 15
+            | SixteenAminoAcids -> 16
 
 
     type MaxPeptideLength = 
@@ -42,21 +62,41 @@ module Substances =
 
 
     type AminoAcid = 
-        | A
-        | B
-        | C
-        | D
-        | E
-        | F
+        | A01
+        | A02
+        | A03
+        | A04
+        | A05
+        | A06
+        | A07
+        | A08
+        | A09
+        | A10
+        | A11
+        | A12
+        | A13
+        | A14
+        | A15
+        | A16
 
         static member private all = 
             [
-                A
-                B
-                C
-                B
-                E
-                F
+                A01
+                A02
+                A03
+                A04
+                A05
+                A06
+                A07
+                A08
+                A09
+                A10
+                A11
+                A12
+                A13
+                A14
+                A15
+                A16
             ]
 
         static member getAminoAcids (n :NumberOfAminoAcids) = 
