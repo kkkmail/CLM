@@ -35,6 +35,6 @@ printfn "subst = %A" subst
 //let lig = ligationReactions m n g
 //printfn "lig = %A" lig
 
-let sed = model.sedimentationReactions
+let sed = model.sedimentationDirect
 printfn "sed = %A" sed
 

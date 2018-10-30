@@ -198,8 +198,8 @@ module Substances =
         | Synthesis
         | CatalyticSynthesis
         | Ligation
+        | CatalyticLigation
         | SedimentationDirect
-        //| CatalyticLigation
         //| Sedimentation
         //| SedimentationRemoval
 
@@ -326,6 +326,11 @@ module Substances =
         let aminoAcids = AminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let chiralAminoAcids = ChiralAminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let peptides = Peptide.getPeptides modelParams.maxPeptideLength modelParams.numberOfAminoAcids
+
+        // For flexibility. Updare when necessary.
+        let synthCatalysts = peptides
+        let ligCatalysts = peptides
+
         let allChains = (chiralAminoAcids |> List.map (fun a -> [ a ])) @ (peptides |> List.map (fun p -> p.aminoAcids))
 
         let allPairs =
@@ -333,6 +338,8 @@ module Substances =
             |> List.map (fun (a, b) -> orderPairs (a, b))
             |> List.filter (fun (a, _) -> a.Head.isL)
             |> List.distinct
+
+        let ligationPairs = allPairs |> List.filter (fun (a, b) -> a.Length + b.Length <= modelParams.maxPeptideLength.length)
 
         let tryCreateReaction g i = 
             match ReversibleReaction.tryCreate g i with 
@@ -363,7 +370,7 @@ module Substances =
         let catSynth = 
             match rateProviders.TryFind CatalyticSynthesis with
             | Some g -> 
-                let ap = List.allPairs aminoAcids peptides
+                let ap = List.allPairs aminoAcids synthCatalysts
 
                 let create (a, c) = 
                     let p = c |> PeptideChain
@@ -380,20 +387,35 @@ module Substances =
         let lig =
             match rateProviders.TryFind Ligation with
             | Some g -> 
-                let pairs = allPairs |> List.filter (fun (a, b) -> a.Length + b.Length <= modelParams.maxPeptideLength.length)
-
                 let create (a, b) = 
-                        {
-                            reactionType = Ligation
-                            input = [ (fromList a, 1); (fromList b, 1) ]
-                            output = [ (fromList (a @ b), 1) ]
-                        }
-                        |> tryCreateReaction g
-                pairs |> createReactions create
+                    {
+                        reactionType = Ligation
+                        input = [ (fromList a, 1); (fromList b, 1) ]
+                        output = [ (fromList (a @ b), 1) ]
+                    }
+                    |> tryCreateReaction g
+                ligationPairs |> createReactions create
             | None -> []
 
 
-        let sed = 
+        let catLig =
+            match rateProviders.TryFind CatalyticLigation with
+            | Some g -> 
+                let ap = List.allPairs ligationPairs ligCatalysts
+
+                let create ((a, b), c) = 
+                    let p = c |> PeptideChain
+                    {
+                        reactionType = CatalyticLigation
+                        input = [ (fromList a, 1); (fromList b, 1); (p, 1) ]
+                        output = [ (fromList (a @ b), 1); (p, 1) ]
+                    }
+                    |> tryCreateReaction g
+                ap |> createReactions create
+            | None -> []
+
+
+        let sedDir = 
             match rateProviders.TryFind SedimentationDirect with 
             | Some g -> 
                 let create (a, b) = 
@@ -407,8 +429,9 @@ module Substances =
             | None -> []
 
 
-        member this.synthesisReactions = synth
-        member this.catSynthesisReactions = catSynth
-        member this.ligationReactions = lig
-        member this.sedimentationReactions = sed
+        member model.synthesis = synth
+        member model.catalyticSynthesis = catSynth
+        member model.ligation = lig
+        member model.catalyticLigation = catLig
+        member model.sedimentationDirect = sedDir
 
