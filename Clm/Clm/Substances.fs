@@ -1,4 +1,6 @@
 ﻿namespace Clm
+open System.Numerics
+open MathNet.Numerics.LinearAlgebra
 
 module Substances = 
 
@@ -192,6 +194,10 @@ module Substances =
             | Food f -> f |> Food
             | Chiral c -> c.enantiomer |> Chiral
             | PeptideChain p -> p.enantiomer |> PeptideChain
+
+
+    /// Maps substances to array / vector indices.
+    type SubstanceMap = Map<Substance, int>
 
 
     type ReactionType = 
@@ -446,9 +452,49 @@ module Substances =
 
         let allReac = synth @ catSynth @ lig @ catLig @ sedDir
 
-        let updateReac (e : Vector<double> -> Vector<double>) = 
+        let updateReac (r : Reaction) (m0 : Map<Substance, Map<Substance, double> -> double>) : Map<Substance, Map<Substance, double> -> double> = 
+            let getRate (l : list<Substance * int>) (i : Map<Substance, double>) : double = 
+                let c s = match i.TryFind s with | Some x -> x | None -> 0.0
+                l |> List.fold (fun acc (e, i) -> acc * (pown (c e) i)) 1.0
 
-            0
+            let updateReactionForSubst 
+                ((s, n) : Substance * int) 
+                (rate : Map<Substance, double> -> double) 
+                (v : Map<Substance, Map<Substance, double> -> double>) 
+                : Map<Substance, Map<Substance, double> -> double> = 
+                let c (i : Map<Substance, double>) : double = (float n) * (rate i)
+
+                match v.TryFind s with 
+                | Some w -> v.Add (s, fun i -> (w i) + (c i))
+                | None -> v.Add (s, c)
+
+            let update iRate oRate (info : ReactionInfo) m = 
+                let mi = info.input |> List.fold (fun acc e -> updateReactionForSubst e iRate acc) m
+                info.output |> List.fold (fun acc e -> updateReactionForSubst e oRate acc) mi
+
+            let updateForward (info : ReactionInfo) (ReactionRate rate) m = 
+                let iRate g = -(getRate info.input g) * rate
+                let oRate g = (getRate info.output g) * rate
+                update iRate oRate info m
+
+            let updateBackward (info : ReactionInfo) (ReactionRate rate) m = 
+                let iRate g = (getRate info.input g) * rate
+                let oRate g = -(getRate info.output g) * rate
+                update iRate oRate info m
+
+            match r with 
+            | Forward f -> updateForward f.reactionInfo f.forwardRate m0
+            | Backward b -> updateBackward b.reactionInfo b.backwardRate m0
+            | Reversible rv ->
+                updateForward rv.reactionInfo rv.forwardRate m0
+                |> updateBackward rv.reactionInfo rv.backwardRate
+
+        let updateAllReac = allReac |> List.fold (fun acc r -> updateReac r acc) Map.empty
+
+        let updateAllReacVec (i : Vector<double>) : Vector<double> = 
+            let im = allSubst |> List.map (fun s -> s, i.[allInd.[s]]) |> Map.ofList
+
+            failwith ""
 
 
         member model.allSubstances = allSubst

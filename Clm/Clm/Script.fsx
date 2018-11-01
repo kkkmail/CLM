@@ -1,4 +1,6 @@
-﻿#load "Substances.fs"
+﻿#r "./bin/Debug/MathNet.Numerics.dll"
+#r "./bin/Debug/MathNet.Numerics.FSharp.dll"
+#load "Substances.fs"
 open Clm.Substances
 
 let n = NumberOfAminoAcids.OneAminoAcid
