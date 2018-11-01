@@ -311,17 +311,18 @@ module Substances =
             | Reversible r -> r.enantiomer |> Reversible
 
 
-    type EquationComponent = 
-        {
-            i : int
-        }
-
-
     type ModelParams = 
         {
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
             reactionRates : List<ReactionType * ReactionRateProvider>
+        }
+
+
+    type EquationPart = 
+        {
+            substance : Substance
+            update : double
         }
 
 
@@ -338,7 +339,7 @@ module Substances =
         let chiralAminoAcids = ChiralAminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let peptides = Peptide.getPeptides modelParams.maxPeptideLength modelParams.numberOfAminoAcids
 
-        // For flexibility. Updare when necessary.
+        // For flexibility. Update when necessary.
         let synthCatalysts = peptides
         let ligCatalysts = peptides
 
@@ -452,49 +453,139 @@ module Substances =
 
         let allReac = synth @ catSynth @ lig @ catLig @ sedDir
 
-        let updateReac (r : Reaction) (m0 : Map<Substance, Map<Substance, double> -> double>) : Map<Substance, Map<Substance, double> -> double> = 
-            let getRate (l : list<Substance * int>) (i : Map<Substance, double>) : double = 
-                let c s = match i.TryFind s with | Some x -> x | None -> 0.0
-                l |> List.fold (fun acc (e, i) -> acc * (pown (c e) i)) 1.0
+        //let concentration (i : Map<Substance, double>) s = match i.TryFind s with | Some x -> x | None -> 0.0
+        //
+        //let mutable counter = 0
+        //
+        //let updateReac (r : Reaction) (m0 : Map<Substance, Map<Substance, double> -> double>) : Map<Substance, Map<Substance, double> -> double> = 
+        //
+        //    //printfn "updateReac::counter = %A" counter
+        //    counter <- counter + 1
+        //
+        //    let getRate (l : list<Substance * int>) (i : Map<Substance, double>) : double = 
+        //        l |> List.fold (fun acc (e, n) -> acc * (pown (concentration i e) n)) 1.0
+        //
+        //    let updateReactionForSubst 
+        //        ((s, n) : Substance * int) 
+        //        (rate : Map<Substance, double> -> double) 
+        //        (v : Map<Substance, Map<Substance, double> -> double>) 
+        //        : Map<Substance, Map<Substance, double> -> double> = 
+        //        let c (i : Map<Substance, double>) : double = (float n) * (rate i)
+        //
+        //        match v.TryFind s with 
+        //        | Some w -> v.Add (s, fun i -> (w i) + (c i))
+        //        | None -> v.Add (s, c)
+        //
+        //    let update iRate oRate (info : ReactionInfo) m = 
+        //        printfn "update::counter = %A" counter
+        //        let mi = info.input |> List.fold (fun acc e -> updateReactionForSubst e iRate acc) m
+        //        info.output |> List.fold (fun acc e -> updateReactionForSubst e oRate acc) mi
+        //
+        //    let updateForward (info : ReactionInfo) (ReactionRate rate) m = 
+        //        let iRate g = -(getRate info.input g) * rate
+        //        let oRate g = (getRate info.output g) * rate
+        //        update iRate oRate info m
+        //
+        //    let updateBackward (info : ReactionInfo) (ReactionRate rate) m = 
+        //        let iRate g = (getRate info.input g) * rate
+        //        let oRate g = -(getRate info.output g) * rate
+        //        update iRate oRate info m
+        //
+        //    match r with 
+        //    | Forward f -> updateForward f.reactionInfo f.forwardRate m0
+        //    | Backward b -> updateBackward b.reactionInfo b.backwardRate m0
+        //    | Reversible rv ->
+        //        updateForward rv.reactionInfo rv.forwardRate m0
+        //        |> updateBackward rv.reactionInfo rv.backwardRate
+        //
+        //let updateAllReac = allReac |> List.fold (fun acc r -> updateReac r acc) Map.empty
+        //
+        //let updateAllReacVec (i : Vector<double>) = //: Vector<double> = 
+        //    printfn "updateAllReacVec::Starting."
+        //
+        //    let im = allSubst |> List.map (fun s -> 
+        //        printfn "in::s = %A, allInd.[s] = %A, i.[allInd.[s]] = %A" s allInd.[s] i.[allInd.[s]]
+        //        (s, i.[allInd.[s]])) |> Map.ofList
+        //    printfn "updateAllReacVec::im.Count: %A" im.Count
+        //
+        //    let mutable counter = 0
+        //
+        //    let c (i : Map<Substance, Map<Substance, double> -> double>) s = 
+        //        //printfn "c::counter = %A" counter
+        //        counter <- counter + 1
+        //        match i.TryFind s with 
+        //        | Some x -> 
+        //            //printfn "c::x = %A" x
+        //            x im 
+        //        | None -> 0.0
+        //
+        //    let om = 
+        //        allSubst
+        //        |> List.map(fun s -> 
+        //            printfn "om::s = %A" s
+        //            c updateAllReac s)
+        //        //|> vector
+        //    om
+        //    //[ 0.0 ] |> vector
 
-            let updateReactionForSubst 
-                ((s, n) : Substance * int) 
-                (rate : Map<Substance, double> -> double) 
-                (v : Map<Substance, Map<Substance, double> -> double>) 
-                : Map<Substance, Map<Substance, double> -> double> = 
-                let c (i : Map<Substance, double>) : double = (float n) * (rate i)
+        let xName = "x"
+        let substComment (s : Substance) = "            // " + s.ToString() + "\n"
+        let reactionComment (r : Reaction) = " // " + r.ToString() + "\n"
+        let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
 
+        let rate (l : list<Substance * int>) (ReactionRate r) = 
+            let toFloat (s : string) = 
+                match s.Contains(".") with 
+                | true -> s
+                | false -> s + ".0"
+
+            let toPown s n = 
+                match n with 
+                | 1 -> x s
+                | _ -> "(pown " + (x s) + " " + n.ToString() + ")"
+
+            let a = l |> List.fold(fun acc (s, n) -> acc + (if acc <> "" then " * " else "") + (toPown s n)) ""
+            (r.ToString() |> toFloat) + " * " + a + " // " + l.ToString() + "\n"
+
+        let processReaction (r : Reaction) (m : Map<Substance, string>) : Map<Substance, string> =
+            let toMult (i : int) = 
+                match i with 
+                | 1 -> ""
+                | _ -> i.ToString() + ".0 * "
+
+            let updateMap (s : Substance) (e : string) (v : Map<Substance, string>) : Map<Substance, string> = 
                 match v.TryFind s with 
-                | Some w -> v.Add (s, fun i -> (w i) + (c i))
-                | None -> v.Add (s, c)
+                | Some w -> v.Add (s, w + e)
+                | None -> v.Add (s, e)
 
-            let update iRate oRate (info : ReactionInfo) m = 
-                let mi = info.input |> List.fold (fun acc e -> updateReactionForSubst e iRate acc) m
-                info.output |> List.fold (fun acc e -> updateReactionForSubst e oRate acc) mi
+            let update i o r f v = 
+                let shift = "                "
+                let (iSign, oSign) = if f then "-", "" else "", "-"
+                let fwd = rate i r
+                let inpt = i |> List.fold (fun acc (s, n) -> updateMap s (shift + iSign + (toMult n) + fwd) acc) v
+                o |> List.fold (fun acc (s, n) -> updateMap s (shift + oSign + (toMult n) + fwd) acc) inpt
 
-            let updateForward (info : ReactionInfo) (ReactionRate rate) m = 
-                let iRate g = -(getRate info.input g) * rate
-                let oRate g = (getRate info.output g) * rate
-                update iRate oRate info m
-
-            let updateBackward (info : ReactionInfo) (ReactionRate rate) m = 
-                let iRate g = (getRate info.input g) * rate
-                let oRate g = -(getRate info.output g) * rate
-                update iRate oRate info m
-
-            match r with 
-            | Forward f -> updateForward f.reactionInfo f.forwardRate m0
-            | Backward b -> updateBackward b.reactionInfo b.backwardRate m0
+            match r with
+            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true m
+            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false m
             | Reversible rv ->
-                updateForward rv.reactionInfo rv.forwardRate m0
-                |> updateBackward rv.reactionInfo rv.backwardRate
+                update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true m
+                |> update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false
 
-        let updateAllReac = allReac |> List.fold (fun acc r -> updateReac r acc) Map.empty
 
-        let updateAllReacVec (i : Vector<double>) : Vector<double> = 
-            let im = allSubst |> List.map (fun s -> s, i.[allInd.[s]]) |> Map.ofList
+        let generate () = 
+            let reactions = allReac |> List.fold(fun acc r -> processReaction r acc) Map.empty
+            let getReaction s = 
+                match reactions.TryFind s with 
+                | Some r -> r
+                | None -> ""
 
-            failwith ""
+            let a = 
+                allSubst
+                |> List.fold (fun acc s -> acc + "\n" + (substComment s) +  "            [|\n" + (getReaction s) + "            |]\n            |> Array.fold (fun acc r -> acc + r) 0.0\n") ""
+
+            "namespace Model\n\nmodule ModelData = \n\n    let update (x : array<double>) : array<double> = \n" +
+            "        [|" + a + "        |]\n"
 
 
         member model.allSubstances = allSubst
@@ -503,4 +594,9 @@ module Substances =
         member model.ligation = lig
         member model.catalyticLigation = catLig
         member model.sedimentationDirect = sedDir
+        member model.allReactions = allReac
+        //member model.getGradient v = updateAllReacVec v
+        //member model.updateAllReacions = updateAllReac
+
+        member model.generateCode() = generate()
 
