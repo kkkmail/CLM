@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Clm", "Clm\Clm.fsproj", "{2CFC7E81-4FB4-46B4-9534-C1455E2C4C14}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Numerics", "MathNetNumerics\src\Numerics\Numerics.csproj", "{B8113B94-A51D-4988-A528-3BF03E675719}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharp", "MathNetNumerics\src\FSharp\FSharp.fsproj", "{DEF82043-CBD9-480D-B128-B97CC3B3399E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2CFC7E81-4FB4-46B4-9534-C1455E2C4C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CFC7E81-4FB4-46B4-9534-C1455E2C4C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CFC7E81-4FB4-46B4-9534-C1455E2C4C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8113B94-A51D-4988-A528-3BF03E675719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8113B94-A51D-4988-A528-3BF03E675719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8113B94-A51D-4988-A528-3BF03E675719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8113B94-A51D-4988-A528-3BF03E675719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF82043-CBD9-480D-B128-B97CC3B3399E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF82043-CBD9-480D-B128-B97CC3B3399E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF82043-CBD9-480D-B128-B97CC3B3399E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF82043-CBD9-480D-B128-B97CC3B3399E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

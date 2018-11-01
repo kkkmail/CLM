@@ -22,6 +22,8 @@ let modelParams =
 
 let model = ClmModel modelParams
 
+printfn "allSubstances = %A" model.allSubstances
+
 let subst = ChiralAminoAcid.getAminoAcids n
 printfn "subst = %A" subst
 

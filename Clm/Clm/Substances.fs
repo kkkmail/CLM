@@ -305,6 +305,11 @@ module Substances =
             | Reversible r -> r.enantiomer |> Reversible
 
 
+    type EquationComponent = 
+        {
+            i : int
+        }
+
 
     type ModelParams = 
         {
@@ -341,10 +346,21 @@ module Substances =
 
         let ligationPairs = allPairs |> List.filter (fun (a, b) -> a.Length + b.Length <= modelParams.maxPeptideLength.length)
 
+        let allSubst = 
+            [ food ]
+            @
+            (chiralAminoAcids |> List.map (fun a -> Chiral a))
+            @
+            (peptides |> List.map (fun p -> PeptideChain p))
+
+        let allInd = allSubst |> List.mapi (fun i s -> (s, i)) |> Map.ofList
+
+
         let tryCreateReaction g i = 
             match ReversibleReaction.tryCreate g i with 
             | Some r -> Some [ r; r.enantiomer ]
             | None -> None
+
 
         let createReactions c l = 
             l
@@ -428,7 +444,14 @@ module Substances =
                 allPairs |> createReactions create
             | None -> []
 
+        let allReac = synth @ catSynth @ lig @ catLig @ sedDir
 
+        let updateReac (e : Vector<double> -> Vector<double>) = 
+
+            0
+
+
+        member model.allSubstances = allSubst
         member model.synthesis = synth
         member model.catalyticSynthesis = catSynth
         member model.ligation = lig
