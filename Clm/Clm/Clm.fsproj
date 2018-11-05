@@ -61,6 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AlgLib\AlgLib.csproj">
+      <Name>AlgLib</Name>
+      <Project>{5d23cbc1-d7c8-4942-b9c4-22993f4f5e30}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\MathNetNumerics\src\FSharp\FSharp.fsproj">
       <Name>FSharp</Name>
       <Project>{def82043-cbd9-480d-b128-b97cc3b3399e}</Project>
