@@ -233,6 +233,7 @@ module Substances =
         | ReactionRate of double
 
 
+    /// Returns [optional] forward and backward reaction rates.
     type ReactionRateProvider = 
         | ReactionRateProvider of (ReactionInfo -> (ReactionRate option * ReactionRate option))
 

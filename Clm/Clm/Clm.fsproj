@@ -44,10 +44,12 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Substances.fs" />
+    <Compile Include="ReactionRates.fs" />
     <Compile Include="Model.fs" />
     <None Include="References.fsx" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
+    <None Include="MapPerformance.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

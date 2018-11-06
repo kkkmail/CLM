@@ -1,12 +1,15 @@
 ﻿namespace Clm
 
 open System
+open System.Collections.Generic
+open FSharp.Collections
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open Clm.Substances
 
 
 module Model = 
+
 
     type ModelParams = 
         {
@@ -248,6 +251,8 @@ module Model =
         //    om
         //    //[ 0.0 ] |> vector
 
+        let reactDictionary = new Dictionary<Substance, list<string>>(allSubst.Length)
+
         let xName = "x"
         let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + s.ToString() + "\n"
         let reactionComment (r : Reaction) = " // " + r.ToString() + "\n"
@@ -268,49 +273,45 @@ module Model =
             (r.ToString() |> toFloat) + " * " + a + " // " + l.ToString() + "\n"
 
         //let processReaction (r : Reaction) (m : Map<Substance, Equation>) : Map<Substance, Equation> =
-        let processReaction (r : Reaction) (m : Map<Substance, list<string>>) : Map<Substance, list<string>> =
+        let processReaction (r : Reaction) =
             let toMult (i : int) = 
                 match i with 
                 | 1 -> ""
                 | _ -> i.ToString() + ".0 * "
 
-            //let updateMap (s : Substance) (e : string) (v : Map<Substance, Equation>) : Map<Substance, Equation> = 
-            let updateMap (s : Substance) (e : string) (v : Map<Substance, list<string>>) : Map<Substance, list<string>> = 
-                match v.TryFind s with 
-                //| Some w -> v.Add (s, { w with parts = e :: w.parts })
-                //| None -> v.Add (s, { parts = [ e ] })
-                | Some w -> v.Add (s,  e :: w)
-                | None -> v.Add (s, [ e ])
+            let updateMap (s : Substance) (e : string) = 
+                match reactDictionary.TryGetValue s with 
+                | (true, w) -> reactDictionary.[s] <- (e :: w)
+                | (false, _) -> reactDictionary.Add (s, [ e ])
 
-            let update i o r f v = 
+            let update i o r f = 
                 let shift = "                "
                 let (iSign, oSign) = if f then "-", "" else "", "-"
                 let fwd = rate i r
-                let inpt = i |> List.fold (fun acc (s, n) -> updateMap s (shift + iSign + (toMult n) + fwd) acc) v
-                o |> List.fold (fun acc (s, n) -> updateMap s (shift + oSign + (toMult n) + fwd) acc) inpt
+                i |> List.iter (fun (s, n) -> updateMap s (shift + iSign + (toMult n) + fwd))
+                o |> List.iter (fun (s, n) -> updateMap s (shift + oSign + (toMult n) + fwd))
 
             match r with
-            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true m
-            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false m
+            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true
+            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false
             | Reversible rv ->
-                update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true m
-                |> update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false
+                update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true
+                update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false
 
 
         let generate () = 
             let t0 = DateTime.Now
             printfn "t0 = %A" t0
-            let reactions = allReac |> List.fold(fun acc r -> processReaction r acc) Map.empty
+            allReac |> List.iter (fun r -> processReaction r)
 
             let t1 = DateTime.Now
             printfn "t1 = %A" t1
             printfn "t1 - t0 = %A" (t1 - t0).TotalSeconds
 
             let getReaction s = 
-                match reactions.TryFind s with 
-                //| Some r -> r.toString s (allInd.[s])
-                | Some r -> r |> List.fold (fun acc e -> acc + e) ""
-                | None -> ""
+                match reactDictionary.TryGetValue s with 
+                | (true, r) -> r |> List.rev |> List.fold (fun acc e -> acc + e) ""
+                | (false, _) -> ""
 
             let a = 
                 allSubst
