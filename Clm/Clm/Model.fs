@@ -297,32 +297,37 @@ module Model =
         //        update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true
         //        update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false
 
-        let processReaction (r : Reaction) (m : list<Substance * string>) : list<Substance * string> =
+        let processReaction (r : Reaction) : list<Substance * string> =
             let toMult (i : int) = 
                 match i with 
                 | 1 -> ""
                 | _ -> i.ToString() + ".0 * "
 
-            let update i o r f (v : list<Substance * string>) : list<Substance * string> = 
+            let update i o r f : list<Substance * string> = 
                 let shift = "                "
                 let (iSign, oSign) = if f then "-", "" else "", "-"
                 let fwd = rate i r
-                let v1 = i |> List.fold (fun acc (s, n) -> (s, (shift + iSign + (toMult n) + fwd)) :: acc) v
-                o |> List.fold (fun acc (s, n) -> (s, (shift + oSign + (toMult n) + fwd)) :: acc) v1
+                (i |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd))))
+                @
+                (o |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd))))
 
             match r with
-            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true m
-            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false m
+            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true
+            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false
             | Reversible rv ->
-                update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true m
-                |> update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false
+                (update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true)
+                @
+                (update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false)
 
 
         let generate () = 
             let t0 = DateTime.Now
             printfn "t0 = %A" t0
 
-            let r0 = allReac |> List.fold (fun acc r -> processReaction r acc) []
+            let r0 = 
+                allReac 
+                |> List.map (fun r -> processReaction r)
+
             printfn "r0.Length = %A" r0.Length
             let t11 = DateTime.Now
             printfn "t11 = %A" t11
@@ -330,6 +335,7 @@ module Model =
 
             let reactions = 
                 r0
+                |> List.concat
                 |> List.groupBy (fun (s, _) -> s)
                 |> Map.ofList
 

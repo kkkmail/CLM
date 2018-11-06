@@ -1,5 +1,6 @@
 ﻿#r "./bin/Debug/MathNet.Numerics.dll"
 #r "./bin/Debug/MathNet.Numerics.FSharp.dll"
+#r "../packages/FSharp.Collections.ParallelSeq.1.1.2/lib/net45/FSharp.Collections.ParallelSeq.dll"
 #load "Substances.fs"
 #load "Model.fs"
 
