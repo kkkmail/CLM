@@ -1,17 +1,19 @@
 ﻿#r "./bin/Debug/MathNet.Numerics.dll"
 #r "./bin/Debug/MathNet.Numerics.FSharp.dll"
 #load "Substances.fs"
+#load "Model.fs"
 
 open System.IO
 open Clm.Substances
+open Clm.Model
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 
-let n = NumberOfAminoAcids.ThreeAminoAcids
-let m = MaxPeptideLength.ThreeMax
+//let n = NumberOfAminoAcids.ThreeAminoAcids
+//let m = MaxPeptideLength.ThreeMax
 
-//let n = NumberOfAminoAcids.OneAminoAcid
-//let m = MaxPeptideLength.TwoMax
+let n = NumberOfAminoAcids.TwoAminoAcids
+let m = MaxPeptideLength.ThreeMax
 
 let rates = 
     [
@@ -36,6 +38,7 @@ let model = ClmModel modelParams
 #time
 
 printfn "allSubstances.Length = %A" model.allSubstances.Length
+printfn "allReactions.Length = %A" model.allReactions.Length
 
 //let peptides = Peptide.getPeptides m n 
 //printfn "peptides = %A" peptides
