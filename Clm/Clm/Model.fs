@@ -253,9 +253,13 @@ module Model =
 
         //let reactDictionary = new Dictionary<Substance, list<string>>(allSubst.Length)
 
+        let substToString (s : Substance) = "s..."
+        let reactToString (r : Reaction) = "r..."
+        let lstToString (l : list<Substance * int>) = "l..."
+
         let xName = "x"
-        let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + s.ToString() + "\n"
-        let reactionComment (r : Reaction) = " // " + r.ToString() + "\n"
+        let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + "\n"
+        let reactionComment (r : Reaction) = " // " + (reactToString r) + "\n"
         let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
 
         let rate (l : list<Substance * int>) (ReactionRate r) = 
@@ -270,7 +274,7 @@ module Model =
                 | _ -> "(pown " + (x s) + " " + n.ToString() + ")"
 
             let a = l |> List.fold(fun acc (s, n) -> acc + (if acc <> "" then " * " else "") + (toPown s n)) ""
-            (r.ToString() |> toFloat) + " * " + a + " // " + l.ToString() + "\n"
+            (r.ToString() |> toFloat) + " * " + a + " // " + (lstToString l) + "\n"
 
         //let processReaction (r : Reaction) =
         //    let toMult (i : int) = 
