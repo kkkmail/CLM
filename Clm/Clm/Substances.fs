@@ -103,6 +103,10 @@ module Substances =
                 A16
             ]
 
+        static member toString (a : AminoAcid) = sprintf "%A" a
+
+        static member names = AminoAcid.all |> List.map (fun e -> e, AminoAcid.toString e) |> Map.ofList
+
         static member getAminoAcids (n :NumberOfAminoAcids) = 
             AminoAcid.all
             |> List.take n.length
