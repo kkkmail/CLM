@@ -62,6 +62,7 @@ module Substances =
         | FoodSubst
 
         member __.length = 0
+        member __.name = "Y"
         static member y = FoodSubst
 
 
@@ -111,6 +112,8 @@ module Substances =
             AminoAcid.all
             |> List.take n.length
 
+        member aminoAcid.name = AminoAcid.names.[aminoAcid]
+
 
     type ChiralAminoAcid = 
         | L of AminoAcid
@@ -134,6 +137,11 @@ module Substances =
             (AminoAcid.getAminoAcids n |> List.map (fun a -> L a))
             @
             (AminoAcid.getAminoAcids n |> List.map (fun a -> R a))
+
+        member aminoAcid.name =
+            match aminoAcid with 
+            | L a -> a.name
+            | R a -> a.name.ToLower()
 
 
     /// TODO 20181029 Check.
@@ -162,6 +170,12 @@ module Substances =
         member peptide.aminoAcids = 
             let (Peptide p) = peptide
             p
+
+        member peptide.name = 
+            peptide.aminoAcids
+            |> List.map (fun a -> a.name)
+            |> String.concat "-"
+
 
         static member private create m n = 
             let rec makePeptide acc l = 
@@ -200,6 +214,12 @@ module Substances =
             | Food f -> f |> Food
             | Chiral c -> c.enantiomer |> Chiral
             | PeptideChain p -> p.enantiomer |> PeptideChain
+
+        member substance.name = 
+            match substance with 
+            | Food f -> f.name
+            | Chiral c -> c.name
+            | PeptideChain p -> p.name
 
 
     /// Maps substances to array / vector indices.

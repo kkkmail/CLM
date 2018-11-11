@@ -82,7 +82,14 @@ module Model =
             @
             (peptides |> List.map (fun p -> PeptideChain p))
 
+
         let allInd = allSubst |> List.mapi (fun i s -> (s, i)) |> Map.ofList
+
+
+        let allNamesMap = 
+            allSubst
+            |> List.map (fun s -> s, s.name)
+            |> Map.ofList
 
 
         let tryCreateReaction g i = 
@@ -253,9 +260,12 @@ module Model =
 
         //let reactDictionary = new Dictionary<Substance, list<string>>(allSubst.Length)
 
-        let substToString (s : Substance) = "s..."
+        let substToString s = allNamesMap.[s]
         let reactToString (r : Reaction) = "r..."
-        let lstToString (l : list<Substance * int>) = "l..."
+        let lstToString (l : list<Substance * int>) = 
+            l
+            |> List.map (fun (s, n) -> (if n = 1 then "" else n.ToString() + " ") + (substToString s))
+            |> String.concat " + "
 
         let xName = "x"
         let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + "\n"
