@@ -19,10 +19,10 @@ let m = MaxPeptideLength.TwoMax
 let rates = 
     [
          //(Synthesis, (fun __ -> (Some (ReactionRate 0.001), Some (ReactionRate 0.0001))) |> ReactionRateProvider)
-         (CatalyticSynthesis, (fun __ -> (Some (ReactionRate 10.0), Some (ReactionRate 0.01))) |> ReactionRateProvider)
-         //(Ligation, (fun __ -> (Some (ReactionRate 0.1), Some (ReactionRate 0.1))) |> ReactionRateProvider)
+         //(CatalyticSynthesis, (fun __ -> (Some (ReactionRate 10.0), Some (ReactionRate 0.01))) |> ReactionRateProvider)
+         //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
-         //(SedimentationDirect, (fun __ -> (Some (ReactionRate 1000.0), None)) |> ReactionRateProvider)
+         (SedimentationDirect, (fun __ -> (Some (ReactionRate 1000.0), None)) |> ReactionRateProvider)
     ]
 
 
@@ -56,6 +56,7 @@ printfn "allReactions.Length = %A" model.allReactions.Length
 //printfn "sed.Length = %A" sed.Length
 
 //printfn "model.allReactions.Length = %A" model.allReactions.Length
+//model.allReactions |> List.map (fun r -> printfn "%A" r.name)
 
 //printfn "Getting x..."
 //let x = model.updateAllReacions |> Map.toList |> List.head |> snd

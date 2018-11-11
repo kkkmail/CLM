@@ -181,7 +181,9 @@ module Model =
             | None -> []
 
 
-        let allReac = synth @ catSynth @ lig @ catLig @ sedDir
+        let allReac = 
+            synth @ catSynth @ lig @ catLig @ sedDir
+            |> List.distinct
 
 
         let allReacMap = 
@@ -199,7 +201,7 @@ module Model =
 
         let xName = "x"
         let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + "\n"
-        let reactionComment (r : Reaction) = " // " + (reactToString r) + "\n"
+        //let reactionComment (r : Reaction) = " // " + (reactToString r) + "\n"
         let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
 
         let rate (l : list<Substance * int>) (ReactionRate r) = 
@@ -223,12 +225,30 @@ module Model =
                 | _ -> i.ToString() + ".0 * "
 
             let update i o r f rc : list<Substance * string> = 
+                let catalysts = 
+                    (o |> List.map (fun (s, n) -> s, -n)) @ i
+                    |> List.groupBy (fun (s, _) -> s)
+                    |> List.map (fun (s, e) -> (s, e |> List.fold (fun acc (_, n) -> acc + n) 0))
+                    |> List.filter (fun (_, n) -> n = 0)
+                    |> List.map (fun (s, _) -> s)
+                    |> Set.ofList
+
+
+
                 let shift = "                "
                 let (iSign, oSign) = if f then "-", "" else "", "-"
                 let fwd = rate i r
-                (i |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd + " | " + rc + "\n"))))
+                (
+                    i
+                    |> List.filter (fun (s, _) -> catalysts.Contains s |> not)
+                    |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd + " | " + rc + "\n")))
+                )
                 @
-                (o |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd+ " | " + rc + "\n"))))
+                (
+                    o
+                    |> List.filter (fun (s, _) -> catalysts.Contains s |> not)
+                    |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd+ " | " + rc + "\n")))
+                )
 
             let rc = reactToString r
 
