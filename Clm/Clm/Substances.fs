@@ -104,15 +104,32 @@ module Substances =
                 A16
             ]
 
+        member aminoAcid.name = 
+            match aminoAcid with 
+            | A01 -> "A"
+            | A02 -> "B"
+            | A03 -> "C"
+            | A04 -> "D"
+            | A05 -> "E"
+            | A06 -> "F"
+            | A07 -> "G"
+            | A08 -> "H"
+            | A09 -> "I"
+            | A10 -> "J"
+            | A11 -> "K"
+            | A12 -> "L"
+            | A13 -> "M"
+            | A14 -> "N"
+            | A15 -> "O"
+            | A16 -> "P"
+
         static member toString (a : AminoAcid) = sprintf "%A" a
 
-        static member names = AminoAcid.all |> List.map (fun e -> e, AminoAcid.toString e) |> Map.ofList
+        static member names = AminoAcid.all |> List.map (fun e -> e, e.name) |> Map.ofList
 
         static member getAminoAcids (n :NumberOfAminoAcids) = 
             AminoAcid.all
             |> List.take n.length
-
-        member aminoAcid.name = AminoAcid.names.[aminoAcid]
 
 
     type ChiralAminoAcid = 
@@ -174,7 +191,7 @@ module Substances =
         member peptide.name = 
             peptide.aminoAcids
             |> List.map (fun a -> a.name)
-            |> String.concat "-"
+            |> String.concat ""
 
 
         static member private create m n = 
@@ -235,6 +252,8 @@ module Substances =
         //| Sedimentation
         //| SedimentationRemoval
 
+        member rt.name = sprintf "%A" rt
+
 
     type ReactionInfo =
         {
@@ -251,6 +270,14 @@ module Substances =
                 input = info.input |> e
                 output = info.output |> e
             }
+
+        member this.getName a = 
+            let g (l : list<Substance * int>) = 
+                l
+                |> List.map (fun (s, n) -> (if n = 1 then "" else n.ToString() + " ") + s.name)
+                |> String.concat " + "
+
+            this.reactionType.name + ": " + (g this.input) + a + (g this.output)
 
 
     type ReactionRate = 
@@ -336,3 +363,12 @@ module Substances =
             | Forward r -> r.enantiomer |> Forward
             | Backward r -> r.enantiomer |> Backward
             | Reversible r -> r.enantiomer |> Reversible
+
+        member this.name = 
+            let a, i =
+                match this with
+                | Forward r -> " -> ", r.reactionInfo
+                | Backward r -> " <- ", r.reactionInfo
+                | Reversible r -> " <-> ", r.reactionInfo
+
+            i.getName a

@@ -183,85 +183,15 @@ module Model =
 
         let allReac = synth @ catSynth @ lig @ catLig @ sedDir
 
-        //let concentration (i : Map<Substance, double>) s = match i.TryFind s with | Some x -> x | None -> 0.0
-        //
-        //let mutable counter = 0
-        //
-        //let updateReac (r : Reaction) (m0 : Map<Substance, Map<Substance, double> -> double>) : Map<Substance, Map<Substance, double> -> double> = 
-        //
-        //    //printfn "updateReac::counter = %A" counter
-        //    counter <- counter + 1
-        //
-        //    let getRate (l : list<Substance * int>) (i : Map<Substance, double>) : double = 
-        //        l |> List.fold (fun acc (e, n) -> acc * (pown (concentration i e) n)) 1.0
-        //
-        //    let updateReactionForSubst 
-        //        ((s, n) : Substance * int) 
-        //        (rate : Map<Substance, double> -> double) 
-        //        (v : Map<Substance, Map<Substance, double> -> double>) 
-        //        : Map<Substance, Map<Substance, double> -> double> = 
-        //        let c (i : Map<Substance, double>) : double = (float n) * (rate i)
-        //
-        //        match v.TryFind s with 
-        //        | Some w -> v.Add (s, fun i -> (w i) + (c i))
-        //        | None -> v.Add (s, c)
-        //
-        //    let update iRate oRate (info : ReactionInfo) m = 
-        //        printfn "update::counter = %A" counter
-        //        let mi = info.input |> List.fold (fun acc e -> updateReactionForSubst e iRate acc) m
-        //        info.output |> List.fold (fun acc e -> updateReactionForSubst e oRate acc) mi
-        //
-        //    let updateForward (info : ReactionInfo) (ReactionRate rate) m = 
-        //        let iRate g = -(getRate info.input g) * rate
-        //        let oRate g = (getRate info.output g) * rate
-        //        update iRate oRate info m
-        //
-        //    let updateBackward (info : ReactionInfo) (ReactionRate rate) m = 
-        //        let iRate g = (getRate info.input g) * rate
-        //        let oRate g = -(getRate info.output g) * rate
-        //        update iRate oRate info m
-        //
-        //    match r with 
-        //    | Forward f -> updateForward f.reactionInfo f.forwardRate m0
-        //    | Backward b -> updateBackward b.reactionInfo b.backwardRate m0
-        //    | Reversible rv ->
-        //        updateForward rv.reactionInfo rv.forwardRate m0
-        //        |> updateBackward rv.reactionInfo rv.backwardRate
-        //
-        //let updateAllReac = allReac |> List.fold (fun acc r -> updateReac r acc) Map.empty
-        //
-        //let updateAllReacVec (i : Vector<double>) = //: Vector<double> = 
-        //    printfn "updateAllReacVec::Starting."
-        //
-        //    let im = allSubst |> List.map (fun s -> 
-        //        printfn "in::s = %A, allInd.[s] = %A, i.[allInd.[s]] = %A" s allInd.[s] i.[allInd.[s]]
-        //        (s, i.[allInd.[s]])) |> Map.ofList
-        //    printfn "updateAllReacVec::im.Count: %A" im.Count
-        //
-        //    let mutable counter = 0
-        //
-        //    let c (i : Map<Substance, Map<Substance, double> -> double>) s = 
-        //        //printfn "c::counter = %A" counter
-        //        counter <- counter + 1
-        //        match i.TryFind s with 
-        //        | Some x -> 
-        //            //printfn "c::x = %A" x
-        //            x im 
-        //        | None -> 0.0
-        //
-        //    let om = 
-        //        allSubst
-        //        |> List.map(fun s -> 
-        //            printfn "om::s = %A" s
-        //            c updateAllReac s)
-        //        //|> vector
-        //    om
-        //    //[ 0.0 ] |> vector
 
-        //let reactDictionary = new Dictionary<Substance, list<string>>(allSubst.Length)
+        let allReacMap = 
+            allReac
+            |> List.map (fun e -> e, e.name)
+            |> Map.ofList
+
 
         let substToString s = allNamesMap.[s]
-        let reactToString (r : Reaction) = "r..."
+        let reactToString r = allReacMap.[r]
         let lstToString (l : list<Substance * int>) = 
             l
             |> List.map (fun (s, n) -> (if n = 1 then "" else n.ToString() + " ") + (substToString s))
@@ -284,32 +214,7 @@ module Model =
                 | _ -> "(pown " + (x s) + " " + n.ToString() + ")"
 
             let a = l |> List.fold(fun acc (s, n) -> acc + (if acc <> "" then " * " else "") + (toPown s n)) ""
-            (r.ToString() |> toFloat) + " * " + a + " // " + (lstToString l) + "\n"
-
-        //let processReaction (r : Reaction) =
-        //    let toMult (i : int) = 
-        //        match i with 
-        //        | 1 -> ""
-        //        | _ -> i.ToString() + ".0 * "
-
-        //    let updateMap (s : Substance) (e : string) = 
-        //        match reactDictionary.TryGetValue s with 
-        //        | (true, w) -> reactDictionary.[s] <- (e :: w)
-        //        | (false, _) -> reactDictionary.Add (s, [ e ])
-
-        //    let update i o r f = 
-        //        let shift = "                "
-        //        let (iSign, oSign) = if f then "-", "" else "", "-"
-        //        let fwd = rate i r
-        //        i |> List.iter (fun (s, n) -> updateMap s (shift + iSign + (toMult n) + fwd))
-        //        o |> List.iter (fun (s, n) -> updateMap s (shift + oSign + (toMult n) + fwd))
-
-        //    match r with
-        //    | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true
-        //    | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false
-        //    | Reversible rv ->
-        //        update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true
-        //        update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false
+            (r.ToString() |> toFloat) + " * " + a + " // " + (lstToString l) // + "\n"
 
         let processReaction (r : Reaction) : list<Substance * string> =
             let toMult (i : int) = 
@@ -317,21 +222,24 @@ module Model =
                 | 1 -> ""
                 | _ -> i.ToString() + ".0 * "
 
-            let update i o r f : list<Substance * string> = 
+            let update i o r f rc : list<Substance * string> = 
                 let shift = "                "
                 let (iSign, oSign) = if f then "-", "" else "", "-"
                 let fwd = rate i r
-                (i |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd))))
+                let bkw = rate o r
+                (i |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd + " | " + rc + "\n"))))
                 @
-                (o |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd))))
+                (o |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + bkw+ " | " + rc + "\n"))))
+
+            let rc = reactToString r
 
             match r with
-            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true
-            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false
+            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true rc
+            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false rc
             | Reversible rv ->
-                (update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true)
+                (update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true rc)
                 @
-                (update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false)
+                (update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false rc)
 
 
         let generate () = 
