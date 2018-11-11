@@ -226,10 +226,9 @@ module Model =
                 let shift = "                "
                 let (iSign, oSign) = if f then "-", "" else "", "-"
                 let fwd = rate i r
-                let bkw = rate o r
                 (i |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd + " | " + rc + "\n"))))
                 @
-                (o |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + bkw+ " | " + rc + "\n"))))
+                (o |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd+ " | " + rc + "\n"))))
 
             let rc = reactToString r
 
@@ -239,7 +238,7 @@ module Model =
             | Reversible rv ->
                 (update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true rc)
                 @
-                (update rv.reactionInfo.input rv.reactionInfo.output rv.backwardRate false rc)
+                (update rv.reactionInfo.output rv.reactionInfo.input rv.backwardRate true rc)
 
 
         let generate () = 
