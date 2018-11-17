@@ -331,7 +331,8 @@ module Model =
 
             let getReaction s = 
                 match reactions.TryFind s with 
-                | Some r -> r |> List.rev |> List.fold (fun acc (s, e) -> acc + e) ""
+                //| Some r -> r |> List.rev |> List.fold (fun acc (s, e) -> acc + e) ""
+                | Some r -> r |> List.rev |> List.map (fun (_, e) -> e) |> String.concat ""
                 | None -> ""
 
             let a = 
