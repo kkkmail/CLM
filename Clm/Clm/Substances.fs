@@ -193,6 +193,9 @@ module Substances =
             |> List.map (fun a -> a.name)
             |> String.concat ""
 
+        member peptide.noOfL = 
+            peptide.aminoAcids
+            //|> List.
 
         static member private create m n = 
             let rec makePeptide acc l = 

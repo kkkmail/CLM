@@ -44,7 +44,7 @@ module ReactionRates =
     type CatalystModelRandomParam = 
         {
             distribution : Distribution
-            forwardScale : double
+            forwardScale : double option
             backwardScale : double option
         }
 
@@ -72,17 +72,17 @@ module ReactionRates =
             | CatalystModelRandom p -> 
                 match p.distribution.nextBool() with 
                 | true ->
-                    let f = p.forwardScale * p.distribution.nextDouble() |> ReactionRate |> Some
-                    let b = 
-                        match p.backwardScale with 
+                    let g so = 
+                        match so with
                         | Some s -> s * p.distribution.nextDouble() |> ReactionRate |> Some
                         | None -> None
+
                     {
-                        primary = (f, b)
+                        primary = (g p.forwardScale, g p.backwardScale)
                         similar = []
                     }
                 | false -> noRates
-            | CatalystModelSimilarity p -> failwith ""
+            | CatalystModelSimilarity _ -> failwith ""
 
     //| ReactionRateProvider of (ReactionInfo -> (ReactionRate option * ReactionRate option))
 

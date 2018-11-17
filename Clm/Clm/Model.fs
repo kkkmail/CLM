@@ -260,6 +260,12 @@ module Model =
                 @
                 (update rv.reactionInfo.output rv.reactionInfo.input rv.backwardRate true rc)
 
+        let generateTotals () = 
+            let x = 
+                allSubst
+                |> List.map (fun s -> "")
+            1
+
 
         let generate () = 
             let t0 = DateTime.Now
@@ -297,8 +303,9 @@ module Model =
             printfn "t2 = %A" t2
             printfn "t2 - t1 = %A" (t2 - t1).TotalSeconds
 
-            "namespace Model\n\nmodule ModelData = \n\n    let update (x : array<double>) : array<double> = \n" +
-            "        [|" + a + "        |]\n"
+            let updateCode = "    let update (x : array<double>) : array<double> = \n        [|" + a + "        |]\n"
+
+            "namespace Model\n\nmodule ModelData = \n\n" + updateCode
 
 
         member model.allSubstances = allSubst
