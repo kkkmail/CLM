@@ -2,11 +2,24 @@ namespace Model
 
 module ModelData = 
 
-    let getTotals (x : array<double>) : (double * double) = 
+    let getTotals (x : array<double>) = 
         [
-            x.[0], x.[0]
+            // A
+            (
+                [
+                    x.[0] // A
+                    2.0 * x.[1] // AA
+                ]
+                |> List.sum
+                ,
+                [
+                    x.[0]
+                    2.0 * x.[1]
+                ]
+                |> List.sum
+            )
         ]
-        |> List.fold (fun (al, ar) (l, r) -> (al + l, ar + r)) (0.0, 0.0)
+        //|> List.fold (fun (al, ar) (l, r) -> (al + l, ar + r)) (0.0, 0.0)
 
     let update (x : array<double>) : array<double> = 
         [|

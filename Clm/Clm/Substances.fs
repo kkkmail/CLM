@@ -84,7 +84,7 @@ module Substances =
         | A15
         | A16
 
-        static member private all = 
+        static member all = 
             [
                 A01
                 A02
@@ -160,6 +160,11 @@ module Substances =
             | L a -> a.name
             | R a -> a.name.ToLower()
 
+        member aminoAcid.noOfLR = 
+            match aminoAcid with 
+            | L _ -> (1, 0)
+            | R _ -> (0, 1)
+
 
     /// TODO 20181029 Check.
     let orderPairs (a : list<ChiralAminoAcid>, b : list<ChiralAminoAcid>) = 
@@ -193,9 +198,23 @@ module Substances =
             |> List.map (fun a -> a.name)
             |> String.concat ""
 
-        member peptide.noOfL = 
-            peptide.aminoAcids
-            //|> List.
+        member peptide.noOfLR = 
+            let counts = 
+                peptide.aminoAcids
+                |> List.countBy (fun a -> a.isL)
+                |> Map.ofList
+
+            let count v = 
+                match counts.TryFind v with 
+                | Some c -> c
+                | None -> 0
+
+            (count true, count false)
+
+        member peptide.noOfAminoAcids =
+            let (Peptide p) = peptide
+            let count a = p |> List.sumBy (fun b -> if a = b then 1 else 0)
+            AminoAcid.all |> List.map (fun a -> L a |> count, R a |> count)
 
         static member private create m n = 
             let rec makePeptide acc l = 
@@ -240,6 +259,18 @@ module Substances =
             | Food f -> f.name
             | Chiral c -> c.name
             | PeptideChain p -> p.name
+
+        member substance.noOfAminoAcid a = 
+            match substance with 
+            | Food _ -> None
+            | Chiral c -> 
+                match c = a with 
+                | true -> Some 1
+                | false -> None
+            | PeptideChain (Peptide p) -> 
+                match (p |> List.sumBy (fun b -> if a = b then 1 else 0)) with 
+                | 0 -> None
+                | n -> Some n
 
 
     /// Maps substances to array / vector indices.

@@ -218,12 +218,12 @@ module Model =
             let a = l |> List.fold(fun acc (s, n) -> acc + (if acc <> "" then " * " else "") + (toPown s n)) ""
             (r.ToString() |> toFloat) + " * " + a + " // " + (lstToString l) // + "\n"
 
-        let processReaction (r : Reaction) : list<Substance * string> =
-            let toMult (i : int) = 
-                match i with 
-                | 1 -> ""
-                | _ -> i.ToString() + ".0 * "
+        let toMult i = 
+            match i with 
+            | 1 -> String.Empty
+            | _ -> i.ToString() + ".0 * "
 
+        let processReaction (r : Reaction) : list<Substance * string> =
             let update i o r f rc : list<Substance * string> = 
                 let catalysts = 
                     (o |> List.map (fun (s, n) -> s, -n)) @ i
@@ -232,8 +232,6 @@ module Model =
                     |> List.filter (fun (_, n) -> n = 0)
                     |> List.map (fun (s, _) -> s)
                     |> Set.ofList
-
-
 
                 let shift = "                "
                 let (iSign, oSign) = if f then "-", "" else "", "-"
@@ -260,11 +258,50 @@ module Model =
                 @
                 (update rv.reactionInfo.output rv.reactionInfo.input rv.backwardRate true rc)
 
+
+    //let getTotals (x : array<double>) = 
+    //    [
+    //        // A
+    //        (
+    //            [
+    //                x.[0] // A
+    //                2.0 * x.[1] // AA
+    //            ]
+    //            |> List.sum
+    //            ,
+    //            [
+    //                x.[0]
+    //                2.0 * x.[1]
+    //            ]
+    //            |> List.sum
+    //        )
+    //    ]
+
         let generateTotals () = 
-            let x = 
+            let g a =
                 allSubst
-                |> List.map (fun s -> "")
-            1
+                |> List.map (fun s -> match s.noOfAminoAcid a with | Some i -> Some (s, i) | None -> None)
+                |> List.choose id
+                |> List.map (fun (s, i) -> "                    " + (toMult i) + (x s) + " // " + (substToString s))
+
+            let gg (v : list<string>) = 
+                let a = v |> String.concat "\n"
+                "                [\n" + a + "                ]\n                |> List.sum\n"
+
+            let gg1 (a, l, r) = 
+                "            (\n" + (gg l) + "                ,\n" + (gg r) + "            )\n"
+
+            let y =
+                aminoAcids
+                |> List.map (fun a -> a, L a |> g, R a |> g)
+                |> List.map (fun (a, l, r) -> gg1 (a, l, r))
+
+            let x =
+                y
+                |> String.concat "\n"
+
+            "    let getTotals (x : array<double>) = \n" +
+            x
 
 
         let generate () = 
@@ -303,9 +340,10 @@ module Model =
             printfn "t2 = %A" t2
             printfn "t2 - t1 = %A" (t2 - t1).TotalSeconds
 
+            let totalCode = generateTotals ()
             let updateCode = "    let update (x : array<double>) : array<double> = \n        [|" + a + "        |]\n"
 
-            "namespace Model\n\nmodule ModelData = \n\n" + updateCode
+            "namespace Model\n\nmodule ModelData = \n\n" + totalCode + "\n\n" + updateCode
 
 
         member model.allSubstances = allSubst
