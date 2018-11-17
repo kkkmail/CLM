@@ -288,6 +288,10 @@ module Substances =
     type ReactionRateProvider = 
         | ReactionRateProvider of (ReactionInfo -> (ReactionRate option * ReactionRate option))
 
+        member this.getRates r = 
+            let (ReactionRateProvider p) = this
+            p r
+
 
     type ForwardReaction =
         {
@@ -338,8 +342,8 @@ module Substances =
 
         member reaction.enantiomer = { reaction with reactionInfo = reaction.reactionInfo.enantiomer }
 
-        static member tryCreate (ReactionRateProvider g) i = 
-            match g i with 
+        static member tryCreate (g : ReactionRateProvider) i = 
+            match g.getRates i with 
             | Some f, Some b ->
                 {
                     reactionInfo = i
