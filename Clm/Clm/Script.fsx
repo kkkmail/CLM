@@ -10,11 +10,11 @@ open Clm.Model
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 
-//let n = NumberOfAminoAcids.ThreeAminoAcids
-//let m = MaxPeptideLength.ThreeMax
+let n = NumberOfAminoAcids.ThreeAminoAcids
+let m = MaxPeptideLength.ThreeMax
 
-let n = NumberOfAminoAcids.OneAminoAcid
-let m = MaxPeptideLength.TwoMax
+//let n = NumberOfAminoAcids.OneAminoAcid
+//let m = MaxPeptideLength.TwoMax
 
 let rates = 
     [

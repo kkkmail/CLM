@@ -4,22 +4,25 @@ module ModelData =
 
     let getTotals (x : array<double>) = 
         [
-            // A
             (
                 [
-                    x.[0] // A
-                    2.0 * x.[1] // AA
+                    x.[1] // A
+                    2.0 * x.[3] // AA
+                    x.[4] // Aa
+                    x.[5] // aA
                 ]
                 |> List.sum
                 ,
                 [
-                    x.[0]
-                    2.0 * x.[1]
+                    x.[2] // a
+                    x.[4] // Aa
+                    x.[5] // aA
+                    2.0 * x.[6] // aa
                 ]
                 |> List.sum
             )
         ]
-        //|> List.fold (fun (al, ar) (l, r) -> (al + l, ar + r)) (0.0, 0.0)
+
 
     let update (x : array<double>) : array<double> = 
         [|

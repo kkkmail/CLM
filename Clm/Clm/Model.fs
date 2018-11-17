@@ -286,10 +286,10 @@ module Model =
 
             let gg (v : list<string>) = 
                 let a = v |> String.concat "\n"
-                "                [\n" + a + "                ]\n                |> List.sum\n"
+                "                [\n" + a + "\n                ]\n                |> List.sum\n"
 
-            let gg1 (a, l, r) = 
-                "            (\n" + (gg l) + "                ,\n" + (gg r) + "            )\n"
+            let gg1 ((a : AminoAcid), l, r) = 
+                "            // " + a.name + "\n            (\n" + (gg l) + "                ,\n" + (gg r) + "            )\n"
 
             let y =
                 aminoAcids
@@ -301,7 +301,9 @@ module Model =
                 |> String.concat "\n"
 
             "    let getTotals (x : array<double>) = \n" +
-            x
+            "        [\n" +
+            x +
+            "        ]\n"
 
 
         let generate () = 
