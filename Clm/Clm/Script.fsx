@@ -9,12 +9,20 @@ open Clm.Substances
 open Clm.Model
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
+open System
 
-let n = NumberOfAminoAcids.ThreeAminoAcids
+let n = NumberOfAminoAcids.SixAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 //let n = NumberOfAminoAcids.OneAminoAcid
 //let m = MaxPeptideLength.TwoMax
+
+let rnd = new Random()
+
+let sdMult = 1000.0
+let sdThreshold = 0.01
+let triangularDistr (r : Random) = 1.0 - sqrt(1.0 - r.NextDouble())
+let sdDistr() = ((if rnd.NextDouble() < sdThreshold then sdMult * (triangularDistr rnd) |> ReactionRate |> Some else None), None)
 
 let rates = 
     [
@@ -22,7 +30,7 @@ let rates =
          //(CatalyticSynthesis, (fun __ -> (Some (ReactionRate 10.0), Some (ReactionRate 0.01))) |> ReactionRateProvider)
          //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
-         (SedimentationDirect, (fun __ -> (Some (ReactionRate 1000.0), None)) |> ReactionRateProvider)
+         (SedimentationDirect, (fun __ -> sdDistr()) |> ReactionRateProvider)
     ]
 
 
