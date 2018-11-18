@@ -300,6 +300,10 @@ module Model =
 
             let totalCode = generateTotals ()
 
+            let sumCode = 
+                allSubst
+                |> List.filter (fun s -> not s.isFood)
+
             let updateCode = 
                 [ "    let update (x : array<double>) : array<double> = \n        [|" ]
                 @

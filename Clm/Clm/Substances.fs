@@ -166,18 +166,6 @@ module Substances =
             | R _ -> (0, 1)
 
 
-    /// TODO 20181029 Check.
-    let orderPairs (a : list<ChiralAminoAcid>, b : list<ChiralAminoAcid>) = 
-        if a.Length < b.Length
-        then (a, b)
-        else 
-            if a.Length > b.Length
-            then (b, a)
-            else 
-                if a <= b then (a, b)
-                else (b, a)
-
-
     type Peptide = 
         | Peptide of list<ChiralAminoAcid>
 
@@ -272,6 +260,24 @@ module Substances =
                 | 0 -> None
                 | n -> Some n
 
+        member substance.isFood = 
+            match substance with 
+            | Food _ -> true
+            | Chiral _ -> false
+            | PeptideChain _ -> false
+
 
     /// Maps substances to array / vector indices.
     type SubstanceMap = Map<Substance, int>
+
+
+    /// TODO 20181029 Check.
+    let orderPairs (a : list<ChiralAminoAcid>, b : list<ChiralAminoAcid>) = 
+        if a.Length < b.Length
+        then (a, b)
+        else 
+            if a.Length > b.Length
+            then (b, a)
+            else 
+                if a <= b then (a, b)
+                else (b, a)

@@ -2,10 +2,12 @@
 #r "./bin/Debug/MathNet.Numerics.FSharp.dll"
 #r "../packages/FSharp.Collections.ParallelSeq.1.1.2/lib/net45/FSharp.Collections.ParallelSeq.dll"
 #load "Substances.fs"
+#load "Reactions.fs"
 #load "Model.fs"
 
 open System.IO
 open Clm.Substances
+open Clm.Reactions
 open Clm.Model
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
