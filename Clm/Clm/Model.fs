@@ -172,6 +172,7 @@ module Model =
             |> String.concat " + "
 
         let xName = "x"
+        let xSumName = "xSum"
         let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + "\n"
         //let reactionComment (r : Reaction) = " // " + (reactToString r) + "\n"
         let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
@@ -300,18 +301,23 @@ module Model =
 
             let totalCode = generateTotals ()
 
-            let sumCode = 
+            let sc = 
                 allSubst
                 |> List.filter (fun s -> not s.isFood)
+                |> List.map (fun s -> "                " + (x s) + " // " + (substToString s))
+                |> String.concat "\n"
+
+            let sumCode = "        let " + xSumName + " = \n            [|\n" + sc + "\n            |]\n            |> Array.sum\n\n"
+
 
             let updateCode = 
-                [ "    let update (x : array<double>) : array<double> = \n        [|" ]
+                [ "    let update (x : array<double>) : array<double> = \n" + sumCode + "        [|" ]
                 @
                 a
                 @
                 [ "        |]\n" ]
 
-            [ "namespace Model\n\nmodule ModelData = \n\n" + totalCode + "\n\n"] @ updateCode
+            [ "namespace Model\n\nmodule ModelData = \n\n" + totalCode + "\n"] @ updateCode
 
 
         member model.allSubstances = allSubst

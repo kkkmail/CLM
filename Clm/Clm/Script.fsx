@@ -13,7 +13,7 @@ open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open System
 
-let n = NumberOfAminoAcids.TwoAminoAcids
+let n = NumberOfAminoAcids.OneAminoAcid
 let m = MaxPeptideLength.ThreeMax
 
 //let n = NumberOfAminoAcids.OneAminoAcid

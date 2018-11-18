@@ -14,6 +14,8 @@ module Reactions =
         | Ligation
         | CatalyticLigation
         | SedimentationDirect
+        | SedimentationAll
+
         //| Sedimentation
         //| SedimentationRemoval
 

@@ -6,6 +6,7 @@ open FSharp.Collections
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open Clm.Substances
+open Clm.Reactions
 
 module ReactionRates = 
 
