@@ -11,7 +11,7 @@ open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open System
 
-let n = NumberOfAminoAcids.SixAminoAcids
+let n = NumberOfAminoAcids.TwoAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 //let n = NumberOfAminoAcids.OneAminoAcid
@@ -104,8 +104,6 @@ let s = model.generateCode()
 
 printfn "Writing..."
 #time
-File.WriteAllText("c:\\Temp\ModelData.fs", s)
+File.WriteAllLines("c:\\Temp\ModelData.fs", s)
 #time
 printfn "Done"
-
-

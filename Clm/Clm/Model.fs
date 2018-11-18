@@ -6,6 +6,7 @@ open FSharp.Collections
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open Clm.Substances
+open Clm.Reactions
 
 
 module Model = 
@@ -17,35 +18,6 @@ module Model =
             maxPeptideLength : MaxPeptideLength
             reactionRates : List<ReactionType * ReactionRateProvider>
         }
-
-
-    //type EquationPart = 
-    //    {
-    //        part : string
-    //        reaction : Reaction
-    //    }
-
-    //    member p.ToString() = 
-    //        ""
-
-
-    //type Equation = 
-    //    {
-    //        parts : list<string>
-    //    }
-
-    //    static member header = "            [|"
-    //    static member footer = "            |]\n            |> Array.fold (fun acc r -> acc + r) 0.0"
-
-    //    member private e.substComment s = "            // " + s.ToString() + "\n"
-
-    //    member e.toString() = 
-    //        ""
-
-    //    static member empty = 
-    //        {
-    //            parts = []
-    //        }
 
 
     type ClmModel (modelParams : ModelParams) = 
@@ -259,24 +231,6 @@ module Model =
                 (update rv.reactionInfo.output rv.reactionInfo.input rv.backwardRate true rc)
 
 
-    //let getTotals (x : array<double>) = 
-    //    [
-    //        // A
-    //        (
-    //            [
-    //                x.[0] // A
-    //                2.0 * x.[1] // AA
-    //            ]
-    //            |> List.sum
-    //            ,
-    //            [
-    //                x.[0]
-    //                2.0 * x.[1]
-    //            ]
-    //            |> List.sum
-    //        )
-    //    ]
-
         let generateTotals () = 
             let g a =
                 allSubst
@@ -286,7 +240,7 @@ module Model =
 
             let gg (v : list<string>) = 
                 let a = v |> String.concat "\n"
-                "                [\n" + a + "\n                ]\n                |> List.sum\n"
+                "                [|\n" + a + "\n                |]\n                |> Array.sum\n"
 
             let gg1 ((a : AminoAcid), l, r) = 
                 "            // " + a.name + "\n            (\n" + (gg l) + "                ,\n" + (gg r) + "            )\n"
@@ -301,9 +255,9 @@ module Model =
                 |> String.concat "\n"
 
             "    let getTotals (x : array<double>) = \n" +
-            "        [\n" +
+            "        [|\n" +
             x +
-            "        ]\n"
+            "        |]\n"
 
 
         let generate () = 
@@ -337,16 +291,23 @@ module Model =
 
             let a = 
                 allSubst
-                |> List.fold (fun acc s -> acc + "\n" + (substComment s) +  "            [|\n" + (getReaction s) + "            |]\n            |> Array.fold (fun acc r -> acc + r) 0.0\n") ""
+                |> List.map (fun s -> "\n" + (substComment s) +  "            [|\n" + (getReaction s) + "            |]\n            |> Array.fold (fun acc r -> acc + r) 0.0\n")
+
 
             let t2 = DateTime.Now
             printfn "t2 = %A" t2
             printfn "t2 - t1 = %A" (t2 - t1).TotalSeconds
 
             let totalCode = generateTotals ()
-            let updateCode = "    let update (x : array<double>) : array<double> = \n        [|" + a + "        |]\n"
 
-            "namespace Model\n\nmodule ModelData = \n\n" + totalCode + "\n\n" + updateCode
+            let updateCode = 
+                [ "    let update (x : array<double>) : array<double> = \n        [|" ]
+                @
+                a
+                @
+                [ "        |]\n" ]
+
+            [ "namespace Model\n\nmodule ModelData = \n\n" + totalCode + "\n\n"] @ updateCode
 
 
         member model.allSubstances = allSubst
@@ -356,7 +317,4 @@ module Model =
         member model.catalyticLigation = catLig
         member model.sedimentationDirect = sedDir
         member model.allReactions = allReac
-        //member model.getGradient v = updateAllReacVec v
-        //member model.updateAllReacions = updateAllReac
-
         member model.generateCode() = generate()

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Substances.fs" />
+    <Compile Include="Reactions.fs" />
     <Compile Include="ReactionRates.fs" />
     <Compile Include="Model.fs" />
     <None Include="References.fsx" />
