@@ -66,6 +66,14 @@ module Substances =
         static member y = FoodSubst
 
 
+    type SumSubst = 
+        | SumSubst
+
+        member __.length = 0
+        member __.name = "W"
+        static member w = SumSubst
+
+
     type AminoAcid = 
         | A01
         | A02
@@ -235,18 +243,21 @@ module Substances =
         | Food of FoodSubst
         | Chiral of ChiralAminoAcid
         | PeptideChain of Peptide
+        | Sum of SumSubst
 
         member substance.enantiomer = 
             match substance with 
             | Food f -> f |> Food
             | Chiral c -> c.enantiomer |> Chiral
             | PeptideChain p -> p.enantiomer |> PeptideChain
+            | Sum s -> s |> Sum
 
         member substance.name = 
             match substance with 
             | Food f -> f.name
             | Chiral c -> c.name
             | PeptideChain p -> p.name
+            | Sum s -> s.name
 
         member substance.noOfAminoAcid a = 
             match substance with 
@@ -259,12 +270,22 @@ module Substances =
                 match (p |> List.sumBy (fun b -> if a = b then 1 else 0)) with 
                 | 0 -> None
                 | n -> Some n
+            | Sum _ -> None
 
         member substance.isFood = 
             match substance with 
             | Food _ -> true
             | Chiral _ -> false
             | PeptideChain _ -> false
+            | Sum _ -> false
+
+        static member food = FoodSubst.y |> Food
+        static member chiralL a = a |> L |> Chiral
+
+        static member fromList (a : list<ChiralAminoAcid>) = 
+            match a.Length with 
+            | 1 -> Chiral a.Head
+            | _ -> Peptide a |> PeptideChain
 
 
     /// Maps substances to array / vector indices.

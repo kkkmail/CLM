@@ -13,7 +13,7 @@ open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open System
 
-let n = NumberOfAminoAcids.OneAminoAcid
+let n = NumberOfAminoAcids.TwoAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 //let n = NumberOfAminoAcids.OneAminoAcid
@@ -32,7 +32,7 @@ let rates =
          //(CatalyticSynthesis, (fun __ -> (Some (ReactionRate 10.0), Some (ReactionRate 0.01))) |> ReactionRateProvider)
          //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
-         (SedimentationDirect, (fun __ -> sdDistr()) |> ReactionRateProvider)
+         (SedimentationDirectName, (fun __ -> sdDistr()) |> ReactionRateProvider)
     ]
 
 

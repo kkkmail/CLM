@@ -16,19 +16,12 @@ module Model =
         {
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
-            reactionRates : List<ReactionType * ReactionRateProvider>
+            reactionRates : List<ReactionName * ReactionRateProvider>
         }
 
 
     type ClmModel (modelParams : ModelParams) = 
-        let fromList (a : list<ChiralAminoAcid>) = 
-            match a.Length with 
-            | 1 -> Chiral a.Head
-            | _ -> Peptide a |> PeptideChain
-
-        let chiralL a = a |> L |> Chiral
         let rateProviders = modelParams.reactionRates |> Map.ofList
-        let food = FoodSubst.y |> Food
         let aminoAcids = AminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let chiralAminoAcids = ChiralAminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let peptides = Peptide.getPeptides modelParams.maxPeptideLength modelParams.numberOfAminoAcids
@@ -48,7 +41,7 @@ module Model =
         let ligationPairs = allPairs |> List.filter (fun (a, b) -> a.Length + b.Length <= modelParams.maxPeptideLength.length)
 
         let allSubst = 
-            [ food ]
+            [ Substance.food ]
             @
             (chiralAminoAcids |> List.map (fun a -> Chiral a))
             @
@@ -64,93 +57,22 @@ module Model =
             |> Map.ofList
 
 
-        let tryCreateReaction g i = 
-            match ReversibleReaction.tryCreate g i with 
-            | Some r -> Some [ r; r.enantiomer ]
-            | None -> None
-
-
-        let createReactions c l = 
-            l
-            |> List.map (fun e -> c e)
-            |> List.choose id
-            |> List.concat
-
-
-        let synth = 
-            match rateProviders.TryFind Synthesis with
+        let createReactions c n l = 
+            match rateProviders.TryFind n with
             | Some g -> 
-                let create a = 
-                    {
-                        reactionType = Synthesis
-                        input = [ (food, 1) ]
-                        output = [ (chiralL a, 1) ]
-                    }
-                    |> tryCreateReaction g
-                aminoAcids |> createReactions create
+                let create a = c a |> Reaction.tryCreateReaction g
+                l
+                |> List.map create
+                |> List.choose id
+                |> List.concat
             | None -> []
 
 
-        let catSynth = 
-            match rateProviders.TryFind CatalyticSynthesis with
-            | Some g -> 
-                let ap = List.allPairs aminoAcids synthCatalysts
-
-                let create (a, c) = 
-                    let p = c |> PeptideChain
-                    {
-                        reactionType = CatalyticSynthesis
-                        input = [ (food, 1); (p, 1) ]
-                        output = [ (chiralL a, 1); (p, 1) ]
-                    }
-                    |> tryCreateReaction g
-                ap |> createReactions create
-            | None -> []
-
-
-        let lig =
-            match rateProviders.TryFind Ligation with
-            | Some g -> 
-                let create (a, b) = 
-                    {
-                        reactionType = Ligation
-                        input = [ (fromList a, 1); (fromList b, 1) ]
-                        output = [ (fromList (a @ b), 1) ]
-                    }
-                    |> tryCreateReaction g
-                ligationPairs |> createReactions create
-            | None -> []
-
-
-        let catLig =
-            match rateProviders.TryFind CatalyticLigation with
-            | Some g -> 
-                let ap = List.allPairs ligationPairs ligCatalysts
-
-                let create ((a, b), c) = 
-                    let p = c |> PeptideChain
-                    {
-                        reactionType = CatalyticLigation
-                        input = [ (fromList a, 1); (fromList b, 1); (p, 1) ]
-                        output = [ (fromList (a @ b), 1); (p, 1) ]
-                    }
-                    |> tryCreateReaction g
-                ap |> createReactions create
-            | None -> []
-
-
-        let sedDir = 
-            match rateProviders.TryFind SedimentationDirect with 
-            | Some g -> 
-                let create (a, b) = 
-                    {
-                        reactionType = SedimentationDirect
-                        input = [ (fromList a, 1); (fromList b, 1) ]
-                        output = [ (FoodSubst.y |> Food, a.Length + b.Length) ]
-                    }
-                    |> tryCreateReaction g
-                allPairs |> createReactions create
-            | None -> []
+        let synth = createReactions SynthesisReaction.create SynthesisName aminoAcids
+        let catSynth = createReactions CatalyticSynthesisReaction.create CatalyticSynthesisName (List.allPairs aminoAcids synthCatalysts)
+        let lig = createReactions LigationReaction.create LigationName ligationPairs
+        let catLig = createReactions CatalyticLigationReaction.create CatalyticLigationName (List.allPairs ligationPairs ligCatalysts)
+        let sedDir = createReactions SedimentationDirectReaction.create SedimentationDirectName allPairs
 
 
         let allReac = 
