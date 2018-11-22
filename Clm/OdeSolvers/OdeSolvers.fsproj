@@ -45,7 +45,7 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Solver.fs" />
     <None Include="References.fsx" />
-    <None Include="Script.fsx" />
+    <None Include="SolverTest.fsx" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +67,11 @@
     <ProjectReference Include="..\AlgLib\AlgLib.csproj">
       <Name>AlgLib</Name>
       <Project>{5d23cbc1-d7c8-4942-b9c4-22993f4f5e30}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FSharp.Plotly\src\FSharp.Plotly\FSharp.Plotly.fsproj">
+      <Name>FSharp.Plotly</Name>
+      <Project>{e253d080-bbb1-45df-ad5a-961be7b634d1}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
