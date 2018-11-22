@@ -29,6 +29,7 @@ module Solver =
         }
 
 
+    /// F# wrapper around Alglib ODE solver.
     let nSolve (p : OdeParams) (f : double[] -> double -> double[]) (i : array<double>) : OdeResult = 
         let eps = p.eps
         let h = p.stepSize
