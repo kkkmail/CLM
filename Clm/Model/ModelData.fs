@@ -2,6 +2,7 @@ namespace Model
 open Clm.Substances
 
 module ModelData = 
+    let seed = 0
     let numberOfAminoAcids = NumberOfAminoAcids.TwoAminoAcids
     let maxPeptideLength = MaxPeptideLength.ThreeMax
 

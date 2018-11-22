@@ -13,6 +13,7 @@ module Model =
 
     type ModelParams = 
         {
+            seedValue : int option
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
             reactionRates : List<ReactionName * ReactionRateProvider>
@@ -23,6 +24,13 @@ module Model =
 
         /// As of 20181122 F# still has a problem with a new line.
         let nl = "\r\n"
+
+        let seedValue = 
+            match modelParams.seedValue with 
+            | Some s -> s
+            | None -> 
+                let r = new Random()
+                r.Next()
 
         let rateProviders = modelParams.reactionRates |> Map.ofList
         let aminoAcids = AminoAcid.getAminoAcids modelParams.numberOfAminoAcids
@@ -245,6 +253,7 @@ module Model =
                 [ "        |]" + nl ]
 
             let paramCode = 
+                "    let seedValue = " + seedValue.ToString() + nl + 
                 "    let numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + nl + 
                 "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl + nl
 

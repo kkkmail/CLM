@@ -49,8 +49,14 @@ module Reactions =
         | ReactionRate of double
 
 
+    type ReactionRateProviderParams = 
+        {
+            seedValue : int
+        }
+
+
     /// Returns [optional] forward and backward reaction rates.
-    type ReactionRateProvider = 
+    type ReactionRateProvider = // (p : ReactionRateProviderParams) = 
         | ReactionRateProvider of (ReactionInfo -> (ReactionRate option * ReactionRate option))
 
         member this.getRates r = 
