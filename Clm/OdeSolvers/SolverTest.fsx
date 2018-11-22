@@ -7,7 +7,7 @@ open OdeSolvers.Solver
 open Microsoft.FSharp.Core
 open FSharp.Plotly
 
-let n = 10
+let n = 100
 let noOfOutputPoints = 100
 let tEnd = 1000.0
 let odeParams = { OdeParams.defaultValue with endTime = tEnd; noOfOutputPoints = Some noOfOutputPoints }
@@ -15,7 +15,7 @@ let odeParams = { OdeParams.defaultValue with endTime = tEnd; noOfOutputPoints =
 
 let plot (r : OdeResult) =
     let description = "Some description"
-    let fn = [ for i in 1..n -> i ]
+    let fn = [ for i in 0..n - 1 -> i ]
     let tIdx = [ for i in 0..noOfOutputPoints -> i ]
 
     let getFuncData i = 
