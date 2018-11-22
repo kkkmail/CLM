@@ -11,7 +11,6 @@ open Clm.Reactions
 
 module Model = 
 
-
     type ModelParams = 
         {
             numberOfAminoAcids : NumberOfAminoAcids
@@ -21,6 +20,10 @@ module Model =
 
 
     type ClmModel (modelParams : ModelParams) = 
+
+        /// As of 20181122 F# still has a problem with a new line.
+        let nl = "\r\n"
+
         let rateProviders = modelParams.reactionRates |> Map.ofList
         let aminoAcids = AminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let chiralAminoAcids = ChiralAminoAcid.getAminoAcids modelParams.numberOfAminoAcids
@@ -95,8 +98,9 @@ module Model =
 
         let xName = "x"
         let xSumName = "xSum"
-        let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + "\n"
-        //let reactionComment (r : Reaction) = " // " + (reactToString r) + "\n"
+        let xSumSquaredName = "xSumSquared"
+        let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
+        //let reactionComment (r : Reaction) = " // " + (reactToString r) + nl
         let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
 
         let rate (l : list<Substance * int>) (ReactionRate r) = 
@@ -111,7 +115,7 @@ module Model =
                 | _ -> "(pown " + (x s) + " " + n.ToString() + ")"
 
             let a = l |> List.fold(fun acc (s, n) -> acc + (if acc <> "" then " * " else "") + (toPown s n)) ""
-            (r.ToString() |> toFloat) + " * " + a + " // " + (lstToString l) // + "\n"
+            (r.ToString() |> toFloat) + " * " + a + " // " + (lstToString l) // + nl
 
         let toMult i = 
             match i with 
@@ -134,13 +138,13 @@ module Model =
                 (
                     i
                     |> List.filter (fun (s, _) -> catalysts.Contains s |> not)
-                    |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd + " | " + rc + "\n")))
+                    |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd + " | " + rc + nl)))
                 )
                 @
                 (
                     o
                     |> List.filter (fun (s, _) -> catalysts.Contains s |> not)
-                    |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd+ " | " + rc + "\n")))
+                    |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd+ " | " + rc + nl)))
                 )
 
             let rc = reactToString r
@@ -162,11 +166,11 @@ module Model =
                 |> List.map (fun (s, i) -> "                    " + (toMult i) + (x s) + " // " + (substToString s))
 
             let gg (v : list<string>) = 
-                let a = v |> String.concat "\n"
-                "                [|\n" + a + "\n                |]\n                |> Array.sum\n"
+                let a = v |> String.concat nl
+                "                [|" + nl + a + nl + "                |]" + nl + "                |> Array.sum" + nl
 
             let gg1 ((a : AminoAcid), l, r) = 
-                "            // " + a.name + "\n            (\n" + (gg l) + "                ,\n" + (gg r) + "            )\n"
+                "            // " + a.name + nl + "            (" + nl + (gg l) + "                ," + nl + (gg r) + "            )" + nl
 
             let y =
                 aminoAcids
@@ -175,12 +179,12 @@ module Model =
 
             let x =
                 y
-                |> String.concat "\n"
+                |> String.concat nl
 
-            "    let getTotals (x : array<double>) = \n" +
-            "        [|\n" +
+            "    let getTotals (x : array<double>) = " + nl +
+            "        [|" + nl +
             x +
-            "        |]\n"
+            "        |]" + nl
 
 
         let generate () = 
@@ -214,7 +218,7 @@ module Model =
 
             let a = 
                 allSubst
-                |> List.map (fun s -> "\n" + (substComment s) +  "            [|\n" + (getReaction s) + "            |]\n            |> Array.fold (fun acc r -> acc + r) 0.0\n")
+                |> List.map (fun s -> "" + nl + (substComment s) +  "            [|" + nl + (getReaction s) + "            |]" + nl + "            |> Array.fold (fun acc r -> acc + r) 0.0" + nl)
 
 
             let t2 = DateTime.Now
@@ -223,23 +227,28 @@ module Model =
 
             let totalCode = generateTotals ()
 
-            let sc = 
-                allSubst
-                |> List.filter (fun s -> not s.isFood)
-                |> List.map (fun s -> "                " + (x s) + " // " + (substToString s))
-                |> String.concat "\n"
+            //let sc = 
+            //    allSubst
+            //    |> List.filter (fun s -> not s.isFood)
+            //    |> List.map (fun s -> "                " + (x s) + " // " + (substToString s))
+            //    |> String.concat "" + nl
 
-            let sumCode = "        let " + xSumName + " = \n            [|\n" + sc + "\n            |]\n            |> Array.sum\n\n"
+            let sumCode = "        let " + xSumName + " = " + xName + " |> Array.sum" + nl
+            let sumSquaredCode = "        let " + xSumSquaredName + " = " + xName + " |> Array.map (fun e -> e * e) |> Array.sum" + nl + nl
 
 
             let updateCode = 
-                [ "    let update (x : array<double>) : array<double> = \n" + sumCode + "        [|" ]
+                [ "    let update (x : array<double>) : array<double> = " + nl + sumCode + sumSquaredCode + "        [|" ]
                 @
                 a
                 @
-                [ "        |]\n" ]
+                [ "        |]" + nl ]
 
-            [ "namespace Model\n\nmodule ModelData = \n\n" + totalCode + "\n"] @ updateCode
+            let paramCode = 
+                "    let numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + nl + 
+                "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl + nl
+
+            [ "namespace Model" + nl + "open Clm.Substances" + nl + nl + "module ModelData = " + nl + paramCode + nl + totalCode + nl] @ updateCode
 
 
         member model.allSubstances = allSubst
