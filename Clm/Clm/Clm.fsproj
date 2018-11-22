@@ -48,7 +48,7 @@
     <Compile Include="ReactionRates.fs" />
     <Compile Include="Model.fs" />
     <None Include="References.fsx" />
-    <None Include="Script.fsx" />
+    <None Include="ModelGenerator.fsx" />
     <Content Include="packages.config" />
     <None Include="MapPerformance.fsx" />
   </ItemGroup>
