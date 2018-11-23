@@ -131,7 +131,31 @@ module Substances =
             | A15 -> "O"
             | A16 -> "P"
 
+        member aminoAcid.number = 
+            match aminoAcid with 
+            | A01 -> 0
+            | A02 -> 1
+            | A03 -> 2
+            | A04 -> 3
+            | A05 -> 4
+            | A06 -> 5
+            | A07 -> 6
+            | A08 -> 7
+            | A09 -> 8
+            | A10 -> 9
+            | A11 -> 10
+            | A12 -> 11
+            | A13 -> 12
+            | A14 -> 13
+            | A15 -> 14
+            | A16 -> 15
+
         static member toString (a : AminoAcid) = sprintf "%A" a
+
+        static member toString (i : int) = 
+            match AminoAcid.all |> List.tryFind(fun a -> a.number = i) with
+            | Some a -> AminoAcid.toString a
+            | None -> sprintf "Invalid amino acid index %A" i
 
         static member names = AminoAcid.all |> List.map (fun e -> e, e.name) |> Map.ofList
 
