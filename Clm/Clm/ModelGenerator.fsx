@@ -29,26 +29,12 @@ let rnd = new Random(seed)
 let sdMult = 1000.0
 let sdThreshold = 0.01
 
-let sdDistrParams = 
-    {
-        threshold = sdThreshold
-    }
-
-let sdDistr = TriangularDistribution(rnd.Next(), sdDistrParams) |> Triangular
-
-let sdParams = 
-    {
-        sedimentationDirectDistribution = sdDistr
-        forwardScale = Some sdMult
-    }
-
-let sdModel = SedimentationDirectRandom sdParams
-let sdrr = SedimentationDirectRateModel sdModel
-let sdProvider = ReactionRateProvider(sdrr)
+let synthProvider = ReactionRateProvider.defaultSynthesisModel rnd 0.001 0.0001
+let sdProvider = ReactionRateProvider.defaultSedimentationDirectModel rnd sdThreshold sdMult
 
 let rates = 
     [
-         //(Synthesis, (fun __ -> (Some (ReactionRate 0.001), Some (ReactionRate 0.0001))) |> ReactionRateProvider)
+         (SynthesisName, synthProvider)
          //(CatalyticSynthesis, (fun __ -> (Some (ReactionRate 10.0), Some (ReactionRate 0.01))) |> ReactionRateProvider)
          //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
@@ -58,7 +44,7 @@ let rates =
 
 let modelParams = 
     {
-        seedValue = None
+        seedValue = Some seed
         numberOfAminoAcids = n
         maxPeptideLength = m
         reactionRates = rates

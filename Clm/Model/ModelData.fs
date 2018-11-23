@@ -2,7 +2,7 @@ namespace Model
 open Clm.Substances
 
 module ModelData = 
-    let seed = 0
+    let seedValue = 12345
     let numberOfAminoAcids = NumberOfAminoAcids.TwoAminoAcids
     let maxPeptideLength = MaxPeptideLength.ThreeMax
 
@@ -221,136 +221,154 @@ module ModelData =
 
             // 0 - Y
             [|
-                6.0 * 408.716301394858 * x.[74] * x.[41] // bBB + BBA | SedimentationDirectName: bBB + BBA -> 6 Y
-                6.0 * 408.716301394858 * x.[52] * x.[83] // Bbb + bba | SedimentationDirectName: Bbb + bba -> 6 Y
-                6.0 * 608.680453766052 * x.[70] * x.[30] // bAB + AaB | SedimentationDirectName: bAB + AaB -> 6 Y
-                6.0 * 608.680453766052 * x.[48] * x.[56] // Bab + aAb | SedimentationDirectName: Bab + aAb -> 6 Y
-                6.0 * 341.582113491609 * x.[72] * x.[73] // bAb + bBA | SedimentationDirectName: bAb + bBA -> 6 Y
-                6.0 * 341.582113491609 * x.[46] * x.[51] // BaB + Bba | SedimentationDirectName: BaB + Bba -> 6 Y
-                6.0 * 35.8042021208086 * x.[72] * x.[70] // bAb + bAB | SedimentationDirectName: bAb + bAB -> 6 Y
-                6.0 * 35.8042021208086 * x.[46] * x.[48] // BaB + Bab | SedimentationDirectName: BaB + Bab -> 6 Y
-                6.0 * 305.045232456692 * x.[84] * x.[39] // bbb + BAa | SedimentationDirectName: bbb + BAa -> 6 Y
-                6.0 * 305.045232456692 * x.[42] * x.[77] // BBB + baA | SedimentationDirectName: BBB + baA -> 6 Y
-                6.0 * 67.6503705387438 * x.[83] * x.[27] // bba + ABa | SedimentationDirectName: bba + ABa -> 6 Y
-                6.0 * 67.6503705387438 * x.[41] * x.[65] // BBA + abA | SedimentationDirectName: BBA + abA -> 6 Y
-                6.0 * 24.4573733175658 * x.[80] * x.[78] // bab + baB | SedimentationDirectName: bab + baB -> 6 Y
-                6.0 * 24.4573733175658 * x.[38] * x.[40] // BAB + BAb | SedimentationDirectName: BAB + BAb -> 6 Y
-                6.0 * 503.865603997812 * x.[80] * x.[77] // bab + baA | SedimentationDirectName: bab + baA -> 6 Y
-                6.0 * 503.865603997812 * x.[38] * x.[39] // BAB + BAa | SedimentationDirectName: BAB + BAa -> 6 Y
-                6.0 * 716.711788725713 * x.[79] * x.[50] // baa + BbB | SedimentationDirectName: baa + BbB -> 6 Y
-                6.0 * 716.711788725713 * x.[37] * x.[76] // BAA + bBb | SedimentationDirectName: BAA + bBb -> 6 Y
-                6.0 * 265.537114234532 * x.[58] * x.[35] // aBB + Aba | SedimentationDirectName: aBB + Aba -> 6 Y
-                6.0 * 265.537114234532 * x.[36] * x.[57] // Abb + aBA | SedimentationDirectName: Abb + aBA -> 6 Y
-                6.0 * 209.617910062433 * x.[59] * x.[74] // aBa + bBB | SedimentationDirectName: aBa + bBB -> 6 Y
-                6.0 * 209.617910062433 * x.[33] * x.[52] // AbA + Bbb | SedimentationDirectName: AbA + Bbb -> 6 Y
-                6.0 * 466.811836506603 * x.[54] * x.[48] // aAB + Bab | SedimentationDirectName: aAB + Bab -> 6 Y
-                6.0 * 466.811836506603 * x.[32] * x.[70] // Aab + bAB | SedimentationDirectName: Aab + bAB -> 6 Y
-                6.0 * 284.258204211213 * x.[53] * x.[25] // aAA + ABA | SedimentationDirectName: aAA + ABA -> 6 Y
-                6.0 * 284.258204211213 * x.[31] * x.[67] // Aaa + aba | SedimentationDirectName: Aaa + aba -> 6 Y
-                6.0 * 443.411977513777 * x.[53] * x.[81] // aAA + bbA | SedimentationDirectName: aAA + bbA -> 6 Y
-                6.0 * 443.411977513777 * x.[31] * x.[43] // Aaa + BBa | SedimentationDirectName: Aaa + BBa -> 6 Y
-                6.0 * 125.454054605852 * x.[66] * x.[79] // abB + baa | SedimentationDirectName: abB + baa -> 6 Y
-                6.0 * 125.454054605852 * x.[28] * x.[37] // ABb + BAA | SedimentationDirectName: ABb + BAA -> 6 Y
-                6.0 * 59.787474785308 * x.[66] * x.[53] // abB + aAA | SedimentationDirectName: abB + aAA -> 6 Y
-                6.0 * 59.787474785308 * x.[28] * x.[31] // ABb + Aaa | SedimentationDirectName: ABb + Aaa -> 6 Y
-                6.0 * 786.866005568544 * x.[68] * x.[49] // abb + BbA | SedimentationDirectName: abb + BbA -> 6 Y
-                6.0 * 786.866005568544 * x.[26] * x.[75] // ABB + bBa | SedimentationDirectName: ABB + bBa -> 6 Y
-                6.0 * 656.891126246687 * x.[62] * x.[47] // aaB + Baa | SedimentationDirectName: aaB + Baa -> 6 Y
-                6.0 * 656.891126246687 * x.[24] * x.[69] // AAb + bAA | SedimentationDirectName: AAb + bAA -> 6 Y
-                6.0 * 417.882902705259 * x.[62] * x.[22] // aaB + AAB | SedimentationDirectName: aaB + AAB -> 6 Y
-                6.0 * 417.882902705259 * x.[24] * x.[64] // AAb + aab | SedimentationDirectName: AAb + aab -> 6 Y
-                6.0 * 146.322224924238 * x.[64] * x.[59] // aab + aBa | SedimentationDirectName: aab + aBa -> 6 Y
-                6.0 * 146.322224924238 * x.[22] * x.[33] // AAB + AbA | SedimentationDirectName: AAB + AbA -> 6 Y
-                6.0 * 299.945151250537 * x.[64] * x.[67] // aab + aba | SedimentationDirectName: aab + aba -> 6 Y
-                6.0 * 299.945151250537 * x.[22] * x.[25] // AAB + ABA | SedimentationDirectName: AAB + ABA -> 6 Y
-                5.0 * 522.024739919589 * x.[19] * x.[75] // ba + bBa | SedimentationDirectName: ba + bBa -> 5 Y
-                5.0 * 522.024739919589 * x.[9] * x.[49] // BA + BbA | SedimentationDirectName: BA + BbA -> 5 Y
-                5.0 * 78.4791994822839 * x.[19] * x.[84] // ba + bbb | SedimentationDirectName: ba + bbb -> 5 Y
-                5.0 * 78.4791994822839 * x.[9] * x.[42] // BA + BBB | SedimentationDirectName: BA + BBB -> 5 Y
-                5.0 * 610.61001797884 * x.[13] * x.[39] // aA + BAa | SedimentationDirectName: aA + BAa -> 5 Y
-                5.0 * 610.61001797884 * x.[7] * x.[77] // Aa + baA | SedimentationDirectName: Aa + baA -> 5 Y
-                4.0 * 495.840454067306 * x.[13] * x.[13] // aA + aA | SedimentationDirectName: aA + aA -> 4 Y
-                4.0 * 495.840454067306 * x.[7] * x.[7] // Aa + Aa | SedimentationDirectName: Aa + Aa -> 4 Y
-                5.0 * 5.56934902074113 * x.[15] * x.[49] // aa + BbA | SedimentationDirectName: aa + BbA -> 5 Y
-                5.0 * 5.56934902074113 * x.[5] * x.[75] // AA + bBa | SedimentationDirectName: AA + bBa -> 5 Y
-                5.0 * 49.1088730009344 * x.[15] * x.[56] // aa + aAb | SedimentationDirectName: aa + aAb -> 5 Y
-                5.0 * 49.1088730009344 * x.[5] * x.[30] // AA + AaB | SedimentationDirectName: AA + AaB -> 5 Y
-                5.0 * 679.919499073657 * x.[15] * x.[67] // aa + aba | SedimentationDirectName: aa + aba -> 5 Y
-                5.0 * 679.919499073657 * x.[5] * x.[25] // AA + ABA | SedimentationDirectName: AA + ABA -> 5 Y
+                6.0 * 179.54704695951 * x.[76] * x.[42] // bBb + BBB | SedimentationDirectName: bBb + BBB -> 6 Y
+                6.0 * 179.54704695951 * x.[50] * x.[84] // BbB + bbb | SedimentationDirectName: BbB + bbb -> 6 Y
+                6.0 * 75.9615840450121 * x.[76] * x.[35] // bBb + Aba | SedimentationDirectName: bBb + Aba -> 6 Y
+                6.0 * 75.9615840450121 * x.[50] * x.[57] // BbB + aBA | SedimentationDirectName: BbB + aBA -> 6 Y
+                6.0 * 203.315239059183 * x.[82] * x.[27] // bbB + ABa | SedimentationDirectName: bbB + ABa -> 6 Y
+                6.0 * 203.315239059183 * x.[44] * x.[65] // BBb + abA | SedimentationDirectName: BBb + abA -> 6 Y
+                6.0 * 111.827526720811 * x.[81] * x.[40] // bbA + BAb | SedimentationDirectName: bbA + BAb -> 6 Y
+                6.0 * 111.827526720811 * x.[43] * x.[78] // BBa + baB | SedimentationDirectName: BBa + baB -> 6 Y
+                6.0 * 124.97743307692 * x.[84] * x.[34] // bbb + AbB | SedimentationDirectName: bbb + AbB -> 6 Y
+                6.0 * 124.97743307692 * x.[42] * x.[60] // BBB + aBb | SedimentationDirectName: BBB + aBb -> 6 Y
+                6.0 * 151.873530633643 * x.[83] * x.[74] // bba + bBB | SedimentationDirectName: bba + bBB -> 6 Y
+                6.0 * 151.873530633643 * x.[41] * x.[52] // BBA + Bbb | SedimentationDirectName: BBA + Bbb -> 6 Y
+                6.0 * 203.15272434543 * x.[58] * x.[40] // aBB + BAb | SedimentationDirectName: aBB + BAb -> 6 Y
+                6.0 * 203.15272434543 * x.[36] * x.[78] // Abb + baB | SedimentationDirectName: Abb + baB -> 6 Y
+                6.0 * 584.584523985377 * x.[57] * x.[47] // aBA + Baa | SedimentationDirectName: aBA + Baa -> 6 Y
+                6.0 * 584.584523985377 * x.[35] * x.[69] // Aba + bAA | SedimentationDirectName: Aba + bAA -> 6 Y
+                6.0 * 777.817604984622 * x.[59] * x.[25] // aBa + ABA | SedimentationDirectName: aBa + ABA -> 6 Y
+                6.0 * 777.817604984622 * x.[33] * x.[67] // AbA + aba | SedimentationDirectName: AbA + aba -> 6 Y
+                6.0 * 444.986243599349 * x.[55] * x.[31] // aAa + Aaa | SedimentationDirectName: aAa + Aaa -> 6 Y
+                6.0 * 444.986243599349 * x.[29] * x.[53] // AaA + aAA | SedimentationDirectName: AaA + aAA -> 6 Y
+                6.0 * 734.172518615685 * x.[65] * x.[32] // abA + Aab | SedimentationDirectName: abA + Aab -> 6 Y
+                6.0 * 734.172518615685 * x.[27] * x.[54] // ABa + aAB | SedimentationDirectName: ABa + aAB -> 6 Y
+                5.0 * 272.917476778003 * x.[17] * x.[35] // bA + Aba | SedimentationDirectName: bA + Aba -> 5 Y
+                5.0 * 272.917476778003 * x.[11] * x.[57] // Ba + aBA | SedimentationDirectName: Ba + aBA -> 5 Y
+                5.0 * 540.764426321166 * x.[20] * x.[54] // bb + aAB | SedimentationDirectName: bb + aAB -> 5 Y
+                5.0 * 540.764426321166 * x.[10] * x.[32] // BB + Aab | SedimentationDirectName: BB + Aab -> 5 Y
+                5.0 * 124.492769460629 * x.[19] * x.[38] // ba + BAB | SedimentationDirectName: ba + BAB -> 5 Y
+                5.0 * 124.492769460629 * x.[9] * x.[80] // BA + bab | SedimentationDirectName: BA + bab -> 5 Y
+                5.0 * 706.753181586129 * x.[19] * x.[25] // ba + ABA | SedimentationDirectName: ba + ABA -> 5 Y
+                5.0 * 706.753181586129 * x.[9] * x.[67] // BA + aba | SedimentationDirectName: BA + aba -> 5 Y
+                5.0 * 368.637857212933 * x.[19] * x.[71] // ba + bAa | SedimentationDirectName: ba + bAa -> 5 Y
+                5.0 * 368.637857212933 * x.[9] * x.[45] // BA + BaA | SedimentationDirectName: BA + BaA -> 5 Y
+                4.0 * 191.967096834449 * x.[14] * x.[11] // aB + Ba | SedimentationDirectName: aB + Ba -> 4 Y
+                4.0 * 191.967096834449 * x.[8] * x.[17] // Ab + bA | SedimentationDirectName: Ab + bA -> 4 Y
+                5.0 * 392.919001150608 * x.[16] * x.[80] // ab + bab | SedimentationDirectName: ab + bab -> 5 Y
+                5.0 * 392.919001150608 * x.[6] * x.[38] // AB + BAB | SedimentationDirectName: AB + BAB -> 5 Y
+                5.0 * 170.45126751113 * x.[16] * x.[57] // ab + aBA | SedimentationDirectName: ab + aBA -> 5 Y
+                5.0 * 170.45126751113 * x.[6] * x.[35] // AB + Aba | SedimentationDirectName: AB + Aba -> 5 Y
+                3.0 * 203.042514176972 * x.[4] * x.[10] // b + BB | SedimentationDirectName: b + BB -> 3 Y
+                3.0 * 203.042514176972 * x.[2] * x.[20] // B + bb | SedimentationDirectName: B + bb -> 3 Y
+                2.0 * 45.0310328441251 * x.[4] * x.[1] // b + A | SedimentationDirectName: b + A -> 2 Y
+                2.0 * 45.0310328441251 * x.[2] * x.[3] // B + a | SedimentationDirectName: B + a -> 2 Y
+                4.0 * 320.69030234827 * x.[3] * x.[42] // a + BBB | SedimentationDirectName: a + BBB -> 4 Y
+                4.0 * 320.69030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
+                4.0 * 18.0423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
+                4.0 * 18.0423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
+                9.66868671107511E-06 * x.[4] // b | SynthesisName: Y <-> b
+                -9.6686867110751E-05 * x.[0] // Y | SynthesisName: Y <-> b
+                9.66868671107511E-06 * x.[2] // B | SynthesisName: Y <-> B
+                -9.6686867110751E-05 * x.[0] // Y | SynthesisName: Y <-> B
+                2.4793709127602E-05 * x.[3] // a | SynthesisName: Y <-> a
+                -0.00024793709127602 * x.[0] // Y | SynthesisName: Y <-> a
+                2.4793709127602E-05 * x.[1] // A | SynthesisName: Y <-> A
+                -0.00024793709127602 * x.[0] // Y | SynthesisName: Y <-> A
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 1 - A
             [|
+                -45.0310328441251 * x.[4] * x.[1] // b + A | SedimentationDirectName: b + A -> 2 Y
+                -320.69030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
+                -18.0423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
+                -2.4793709127602E-05 * x.[1] // A | SynthesisName: Y <-> A
+                0.00024793709127602 * x.[0] // Y | SynthesisName: Y <-> A
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 2 - B
             [|
+                -203.042514176972 * x.[2] * x.[20] // B + bb | SedimentationDirectName: B + bb -> 3 Y
+                -45.0310328441251 * x.[2] * x.[3] // B + a | SedimentationDirectName: B + a -> 2 Y
+                -9.66868671107511E-06 * x.[2] // B | SynthesisName: Y <-> B
+                9.6686867110751E-05 * x.[0] // Y | SynthesisName: Y <-> B
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 3 - a
             [|
+                -45.0310328441251 * x.[2] * x.[3] // B + a | SedimentationDirectName: B + a -> 2 Y
+                -320.69030234827 * x.[3] * x.[42] // a + BBB | SedimentationDirectName: a + BBB -> 4 Y
+                -18.0423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
+                -2.4793709127602E-05 * x.[3] // a | SynthesisName: Y <-> a
+                0.00024793709127602 * x.[0] // Y | SynthesisName: Y <-> a
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 4 - b
             [|
+                -203.042514176972 * x.[4] * x.[10] // b + BB | SedimentationDirectName: b + BB -> 3 Y
+                -45.0310328441251 * x.[4] * x.[1] // b + A | SedimentationDirectName: b + A -> 2 Y
+                -9.66868671107511E-06 * x.[4] // b | SynthesisName: Y <-> b
+                9.6686867110751E-05 * x.[0] // Y | SynthesisName: Y <-> b
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 5 - AA
             [|
-                -5.56934902074113 * x.[5] * x.[75] // AA + bBa | SedimentationDirectName: AA + bBa -> 5 Y
-                -49.1088730009344 * x.[5] * x.[30] // AA + AaB | SedimentationDirectName: AA + AaB -> 5 Y
-                -679.919499073657 * x.[5] * x.[25] // AA + ABA | SedimentationDirectName: AA + ABA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 6 - AB
             [|
+                -392.919001150608 * x.[6] * x.[38] // AB + BAB | SedimentationDirectName: AB + BAB -> 5 Y
+                -170.45126751113 * x.[6] * x.[35] // AB + Aba | SedimentationDirectName: AB + Aba -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 7 - Aa
             [|
-                -610.61001797884 * x.[7] * x.[77] // Aa + baA | SedimentationDirectName: Aa + baA -> 5 Y
-                -495.840454067306 * x.[7] * x.[7] // Aa + Aa | SedimentationDirectName: Aa + Aa -> 4 Y
-                -495.840454067306 * x.[7] * x.[7] // Aa + Aa | SedimentationDirectName: Aa + Aa -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 8 - Ab
             [|
+                -191.967096834449 * x.[8] * x.[17] // Ab + bA | SedimentationDirectName: Ab + bA -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 9 - BA
             [|
-                -522.024739919589 * x.[9] * x.[49] // BA + BbA | SedimentationDirectName: BA + BbA -> 5 Y
-                -78.4791994822839 * x.[9] * x.[42] // BA + BBB | SedimentationDirectName: BA + BBB -> 5 Y
+                -124.492769460629 * x.[9] * x.[80] // BA + bab | SedimentationDirectName: BA + bab -> 5 Y
+                -706.753181586129 * x.[9] * x.[67] // BA + aba | SedimentationDirectName: BA + aba -> 5 Y
+                -368.637857212933 * x.[9] * x.[45] // BA + BaA | SedimentationDirectName: BA + BaA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 10 - BB
             [|
+                -540.764426321166 * x.[10] * x.[32] // BB + Aab | SedimentationDirectName: BB + Aab -> 5 Y
+                -203.042514176972 * x.[4] * x.[10] // b + BB | SedimentationDirectName: b + BB -> 3 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 11 - Ba
             [|
+                -272.917476778003 * x.[11] * x.[57] // Ba + aBA | SedimentationDirectName: Ba + aBA -> 5 Y
+                -191.967096834449 * x.[14] * x.[11] // aB + Ba | SedimentationDirectName: aB + Ba -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
@@ -363,36 +381,35 @@ module ModelData =
 
             // 13 - aA
             [|
-                -610.61001797884 * x.[13] * x.[39] // aA + BAa | SedimentationDirectName: aA + BAa -> 5 Y
-                -495.840454067306 * x.[13] * x.[13] // aA + aA | SedimentationDirectName: aA + aA -> 4 Y
-                -495.840454067306 * x.[13] * x.[13] // aA + aA | SedimentationDirectName: aA + aA -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 14 - aB
             [|
+                -191.967096834449 * x.[14] * x.[11] // aB + Ba | SedimentationDirectName: aB + Ba -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 15 - aa
             [|
-                -5.56934902074113 * x.[15] * x.[49] // aa + BbA | SedimentationDirectName: aa + BbA -> 5 Y
-                -49.1088730009344 * x.[15] * x.[56] // aa + aAb | SedimentationDirectName: aa + aAb -> 5 Y
-                -679.919499073657 * x.[15] * x.[67] // aa + aba | SedimentationDirectName: aa + aba -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 16 - ab
             [|
+                -392.919001150608 * x.[16] * x.[80] // ab + bab | SedimentationDirectName: ab + bab -> 5 Y
+                -170.45126751113 * x.[16] * x.[57] // ab + aBA | SedimentationDirectName: ab + aBA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 17 - bA
             [|
+                -272.917476778003 * x.[17] * x.[35] // bA + Aba | SedimentationDirectName: bA + Aba -> 5 Y
+                -191.967096834449 * x.[8] * x.[17] // Ab + bA | SedimentationDirectName: Ab + bA -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
@@ -405,14 +422,17 @@ module ModelData =
 
             // 19 - ba
             [|
-                -522.024739919589 * x.[19] * x.[75] // ba + bBa | SedimentationDirectName: ba + bBa -> 5 Y
-                -78.4791994822839 * x.[19] * x.[84] // ba + bbb | SedimentationDirectName: ba + bbb -> 5 Y
+                -124.492769460629 * x.[19] * x.[38] // ba + BAB | SedimentationDirectName: ba + BAB -> 5 Y
+                -706.753181586129 * x.[19] * x.[25] // ba + ABA | SedimentationDirectName: ba + ABA -> 5 Y
+                -368.637857212933 * x.[19] * x.[71] // ba + bAa | SedimentationDirectName: ba + bAa -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 20 - bb
             [|
+                -540.764426321166 * x.[20] * x.[54] // bb + aAB | SedimentationDirectName: bb + aAB -> 5 Y
+                -203.042514176972 * x.[2] * x.[20] // B + bb | SedimentationDirectName: B + bb -> 3 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
@@ -425,9 +445,6 @@ module ModelData =
 
             // 22 - AAB
             [|
-                -417.882902705259 * x.[62] * x.[22] // aaB + AAB | SedimentationDirectName: aaB + AAB -> 6 Y
-                -146.322224924238 * x.[22] * x.[33] // AAB + AbA | SedimentationDirectName: AAB + AbA -> 6 Y
-                -299.945151250537 * x.[22] * x.[25] // AAB + ABA | SedimentationDirectName: AAB + ABA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
@@ -440,277 +457,264 @@ module ModelData =
 
             // 24 - AAb
             [|
-                -656.891126246687 * x.[24] * x.[69] // AAb + bAA | SedimentationDirectName: AAb + bAA -> 6 Y
-                -417.882902705259 * x.[24] * x.[64] // AAb + aab | SedimentationDirectName: AAb + aab -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 25 - ABA
             [|
-                -284.258204211213 * x.[53] * x.[25] // aAA + ABA | SedimentationDirectName: aAA + ABA -> 6 Y
-                -299.945151250537 * x.[22] * x.[25] // AAB + ABA | SedimentationDirectName: AAB + ABA -> 6 Y
-                -679.919499073657 * x.[5] * x.[25] // AA + ABA | SedimentationDirectName: AA + ABA -> 5 Y
+                -777.817604984622 * x.[59] * x.[25] // aBa + ABA | SedimentationDirectName: aBa + ABA -> 6 Y
+                -706.753181586129 * x.[19] * x.[25] // ba + ABA | SedimentationDirectName: ba + ABA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 26 - ABB
             [|
-                -786.866005568544 * x.[26] * x.[75] // ABB + bBa | SedimentationDirectName: ABB + bBa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 27 - ABa
             [|
-                -67.6503705387438 * x.[83] * x.[27] // bba + ABa | SedimentationDirectName: bba + ABa -> 6 Y
+                -203.315239059183 * x.[82] * x.[27] // bbB + ABa | SedimentationDirectName: bbB + ABa -> 6 Y
+                -734.172518615685 * x.[27] * x.[54] // ABa + aAB | SedimentationDirectName: ABa + aAB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 28 - ABb
             [|
-                -125.454054605852 * x.[28] * x.[37] // ABb + BAA | SedimentationDirectName: ABb + BAA -> 6 Y
-                -59.787474785308 * x.[28] * x.[31] // ABb + Aaa | SedimentationDirectName: ABb + Aaa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 29 - AaA
             [|
+                -444.986243599349 * x.[29] * x.[53] // AaA + aAA | SedimentationDirectName: AaA + aAA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 30 - AaB
             [|
-                -608.680453766052 * x.[70] * x.[30] // bAB + AaB | SedimentationDirectName: bAB + AaB -> 6 Y
-                -49.1088730009344 * x.[5] * x.[30] // AA + AaB | SedimentationDirectName: AA + AaB -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 31 - Aaa
             [|
-                -284.258204211213 * x.[31] * x.[67] // Aaa + aba | SedimentationDirectName: Aaa + aba -> 6 Y
-                -443.411977513777 * x.[31] * x.[43] // Aaa + BBa | SedimentationDirectName: Aaa + BBa -> 6 Y
-                -59.787474785308 * x.[28] * x.[31] // ABb + Aaa | SedimentationDirectName: ABb + Aaa -> 6 Y
+                -444.986243599349 * x.[55] * x.[31] // aAa + Aaa | SedimentationDirectName: aAa + Aaa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 32 - Aab
             [|
-                -466.811836506603 * x.[32] * x.[70] // Aab + bAB | SedimentationDirectName: Aab + bAB -> 6 Y
+                -734.172518615685 * x.[65] * x.[32] // abA + Aab | SedimentationDirectName: abA + Aab -> 6 Y
+                -540.764426321166 * x.[10] * x.[32] // BB + Aab | SedimentationDirectName: BB + Aab -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 33 - AbA
             [|
-                -209.617910062433 * x.[33] * x.[52] // AbA + Bbb | SedimentationDirectName: AbA + Bbb -> 6 Y
-                -146.322224924238 * x.[22] * x.[33] // AAB + AbA | SedimentationDirectName: AAB + AbA -> 6 Y
+                -777.817604984622 * x.[33] * x.[67] // AbA + aba | SedimentationDirectName: AbA + aba -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 34 - AbB
             [|
+                -124.97743307692 * x.[84] * x.[34] // bbb + AbB | SedimentationDirectName: bbb + AbB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 35 - Aba
             [|
-                -265.537114234532 * x.[58] * x.[35] // aBB + Aba | SedimentationDirectName: aBB + Aba -> 6 Y
+                -75.9615840450121 * x.[76] * x.[35] // bBb + Aba | SedimentationDirectName: bBb + Aba -> 6 Y
+                -584.584523985377 * x.[35] * x.[69] // Aba + bAA | SedimentationDirectName: Aba + bAA -> 6 Y
+                -272.917476778003 * x.[17] * x.[35] // bA + Aba | SedimentationDirectName: bA + Aba -> 5 Y
+                -170.45126751113 * x.[6] * x.[35] // AB + Aba | SedimentationDirectName: AB + Aba -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 36 - Abb
             [|
-                -265.537114234532 * x.[36] * x.[57] // Abb + aBA | SedimentationDirectName: Abb + aBA -> 6 Y
+                -203.15272434543 * x.[36] * x.[78] // Abb + baB | SedimentationDirectName: Abb + baB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 37 - BAA
             [|
-                -716.711788725713 * x.[37] * x.[76] // BAA + bBb | SedimentationDirectName: BAA + bBb -> 6 Y
-                -125.454054605852 * x.[28] * x.[37] // ABb + BAA | SedimentationDirectName: ABb + BAA -> 6 Y
+                -18.0423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 38 - BAB
             [|
-                -24.4573733175658 * x.[38] * x.[40] // BAB + BAb | SedimentationDirectName: BAB + BAb -> 6 Y
-                -503.865603997812 * x.[38] * x.[39] // BAB + BAa | SedimentationDirectName: BAB + BAa -> 6 Y
+                -124.492769460629 * x.[19] * x.[38] // ba + BAB | SedimentationDirectName: ba + BAB -> 5 Y
+                -392.919001150608 * x.[6] * x.[38] // AB + BAB | SedimentationDirectName: AB + BAB -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 39 - BAa
             [|
-                -305.045232456692 * x.[84] * x.[39] // bbb + BAa | SedimentationDirectName: bbb + BAa -> 6 Y
-                -503.865603997812 * x.[38] * x.[39] // BAB + BAa | SedimentationDirectName: BAB + BAa -> 6 Y
-                -610.61001797884 * x.[13] * x.[39] // aA + BAa | SedimentationDirectName: aA + BAa -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 40 - BAb
             [|
-                -24.4573733175658 * x.[38] * x.[40] // BAB + BAb | SedimentationDirectName: BAB + BAb -> 6 Y
+                -111.827526720811 * x.[81] * x.[40] // bbA + BAb | SedimentationDirectName: bbA + BAb -> 6 Y
+                -203.15272434543 * x.[58] * x.[40] // aBB + BAb | SedimentationDirectName: aBB + BAb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 41 - BBA
             [|
-                -408.716301394858 * x.[74] * x.[41] // bBB + BBA | SedimentationDirectName: bBB + BBA -> 6 Y
-                -67.6503705387438 * x.[41] * x.[65] // BBA + abA | SedimentationDirectName: BBA + abA -> 6 Y
+                -151.873530633643 * x.[41] * x.[52] // BBA + Bbb | SedimentationDirectName: BBA + Bbb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 42 - BBB
             [|
-                -305.045232456692 * x.[42] * x.[77] // BBB + baA | SedimentationDirectName: BBB + baA -> 6 Y
-                -78.4791994822839 * x.[9] * x.[42] // BA + BBB | SedimentationDirectName: BA + BBB -> 5 Y
+                -179.54704695951 * x.[76] * x.[42] // bBb + BBB | SedimentationDirectName: bBb + BBB -> 6 Y
+                -124.97743307692 * x.[42] * x.[60] // BBB + aBb | SedimentationDirectName: BBB + aBb -> 6 Y
+                -320.69030234827 * x.[3] * x.[42] // a + BBB | SedimentationDirectName: a + BBB -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 43 - BBa
             [|
-                -443.411977513777 * x.[31] * x.[43] // Aaa + BBa | SedimentationDirectName: Aaa + BBa -> 6 Y
+                -111.827526720811 * x.[43] * x.[78] // BBa + baB | SedimentationDirectName: BBa + baB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 44 - BBb
             [|
+                -203.315239059183 * x.[44] * x.[65] // BBb + abA | SedimentationDirectName: BBb + abA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 45 - BaA
             [|
+                -368.637857212933 * x.[9] * x.[45] // BA + BaA | SedimentationDirectName: BA + BaA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 46 - BaB
             [|
-                -341.582113491609 * x.[46] * x.[51] // BaB + Bba | SedimentationDirectName: BaB + Bba -> 6 Y
-                -35.8042021208086 * x.[46] * x.[48] // BaB + Bab | SedimentationDirectName: BaB + Bab -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 47 - Baa
             [|
-                -656.891126246687 * x.[62] * x.[47] // aaB + Baa | SedimentationDirectName: aaB + Baa -> 6 Y
+                -584.584523985377 * x.[57] * x.[47] // aBA + Baa | SedimentationDirectName: aBA + Baa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 48 - Bab
             [|
-                -608.680453766052 * x.[48] * x.[56] // Bab + aAb | SedimentationDirectName: Bab + aAb -> 6 Y
-                -35.8042021208086 * x.[46] * x.[48] // BaB + Bab | SedimentationDirectName: BaB + Bab -> 6 Y
-                -466.811836506603 * x.[54] * x.[48] // aAB + Bab | SedimentationDirectName: aAB + Bab -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 49 - BbA
             [|
-                -786.866005568544 * x.[68] * x.[49] // abb + BbA | SedimentationDirectName: abb + BbA -> 6 Y
-                -522.024739919589 * x.[9] * x.[49] // BA + BbA | SedimentationDirectName: BA + BbA -> 5 Y
-                -5.56934902074113 * x.[15] * x.[49] // aa + BbA | SedimentationDirectName: aa + BbA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 50 - BbB
             [|
-                -716.711788725713 * x.[79] * x.[50] // baa + BbB | SedimentationDirectName: baa + BbB -> 6 Y
+                -179.54704695951 * x.[50] * x.[84] // BbB + bbb | SedimentationDirectName: BbB + bbb -> 6 Y
+                -75.9615840450121 * x.[50] * x.[57] // BbB + aBA | SedimentationDirectName: BbB + aBA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 51 - Bba
             [|
-                -341.582113491609 * x.[46] * x.[51] // BaB + Bba | SedimentationDirectName: BaB + Bba -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 52 - Bbb
             [|
-                -408.716301394858 * x.[52] * x.[83] // Bbb + bba | SedimentationDirectName: Bbb + bba -> 6 Y
-                -209.617910062433 * x.[33] * x.[52] // AbA + Bbb | SedimentationDirectName: AbA + Bbb -> 6 Y
+                -151.873530633643 * x.[41] * x.[52] // BBA + Bbb | SedimentationDirectName: BBA + Bbb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 53 - aAA
             [|
-                -284.258204211213 * x.[53] * x.[25] // aAA + ABA | SedimentationDirectName: aAA + ABA -> 6 Y
-                -443.411977513777 * x.[53] * x.[81] // aAA + bbA | SedimentationDirectName: aAA + bbA -> 6 Y
-                -59.787474785308 * x.[66] * x.[53] // abB + aAA | SedimentationDirectName: abB + aAA -> 6 Y
+                -444.986243599349 * x.[29] * x.[53] // AaA + aAA | SedimentationDirectName: AaA + aAA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 54 - aAB
             [|
-                -466.811836506603 * x.[54] * x.[48] // aAB + Bab | SedimentationDirectName: aAB + Bab -> 6 Y
+                -734.172518615685 * x.[27] * x.[54] // ABa + aAB | SedimentationDirectName: ABa + aAB -> 6 Y
+                -540.764426321166 * x.[20] * x.[54] // bb + aAB | SedimentationDirectName: bb + aAB -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 55 - aAa
             [|
+                -444.986243599349 * x.[55] * x.[31] // aAa + Aaa | SedimentationDirectName: aAa + Aaa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 56 - aAb
             [|
-                -608.680453766052 * x.[48] * x.[56] // Bab + aAb | SedimentationDirectName: Bab + aAb -> 6 Y
-                -49.1088730009344 * x.[15] * x.[56] // aa + aAb | SedimentationDirectName: aa + aAb -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 57 - aBA
             [|
-                -265.537114234532 * x.[36] * x.[57] // Abb + aBA | SedimentationDirectName: Abb + aBA -> 6 Y
+                -75.9615840450121 * x.[50] * x.[57] // BbB + aBA | SedimentationDirectName: BbB + aBA -> 6 Y
+                -584.584523985377 * x.[57] * x.[47] // aBA + Baa | SedimentationDirectName: aBA + Baa -> 6 Y
+                -272.917476778003 * x.[11] * x.[57] // Ba + aBA | SedimentationDirectName: Ba + aBA -> 5 Y
+                -170.45126751113 * x.[16] * x.[57] // ab + aBA | SedimentationDirectName: ab + aBA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 58 - aBB
             [|
-                -265.537114234532 * x.[58] * x.[35] // aBB + Aba | SedimentationDirectName: aBB + Aba -> 6 Y
+                -203.15272434543 * x.[58] * x.[40] // aBB + BAb | SedimentationDirectName: aBB + BAb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 59 - aBa
             [|
-                -209.617910062433 * x.[59] * x.[74] // aBa + bBB | SedimentationDirectName: aBa + bBB -> 6 Y
-                -146.322224924238 * x.[64] * x.[59] // aab + aBa | SedimentationDirectName: aab + aBa -> 6 Y
+                -777.817604984622 * x.[59] * x.[25] // aBa + ABA | SedimentationDirectName: aBa + ABA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 60 - aBb
             [|
+                -124.97743307692 * x.[42] * x.[60] // BBB + aBb | SedimentationDirectName: BBB + aBb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
@@ -723,8 +727,6 @@ module ModelData =
 
             // 62 - aaB
             [|
-                -656.891126246687 * x.[62] * x.[47] // aaB + Baa | SedimentationDirectName: aaB + Baa -> 6 Y
-                -417.882902705259 * x.[62] * x.[22] // aaB + AAB | SedimentationDirectName: aaB + AAB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
@@ -737,162 +739,146 @@ module ModelData =
 
             // 64 - aab
             [|
-                -417.882902705259 * x.[24] * x.[64] // AAb + aab | SedimentationDirectName: AAb + aab -> 6 Y
-                -146.322224924238 * x.[64] * x.[59] // aab + aBa | SedimentationDirectName: aab + aBa -> 6 Y
-                -299.945151250537 * x.[64] * x.[67] // aab + aba | SedimentationDirectName: aab + aba -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 65 - abA
             [|
-                -67.6503705387438 * x.[41] * x.[65] // BBA + abA | SedimentationDirectName: BBA + abA -> 6 Y
+                -203.315239059183 * x.[44] * x.[65] // BBb + abA | SedimentationDirectName: BBb + abA -> 6 Y
+                -734.172518615685 * x.[65] * x.[32] // abA + Aab | SedimentationDirectName: abA + Aab -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 66 - abB
             [|
-                -125.454054605852 * x.[66] * x.[79] // abB + baa | SedimentationDirectName: abB + baa -> 6 Y
-                -59.787474785308 * x.[66] * x.[53] // abB + aAA | SedimentationDirectName: abB + aAA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 67 - aba
             [|
-                -284.258204211213 * x.[31] * x.[67] // Aaa + aba | SedimentationDirectName: Aaa + aba -> 6 Y
-                -299.945151250537 * x.[64] * x.[67] // aab + aba | SedimentationDirectName: aab + aba -> 6 Y
-                -679.919499073657 * x.[15] * x.[67] // aa + aba | SedimentationDirectName: aa + aba -> 5 Y
+                -777.817604984622 * x.[33] * x.[67] // AbA + aba | SedimentationDirectName: AbA + aba -> 6 Y
+                -706.753181586129 * x.[9] * x.[67] // BA + aba | SedimentationDirectName: BA + aba -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 68 - abb
             [|
-                -786.866005568544 * x.[68] * x.[49] // abb + BbA | SedimentationDirectName: abb + BbA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 69 - bAA
             [|
-                -656.891126246687 * x.[24] * x.[69] // AAb + bAA | SedimentationDirectName: AAb + bAA -> 6 Y
+                -584.584523985377 * x.[35] * x.[69] // Aba + bAA | SedimentationDirectName: Aba + bAA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 70 - bAB
             [|
-                -608.680453766052 * x.[70] * x.[30] // bAB + AaB | SedimentationDirectName: bAB + AaB -> 6 Y
-                -35.8042021208086 * x.[72] * x.[70] // bAb + bAB | SedimentationDirectName: bAb + bAB -> 6 Y
-                -466.811836506603 * x.[32] * x.[70] // Aab + bAB | SedimentationDirectName: Aab + bAB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 71 - bAa
             [|
+                -368.637857212933 * x.[19] * x.[71] // ba + bAa | SedimentationDirectName: ba + bAa -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 72 - bAb
             [|
-                -341.582113491609 * x.[72] * x.[73] // bAb + bBA | SedimentationDirectName: bAb + bBA -> 6 Y
-                -35.8042021208086 * x.[72] * x.[70] // bAb + bAB | SedimentationDirectName: bAb + bAB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 73 - bBA
             [|
-                -341.582113491609 * x.[72] * x.[73] // bAb + bBA | SedimentationDirectName: bAb + bBA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 74 - bBB
             [|
-                -408.716301394858 * x.[74] * x.[41] // bBB + BBA | SedimentationDirectName: bBB + BBA -> 6 Y
-                -209.617910062433 * x.[59] * x.[74] // aBa + bBB | SedimentationDirectName: aBa + bBB -> 6 Y
+                -151.873530633643 * x.[83] * x.[74] // bba + bBB | SedimentationDirectName: bba + bBB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 75 - bBa
             [|
-                -786.866005568544 * x.[26] * x.[75] // ABB + bBa | SedimentationDirectName: ABB + bBa -> 6 Y
-                -522.024739919589 * x.[19] * x.[75] // ba + bBa | SedimentationDirectName: ba + bBa -> 5 Y
-                -5.56934902074113 * x.[5] * x.[75] // AA + bBa | SedimentationDirectName: AA + bBa -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 76 - bBb
             [|
-                -716.711788725713 * x.[37] * x.[76] // BAA + bBb | SedimentationDirectName: BAA + bBb -> 6 Y
+                -179.54704695951 * x.[76] * x.[42] // bBb + BBB | SedimentationDirectName: bBb + BBB -> 6 Y
+                -75.9615840450121 * x.[76] * x.[35] // bBb + Aba | SedimentationDirectName: bBb + Aba -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 77 - baA
             [|
-                -305.045232456692 * x.[42] * x.[77] // BBB + baA | SedimentationDirectName: BBB + baA -> 6 Y
-                -503.865603997812 * x.[80] * x.[77] // bab + baA | SedimentationDirectName: bab + baA -> 6 Y
-                -610.61001797884 * x.[7] * x.[77] // Aa + baA | SedimentationDirectName: Aa + baA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 78 - baB
             [|
-                -24.4573733175658 * x.[80] * x.[78] // bab + baB | SedimentationDirectName: bab + baB -> 6 Y
+                -111.827526720811 * x.[43] * x.[78] // BBa + baB | SedimentationDirectName: BBa + baB -> 6 Y
+                -203.15272434543 * x.[36] * x.[78] // Abb + baB | SedimentationDirectName: Abb + baB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 79 - baa
             [|
-                -716.711788725713 * x.[79] * x.[50] // baa + BbB | SedimentationDirectName: baa + BbB -> 6 Y
-                -125.454054605852 * x.[66] * x.[79] // abB + baa | SedimentationDirectName: abB + baa -> 6 Y
+                -18.0423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 80 - bab
             [|
-                -24.4573733175658 * x.[80] * x.[78] // bab + baB | SedimentationDirectName: bab + baB -> 6 Y
-                -503.865603997812 * x.[80] * x.[77] // bab + baA | SedimentationDirectName: bab + baA -> 6 Y
+                -124.492769460629 * x.[9] * x.[80] // BA + bab | SedimentationDirectName: BA + bab -> 5 Y
+                -392.919001150608 * x.[16] * x.[80] // ab + bab | SedimentationDirectName: ab + bab -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 81 - bbA
             [|
-                -443.411977513777 * x.[53] * x.[81] // aAA + bbA | SedimentationDirectName: aAA + bbA -> 6 Y
+                -111.827526720811 * x.[81] * x.[40] // bbA + BAb | SedimentationDirectName: bbA + BAb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 82 - bbB
             [|
+                -203.315239059183 * x.[82] * x.[27] // bbB + ABa | SedimentationDirectName: bbB + ABa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 83 - bba
             [|
-                -408.716301394858 * x.[52] * x.[83] // Bbb + bba | SedimentationDirectName: Bbb + bba -> 6 Y
-                -67.6503705387438 * x.[83] * x.[27] // bba + ABa | SedimentationDirectName: bba + ABa -> 6 Y
+                -151.873530633643 * x.[83] * x.[74] // bba + bBB | SedimentationDirectName: bba + bBB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 84 - bbb
             [|
-                -305.045232456692 * x.[84] * x.[39] // bbb + BAa | SedimentationDirectName: bbb + BAa -> 6 Y
-                -78.4791994822839 * x.[19] * x.[84] // ba + bbb | SedimentationDirectName: ba + bbb -> 5 Y
+                -179.54704695951 * x.[50] * x.[84] // BbB + bbb | SedimentationDirectName: BbB + bbb -> 6 Y
+                -124.97743307692 * x.[84] * x.[34] // bbb + AbB | SedimentationDirectName: bbb + AbB -> 6 Y
+                -320.69030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 

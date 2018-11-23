@@ -16,7 +16,7 @@ module ReactionRates =
 
     type DistributionParams = 
         {
-            threshold : double
+            threshold : double option
         }
 
 
@@ -24,7 +24,11 @@ module ReactionRates =
     type DistributionBase(seed : int, p : DistributionParams, d : Random -> double) = 
         let rnd = new Random(seed)
         let rndBool = new Random(rnd.Next())
-        let isDefined() = if rndBool.NextDouble() < p.threshold then true else false
+        let isDefined() = 
+            match p.threshold with
+            | Some t -> if rndBool.NextDouble() < t then true else false
+            | None -> true
+
         let nextDoubleImpl() = d(rnd)
 
         member __.nextDouble = nextDoubleImpl
@@ -65,20 +69,6 @@ module ReactionRates =
         }
 
 
-    type CatalystModelRandomParam = 
-        {
-            distribution : Distribution
-            forwardScale : double option
-            backwardScale : double option
-        }
-
-
-    type CatalystModelSimilarityParam = 
-        {
-            dummy : int
-        }
-
-
     let noRates = 
         {
             primary = (None, None)
@@ -99,6 +89,40 @@ module ReactionRates =
                 similar = []
             }
         | None -> noRates
+
+    type SyntethisModelParam = 
+        {
+            synthesisDistribution : Distribution
+            forwardScale : double option
+            backwardScale : double option
+        }
+
+
+    type SyntethisModel = 
+        | SyntethisModel of SyntethisModelParam
+
+        member this.getRates (r : ReactionInfo) =
+            match r.reactionName with 
+            | SynthesisName -> 
+                let (SyntethisModel p) = this
+                p.synthesisDistribution.nextDoubleOpt() |> getRates p.forwardScale p.backwardScale
+            | _ -> noRates
+
+
+    type CatalystModelRandomParam = 
+        {
+            distribution : Distribution
+            forwardScale : double option
+            backwardScale : double option
+            enantioselectivityParam : double
+        }
+
+
+    type CatalystModelSimilarityParam = 
+        {
+            dummy : int
+        }
+
 
     /// Models, which describe catalytic reactions.
     type CatalystModel = 
@@ -131,10 +155,12 @@ module ReactionRates =
 
 
     type ReactionRateModel = 
+        | SynthesisRateModel of SyntethisModel
         | SedimentationDirectRateModel of SedimentationDirectModel
 
         member this.getRates (r : ReactionInfo) = 
             match this with 
+            | SynthesisRateModel m -> m.getRates r
             | SedimentationDirectRateModel m -> m.getRates r
 
 
@@ -161,3 +187,23 @@ module ReactionRates =
                 x.primary
 
         member __.getRates r = getRatesImpl r
+
+        static member defaultSynthesisModel (rnd : Random) forward backward =
+            {
+                synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                forwardScale = Some forward
+                backwardScale = Some backward
+            }
+            |> SyntethisModel
+            |> SynthesisRateModel
+            |> ReactionRateProvider
+
+
+        static member defaultSedimentationDirectModel (rnd : Random) threshold mult =
+            {
+                sedimentationDirectDistribution = TriangularDistribution(rnd.Next(), { threshold = Some threshold }) |> Triangular
+                forwardScale = Some mult
+            }
+            |> SedimentationDirectRandom
+            |> SedimentationDirectRateModel
+            |> ReactionRateProvider
