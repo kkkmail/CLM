@@ -14,16 +14,9 @@ module ReactionRates =
         | ReactionRate of double
 
 
-    //type SeedParams = 
-    //    {
-    //        seed : int
-    //        seedBool : int
-    //    }
-
     type DistributionParams = 
         {
             threshold : double
-            scale : double
         }
 
 
@@ -32,13 +25,14 @@ module ReactionRates =
         let rnd = new Random(seed)
         let rndBool = new Random(rnd.Next())
         let isDefined() = if rndBool.NextDouble() < p.threshold then true else false
+        let nextDoubleImpl() = d(rnd)
 
-        let netxDoubleImpl() = 
+        member __.nextDouble = nextDoubleImpl
+
+        member __.nextDoubleOpt() = 
             match isDefined() with 
-            | true -> p.scale * d(rnd) |> Some
+            | true -> nextDoubleImpl() |> Some
             | false -> None
-
-        member __.netxDouble = netxDoubleImpl
 
 
     type UniformDistribution (seed : int, p : DistributionParams) = 
@@ -49,23 +43,19 @@ module ReactionRates =
         inherit DistributionBase(seed, p, fun r -> 1.0 - sqrt(1.0 - r.NextDouble()))
 
 
-    /// Abstraction over all used statistical distrubiton parameters.
-    type DistributionData =
-        {
-            trueProbability : double
-            scale : double
-            distribution : int -> DistributionParams -> DistributionBase
-        }
+    type Distribution =
+        | Uniform of UniformDistribution
+        | Triangular of TriangularDistribution
 
+        member this.nextDouble = 
+            match this with
+            | Uniform d -> d.nextDouble
+            | Triangular d -> d.nextDouble
 
-    /// Abstraction over statistical distributons.
-    type Distribution (p : DistributionData) =
-        let distr = p.distribution
-
-        /// Gives next double from the distrubution.
-        /// It is NOT [0, 1) based but, rather, is based on the parameters of the distribution.
-        /// This is crucial for long-tailed distributions, which often do not have standard deviation and may not even have mean defined.
-        member dstr.nextDouble() : double = 0.0
+        member this.nextDoubleOpt = 
+            match this with
+            | Uniform d -> d.nextDoubleOpt
+            | Triangular d -> d.nextDoubleOpt
 
 
     type RelatedReactions = 
@@ -96,75 +86,78 @@ module ReactionRates =
         }
 
 
+    let getRates fo bo ro = 
+        match ro with 
+        | Some r -> 
+            let g so = 
+                match so with
+                | Some s -> s * r |> ReactionRate |> Some
+                | None -> None
+
+            {
+                primary = (g fo, g bo)
+                similar = []
+            }
+        | None -> noRates
+
     /// Models, which describe catalytic reactions.
     type CatalystModel = 
         | CatalystModelRandom of CatalystModelRandomParam
         | CatalystModelSimilarity of CatalystModelSimilarityParam // If substance is a catalyst for some amino acid X, then there are some [separate] chances that it could be a catalyst for other amino acids.
 
         member this.getRates (r : ReactionInfo) =
+            match r.reactionName with 
+            | CatalyticSynthesisName -> 
+                match this with 
+                | CatalystModelRandom p -> p.distribution.nextDoubleOpt() |> getRates p.forwardScale p.backwardScale
+                | CatalystModelSimilarity _ -> failwith ""
+            | _ -> noRates
+
+    type SedimentationDirectRandomParam = 
+        {
+            sedimentationDirectDistribution : Distribution
+            forwardScale : double option
+        }
+
+    type SedimentationDirectModel = 
+        | SedimentationDirectRandom of SedimentationDirectRandomParam
+
+        member this.getRates (r : ReactionInfo) =
+            match r.reactionName with 
+            | SedimentationDirectName -> 
+                match this with 
+                | SedimentationDirectRandom p -> p.sedimentationDirectDistribution.nextDoubleOpt() |> getRates p.forwardScale None
+            | _ -> noRates
+
+
+    type ReactionRateModel = 
+        | SedimentationDirectRateModel of SedimentationDirectModel
+
+        member this.getRates (r : ReactionInfo) = 
             match this with 
-            | CatalystModelRandom p -> 
-                match p.distribution.nextBool() with 
-                | true ->
-                    let g so = 
-                        match so with
-                        | Some s -> s * p.distribution.nextDouble() |> ReactionRate |> Some
-                        | None -> None
-
-                    {
-                        primary = (g p.forwardScale, g p.backwardScale)
-                        similar = []
-                    }
-                | false -> noRates
-            | CatalystModelSimilarity _ -> failwith ""
-
-    //| ReactionRateProvider of (ReactionInfo -> (ReactionRate option * ReactionRate option))
-
-
-    //type ReactionRateInfo = 
-    //    {
-    //        forward : ReactionRate option
-    //        backward : ReactionRate option
-    //    }
-
-
-
-
-    ///// Returns [optional] forward and backward reaction rates.
-    //type ReactionRateProvider = // (p : ReactionRateProviderParams) = 
-    //    | ReactionRateProvider of (ReactionInfo -> (ReactionRate option * ReactionRate option))
-
-    //    member this.getRates r = 
-    //        let (ReactionRateProvider p) = this
-    //        p r
+            | SedimentationDirectRateModel m -> m.getRates r
 
 
     type ReactionRateProviderParams = 
         {
-            seedValue : int option
-            distribution: DistributionParams
+            //seedValue : int option
+            rateModel: ReactionRateModel
         }
 
 
-    type ReactionRateProvider (p : ReactionRateProviderParams) =
-        let seedMain = 
-            match p.seedValue with 
-            | Some s -> s
-            | None -> (new Random()).Next()
-
-
+    type ReactionRateProvider (rateModel: ReactionRateModel) =
         let rateDictionary = new Dictionary<ReactionInfo, (ReactionRate option * ReactionRate option)>()
-
-        let calculateRates (r : ReactionInfo) : RelatedReactions = 
-            failwith ""
+        let calculateRates (r : ReactionInfo) : RelatedReactions = rateModel.getRates r
 
         let getRatesImpl r = 
             match rateDictionary.TryGetValue r with 
             | true, rates -> rates
             | false, _ -> 
                 let x = calculateRates r
+                rateDictionary.Add(r, x.primary)
+                rateDictionary.Add(r.enantiomer, x.primary)
                 x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i |> not then rateDictionary.Add(i, e)) |> ignore
+                x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i.enantiomer |> not then rateDictionary.Add(i.enantiomer, e)) |> ignore
                 x.primary
 
-
-        member this.getRates r = getRatesImpl r
+        member __.getRates r = getRatesImpl r
