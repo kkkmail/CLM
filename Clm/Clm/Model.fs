@@ -257,7 +257,8 @@ module Model =
             let paramCode = 
                 "    let seedValue = " + seedValue.ToString() + nl + 
                 "    let numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + nl + 
-                "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl + nl
+                "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl +
+                "    let numberOfSubstances = " + (allSubst.Length).ToString() + nl + nl
 
             [ "namespace Model" + nl + "open Clm.Substances" + nl + nl + "module ModelData = " + nl + paramCode + nl + totalCode + nl] @ updateCode
 

@@ -5,6 +5,7 @@ module ModelData =
     let seedValue = 12345
     let numberOfAminoAcids = NumberOfAminoAcids.TwoAminoAcids
     let maxPeptideLength = MaxPeptideLength.ThreeMax
+    let numberOfSubstances = 85
 
 
     let getTotals (x : array<double>) = 

@@ -47,6 +47,7 @@
     <None Include="References.fsx" />
     <None Include="SolverTest.fsx" />
     <Content Include="packages.config" />
+    <None Include="ModelSolverTest.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Collections.ParallelSeq">
@@ -69,9 +70,19 @@
       <Project>{5d23cbc1-d7c8-4942-b9c4-22993f4f5e30}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Clm\Clm.fsproj">
+      <Name>Clm</Name>
+      <Project>{2cfc7e81-4fb4-46b4-9534-c1455e2c4c14}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\FSharp.Plotly\src\FSharp.Plotly\FSharp.Plotly.fsproj">
       <Name>FSharp.Plotly</Name>
       <Project>{e253d080-bbb1-45df-ad5a-961be7b634d1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.fsproj">
+      <Name>Model</Name>
+      <Project>{b4966a0d-d7c6-4421-8fa4-2a2fa018550e}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
