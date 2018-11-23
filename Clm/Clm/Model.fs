@@ -7,6 +7,8 @@ open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open Clm.Substances
 open Clm.Reactions
+open Clm.ReactionTypes
+open Clm.ReactionRates
 
 
 module Model = 

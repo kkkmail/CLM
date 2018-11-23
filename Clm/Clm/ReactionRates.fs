@@ -6,33 +6,66 @@ open FSharp.Collections
 open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open Clm.Substances
-open Clm.Reactions
+open Clm.ReactionTypes
 
 module ReactionRates = 
 
-    /// Abstraction over all known statistical distrubiton parameters.
-    type DistributionParams =
+    type ReactionRate = 
+        | ReactionRate of double
+
+
+    //type SeedParams = 
+    //    {
+    //        seed : int
+    //        seedBool : int
+    //    }
+
+    type DistributionParams = 
         {
-            seed : int option
-            seedBool : int option
+            threshold : double
+            scale : double
+        }
+
+
+    [<AbstractClass>]
+    type DistributionBase(seed : int, p : DistributionParams, d : Random -> double) = 
+        let rnd = new Random(seed)
+        let rndBool = new Random(rnd.Next())
+        let isDefined() = if rndBool.NextDouble() < p.threshold then true else false
+
+        let netxDoubleImpl() = 
+            match isDefined() with 
+            | true -> p.scale * d(rnd) |> Some
+            | false -> None
+
+        member __.netxDouble = netxDoubleImpl
+
+
+    type UniformDistribution (seed : int, p : DistributionParams) = 
+        inherit DistributionBase (seed, p, fun r -> r.NextDouble())
+
+
+    type TriangularDistribution (seed : int, p : DistributionParams) = 
+        inherit DistributionBase(seed, p, fun r -> 1.0 - sqrt(1.0 - r.NextDouble()))
+
+
+    /// Abstraction over all used statistical distrubiton parameters.
+    type DistributionData =
+        {
             trueProbability : double
+            scale : double
+            distribution : int -> DistributionParams -> DistributionBase
         }
 
 
     /// Abstraction over statistical distributons.
-    type Distribution (distributionParams : DistributionParams) =
-        let boolRnd = 
-            match distributionParams.seedBool with 
-            | Some s -> new Random(s)
-            | None -> new Random()
+    type Distribution (p : DistributionData) =
+        let distr = p.distribution
 
         /// Gives next double from the distrubution.
         /// It is NOT [0, 1) based but, rather, is based on the parameters of the distribution.
         /// This is crucial for long-tailed distributions, which often do not have standard deviation and may not even have mean defined.
         member dstr.nextDouble() : double = 0.0
-
-        /// Gives next bool from the distribution.
-        member dstr.nextBool() = boolRnd.NextDouble() < distributionParams.trueProbability
 
 
     type RelatedReactions = 
@@ -95,13 +128,37 @@ module ReactionRates =
     //    }
 
 
-    type ReactionRateGenerator() =
+
+
+    ///// Returns [optional] forward and backward reaction rates.
+    //type ReactionRateProvider = // (p : ReactionRateProviderParams) = 
+    //    | ReactionRateProvider of (ReactionInfo -> (ReactionRate option * ReactionRate option))
+
+    //    member this.getRates r = 
+    //        let (ReactionRateProvider p) = this
+    //        p r
+
+
+    type ReactionRateProviderParams = 
+        {
+            seedValue : int option
+            distribution: DistributionParams
+        }
+
+
+    type ReactionRateProvider (p : ReactionRateProviderParams) =
+        let seedMain = 
+            match p.seedValue with 
+            | Some s -> s
+            | None -> (new Random()).Next()
+
+
         let rateDictionary = new Dictionary<ReactionInfo, (ReactionRate option * ReactionRate option)>()
 
         let calculateRates (r : ReactionInfo) : RelatedReactions = 
             failwith ""
 
-        let getRates r = 
+        let getRatesImpl r = 
             match rateDictionary.TryGetValue r with 
             | true, rates -> rates
             | false, _ -> 
@@ -110,12 +167,4 @@ module ReactionRates =
                 x.primary
 
 
-        member this.getReactionRates r = getRates r
-
-
-
-    type ReactionRates () = 
-        let x = 1
-
-        member this.a = 0
-
+        member this.getRates r = getRatesImpl r
