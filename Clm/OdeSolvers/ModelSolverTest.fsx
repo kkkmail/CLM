@@ -10,15 +10,16 @@ open Microsoft.FSharp.Core
 open FSharp.Plotly
 open Model.ModelData
 open Clm.Substances
+open Clm.Substances
 
 let n = numberOfSubstances
 let noOfOutputPoints = 100
 let tEnd = 100.0
 let odeParams = { OdeParams.defaultValue with endTime = tEnd; noOfOutputPoints = Some noOfOutputPoints }
+let description = sprintf "Number of amino acids: %A, number of peptides: %A, number of substances: %A." numberOfAminoAcids.length maxPeptideLength.length numberOfSubstances
 
 
 let plotAll (r : OdeResult) =
-    let description = "Some description"
     let fn = [ for i in 0..n - 1 -> i ]
     let tIdx = [ for i in 0..noOfOutputPoints -> i ]
 
@@ -31,9 +32,8 @@ let plotAll (r : OdeResult) =
     |> Chart.withX_AxisStyle("t", MinMax = (0.0, tEnd))
     |> Chart.ShowWithDescription description
 
-let plotAminoAcids (r : OdeResult) =
-    let description = sprintf "Number of amino acids: %A, number of peptides: %A, number of substances: %A." numberOfAminoAcids.length maxPeptideLength.length numberOfSubstances
 
+let plotAminoAcids (r : OdeResult) =
     let fn = [ for i in 0..(numberOfAminoAcids.length * 2 - 1) -> i ]
 
     let name i = 
@@ -63,6 +63,17 @@ let plotAminoAcids (r : OdeResult) =
     |> Chart.ShowWithDescription description
 
 
+let plotTotalSubst (r : OdeResult) =
+    let tIdx = [ for i in 0..noOfOutputPoints -> i ]
+    let totalData = tIdx |> List.map (fun t -> r.t.[t], getTotalSubst r.x.[t,*])
+    let yData = tIdx |> List.map (fun t -> r.t.[t], r.x.[t,0])
+
+    //FSharp.Plotly
+    Chart.Combine([ Chart.Line(totalData, Name = "Total"); Chart.Line(yData, Name = Substance.food.name) ])
+    |> Chart.withX_AxisStyle("t", MinMax = (0.0, tEnd))
+    |> Chart.ShowWithDescription description
+
+
 let f (x : double[]) (t : double) : double[] = update x
 
 let mult = 1.0
@@ -80,4 +91,5 @@ let result = nSolve odeParams f i
 
 printfn "Plotting."
 plotAminoAcids result
+plotTotalSubst result
 printfn "Completed."

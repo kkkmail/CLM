@@ -109,6 +109,8 @@ module Model =
         let xName = "x"
         let xSumName = "xSum"
         let xSumSquaredName = "xSumSquared"
+        let koeffTotName = "kW"
+
         let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
         //let reactionComment (r : Reaction) = " // " + (reactToString r) + nl
         let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
@@ -239,9 +241,12 @@ module Model =
                 | Some r -> r |> List.rev |> List.map (fun (_, e) -> e) |> String.concat ""
                 | None -> ""
 
+            let getTotalSedReac (s : Substance) = 
+                ""
+
             let a = 
                 allSubst
-                |> List.map (fun s -> "" + nl + (substComment s) +  "            [|" + nl + (getReaction s) + "            |]" + nl + "            |> Array.fold (fun acc r -> acc + r) 0.0" + nl)
+                |> List.map (fun s -> "" + nl + (substComment s) +  "            [|" + nl + (getTotalSedReac s) + nl + (getReaction s) + "            |]" + nl + "            |> Array.fold (fun acc r -> acc + r) 0.0" + nl)
 
 
             let t2 = DateTime.Now
