@@ -41,27 +41,40 @@ module ReactionTypes =
 
 
     type SynthesisReaction = 
-        static member create a = 
+        | SynthesisReaction of ChiralAminoAcid
+
+        member r.info = 
+            let (SynthesisReaction a) = r
             {
-                //reactionType = Synthesis
                 reactionName = ReactionName.SynthesisName
                 input = [ (Substance.food, 1) ]
-                output = [ (Substance.chiralL a, 1) ]
+                output = [ (Chiral a, 1) ]
             }
 
 
+    type SynthCatalyst = 
+        | SynthCatalyst of Peptide
+
+
     type CatalyticSynthesisReaction = 
-        static member create (a, c) = 
+        | CatalyticSynthesisReaction of (SynthesisReaction * SynthCatalyst)
+
+        member r.info = 
+            let (CatalyticSynthesisReaction ((SynthesisReaction a), (SynthCatalyst c))) = r
             let p = c |> PeptideChain
             {
                 reactionName = ReactionName.CatalyticSynthesisName
                 input = [ (Substance.food, 1); (p, 1) ]
-                output = [ (Substance.chiralL a, 1); (p, 1) ]
+                output = [ (Chiral a, 1); (p, 1) ]
             }
 
 
     type LigationReaction = 
-        static member create (a, b) = 
+        | LigationReaction of (list<ChiralAminoAcid> * list<ChiralAminoAcid>)
+
+        member r.info = 
+            let (LigationReaction (a, b)) = r
+
             {
                 reactionName = ReactionName.LigationName
                 input = [ (Substance.fromList a, 1); (Substance.fromList b, 1) ]
@@ -69,8 +82,16 @@ module ReactionTypes =
             }
 
 
+    type LigCatalyst =
+        | LigCatalyst of Peptide
+
+
     type CatalyticLigationReaction = 
-        static member create ((a, b), c) = 
+        | CatalyticLigationReaction of (LigationReaction * LigCatalyst)
+
+        member r.info = 
+            let (CatalyticLigationReaction (LigationReaction (a, b), LigCatalyst c)) = r
+
             let p = c |> PeptideChain
             {
                 reactionName = ReactionName.CatalyticLigationName
@@ -80,7 +101,11 @@ module ReactionTypes =
 
 
     type SedimentationDirectReaction = 
-        static member create (a, b) = 
+        | SedimentationDirectReaction of (list<ChiralAminoAcid> * list<ChiralAminoAcid>)
+
+        member r.info = 
+            let (SedimentationDirectReaction (a, b)) = r
+
             {
                 reactionName = ReactionName.SedimentationDirectName
                 input = [ (Substance.fromList a, 1); (Substance.fromList b, 1) ]
@@ -94,7 +119,7 @@ module ReactionTypes =
         | Ligation of LigationReaction
         | CatalyticLigation of CatalyticLigationReaction
         | SedimentationDirect of SedimentationDirectReaction
-        | SedimentationAll of int
+        | SedimentationAll
 
         member rt.name = 
             match rt with 
@@ -103,4 +128,4 @@ module ReactionTypes =
             | Ligation _ -> "L"
             | CatalyticLigation _ -> "CL"
             | SedimentationDirect _ -> "SD"
-            | SedimentationAll _ -> "SA"
+            | SedimentationAll -> "SA"

@@ -1,6 +1,7 @@
 ﻿namespace OdeSolvers
 
 open Microsoft.FSharp.Core
+open System
 
 module Solver = 
 
@@ -19,8 +20,9 @@ module Solver =
                 endTime = 10.0
                 stepSize = 0.01
                 eps = 0.00001
-                noOfOutputPoints = None
+                noOfOutputPoints = Some 100
             }
+
 
     type OdeResult = 
         {
@@ -32,8 +34,20 @@ module Solver =
         }
 
 
+    let defaultInit n y0 = 
+        let mult = 0.01
+        let rnd = new Random(12345)
+        let i0 = [ for i in 1..(n-1) -> (mult * y0 / (double n)) * rnd.NextDouble() ]
+        (y0 - (i0 |> List.sum)) :: i0 |> Array.ofList
+
+
     /// F# wrapper around Alglib ODE solver.
-    let nSolve (p : OdeParams) (f : double[] -> double -> double[]) (i : array<double>) : OdeResult = 
+    //let nSolve (p : OdeParams) (f : double[] -> double -> double[]) (i : array<double>) : OdeResult = 
+    let nSolve tEnd (g : double[] -> double[]) n y0 : OdeResult = 
+        let p = { OdeParams.defaultValue with endTime = tEnd }
+        let f (x : double[]) (_ : double) : double[] = g x
+        let i = defaultInit n y0
+
         let eps = p.eps
         let h = p.stepSize
 

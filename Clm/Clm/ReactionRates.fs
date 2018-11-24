@@ -30,8 +30,10 @@ module ReactionRates =
             | None -> true
 
         let nextDoubleImpl() = d(rnd)
+        let nextDoubleFromZeroToOneImpl() = rnd.NextDouble()
 
         member __.nextDouble = nextDoubleImpl
+        member __.nextDoubleFromZeroToOne = nextDoubleFromZeroToOneImpl
 
         member __.nextDoubleOpt() = 
             match isDefined() with 
@@ -61,6 +63,11 @@ module ReactionRates =
             | Uniform d -> d.nextDoubleOpt
             | Triangular d -> d.nextDoubleOpt
 
+        member this.nextDoubleFromZeroToOne =
+            match this with
+            | Uniform d -> d.nextDoubleFromZeroToOne
+            | Triangular d -> d.nextDoubleFromZeroToOne
+
 
     type RelatedReactions = 
         {
@@ -76,21 +83,22 @@ module ReactionRates =
         }
 
 
-    let getRates fo bo ro = 
-        match ro with 
-        | Some r -> 
-            let g so = 
-                match so with
-                | Some s -> s * r |> ReactionRate |> Some
-                | None -> None
+    let getRates (fo, rf) (bo, rb) = 
+        let g so ro = 
+            match so, ro with
+            | Some s, Some r -> s * r |> ReactionRate |> Some
+            | _ -> None
 
-            {
-                primary = (g fo, g bo)
-                similar = []
-            }
-        | None -> noRates
+        {
+            primary = (g fo rf, g bo rb)
+            similar = []
+        }
 
-    type SyntethisModelParam = 
+
+    let getForwardRates (fo, rf) = getRates (fo, rf) (None, None)
+
+
+    type SyntethisParam = 
         {
             synthesisDistribution : Distribution
             forwardScale : double option
@@ -99,43 +107,47 @@ module ReactionRates =
 
 
     type SyntethisModel = 
-        | SyntethisModel of SyntethisModelParam
+        | SyntethisModel of SyntethisParam
 
         member this.getRates (r : ReactionInfo) =
             match r.reactionName with 
             | SynthesisName -> 
                 let (SyntethisModel p) = this
-                p.synthesisDistribution.nextDoubleOpt() |> getRates p.forwardScale p.backwardScale
+                let d = p.synthesisDistribution
+                getRates (p.forwardScale, d.nextDouble() |> Some) (p.backwardScale, d.nextDouble() |> Some)
             | _ -> noRates
 
 
-    type CatalystModelRandomParam = 
+    type CatalyticSynthesisRandomParam = 
         {
-            distribution : Distribution
+            catSyntheDistribution : Distribution
             forwardScale : double option
             backwardScale : double option
-            enantioselectivityParam : double
-        }
-
-
-    type CatalystModelSimilarityParam = 
-        {
-            dummy : int
+            maxEe : double
         }
 
 
     /// Models, which describe catalytic reactions.
-    type CatalystModel = 
-        | CatalystModelRandom of CatalystModelRandomParam
-        | CatalystModelSimilarity of CatalystModelSimilarityParam // If substance is a catalyst for some amino acid X, then there are some [separate] chances that it could be a catalyst for other amino acids.
+    type CatalyticSynthesisModel = 
+        | CatalyticSynthesisRandom of CatalyticSynthesisRandomParam
+        //| CatalystModelSimilarity of CatalystModelSimilarityParam // If substance is a catalyst for some amino acid X, then there are some [separate] chances that it could be a catalyst for other amino acids.
 
         member this.getRates (r : ReactionInfo) =
             match r.reactionName with 
             | CatalyticSynthesisName -> 
                 match this with 
-                | CatalystModelRandom p -> p.distribution.nextDoubleOpt() |> getRates p.forwardScale p.backwardScale
-                | CatalystModelSimilarity _ -> failwith ""
+                | CatalyticSynthesisRandom p -> 
+                    let d = p.catSyntheDistribution
+                    match d.nextDoubleOpt() with 
+                    | Some rf -> 
+                        let rb = d.nextDouble()
+                        let ee = p.maxEe * (d.nextDoubleFromZeroToOne() - 0.5)
+
+                        //p.distribution.nextDoubleOpt() |> getRates p.forwardScale p.backwardScale
+                        failwith ""
+                    | None -> noRates
             | _ -> noRates
+
 
     type SedimentationDirectRandomParam = 
         {
@@ -148,10 +160,10 @@ module ReactionRates =
         | SedimentationDirectRandom of SedimentationDirectRandomParam
 
         member this.getRates (r : ReactionInfo) =
-            match r.reactionName with 
-            | SedimentationDirectName -> 
+            match r.reactionName with
+            | SedimentationDirectName ->
                 match this with 
-                | SedimentationDirectRandom p -> p.sedimentationDirectDistribution.nextDoubleOpt() |> getRates p.forwardScale None
+                | SedimentationDirectRandom p -> getForwardRates (p.forwardScale, p.sedimentationDirectDistribution.nextDoubleOpt())
             | _ -> noRates
 
     type SedimentationAllRandomParam = 
@@ -168,7 +180,7 @@ module ReactionRates =
             match r.reactionName with 
             | SedimentationAllName -> 
                 match this with 
-                | SedimentationAllRandom p -> p.sedimentationAllDistribution.nextDouble() |> Some |> getRates p.forwardScale None
+                | SedimentationAllRandom p -> getForwardRates (p.forwardScale, p.sedimentationAllDistribution.nextDouble() |> Some)
             | _ -> noRates
 
 
