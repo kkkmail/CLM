@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Solver.fs" />
+    <Compile Include="Visualization.fs" />
     <None Include="References.fsx" />
     <None Include="SolverTest.fsx" />
     <Content Include="packages.config" />

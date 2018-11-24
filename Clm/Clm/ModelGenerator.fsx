@@ -23,11 +23,13 @@ let m = MaxPeptideLength.ThreeMax
 let seed = 12345
 let rnd = new Random(seed)
 
-let sdMult = 1000.0
+let sdMult = 100.0
 let sdThreshold = 0.01
+let saMult = 0.001
 
-let synthProvider = ReactionRateProvider.defaultSynthesisModel rnd 0.001 0.0001
+let synthProvider = ReactionRateProvider.defaultSynthesisModel rnd 0.01 0.001
 let sdProvider = ReactionRateProvider.defaultSedimentationDirectModel rnd sdThreshold sdMult
+let saProvider = ReactionRateProvider.defaultSedimentationAllModel rnd saMult
 
 let rates = 
     [
@@ -36,6 +38,7 @@ let rates =
          //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
          (SedimentationDirectName, sdProvider)
+         (SedimentationAllName, saProvider)
     ]
 
 

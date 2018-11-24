@@ -108,8 +108,22 @@ module Model =
 
         let xName = "x"
         let xSumName = "xSum"
-        let xSumSquaredName = "xSumSquared"
+        let xSumNameN = "xSumN"
+        let xSumSquaredNameN = "xSumSquaredN"
+
         let koeffTotName = "kW"
+
+        let kW = 
+            match rateProviders.TryFind SedimentationAllName with 
+            | Some r -> 
+                let i = 
+                    {
+                        reactionName = SedimentationAllName
+                        input = []
+                        output = []
+                    }
+                r.getRates i |> fst
+            | None -> None
 
         let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
         //let reactionComment (r : Reaction) = " // " + (reactToString r) + nl
@@ -242,7 +256,12 @@ module Model =
                 | None -> ""
 
             let getTotalSedReac (s : Substance) = 
-                ""
+                match kW with
+                | Some (ReactionRate k) -> 
+                    match s with 
+                    | Food _ -> "                " + k.ToString() + " * (2.0 * " + xSumName + " * " + xSumNameN + " - " + xSumSquaredNameN + ")"
+                    | _ -> "                " + "-" + k.ToString() + " * (2.0 * " + xSumName + " - " + (x s) + ") * " + (x s)
+                | None -> ""
 
             let a = 
                 allSubst
@@ -256,18 +275,25 @@ module Model =
             let totalCode = generateTotals()
             let totalSubstCode = generateTotalSubst()
 
-            //let sc = 
-            //    allSubst
-            //    |> List.filter (fun s -> not s.isFood)
-            //    |> List.map (fun s -> "                " + (x s) + " // " + (substToString s))
-            //    |> String.concat "" + nl
+            let sc = 
+                allSubst
+                |> List.filter (fun s -> not s.isFood)
+                |> List.map (fun s -> "                " + (s.atoms.ToString()) + ".0 * " + (x s) + " // " + (substToString s))
+                |> String.concat nl
 
-            let sumCode = "        let " + xSumName + " = " + xName + " |> Array.sum" + nl
-            let sumSquaredCode = "        let " + xSumSquaredName + " = " + xName + " |> Array.map (fun e -> e * e) |> Array.sum" + nl + nl
+            let sc2 = 
+                allSubst
+                |> List.filter (fun s -> not s.isFood)
+                |> List.map (fun s -> "                " + (s.atoms.ToString()) + ".0 * " + (x s) + " * " + (x s) + " // " + (substToString s))
+                |> String.concat nl
+
+            let sumCode = "        let " + xSumName + " = (" + xName + " |> Array.sum) - " + xName + ".[0]" + nl + nl
+            let sumCodeN = "        let " + xSumNameN + " = " + nl + "            [|" + nl + sc + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
+            let sumSquaredCodeN = "        let " + xSumSquaredNameN + " = " + nl + "            [|" + nl + sc2 + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
 
 
             let updateCode = 
-                [ "    let update (x : array<double>) : array<double> = " + nl + sumCode + sumSquaredCode + "        [|" ]
+                [ "    let update (x : array<double>) : array<double> = " + nl + sumCode + sumCodeN + sumSquaredCodeN + "        [|" ]
                 @
                 a
                 @

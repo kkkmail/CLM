@@ -143,6 +143,7 @@ module ReactionRates =
             forwardScale : double option
         }
 
+
     type SedimentationDirectModel = 
         | SedimentationDirectRandom of SedimentationDirectRandomParam
 
@@ -153,15 +154,34 @@ module ReactionRates =
                 | SedimentationDirectRandom p -> p.sedimentationDirectDistribution.nextDoubleOpt() |> getRates p.forwardScale None
             | _ -> noRates
 
+    type SedimentationAllRandomParam = 
+        {
+            sedimentationAllDistribution : Distribution
+            forwardScale : double option
+        }
+
+
+    type SedimentationAllModel = 
+        | SedimentationAllRandom of SedimentationAllRandomParam
+
+        member this.getRates (r : ReactionInfo) =
+            match r.reactionName with 
+            | SedimentationAllName -> 
+                match this with 
+                | SedimentationAllRandom p -> p.sedimentationAllDistribution.nextDouble() |> Some |> getRates p.forwardScale None
+            | _ -> noRates
+
 
     type ReactionRateModel = 
         | SynthesisRateModel of SyntethisModel
         | SedimentationDirectRateModel of SedimentationDirectModel
+        | SedimentationAllRateModel of SedimentationAllModel
 
         member this.getRates (r : ReactionInfo) = 
             match this with 
             | SynthesisRateModel m -> m.getRates r
             | SedimentationDirectRateModel m -> m.getRates r
+            | SedimentationAllRateModel  m -> m.getRates r
 
 
     type ReactionRateProviderParams = 
@@ -181,7 +201,7 @@ module ReactionRates =
             | false, _ -> 
                 let x = calculateRates r
                 rateDictionary.Add(r, x.primary)
-                rateDictionary.Add(r.enantiomer, x.primary)
+                if rateDictionary.ContainsKey r.enantiomer |> not then rateDictionary.Add(r.enantiomer, x.primary)
                 x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i |> not then rateDictionary.Add(i, e)) |> ignore
                 x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i.enantiomer |> not then rateDictionary.Add(i.enantiomer, e)) |> ignore
                 x.primary
@@ -207,3 +227,13 @@ module ReactionRates =
             |> SedimentationDirectRandom
             |> SedimentationDirectRateModel
             |> ReactionRateProvider
+
+        static member defaultSedimentationAllModel (rnd : Random) mult =
+            {
+                sedimentationAllDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                forwardScale = Some mult
+            }
+            |> SedimentationAllRandom
+            |> SedimentationAllRateModel
+            |> ReactionRateProvider
+
