@@ -24,6 +24,9 @@ module Solver =
 
     type OdeResult = 
         {
+            noOfOutputPoints : int
+            startTime : double
+            endTime : double
             t : double[]
             x : double[,]
         }
@@ -44,5 +47,11 @@ module Solver =
         let mutable s = alglib.odesolverrkck(i, x, eps, h)
         do alglib.odesolversolve(s, d, null)
         let mutable (m, xtbl, ytbl, rep) = alglib.odesolverresults(s)
-        //printfn "ytbl = %A" (ytbl.[1,*])
-        { t = xtbl; x = ytbl }
+
+        {
+            noOfOutputPoints = nt
+            startTime = p.startTime
+            endTime = p.endTime
+            t = xtbl
+            x = ytbl 
+        }

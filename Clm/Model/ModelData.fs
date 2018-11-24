@@ -1,11 +1,16 @@
 namespace Model
+
 open Clm.Substances
+open Clm.Model
+
 
 module ModelData = 
+
     let seedValue = 12345
     let numberOfAminoAcids = NumberOfAminoAcids.TwoAminoAcids
     let maxPeptideLength = MaxPeptideLength.ThreeMax
     let numberOfSubstances = 85
+
 
 
     let getTotalSubst (x : array<double>) = 
@@ -97,6 +102,7 @@ module ModelData =
             3.0 * x.[84] // bbb
         |]
          |> Array.sum
+
 
 
     let getTotals (x : array<double>) = 
@@ -1237,4 +1243,14 @@ module ModelData =
             |> Array.fold (fun acc r -> acc + r) 0.0
 
         |]
+
+
+    let modelDataParams = 
+        {
+            numberOfSubstances = 85
+            numberOfAminoAcids = TwoAminoAcids
+            maxPeptideLength = ThreeMax
+            getTotals = getTotals
+            getTotalSubst = getTotalSubst
+        }
 

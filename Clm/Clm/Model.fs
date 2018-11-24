@@ -10,8 +10,16 @@ open Clm.Reactions
 open Clm.ReactionTypes
 open Clm.ReactionRates
 
-
 module Model = 
+
+    type ModelDataParams = 
+        {
+            numberOfSubstances : int
+            numberOfAminoAcids : NumberOfAminoAcids
+            maxPeptideLength : MaxPeptideLength
+            getTotals : array<double> -> array<double * double>
+            getTotalSubst : array<double> -> double
+        }
 
     type ModelParams = 
         {
@@ -291,6 +299,17 @@ module Model =
             let sumCodeN = "        let " + xSumNameN + " = " + nl + "            [|" + nl + sc + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
             let sumSquaredCodeN = "        let " + xSumSquaredNameN + " = " + nl + "            [|" + nl + sc2 + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
 
+            let modelDataParamsCode = 
+                @"
+    let modelDataParams = 
+        {
+            numberOfSubstances = " + (allSubst.Length).ToString() + @"
+            numberOfAminoAcids = " + (modelParams.numberOfAminoAcids.ToString()) + @"
+            maxPeptideLength = " + (modelParams.maxPeptideLength.ToString()) + @"
+            getTotals = getTotals
+            getTotalSubst = getTotalSubst
+        }
+"
 
             let updateCode = 
                 [ "    let update (x : array<double>) : array<double> = " + nl + sumCode + sumCodeN + sumSquaredCodeN + "        [|" ]
@@ -305,7 +324,17 @@ module Model =
                 "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl +
                 "    let numberOfSubstances = " + (allSubst.Length).ToString() + nl + nl
 
-            [ "namespace Model" + nl + "open Clm.Substances" + nl + nl + "module ModelData = " + nl + paramCode + nl + totalSubstCode + nl + totalCode + nl] @ updateCode
+            [
+                "namespace Model" + nl
+                "open Clm.Substances" + nl
+                "open Clm.Model" + nl + nl
+                "module ModelData = " + nl
+                paramCode + nl
+                totalSubstCode + nl
+                totalCode + nl
+            ]
+            @ updateCode
+            @ [ modelDataParamsCode ]
 
 
         member model.allSubstances = allSubst
