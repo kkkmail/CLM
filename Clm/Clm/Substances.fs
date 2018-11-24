@@ -150,7 +150,7 @@ module Substances =
             | A15 -> 14
             | A16 -> 15
 
-        static member toString (a : AminoAcid) = sprintf "%A" a
+        static member toString (a : AminoAcid) = a.name
 
         static member toString (i : int) = 
             match AminoAcid.all |> List.tryFind(fun a -> a.number = i) with

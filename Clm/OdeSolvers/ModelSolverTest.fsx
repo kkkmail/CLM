@@ -13,7 +13,7 @@ open Clm.Substances
 
 let n = numberOfSubstances
 let noOfOutputPoints = 100
-let tEnd = 1000.0
+let tEnd = 10000.0
 let odeParams = { OdeParams.defaultValue with endTime = tEnd; noOfOutputPoints = Some noOfOutputPoints }
 
 
@@ -32,7 +32,8 @@ let plotAll (r : OdeResult) =
     |> Chart.ShowWithDescription description
 
 let plotAminoAcids (r : OdeResult) =
-    let description = "Some description"
+    let description = sprintf "Number of amino acids: %A, number of peptides: %A, number of substances: %A." numberOfAminoAcids.length maxPeptideLength.length numberOfSubstances
+
     let fn = [ for i in 0..(numberOfAminoAcids.length * 2 - 1) -> i ]
 
     let name i = 
@@ -42,10 +43,15 @@ let plotAminoAcids (r : OdeResult) =
 
     let tIdx = [ for i in 0..noOfOutputPoints -> i ]
 
-    let d t = getTotals r.x.[t,*]
+    let a = tIdx |> Array.ofList |> Array.map (fun t -> getTotals r.x.[t,*])
+
+    let d t i = 
+        if i < numberOfAminoAcids.length 
+        then a.[t].[i] |> fst
+        else a.[t].[i - numberOfAminoAcids.length] |> snd
 
     let getFuncData i = 
-        tIdx |> List.map (fun t -> r.t.[t], r.x.[t,i])
+        tIdx |> List.map (fun t -> r.t.[t], d t i)
 
     //FSharp.Plotly
     Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
