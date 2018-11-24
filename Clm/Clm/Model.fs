@@ -197,6 +197,19 @@ module Model =
             "        |]" + nl
 
 
+        let generateTotalSubst() = 
+            let x =
+                allSubst
+                |> List.map (fun s -> s, s.atoms)
+                |> List.map (fun (s, i) -> "            " + (toMult i) + (x s) + " // " + (substToString s))
+                |> String.concat nl
+
+            "    let getTotalSubst (x : array<double>) = " + nl +
+            "        [|" + nl +
+            x +
+            nl + "        |]" + nl + "         |> Array.sum" + nl + nl
+
+
         let generate () = 
             let t0 = DateTime.Now
             printfn "t0 = %A" t0
@@ -235,7 +248,8 @@ module Model =
             printfn "t2 = %A" t2
             printfn "t2 - t1 = %A" (t2 - t1).TotalSeconds
 
-            let totalCode = generateTotals ()
+            let totalCode = generateTotals()
+            let totalSubstCode = generateTotalSubst()
 
             //let sc = 
             //    allSubst
@@ -260,7 +274,7 @@ module Model =
                 "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl +
                 "    let numberOfSubstances = " + (allSubst.Length).ToString() + nl + nl
 
-            [ "namespace Model" + nl + "open Clm.Substances" + nl + nl + "module ModelData = " + nl + paramCode + nl + totalCode + nl] @ updateCode
+            [ "namespace Model" + nl + "open Clm.Substances" + nl + nl + "module ModelData = " + nl + paramCode + nl + totalSubstCode + nl + totalCode + nl] @ updateCode
 
 
         member model.allSubstances = allSubst

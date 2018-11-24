@@ -13,7 +13,7 @@ open Clm.Substances
 
 let n = numberOfSubstances
 let noOfOutputPoints = 100
-let tEnd = 10000.0
+let tEnd = 100.0
 let odeParams = { OdeParams.defaultValue with endTime = tEnd; noOfOutputPoints = Some noOfOutputPoints }
 
 
@@ -37,18 +37,22 @@ let plotAminoAcids (r : OdeResult) =
     let fn = [ for i in 0..(numberOfAminoAcids.length * 2 - 1) -> i ]
 
     let name i = 
-        if i < numberOfAminoAcids.length 
-        then AminoAcid.toString i
-        else (AminoAcid.toString (i - numberOfAminoAcids.length)).ToLower()
+        let idx = i / 2
+
+        if idx * 2 = i 
+        then AminoAcid.toString idx
+        else (AminoAcid.toString idx).ToLower()
 
     let tIdx = [ for i in 0..noOfOutputPoints -> i ]
 
     let a = tIdx |> Array.ofList |> Array.map (fun t -> getTotals r.x.[t,*])
 
     let d t i = 
-        if i < numberOfAminoAcids.length 
-        then a.[t].[i] |> fst
-        else a.[t].[i - numberOfAminoAcids.length] |> snd
+        let idx = i / 2
+
+        if idx * 2 = i 
+        then a.[t].[idx] |> fst
+        else a.[t].[idx] |> snd
 
     let getFuncData i = 
         tIdx |> List.map (fun t -> r.t.[t], d t i)
@@ -71,8 +75,8 @@ printfn "Solving for n = %A..." n
 let result = nSolve odeParams f i
 #time
 
-let r1 = result.x.[1,*]
-printfn "r1 = %A" r1
+//let r1 = result.x.[1,*]
+//printfn "r1 = %A" r1
 
 printfn "Plotting."
 plotAminoAcids result

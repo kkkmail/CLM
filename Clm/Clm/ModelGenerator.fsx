@@ -20,9 +20,6 @@ open System
 let n = NumberOfAminoAcids.TwoAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
-//let n = NumberOfAminoAcids.OneAminoAcid
-//let m = MaxPeptideLength.TwoMax
-
 let seed = 12345
 let rnd = new Random(seed)
 

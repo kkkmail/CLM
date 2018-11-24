@@ -63,6 +63,8 @@ module Substances =
 
         member __.length = 0
         member __.name = "Y"
+        member __.atoms = 1
+
         static member y = FoodSubst
 
 
@@ -169,6 +171,7 @@ module Substances =
         | R of AminoAcid
 
         member __.length = 1
+        member __.atoms = 1
 
         member aminoAcid.isL = 
             match aminoAcid with 
@@ -204,6 +207,8 @@ module Substances =
         member peptide.length = 
             let (Peptide p) = peptide
             p.Length
+
+        member peptide.atoms = peptide.length
 
         member peptide.enantiomer = 
             let (Peptide p) = peptide
@@ -302,6 +307,13 @@ module Substances =
             | Chiral _ -> false
             | PeptideChain _ -> false
             | Sum _ -> false
+
+        member substance.atoms = 
+            match substance with 
+            | Food f -> f.atoms
+            | Chiral c -> c.atoms
+            | PeptideChain p -> p.atoms
+            | Sum _ -> 0
 
         static member food = FoodSubst.y |> Food
         static member chiralL a = a |> L |> Chiral
