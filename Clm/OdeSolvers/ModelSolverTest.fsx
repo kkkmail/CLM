@@ -1,15 +1,14 @@
 ﻿//===========================================================
 printfn "Starting..."
 #load "References.fsx"
-#r "./bin/Debug/Clm.dll"
-#r "./bin/Debug/Model.dll"
 //===========================================================
 open System
 open Microsoft.FSharp.Core
-open FSharp.Plotly
-open Model.ModelData
 open Clm.Substances
+open Clm.Model
+open Model.ModelData
 open OdeSolvers.Solver
+open FSharp.Plotly
 open OdeSolvers.Visualization
 
 let n = numberOfSubstances
@@ -35,5 +34,5 @@ printfn "Plotting."
 let plotter = new Plotter(modelDataParams, result)
 plotter.plotAminoAcids()
 plotter.plotTotalSubst()
-//plotter.plotEnantiomericExcess()
+plotter.plotEnantiomericExcess()
 printfn "Completed."

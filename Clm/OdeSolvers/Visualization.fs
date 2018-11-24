@@ -1,11 +1,11 @@
 ﻿namespace OdeSolvers
 
 open System
+open Clm.Substances
+open Clm.Model
 open OdeSolvers.Solver
 open Microsoft.FSharp.Core
 open FSharp.Plotly
-open Clm.Substances
-open Clm.Model
 
 module Visualization = 
 
@@ -84,4 +84,4 @@ module Visualization =
         member this.plotAll() = plotAllImpl o
         member this.plotAminoAcids() = plotAminoAcidsImpl o
         member this.plotTotalSubst() = plotTotalSubstImpl o
-        //member this.plotEnantiomericExcess() = plotEnantiomericExcessImpl o
+        member this.plotEnantiomericExcess() = plotEnantiomericExcessImpl o
