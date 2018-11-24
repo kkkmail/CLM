@@ -11,17 +11,17 @@ module Reactions =
 
     type ForwardReaction =
         {
-            reactionInfo : ReactionInfo
+            reaction : Reaction
             forwardRate : ReactionRate
         }
 
-        member reaction.enantiomer = { reaction with reactionInfo = reaction.reactionInfo.enantiomer }
+        member reaction.enantiomer = { reaction with reaction = reaction.reaction.enantiomer }
 
         static member tryCreate g i = 
             match g i with 
             | Some f ->
                 {
-                    reactionInfo = i
+                    reaction = i
                     forwardRate = f
                 } 
                 |> Forward
@@ -31,17 +31,17 @@ module Reactions =
 
     and BackwardReaction =
         {
-            reactionInfo : ReactionInfo
+            reaction : Reaction
             backwardRate : ReactionRate
         }
 
-        member reaction.enantiomer = { reaction with reactionInfo = reaction.reactionInfo.enantiomer }
+        member reaction.enantiomer = { reaction with reaction = reaction.reaction.enantiomer }
 
         static member tryCreate g i = 
             match g i with 
             | Some b ->
                 {
-                    reactionInfo = i
+                    reaction = i
                     backwardRate = b
                 } 
                 |> Backward
@@ -51,18 +51,18 @@ module Reactions =
 
     and ReversibleReaction =
         {
-            reactionInfo : ReactionInfo
+            reaction : Reaction
             forwardRate : ReactionRate
             backwardRate : ReactionRate
         }
 
-        member reaction.enantiomer = { reaction with reactionInfo = reaction.reactionInfo.enantiomer }
+        member reaction.enantiomer = { reaction with reaction = reaction.reaction.enantiomer }
 
         static member tryCreate (g : ReactionRateProvider) i = 
             match g.getRates i with 
             | Some f, Some b ->
                 {
-                    reactionInfo = i
+                    reaction = i
                     forwardRate = f
                     backwardRate = b
                 } 
@@ -73,7 +73,7 @@ module Reactions =
             | None, None -> None
 
 
-    and Reaction =
+    and AnyReaction =
         | Forward of ForwardReaction
         | Backward of BackwardReaction
         | Reversible of ReversibleReaction
@@ -87,11 +87,11 @@ module Reactions =
         member this.name = 
             let a, i =
                 match this with
-                | Forward r -> " -> ", r.reactionInfo
-                | Backward r -> " <- ", r.reactionInfo
-                | Reversible r -> " <-> ", r.reactionInfo
+                | Forward r -> " -> ", r.reaction
+                | Backward r -> " <- ", r.reaction
+                | Reversible r -> " <-> ", r.reaction
 
-            i.getName a
+            i.info.getName a
 
         static member tryCreateReaction g i = 
             match ReversibleReaction.tryCreate g i with 

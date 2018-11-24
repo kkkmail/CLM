@@ -22,14 +22,14 @@ module ReactionTypes =
             output : list<Substance * int>
         }
 
-        member info.enantiomer = 
-            let e (i : list<Substance * int>) = i |> List.map (fun (s, n) -> (s.enantiomer, n))
+        //member info.enantiomer = 
+        //    let e (i : list<Substance * int>) = i |> List.map (fun (s, n) -> (s.enantiomer, n))
 
-            {
-                reactionName = info.reactionName
-                input = info.input |> e
-                output = info.output |> e
-            }
+        //    {
+        //        reactionName = info.reactionName
+        //        input = info.input |> e
+        //        output = info.output |> e
+        //    }
 
         member this.getName a = 
             let g (l : list<Substance * int>) = 
@@ -51,9 +51,17 @@ module ReactionTypes =
                 output = [ (Chiral a, 1) ]
             }
 
+        member r.enantiomer = 
+            let (SynthesisReaction a) = r
+            a.enantiomer |> SynthesisReaction
+
 
     type SynthCatalyst = 
         | SynthCatalyst of Peptide
+
+        member c.enantiomer = 
+            let (SynthCatalyst a) = c
+            a.enantiomer |> SynthCatalyst
 
 
     type CatalyticSynthesisReaction = 
@@ -68,6 +76,10 @@ module ReactionTypes =
                 output = [ (Chiral a, 1); (p, 1) ]
             }
 
+        member r.enantiomer = 
+            let (CatalyticSynthesisReaction (a, c)) = r
+            (a.enantiomer, c.enantiomer) |> CatalyticSynthesisReaction
+
 
     type LigationReaction = 
         | LigationReaction of (list<ChiralAminoAcid> * list<ChiralAminoAcid>)
@@ -81,9 +93,17 @@ module ReactionTypes =
                 output = [ (Substance.fromList (a @ b), 1) ]
             }
 
+        member r.enantiomer = 
+            let (LigationReaction (a, b)) = r
+            (a |> List.map (fun e -> e.enantiomer), b |> List.map (fun e -> e.enantiomer)) |> LigationReaction
+
 
     type LigCatalyst =
         | LigCatalyst of Peptide
+
+        member c.enantiomer = 
+            let (LigCatalyst a) = c
+            a.enantiomer |> LigCatalyst
 
 
     type CatalyticLigationReaction = 
@@ -99,6 +119,10 @@ module ReactionTypes =
                 output = [ (Substance.fromList (a @ b), 1); (p, 1) ]
             }
 
+        member r.enantiomer = 
+            let (CatalyticLigationReaction (l, c)) = r
+            (l.enantiomer, c.enantiomer) |> CatalyticLigationReaction
+
 
     type SedimentationDirectReaction = 
         | SedimentationDirectReaction of (list<ChiralAminoAcid> * list<ChiralAminoAcid>)
@@ -112,20 +136,53 @@ module ReactionTypes =
                 output = [ (FoodSubst.y |> Food, a.Length + b.Length) ]
             }
 
+        member r.enantiomer = 
+            let (SedimentationDirectReaction (a, b)) = r
+            (a |> List.map (fun e -> e.enantiomer), b |> List.map (fun e -> e.enantiomer)) |> SedimentationDirectReaction
 
-    type ReactionType = 
+
+    type SedimentationAllReaction = 
+        | SedimentationAllReaction
+
+        member r.info = 
+            {
+                reactionName = ReactionName.SedimentationAllName
+                input = []
+                output = []
+            }
+
+
+    type Reaction = 
         | Synthesis of SynthesisReaction
         | CatalyticSynthesis of CatalyticSynthesisReaction
         | Ligation of LigationReaction
         | CatalyticLigation of CatalyticLigationReaction
         | SedimentationDirect of SedimentationDirectReaction
-        | SedimentationAll
+        | SedimentationAll of SedimentationAllReaction
 
-        member rt.name = 
-            match rt with 
-            | Synthesis _ -> "S"
-            | CatalyticSynthesis _ -> "CS"
-            | Ligation _ -> "L"
-            | CatalyticLigation _ -> "CL"
-            | SedimentationDirect _ -> "SD"
-            | SedimentationAll -> "SA"
+        member r.name = 
+            match r with 
+            | Synthesis _ -> SynthesisName
+            | CatalyticSynthesis _ -> CatalyticSynthesisName
+            | Ligation _ -> LigationName
+            | CatalyticLigation _ -> CatalyticLigationName
+            | SedimentationDirect _ -> SedimentationDirectName
+            | SedimentationAll _ -> SedimentationAllName
+
+        member r.info = 
+            match r with 
+            | Synthesis r -> r.info
+            | CatalyticSynthesis r -> r.info
+            | Ligation r -> r.info
+            | CatalyticLigation r -> r.info
+            | SedimentationDirect r -> r.info
+            | SedimentationAll r -> r.info
+
+        member r.enantiomer = 
+            match r with 
+            | Synthesis r -> r.enantiomer |> Synthesis
+            | CatalyticSynthesis r -> r.enantiomer |> CatalyticSynthesis
+            | Ligation r -> r.enantiomer |> Ligation
+            | CatalyticLigation r -> r.enantiomer |> CatalyticLigation
+            | SedimentationDirect r -> r.enantiomer |> SedimentationDirect
+            | SedimentationAll r -> SedimentationAll r

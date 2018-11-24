@@ -72,7 +72,7 @@ module ReactionRates =
     type RelatedReactions = 
         {
             primary : (ReactionRate option * ReactionRate option)
-            similar : list<ReactionInfo * (ReactionRate option * ReactionRate option)>
+            similar : list<Reaction * (ReactionRate option * ReactionRate option)>
         }
 
 
@@ -109,8 +109,8 @@ module ReactionRates =
     type SyntethisModel = 
         | SyntethisModel of SyntethisParam
 
-        member this.getRates (r : ReactionInfo) =
-            match r.reactionName with 
+        member this.getRates (r : Reaction) =
+            match r.name with 
             | SynthesisName -> 
                 let (SyntethisModel p) = this
                 let d = p.synthesisDistribution
@@ -120,7 +120,7 @@ module ReactionRates =
 
     type CatalyticSynthesisRandomParam = 
         {
-            catSyntheDistribution : Distribution
+            catSynthDistribution : Distribution
             forwardScale : double option
             backwardScale : double option
             maxEe : double
@@ -132,12 +132,12 @@ module ReactionRates =
         | CatalyticSynthesisRandom of CatalyticSynthesisRandomParam
         //| CatalystModelSimilarity of CatalystModelSimilarityParam // If substance is a catalyst for some amino acid X, then there are some [separate] chances that it could be a catalyst for other amino acids.
 
-        member this.getRates (r : ReactionInfo) =
-            match r.reactionName with 
+        member this.getRates (r : Reaction) =
+            match r.name with 
             | CatalyticSynthesisName -> 
                 match this with 
                 | CatalyticSynthesisRandom p -> 
-                    let d = p.catSyntheDistribution
+                    let d = p.catSynthDistribution
                     match d.nextDoubleOpt() with 
                     | Some rf -> 
                         let rb = d.nextDouble()
@@ -159,8 +159,8 @@ module ReactionRates =
     type SedimentationDirectModel = 
         | SedimentationDirectRandom of SedimentationDirectRandomParam
 
-        member this.getRates (r : ReactionInfo) =
-            match r.reactionName with
+        member this.getRates (r : Reaction) =
+            match r.name with
             | SedimentationDirectName ->
                 match this with 
                 | SedimentationDirectRandom p -> getForwardRates (p.forwardScale, p.sedimentationDirectDistribution.nextDoubleOpt())
@@ -176,8 +176,8 @@ module ReactionRates =
     type SedimentationAllModel = 
         | SedimentationAllRandom of SedimentationAllRandomParam
 
-        member this.getRates (r : ReactionInfo) =
-            match r.reactionName with 
+        member this.getRates (r : Reaction) =
+            match r.name with 
             | SedimentationAllName -> 
                 match this with 
                 | SedimentationAllRandom p -> getForwardRates (p.forwardScale, p.sedimentationAllDistribution.nextDouble() |> Some)
@@ -189,7 +189,7 @@ module ReactionRates =
         | SedimentationDirectRateModel of SedimentationDirectModel
         | SedimentationAllRateModel of SedimentationAllModel
 
-        member this.getRates (r : ReactionInfo) = 
+        member this.getRates (r : Reaction) = 
             match this with 
             | SynthesisRateModel m -> m.getRates r
             | SedimentationDirectRateModel m -> m.getRates r
@@ -198,14 +198,13 @@ module ReactionRates =
 
     type ReactionRateProviderParams = 
         {
-            //seedValue : int option
             rateModel: ReactionRateModel
         }
 
 
     type ReactionRateProvider (rateModel: ReactionRateModel) =
-        let rateDictionary = new Dictionary<ReactionInfo, (ReactionRate option * ReactionRate option)>()
-        let calculateRates (r : ReactionInfo) : RelatedReactions = rateModel.getRates r
+        let rateDictionary = new Dictionary<Reaction, (ReactionRate option * ReactionRate option)>()
+        let calculateRates (r : Reaction) : RelatedReactions = rateModel.getRates r
 
         let getRatesImpl r = 
             match rateDictionary.TryGetValue r with 
@@ -248,4 +247,3 @@ module ReactionRates =
             |> SedimentationAllRandom
             |> SedimentationAllRateModel
             |> ReactionRateProvider
-

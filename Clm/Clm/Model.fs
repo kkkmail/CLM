@@ -46,10 +46,8 @@ module Model =
         let aminoAcids = AminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let chiralAminoAcids = ChiralAminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let peptides = Peptide.getPeptides modelParams.maxPeptideLength modelParams.numberOfAminoAcids
-
-        // For flexibility. Update when necessary.
-        let synthCatalysts = peptides
-        let ligCatalysts = peptides
+        let synthCatalysts = peptides |> List.map (fun p -> SynthCatalyst p)
+        let ligCatalysts = peptides |> List.map (fun p -> LigCatalyst p)
 
         let allChains = (chiralAminoAcids |> List.map (fun a -> [ a ])) @ (peptides |> List.map (fun p -> p.aminoAcids))
 
@@ -81,7 +79,7 @@ module Model =
         let createReactions c n l = 
             match rateProviders.TryFind n with
             | Some g -> 
-                let create a = c a |> Reaction.tryCreateReaction g
+                let create a = c a |> AnyReaction.tryCreateReaction g
                 l
                 |> List.map create
                 |> List.choose id
@@ -89,11 +87,11 @@ module Model =
             | None -> []
 
 
-        let synth = createReactions SynthesisReaction.create SynthesisName aminoAcids
-        let catSynth = createReactions CatalyticSynthesisReaction.create CatalyticSynthesisName (List.allPairs aminoAcids synthCatalysts)
-        let lig = createReactions LigationReaction.create LigationName ligationPairs
-        let catLig = createReactions CatalyticLigationReaction.create CatalyticLigationName (List.allPairs ligationPairs ligCatalysts)
-        let sedDir = createReactions SedimentationDirectReaction.create SedimentationDirectName allPairs
+        let synth = createReactions (fun a -> SynthesisReaction a |> Synthesis) SynthesisName chiralAminoAcids
+        let lig = createReactions (fun x -> LigationReaction x |> Ligation) LigationName ligationPairs
+        let sedDir = createReactions (fun x -> SedimentationDirectReaction x |> SedimentationDirect) SedimentationDirectName allPairs
+        let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) CatalyticSynthesisName (List.allPairs (chiralAminoAcids |> List.map (fun c -> SynthesisReaction c)) synthCatalysts)
+        let catLig = createReactions (fun x -> CatalyticLigationReaction x |> CatalyticLigation) CatalyticLigationName (List.allPairs (ligationPairs |> List.map (fun c -> LigationReaction c)) ligCatalysts)
 
 
         let allReac = 
@@ -124,12 +122,7 @@ module Model =
         let kW = 
             match rateProviders.TryFind SedimentationAllName with 
             | Some r -> 
-                let i = 
-                    {
-                        reactionName = SedimentationAllName
-                        input = []
-                        output = []
-                    }
+                let i = SedimentationAllReaction |> SedimentationAll
                 r.getRates i |> fst
             | None -> None
 
@@ -156,7 +149,7 @@ module Model =
             | 1 -> String.Empty
             | _ -> i.ToString() + ".0 * "
 
-        let processReaction (r : Reaction) : list<Substance * string> =
+        let processReaction (r : AnyReaction) : list<Substance * string> =
             let update i o r f rc : list<Substance * string> = 
                 let catalysts = 
                     (o |> List.map (fun (s, n) -> s, -n)) @ i
@@ -184,12 +177,12 @@ module Model =
             let rc = reactToString r
 
             match r with
-            | Forward f -> update f.reactionInfo.input f.reactionInfo.output f.forwardRate true rc
-            | Backward b -> update b.reactionInfo.input b.reactionInfo.output b.backwardRate false rc
+            | Forward f -> update f.reaction.info.input f.reaction.info.output f.forwardRate true rc
+            | Backward b -> update b.reaction.info.input b.reaction.info.output b.backwardRate false rc
             | Reversible rv ->
-                (update rv.reactionInfo.input rv.reactionInfo.output rv.forwardRate true rc)
+                (update rv.reaction.info.input rv.reaction.info.output rv.forwardRate true rc)
                 @
-                (update rv.reactionInfo.output rv.reactionInfo.input rv.backwardRate true rc)
+                (update rv.reaction.info.output rv.reaction.info.input rv.backwardRate true rc)
 
 
         let generateTotals () = 
