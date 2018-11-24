@@ -9,7 +9,7 @@ open Clm.Model
 
 module Visualization = 
 
-    type Plotter (p : ModelDataParams, o : OdeResult) =
+    type Plotter(p : ModelDataParams, o : OdeResult) =
         let description = sprintf "Number of amino acids: %A, number of peptides: %A, number of substances: %A." p.numberOfAminoAcids.length p.maxPeptideLength.length p.numberOfSubstances
 
 
@@ -32,26 +32,39 @@ module Visualization =
 
             let name i = 
                 let idx = i / 2
-
-                if idx * 2 = i 
-                then AminoAcid.toString idx
-                else (AminoAcid.toString idx).ToLower()
+                if idx * 2 = i then AminoAcid.toString idx else (AminoAcid.toString idx).ToLower()
 
             let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
-
             let a = tIdx |> Array.ofList |> Array.map (fun t -> p.getTotals r.x.[t,*])
 
             let d t i = 
                 let idx = i / 2
+                if idx * 2 = i then a.[t].[idx] |> fst else a.[t].[idx] |> snd
 
-                if idx * 2 = i 
-                then a.[t].[idx] |> fst
-                else a.[t].[idx] |> snd
+            let getFuncData i = tIdx |> List.map (fun t -> r.t.[t], d t i)
 
-            let getFuncData i = 
-                tIdx |> List.map (fun t -> r.t.[t], d t i)
+            Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
+            |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
+            |> Chart.ShowWithDescription description
 
-            //FSharp.Plotly
+
+        let plotEnantiomericExcessImpl (r : OdeResult) =
+            let fn = [ for i in 0..(p.numberOfAminoAcids.length - 1) -> i ]
+
+            let name (i : int) = 
+                let l = AminoAcid.toString i
+                let d = l.ToLower()
+                "(" + l + " - " + d + ") / (" + l + " + " + d + ")"
+
+            let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
+            let a = tIdx |> Array.ofList |> Array.map (fun t -> p.getTotals r.x.[t,*])
+
+            let d t i = 
+                let (l, d) = a.[t].[i]
+                if (l + d) > 0.0 then (l - d) / (l + d) else 0.0
+
+            let getFuncData i = tIdx |> List.map (fun t -> r.t.[t], d t i)
+
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
             |> Chart.ShowWithDescription description
@@ -61,9 +74,9 @@ module Visualization =
             let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
             let totalData = tIdx |> List.map (fun t -> r.t.[t], p.getTotalSubst r.x.[t,*])
             let yData = tIdx |> List.map (fun t -> r.t.[t], r.x.[t,0])
+            let minData = tIdx |> List.map (fun t -> r.t.[t], r.x.[t,*] |> Array.min)
 
-            //FSharp.Plotly
-            Chart.Combine([ Chart.Line(totalData, Name = "Total"); Chart.Line(yData, Name = Substance.food.name) ])
+            Chart.Combine([ Chart.Line(totalData, Name = "Total"); Chart.Line(yData, Name = Substance.food.name); Chart.Line(minData, Name = "Min") ])
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
             |> Chart.ShowWithDescription description
 
@@ -71,4 +84,4 @@ module Visualization =
         member this.plotAll() = plotAllImpl o
         member this.plotAminoAcids() = plotAminoAcidsImpl o
         member this.plotTotalSubst() = plotTotalSubstImpl o
-
+        //member this.plotEnantiomericExcess() = plotEnantiomericExcessImpl o

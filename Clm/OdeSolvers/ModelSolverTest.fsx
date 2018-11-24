@@ -23,9 +23,7 @@ let y0 = 1000.0
 let mult = 0.01
 let rnd = new Random(12345)
 let i0 = [ for i in 1..(n-1) -> mult * rnd.NextDouble() ]
-
 let i = (y0 - (i0 |> List.sum)) :: i0 |> Array.ofList
-
 
 printfn "Solving for n = %A..." n
 
@@ -34,7 +32,8 @@ let result = nSolve odeParams f i
 #time
 
 printfn "Plotting."
-let plotter = Plotter(modelDataParams, result)
+let plotter = new Plotter(modelDataParams, result)
 plotter.plotAminoAcids()
 plotter.plotTotalSubst()
+//plotter.plotEnantiomericExcess()
 printfn "Completed."
