@@ -1,6 +1,7 @@
 namespace Model
 
 open Clm.Substances
+
 open Clm.Model
 
 
@@ -543,13 +544,13 @@ module ModelData =
                 4.0 * 32.069030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
                 4.0 * 1.80423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
                 4.0 * 1.80423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
-                9.6686867110751E-05 * x.[4] // b | SynthesisName: Y <-> b
-                -0.00096686867110751 * x.[0] // Y | SynthesisName: Y <-> b
-                9.6686867110751E-05 * x.[2] // B | SynthesisName: Y <-> B
-                -0.00096686867110751 * x.[0] // Y | SynthesisName: Y <-> B
-                0.00024793709127602 * x.[3] // a | SynthesisName: Y <-> a
+                4.97318781212586E-05 * x.[4] // b | SynthesisName: Y <-> b
+                -0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> b
+                4.97318781212586E-05 * x.[2] // B | SynthesisName: Y <-> B
+                -0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> B
+                9.6686867110751E-05 * x.[3] // a | SynthesisName: Y <-> a
                 -0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> a
-                0.00024793709127602 * x.[1] // A | SynthesisName: Y <-> A
+                9.6686867110751E-05 * x.[1] // A | SynthesisName: Y <-> A
                 -0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> A
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -561,7 +562,7 @@ module ModelData =
                 -4.50310328441251 * x.[4] * x.[1] // b + A | SedimentationDirectName: b + A -> 2 Y
                 -32.069030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
                 -1.80423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
-                -0.00024793709127602 * x.[1] // A | SynthesisName: Y <-> A
+                -9.6686867110751E-05 * x.[1] // A | SynthesisName: Y <-> A
                 0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> A
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -572,8 +573,8 @@ module ModelData =
                 -5.63057838270002E-05 * (2.0 * xSum - x.[2]) * x.[2]
                 -20.3042514176972 * x.[2] * x.[20] // B + bb | SedimentationDirectName: B + bb -> 3 Y
                 -4.50310328441251 * x.[2] * x.[3] // B + a | SedimentationDirectName: B + a -> 2 Y
-                -9.6686867110751E-05 * x.[2] // B | SynthesisName: Y <-> B
-                0.00096686867110751 * x.[0] // Y | SynthesisName: Y <-> B
+                -4.97318781212586E-05 * x.[2] // B | SynthesisName: Y <-> B
+                0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> B
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
@@ -584,7 +585,7 @@ module ModelData =
                 -4.50310328441251 * x.[2] * x.[3] // B + a | SedimentationDirectName: B + a -> 2 Y
                 -32.069030234827 * x.[3] * x.[42] // a + BBB | SedimentationDirectName: a + BBB -> 4 Y
                 -1.80423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
-                -0.00024793709127602 * x.[3] // a | SynthesisName: Y <-> a
+                -9.6686867110751E-05 * x.[3] // a | SynthesisName: Y <-> a
                 0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> a
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -595,8 +596,8 @@ module ModelData =
                 -5.63057838270002E-05 * (2.0 * xSum - x.[4]) * x.[4]
                 -20.3042514176972 * x.[4] * x.[10] // b + BB | SedimentationDirectName: b + BB -> 3 Y
                 -4.50310328441251 * x.[4] * x.[1] // b + A | SedimentationDirectName: b + A -> 2 Y
-                -9.6686867110751E-05 * x.[4] // b | SynthesisName: Y <-> b
-                0.00096686867110751 * x.[0] // Y | SynthesisName: Y <-> b
+                -4.97318781212586E-05 * x.[4] // b | SynthesisName: Y <-> b
+                0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> b
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
