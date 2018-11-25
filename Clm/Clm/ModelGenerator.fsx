@@ -28,7 +28,7 @@ let sdThreshold = 0.01
 let saMult = 0.1
 
 let synthProvider = ReactionRateProvider.defaultSynthesisModel rnd 0.01 0.001
-let catSynthProvider = ReactionRateProvider.defaultCatalyticSynthesisModel rnd None 1000.0
+let catSynthProvider = ReactionRateProvider.defaultCatalyticSynthesisModel rnd (Map.empty) None 1000.0
 let sdProvider = ReactionRateProvider.defaultSedimentationDirectModel rnd sdThreshold sdMult
 let saProvider = ReactionRateProvider.defaultSedimentationAllModel rnd saMult
 
