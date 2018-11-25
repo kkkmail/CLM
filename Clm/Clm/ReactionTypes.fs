@@ -151,6 +151,8 @@ module ReactionTypes =
                 output = []
             }
 
+        member r.enantiomer = r
+
 
     type Reaction = 
         | Synthesis of SynthesisReaction
