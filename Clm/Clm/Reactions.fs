@@ -56,7 +56,7 @@ module Reactions =
             backwardRate : ReactionRate
         }
 
-        member reaction.enantiomer = { reaction with reaction = reaction.reaction.enantiomer }
+        member r.enantiomer = { r with reaction = r.reaction.enantiomer }
 
         static member tryCreate (g : ReactionRateProvider) i = 
             match g.getRates i with 

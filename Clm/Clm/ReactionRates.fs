@@ -77,10 +77,10 @@ module ReactionRates =
             | Triangular d -> d.nextDoubleFromZeroToOne
 
 
-    type RelatedReactions = 
+    type RelatedReactions<'T> = 
         {
             primary : (ReactionRate option * ReactionRate option)
-            similar : list<Reaction * (ReactionRate option * ReactionRate option)>
+            similar : list<'T * (ReactionRate option * ReactionRate option)>
         }
 
 
@@ -111,36 +111,20 @@ module ReactionRates =
 
     let inline getRatesImpl<'T when 'T : (member enantiomer : 'T) and 'T : equality> 
         (d : Dictionary<'T, (ReactionRate option * ReactionRate option)>) 
-        (calculateRates : 'T -> RelatedReactions)
+        (calculateRates : 'T -> RelatedReactions<'T>)
         (r : 'T) = 
 
         match d.TryGetValue r with 
         | true, rates -> rates
         | false, _ -> 
             let x = calculateRates r
+            let getEnantiomer i = ((^T) : (member enantiomer : 'T) (i))
+            let enantiomer = getEnantiomer r
             d.Add(r, x.primary)
-            if d.ContainsKey ((^T) : (member enantiomer : 'T) (r)) |> not then failwith ""// rateDictionary.Add(r.enantiomer, x.primary)
-            //x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i |> not then rateDictionary.Add(i, e)) |> ignore
-            //x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i.enantiomer |> not then rateDictionary.Add(i.enantiomer, e)) |> ignore
+            if d.ContainsKey enantiomer |> not then d.Add(enantiomer, x.primary)
+            x.similar |> List.map (fun (i, e) -> if d.ContainsKey i |> not then d.Add(i, e)) |> ignore
+            x.similar |> List.map (fun (i, e) -> if d.ContainsKey (getEnantiomer i) |> not then d.Add(getEnantiomer i, e)) |> ignore
             x.primary
-
-    //[<AbstractClass>]
-    //type ReactionRateProviderBase<'T when 'T : (member enantiomer : 'T) and 'T : equality> () =
-    //    let rateDictionary = new Dictionary<'T, (ReactionRate option * ReactionRate option)>()
-    //    let calculateRates (r : 'T) : RelatedReactions = failwith ""//rateModel.getRates r
-
-    //    //let getRatesImpl (r : 'T) = 
-    //    //    match rateDictionary.TryGetValue r with 
-    //    //    | true, rates -> rates
-    //    //    | false, _ -> 
-    //    //        let x = calculateRates r
-    //    //        rateDictionary.Add(r, x.primary)
-    //    //        if rateDictionary.ContainsKey (((^T) : (member enantiomer : 'T) (r))) |> not then failwith ""// rateDictionary.Add(r.enantiomer, x.primary)
-    //    //        //x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i |> not then rateDictionary.Add(i, e)) |> ignore
-    //    //        //x.similar |> List.map (fun (i, e) -> if rateDictionary.ContainsKey i.enantiomer |> not then rateDictionary.Add(i.enantiomer, e)) |> ignore
-    //    //        x.primary
-
-    //    //member __.getRates (r : ^T) = getRatesImpl r
 
 
     type SyntethisParam = 
@@ -154,18 +138,12 @@ module ReactionRates =
     type SyntethisModel (p : SyntethisParam) =
         let rateDictionary = new Dictionary<SynthesisReaction, (ReactionRate option * ReactionRate option)>()
 
-        let calculateRates (r : SynthesisReaction) : RelatedReactions = 
+        let calculateRates _ = 
             let d = p.synthesisDistribution
             getRates (p.forwardScale, d.nextDouble() |> Some) (p.backwardScale, d.nextDouble() |> Some)
 
-        member __.getRates (r : SynthesisReaction) = getRatesImpl rateDictionary calculateRates r
-
-            //match r.name with 
-            //| SynthesisName -> 
-            //    let (SyntethisModel p) = this
-            //    let d = p.synthesisDistribution
-            //    getRates (p.forwardScale, d.nextDouble() |> Some) (p.backwardScale, d.nextDouble() |> Some)
-            //| _ -> noRates
+        member __.getRates (r : SynthesisReaction) = 
+            getRatesImpl rateDictionary calculateRates r
 
 
     type CatalyticSynthesisParam = 
@@ -180,7 +158,7 @@ module ReactionRates =
     type CatalyticSynthesisModel (p : CatalyticSynthesisParam) = 
         let rateDictionary = new Dictionary<CatalyticSynthesisReaction, (ReactionRate option * ReactionRate option)>()
 
-        let calculateRates (CatalyticSynthesisReaction (s, c)) : RelatedReactions = 
+        let calculateRates (CatalyticSynthesisReaction (s, c)) = 
             let distr = p.catSynthDistribution
             match distr.nextDoubleOpt() with 
             | Some k0 -> 
@@ -199,7 +177,7 @@ module ReactionRates =
                     | Some (ReactionRate sb) -> (k * sb |> ReactionRate |> Some, ke * sb |> ReactionRate |> Some)
                     | None -> (None, None)
 
-                let re = (s, c.enantiomer) |> CatalyticSynthesisReaction |> CatalyticSynthesis
+                let re = (s, c.enantiomer) |> CatalyticSynthesisReaction
 
                 {
                     primary = (rf, rb)
@@ -219,10 +197,7 @@ module ReactionRates =
 
     type SedimentationDirectModel (p : SedimentationDirectParam) =
         let rateDictionary = new Dictionary<SedimentationDirectReaction, (ReactionRate option * ReactionRate option)>()
-
-        let calculateRates (r : SedimentationDirectReaction) : RelatedReactions = 
-            getForwardRates (p.forwardScale, p.sedimentationDirectDistribution.nextDoubleOpt())
-
+        let calculateRates _ = getForwardRates (p.forwardScale, p.sedimentationDirectDistribution.nextDoubleOpt())
         member __.getRates (r : SedimentationDirectReaction) = getRatesImpl rateDictionary calculateRates r
 
 
@@ -235,22 +210,19 @@ module ReactionRates =
 
     type SedimentationAllModel (p : SedimentationAllParam) =
         let rateDictionary = new Dictionary<SedimentationAllReaction, (ReactionRate option * ReactionRate option)>()
-
-        let calculateRates (r : SedimentationAllReaction) : RelatedReactions = 
-            getForwardRates (p.forwardScale, p.sedimentationAllDistribution.nextDouble() |> Some)
-
+        let calculateRates _ = getForwardRates (p.forwardScale, p.sedimentationAllDistribution.nextDouble() |> Some)
         member __.getRates (r : SedimentationAllReaction) = getRatesImpl rateDictionary calculateRates r
 
 
     type LigationModel () = 
         let rateDictionary = new Dictionary<LigationReaction, (ReactionRate option * ReactionRate option)>()
-        let calculateRates (r : LigationReaction) : RelatedReactions = failwith ""
+        let calculateRates _ = failwith ""
         member __.getRates (r : LigationReaction) = getRatesImpl rateDictionary calculateRates r
 
 
     type CatalyticLigationModel () = 
         let rateDictionary = new Dictionary<CatalyticLigationReaction, (ReactionRate option * ReactionRate option)>()
-        let calculateRates (r : CatalyticLigationReaction) : RelatedReactions = failwith ""
+        let calculateRates _ = failwith ""
         member __.getRates (r : CatalyticLigationReaction) = getRatesImpl rateDictionary calculateRates r
 
 
@@ -275,6 +247,7 @@ module ReactionRates =
         member p.tryFindSedimentationDirectModel() = p.rateModels |> List.tryPick (fun e -> match e with | SedimentationDirectRateModel m -> Some m | _ -> None)
         member p.tryFindSedimentationAllModel() = p.rateModels |> List.tryPick (fun e -> match e with | SedimentationAllRateModel m -> Some m | _ -> None)
 
+
     let inline getModelRates<'M, 'R when 'M : (member getRates : 'R -> (ReactionRate option * ReactionRate option))>
         (mo : 'M option) (r : 'R) : (ReactionRate option * ReactionRate option) = 
         match mo with 
@@ -292,48 +265,36 @@ module ReactionRates =
             | SedimentationDirect r -> getModelRates (p.tryFindSedimentationDirectModel()) r
             | SedimentationAll r -> getModelRates (p.tryFindSedimentationAllModel()) r
 
-        member __.getRates (a : Reaction) =getRatesImpl a
-            
+        member __.getRates (a : Reaction) = getRatesImpl a
 
         static member defaultSynthesisModel (rnd : Random) forward backward =
             {
-                synthesisDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
-                //synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                //synthesisDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
+                synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
                 forwardScale = Some forward
                 backwardScale = Some backward
             }
             |> SyntethisModel
-        //    |> SynthesisRateModel
-        //    |> ReactionRateProvider
 
+        static member defaultCatalyticSynthesisModel (rnd : Random) m threshold mult =
+            {
+                catSynthDistribution = UniformDistribution(rnd.Next(), { threshold = threshold }) |> Uniform
+                synthesisModel = m
+                multiplier  = mult
+                maxEe = 0.05
+            }
+            |> CatalyticSynthesisModel
 
-        //static member defaultCatalyticSynthesisModel (rnd : Random) sr threshold mult =
-        //    {
-        //        catSynthDistribution = UniformDistribution(rnd.Next(), { threshold = threshold }) |> Uniform
-        //        synthesisReactions = sr
-        //        multiplier  = mult
-        //        maxEe = 0.05
-        //    }
-        //    |> CatalyticSynthesisRandom
-        //    |> CatalyticSynthesisRateModel
-        //    |> ReactionRateProvider
+        static member defaultSedimentationDirectModel (rnd : Random) threshold mult =
+            {
+                sedimentationDirectDistribution = TriangularDistribution(rnd.Next(), { threshold = Some threshold }) |> Triangular
+                forwardScale = Some mult
+            }
+            |> SedimentationDirectModel
 
-
-        //static member defaultSedimentationDirectModel (rnd : Random) threshold mult =
-        //    {
-        //        sedimentationDirectDistribution = TriangularDistribution(rnd.Next(), { threshold = Some threshold }) |> Triangular
-        //        forwardScale = Some mult
-        //    }
-        //    |> SedimentationDirectRandom
-        //    |> SedimentationDirectRateModel
-        //    |> ReactionRateProvider
-
-
-        //static member defaultSedimentationAllModel (rnd : Random) mult =
-        //    {
-        //        sedimentationAllDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
-        //        forwardScale = Some mult
-        //    }
-        //    |> SedimentationAllRandom
-        //    |> SedimentationAllRateModel
-        //    |> ReactionRateProvider
+        static member defaultSedimentationAllModel (rnd : Random) mult =
+            {
+                sedimentationAllDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                forwardScale = Some mult
+            }
+            |> SedimentationAllModel

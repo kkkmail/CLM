@@ -27,19 +27,19 @@ let sdMult = 100.0
 let sdThreshold = 0.01
 let saMult = 0.1
 
-let synthProvider = ReactionRateProvider.defaultSynthesisModel rnd 0.01 0.001
-let catSynthProvider = ReactionRateProvider.defaultCatalyticSynthesisModel rnd (Map.empty) None 1000.0
-let sdProvider = ReactionRateProvider.defaultSedimentationDirectModel rnd sdThreshold sdMult
-let saProvider = ReactionRateProvider.defaultSedimentationAllModel rnd saMult
+let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.01 0.001
+let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel None 1000.0
+let sdModel = ReactionRateProvider.defaultSedimentationDirectModel rnd sdThreshold sdMult
+let saModel = ReactionRateProvider.defaultSedimentationAllModel rnd saMult
 
 let rates = 
     [
-         (SynthesisName, synthProvider)
-         (CatalyticSynthesisName, catSynthProvider)
+         synthModel |> SynthesisRateModel
+         ////catSynthModel |> CatalyticSynthesisRateModel
          //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
-         //(SedimentationDirectName, sdProvider)
-         //(SedimentationAllName, saProvider)
+         sdModel |> SedimentationDirectRateModel
+         saModel |> SedimentationAllRateModel
     ]
 
 
@@ -48,7 +48,7 @@ let modelParams =
         seedValue = Some seed
         numberOfAminoAcids = n
         maxPeptideLength = m
-        reactionRates = rates
+        reactionRateModels = rates
     }
 
 

@@ -21,12 +21,13 @@ module Model =
             getTotalSubst : array<double> -> double
         }
 
+
     type ModelParams = 
         {
             seedValue : int option
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
-            reactionRates : List<ReactionName * ReactionRateProvider>
+            reactionRateModels : List<ReactionRateModel>
         }
 
 
@@ -42,7 +43,8 @@ module Model =
                 let r = new Random()
                 r.Next()
 
-        let rateProviders = modelParams.reactionRates |> Map.ofList
+        let rateProviderParams = { rateModels = modelParams.reactionRateModels }
+        let rateProvider = ReactionRateProvider rateProviderParams
         let aminoAcids = AminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let chiralAminoAcids = ChiralAminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let peptides = Peptide.getPeptides modelParams.maxPeptideLength modelParams.numberOfAminoAcids
@@ -76,22 +78,19 @@ module Model =
             |> Map.ofList
 
 
-        let createReactions c n l = 
-            match rateProviders.TryFind n with
-            | Some g -> 
-                let create a = c a |> AnyReaction.tryCreateReaction g
-                l
-                |> List.map create
-                |> List.choose id
-                |> List.concat
-            | None -> []
+        let createReactions c l = 
+            let create a = c a |> AnyReaction.tryCreateReaction rateProvider
+            l
+            |> List.map create
+            |> List.choose id
+            |> List.concat
 
 
-        let synth = createReactions (fun a -> SynthesisReaction a |> Synthesis) SynthesisName chiralAminoAcids
-        let lig = createReactions (fun x -> LigationReaction x |> Ligation) LigationName ligationPairs
-        let sedDir = createReactions (fun x -> SedimentationDirectReaction x |> SedimentationDirect) SedimentationDirectName allPairs
-        let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) CatalyticSynthesisName (List.allPairs (chiralAminoAcids |> List.map (fun c -> SynthesisReaction c)) synthCatalysts)
-        let catLig = createReactions (fun x -> CatalyticLigationReaction x |> CatalyticLigation) CatalyticLigationName (List.allPairs (ligationPairs |> List.map (fun c -> LigationReaction c)) ligCatalysts)
+        let synth = createReactions (fun a -> SynthesisReaction a |> Synthesis) chiralAminoAcids
+        let lig = createReactions (fun x -> LigationReaction x |> Ligation) ligationPairs
+        let sedDir = createReactions (fun x -> SedimentationDirectReaction x |> SedimentationDirect) allPairs
+        let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) (List.allPairs (chiralAminoAcids |> List.map (fun c -> SynthesisReaction c)) synthCatalysts)
+        let catLig = createReactions (fun x -> CatalyticLigationReaction x |> CatalyticLigation) (List.allPairs (ligationPairs |> List.map (fun c -> LigationReaction c)) ligCatalysts)
 
 
         let allReac = 
@@ -120,11 +119,9 @@ module Model =
         let coeffSedAllName = "kW"
 
         let kW = 
-            match rateProviders.TryFind SedimentationAllName with 
-            | Some r -> 
-                let i = SedimentationAllReaction |> SedimentationAll
-                r.getRates i |> fst
-            | None -> None
+            SedimentationAllReaction |> SedimentationAll
+            |> rateProvider.getRates
+            |> fst
 
         let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
         //let reactionComment (r : Reaction) = " // " + (reactToString r) + nl
