@@ -17,8 +17,8 @@ open System.Numerics
 open MathNet.Numerics.LinearAlgebra
 open System
 
-let n = NumberOfAminoAcids.TwoAminoAcids
-let m = MaxPeptideLength.ThreeMax
+let n = NumberOfAminoAcids.OneAminoAcid
+let m = MaxPeptideLength.TwoMax
 
 let seed = 12345
 let rnd = new Random(seed)
@@ -28,17 +28,18 @@ let sdThreshold = 0.01
 let saMult = 0.1
 
 let synthProvider = ReactionRateProvider.defaultSynthesisModel rnd 0.01 0.001
+let catSynthProvider = ReactionRateProvider.defaultCatalyticSynthesisModel rnd None 1000.0
 let sdProvider = ReactionRateProvider.defaultSedimentationDirectModel rnd sdThreshold sdMult
 let saProvider = ReactionRateProvider.defaultSedimentationAllModel rnd saMult
 
 let rates = 
     [
          (SynthesisName, synthProvider)
-         //(CatalyticSynthesis, (fun __ -> (Some (ReactionRate 10.0), Some (ReactionRate 0.01))) |> ReactionRateProvider)
+         (CatalyticSynthesisName, catSynthProvider)
          //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
-         (SedimentationDirectName, sdProvider)
-         (SedimentationAllName, saProvider)
+         //(SedimentationDirectName, sdProvider)
+         //(SedimentationAllName, saProvider)
     ]
 
 

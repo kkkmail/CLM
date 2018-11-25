@@ -91,7 +91,7 @@ module ReactionRates =
         }
 
 
-    let getRates (fo, rf) (bo, rb) = 
+    let getRatesWithSimilar (fo, rf) (bo, rb) s = 
         let g so ro = 
             match so, ro with
             | Some s, Some r -> s * r |> ReactionRate |> Some
@@ -99,8 +99,11 @@ module ReactionRates =
 
         {
             primary = (g fo rf, g bo rb)
-            similar = []
+            similar = s
         }
+
+
+    let getRates (fo, rf) (bo, rb) = getRatesWithSimilar (fo, rf) (bo, rb) []
 
 
     let getForwardRates (fo, rf) = getRates (fo, rf) (None, None)
@@ -129,8 +132,7 @@ module ReactionRates =
     type CatalyticSynthesisRandomParam = 
         {
             catSynthDistribution : Distribution
-            forwardScale : double option
-            backwardScale : double option
+            multiplier : double
             maxEe : double
         }
 
@@ -140,19 +142,33 @@ module ReactionRates =
         | CatalyticSynthesisRandom of CatalyticSynthesisRandomParam
         //| CatalystModelSimilarity of CatalystModelSimilarityParam // If substance is a catalyst for some amino acid X, then there are some [separate] chances that it could be a catalyst for other amino acids.
 
-        member this.getRates (r : Reaction) =
-            match r.name with 
-            | CatalyticSynthesisName -> 
+        member this.getRates (d: Dictionary<Reaction, (ReactionRate option * ReactionRate option)>) (r : Reaction) =
+            match r with 
+            | CatalyticSynthesis (CatalyticSynthesisReaction (s, c)) -> 
                 match this with 
                 | CatalyticSynthesisRandom p -> 
-                    let d = p.catSynthDistribution
-                    match d.nextDoubleOpt() with 
-                    | Some rf -> 
-                        let rb = d.nextDouble()
-                        let ee = p.maxEe * (d.nextDoubleFromZeroToOne() - 0.5)
+                    let distr = p.catSynthDistribution
+                    match distr.nextDoubleOpt() with 
+                    | Some k0 -> 
+                        match d.[Synthesis s] with 
+                        | Some (ReactionRate sf), Some (ReactionRate sb) -> 
+                            let ee = p.maxEe * (distr.nextDoubleFromZeroToOne() - 0.5)
+                            let k = k0 * p.multiplier * (1.0 + ee)
+                            let ke = k0 * p.multiplier * (1.0 - ee)
 
-                        //p.distribution.nextDoubleOpt() |> getRates p.forwardScale p.backwardScale
-                        failwith ""
+                            let rf = k * sf |> ReactionRate |> Some
+                            let rb = k * sb |> ReactionRate |> Some
+
+                            let rfe = ke * sf |> ReactionRate |> Some
+                            let rbe = ke * sb |> ReactionRate |> Some
+
+                            let re = (s, c.enantiomer) |> CatalyticSynthesisReaction |> CatalyticSynthesis
+
+                            {
+                                primary = (rf, rb)
+                                similar = [ (re, (rfe, rbe)) ]
+                            }
+                        | _ -> failwith "Synthesis must have both forward and backard rates defined."
                     | None -> noRates
             | _ -> noRates
 
@@ -174,6 +190,7 @@ module ReactionRates =
                 | SedimentationDirectRandom p -> getForwardRates (p.forwardScale, p.sedimentationDirectDistribution.nextDoubleOpt())
             | _ -> noRates
 
+
     type SedimentationAllRandomParam = 
         {
             sedimentationAllDistribution : Distribution
@@ -194,12 +211,14 @@ module ReactionRates =
 
     type ReactionRateModel = 
         | SynthesisRateModel of SyntethisModel
+        | CatalyticSynthesisRateModel of CatalyticSynthesisModel
         | SedimentationDirectRateModel of SedimentationDirectModel
         | SedimentationAllRateModel of SedimentationAllModel
 
-        member this.getRates (r : Reaction) = 
+        member this.getRates (d: Dictionary<Reaction, (ReactionRate option * ReactionRate option)>) (r : Reaction) = 
             match this with 
             | SynthesisRateModel m -> m.getRates r
+            | CatalyticSynthesisRateModel  m -> m.getRates d r
             | SedimentationDirectRateModel m -> m.getRates r
             | SedimentationAllRateModel  m -> m.getRates r
 
@@ -212,7 +231,7 @@ module ReactionRates =
 
     type ReactionRateProvider (rateModel: ReactionRateModel) =
         let rateDictionary = new Dictionary<Reaction, (ReactionRate option * ReactionRate option)>()
-        let calculateRates (r : Reaction) : RelatedReactions = rateModel.getRates r
+        let calculateRates (r : Reaction) : RelatedReactions = rateModel.getRates rateDictionary r
 
         let getRatesImpl r = 
             match rateDictionary.TryGetValue r with 
@@ -239,6 +258,17 @@ module ReactionRates =
             |> ReactionRateProvider
 
 
+        static member defaultCatalyticSynthesisModel (rnd : Random) threshold mult =
+            {
+                catSynthDistribution = UniformDistribution(rnd.Next(), { threshold = threshold }) |> Uniform
+                multiplier  = mult
+                maxEe = 0.05
+            }
+            |> CatalyticSynthesisRandom
+            |> CatalyticSynthesisRateModel
+            |> ReactionRateProvider
+
+
         static member defaultSedimentationDirectModel (rnd : Random) threshold mult =
             {
                 sedimentationDirectDistribution = TriangularDistribution(rnd.Next(), { threshold = Some threshold }) |> Triangular
@@ -247,6 +277,7 @@ module ReactionRates =
             |> SedimentationDirectRandom
             |> SedimentationDirectRateModel
             |> ReactionRateProvider
+
 
         static member defaultSedimentationAllModel (rnd : Random) mult =
             {
