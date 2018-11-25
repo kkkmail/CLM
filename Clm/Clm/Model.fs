@@ -32,7 +32,7 @@ module Model =
 
     type ClmModel (modelParams : ModelParams) = 
 
-        /// As of 20181122 F# still has a problem with a new line.
+        /// As of 20181122 F# / FSI still have a problem with a new line.
         let nl = "\r\n"
 
         let seedValue = 
@@ -117,7 +117,7 @@ module Model =
         let xSumNameN = "xSumN"
         let xSumSquaredNameN = "xSumSquaredN"
 
-        let koeffTotName = "kW"
+        let coeffSedAllName = "kW"
 
         let kW = 
             match rateProviders.TryFind SedimentationAllName with 
@@ -254,15 +254,21 @@ module Model =
                 match reactions.TryFind s with 
                 //| Some r -> r |> List.rev |> List.fold (fun acc (s, e) -> acc + e) ""
                 | Some r -> r |> List.rev |> List.map (fun (_, e) -> e) |> String.concat ""
-                | None -> ""
+                | None -> String.Empty
 
             let getTotalSedReac (s : Substance) = 
                 match kW with
-                | Some (ReactionRate k) -> 
+                | Some (ReactionRate _) -> 
                     match s with 
-                    | Food _ -> "                " + k.ToString() + " * (2.0 * " + xSumName + " * " + xSumNameN + " - " + xSumSquaredNameN + ")"
-                    | _ -> "                " + "-" + k.ToString() + " * (2.0 * " + xSumName + " - " + (x s) + ") * " + (x s)
-                | None -> ""
+                    | Food _ -> "                " + coeffSedAllName + " * (2.0 * " + xSumName + " * " + xSumNameN + " - " + xSumSquaredNameN + ")"
+                    | _ -> "                " + "-" + coeffSedAllName + " * (2.0 * " + xSumName + " - " + (x s) + ") * " + (x s)
+                | None -> String.Empty
+
+            let coeffSedAllCode = 
+                match kW with
+                | Some (ReactionRate k) -> 
+                    "    let " + coeffSedAllName + " = " + k.ToString() + " / " + (allSubst.Length - 1).ToString() + ".0" + nl
+                | None -> String.Empty
 
             let a = 
                 allSubst
@@ -296,9 +302,9 @@ module Model =
                 @"
     let modelDataParams = 
         {
-            numberOfSubstances = " + (allSubst.Length).ToString() + @"
-            numberOfAminoAcids = " + (modelParams.numberOfAminoAcids.ToString()) + @"
-            maxPeptideLength = " + (modelParams.maxPeptideLength.ToString()) + @"
+            numberOfSubstances = " + allSubst.Length.ToString() + @"
+            numberOfAminoAcids = " + modelParams.numberOfAminoAcids.ToString() + @"
+            maxPeptideLength = " + modelParams.maxPeptideLength.ToString() + @"
             getTotals = getTotals
             getTotalSubst = getTotalSubst
         }
@@ -315,7 +321,8 @@ module Model =
                 "    let seedValue = " + seedValue.ToString() + nl + 
                 "    let numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + nl + 
                 "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl +
-                "    let numberOfSubstances = " + (allSubst.Length).ToString() + nl + nl
+                "    let numberOfSubstances = " + (allSubst.Length).ToString() + nl + 
+                coeffSedAllCode + nl
 
             [
                 "namespace Model" + nl

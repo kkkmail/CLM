@@ -41,6 +41,10 @@ module ReactionRates =
             | false -> None
 
 
+    type DeltaDistribution (seed : int, p : DistributionParams) = 
+        inherit DistributionBase (seed, p, fun _ -> 1.0)
+
+
     type UniformDistribution (seed : int, p : DistributionParams) = 
         inherit DistributionBase (seed, p, fun r -> r.NextDouble())
 
@@ -50,21 +54,25 @@ module ReactionRates =
 
 
     type Distribution =
+        | Delta of DeltaDistribution
         | Uniform of UniformDistribution
         | Triangular of TriangularDistribution
 
         member this.nextDouble = 
             match this with
+            | Delta d -> d.nextDouble
             | Uniform d -> d.nextDouble
             | Triangular d -> d.nextDouble
 
         member this.nextDoubleOpt = 
             match this with
+            | Delta d -> d.nextDoubleOpt
             | Uniform d -> d.nextDoubleOpt
             | Triangular d -> d.nextDoubleOpt
 
         member this.nextDoubleFromZeroToOne =
             match this with
+            | Delta d -> d.nextDoubleFromZeroToOne
             | Uniform d -> d.nextDoubleFromZeroToOne
             | Triangular d -> d.nextDoubleFromZeroToOne
 
@@ -221,7 +229,8 @@ module ReactionRates =
 
         static member defaultSynthesisModel (rnd : Random) forward backward =
             {
-                synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                synthesisDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
+                //synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
                 forwardScale = Some forward
                 backwardScale = Some backward
             }

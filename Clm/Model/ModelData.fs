@@ -11,6 +11,7 @@ module ModelData =
     let numberOfAminoAcids = NumberOfAminoAcids.TwoAminoAcids
     let maxPeptideLength = MaxPeptideLength.ThreeMax
     let numberOfSubstances = 85
+    let kW = 0.00563057838270002 / 84.0
 
 
 
@@ -497,7 +498,7 @@ module ModelData =
 
             // 0 - Y
             [|
-                5.63057838270002E-05 * (2.0 * xSum * xSumN - xSumSquaredN)
+                kW * (2.0 * xSum * xSumN - xSumSquaredN)
                 6.0 * 17.954704695951 * x.[76] * x.[42] // bBb + BBB | SedimentationDirectName: bBb + BBB -> 6 Y
                 6.0 * 17.954704695951 * x.[50] * x.[84] // BbB + bbb | SedimentationDirectName: BbB + bbb -> 6 Y
                 6.0 * 7.59615840450121 * x.[76] * x.[35] // bBb + Aba | SedimentationDirectName: bBb + Aba -> 6 Y
@@ -544,74 +545,74 @@ module ModelData =
                 4.0 * 32.069030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
                 4.0 * 1.80423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
                 4.0 * 1.80423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
-                4.97318781212586E-05 * x.[4] // b | SynthesisName: Y <-> b
-                -0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> b
-                4.97318781212586E-05 * x.[2] // B | SynthesisName: Y <-> B
-                -0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> B
-                9.6686867110751E-05 * x.[3] // a | SynthesisName: Y <-> a
-                -0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> a
-                9.6686867110751E-05 * x.[1] // A | SynthesisName: Y <-> A
-                -0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> A
+                0.001 * x.[4] // b | SynthesisName: Y <-> b
+                -0.01 * x.[0] // Y | SynthesisName: Y <-> b
+                0.001 * x.[2] // B | SynthesisName: Y <-> B
+                -0.01 * x.[0] // Y | SynthesisName: Y <-> B
+                0.001 * x.[3] // a | SynthesisName: Y <-> a
+                -0.01 * x.[0] // Y | SynthesisName: Y <-> a
+                0.001 * x.[1] // A | SynthesisName: Y <-> A
+                -0.01 * x.[0] // Y | SynthesisName: Y <-> A
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 1 - A
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[1]) * x.[1]
+                -kW * (2.0 * xSum - x.[1]) * x.[1]
                 -4.50310328441251 * x.[4] * x.[1] // b + A | SedimentationDirectName: b + A -> 2 Y
                 -32.069030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
                 -1.80423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
-                -9.6686867110751E-05 * x.[1] // A | SynthesisName: Y <-> A
-                0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> A
+                -0.001 * x.[1] // A | SynthesisName: Y <-> A
+                0.01 * x.[0] // Y | SynthesisName: Y <-> A
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 2 - B
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[2]) * x.[2]
+                -kW * (2.0 * xSum - x.[2]) * x.[2]
                 -20.3042514176972 * x.[2] * x.[20] // B + bb | SedimentationDirectName: B + bb -> 3 Y
                 -4.50310328441251 * x.[2] * x.[3] // B + a | SedimentationDirectName: B + a -> 2 Y
-                -4.97318781212586E-05 * x.[2] // B | SynthesisName: Y <-> B
-                0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> B
+                -0.001 * x.[2] // B | SynthesisName: Y <-> B
+                0.01 * x.[0] // Y | SynthesisName: Y <-> B
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 3 - a
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[3]) * x.[3]
+                -kW * (2.0 * xSum - x.[3]) * x.[3]
                 -4.50310328441251 * x.[2] * x.[3] // B + a | SedimentationDirectName: B + a -> 2 Y
                 -32.069030234827 * x.[3] * x.[42] // a + BBB | SedimentationDirectName: a + BBB -> 4 Y
                 -1.80423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
-                -9.6686867110751E-05 * x.[3] // a | SynthesisName: Y <-> a
-                0.0024793709127602 * x.[0] // Y | SynthesisName: Y <-> a
+                -0.001 * x.[3] // a | SynthesisName: Y <-> a
+                0.01 * x.[0] // Y | SynthesisName: Y <-> a
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 4 - b
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[4]) * x.[4]
+                -kW * (2.0 * xSum - x.[4]) * x.[4]
                 -20.3042514176972 * x.[4] * x.[10] // b + BB | SedimentationDirectName: b + BB -> 3 Y
                 -4.50310328441251 * x.[4] * x.[1] // b + A | SedimentationDirectName: b + A -> 2 Y
-                -4.97318781212586E-05 * x.[4] // b | SynthesisName: Y <-> b
-                0.00883714156636835 * x.[0] // Y | SynthesisName: Y <-> b
+                -0.001 * x.[4] // b | SynthesisName: Y <-> b
+                0.01 * x.[0] // Y | SynthesisName: Y <-> b
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 5 - AA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[5]) * x.[5]
+                -kW * (2.0 * xSum - x.[5]) * x.[5]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 6 - AB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[6]) * x.[6]
+                -kW * (2.0 * xSum - x.[6]) * x.[6]
                 -39.2919001150608 * x.[6] * x.[38] // AB + BAB | SedimentationDirectName: AB + BAB -> 5 Y
                 -17.045126751113 * x.[6] * x.[35] // AB + Aba | SedimentationDirectName: AB + Aba -> 5 Y
             |]
@@ -620,14 +621,14 @@ module ModelData =
 
             // 7 - Aa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[7]) * x.[7]
+                -kW * (2.0 * xSum - x.[7]) * x.[7]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 8 - Ab
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[8]) * x.[8]
+                -kW * (2.0 * xSum - x.[8]) * x.[8]
                 -19.1967096834449 * x.[8] * x.[17] // Ab + bA | SedimentationDirectName: Ab + bA -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -635,7 +636,7 @@ module ModelData =
 
             // 9 - BA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[9]) * x.[9]
+                -kW * (2.0 * xSum - x.[9]) * x.[9]
                 -12.4492769460629 * x.[9] * x.[80] // BA + bab | SedimentationDirectName: BA + bab -> 5 Y
                 -70.6753181586129 * x.[9] * x.[67] // BA + aba | SedimentationDirectName: BA + aba -> 5 Y
                 -36.8637857212933 * x.[9] * x.[45] // BA + BaA | SedimentationDirectName: BA + BaA -> 5 Y
@@ -645,7 +646,7 @@ module ModelData =
 
             // 10 - BB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[10]) * x.[10]
+                -kW * (2.0 * xSum - x.[10]) * x.[10]
                 -54.0764426321166 * x.[10] * x.[32] // BB + Aab | SedimentationDirectName: BB + Aab -> 5 Y
                 -20.3042514176972 * x.[4] * x.[10] // b + BB | SedimentationDirectName: b + BB -> 3 Y
             |]
@@ -654,7 +655,7 @@ module ModelData =
 
             // 11 - Ba
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[11]) * x.[11]
+                -kW * (2.0 * xSum - x.[11]) * x.[11]
                 -27.2917476778003 * x.[11] * x.[57] // Ba + aBA | SedimentationDirectName: Ba + aBA -> 5 Y
                 -19.1967096834449 * x.[14] * x.[11] // aB + Ba | SedimentationDirectName: aB + Ba -> 4 Y
             |]
@@ -663,21 +664,21 @@ module ModelData =
 
             // 12 - Bb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[12]) * x.[12]
+                -kW * (2.0 * xSum - x.[12]) * x.[12]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 13 - aA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[13]) * x.[13]
+                -kW * (2.0 * xSum - x.[13]) * x.[13]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 14 - aB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[14]) * x.[14]
+                -kW * (2.0 * xSum - x.[14]) * x.[14]
                 -19.1967096834449 * x.[14] * x.[11] // aB + Ba | SedimentationDirectName: aB + Ba -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -685,14 +686,14 @@ module ModelData =
 
             // 15 - aa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[15]) * x.[15]
+                -kW * (2.0 * xSum - x.[15]) * x.[15]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 16 - ab
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[16]) * x.[16]
+                -kW * (2.0 * xSum - x.[16]) * x.[16]
                 -39.2919001150608 * x.[16] * x.[80] // ab + bab | SedimentationDirectName: ab + bab -> 5 Y
                 -17.045126751113 * x.[16] * x.[57] // ab + aBA | SedimentationDirectName: ab + aBA -> 5 Y
             |]
@@ -701,7 +702,7 @@ module ModelData =
 
             // 17 - bA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[17]) * x.[17]
+                -kW * (2.0 * xSum - x.[17]) * x.[17]
                 -27.2917476778003 * x.[17] * x.[35] // bA + Aba | SedimentationDirectName: bA + Aba -> 5 Y
                 -19.1967096834449 * x.[8] * x.[17] // Ab + bA | SedimentationDirectName: Ab + bA -> 4 Y
             |]
@@ -710,14 +711,14 @@ module ModelData =
 
             // 18 - bB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[18]) * x.[18]
+                -kW * (2.0 * xSum - x.[18]) * x.[18]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 19 - ba
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[19]) * x.[19]
+                -kW * (2.0 * xSum - x.[19]) * x.[19]
                 -12.4492769460629 * x.[19] * x.[38] // ba + BAB | SedimentationDirectName: ba + BAB -> 5 Y
                 -70.6753181586129 * x.[19] * x.[25] // ba + ABA | SedimentationDirectName: ba + ABA -> 5 Y
                 -36.8637857212933 * x.[19] * x.[71] // ba + bAa | SedimentationDirectName: ba + bAa -> 5 Y
@@ -727,7 +728,7 @@ module ModelData =
 
             // 20 - bb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[20]) * x.[20]
+                -kW * (2.0 * xSum - x.[20]) * x.[20]
                 -54.0764426321166 * x.[20] * x.[54] // bb + aAB | SedimentationDirectName: bb + aAB -> 5 Y
                 -20.3042514176972 * x.[2] * x.[20] // B + bb | SedimentationDirectName: B + bb -> 3 Y
             |]
@@ -736,35 +737,35 @@ module ModelData =
 
             // 21 - AAA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[21]) * x.[21]
+                -kW * (2.0 * xSum - x.[21]) * x.[21]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 22 - AAB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[22]) * x.[22]
+                -kW * (2.0 * xSum - x.[22]) * x.[22]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 23 - AAa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[23]) * x.[23]
+                -kW * (2.0 * xSum - x.[23]) * x.[23]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 24 - AAb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[24]) * x.[24]
+                -kW * (2.0 * xSum - x.[24]) * x.[24]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 25 - ABA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[25]) * x.[25]
+                -kW * (2.0 * xSum - x.[25]) * x.[25]
                 -77.7817604984622 * x.[59] * x.[25] // aBa + ABA | SedimentationDirectName: aBa + ABA -> 6 Y
                 -70.6753181586129 * x.[19] * x.[25] // ba + ABA | SedimentationDirectName: ba + ABA -> 5 Y
             |]
@@ -773,14 +774,14 @@ module ModelData =
 
             // 26 - ABB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[26]) * x.[26]
+                -kW * (2.0 * xSum - x.[26]) * x.[26]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 27 - ABa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[27]) * x.[27]
+                -kW * (2.0 * xSum - x.[27]) * x.[27]
                 -20.3315239059183 * x.[82] * x.[27] // bbB + ABa | SedimentationDirectName: bbB + ABa -> 6 Y
                 -73.4172518615685 * x.[27] * x.[54] // ABa + aAB | SedimentationDirectName: ABa + aAB -> 6 Y
             |]
@@ -789,14 +790,14 @@ module ModelData =
 
             // 28 - ABb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[28]) * x.[28]
+                -kW * (2.0 * xSum - x.[28]) * x.[28]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 29 - AaA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[29]) * x.[29]
+                -kW * (2.0 * xSum - x.[29]) * x.[29]
                 -44.4986243599349 * x.[29] * x.[53] // AaA + aAA | SedimentationDirectName: AaA + aAA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -804,14 +805,14 @@ module ModelData =
 
             // 30 - AaB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[30]) * x.[30]
+                -kW * (2.0 * xSum - x.[30]) * x.[30]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 31 - Aaa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[31]) * x.[31]
+                -kW * (2.0 * xSum - x.[31]) * x.[31]
                 -44.4986243599349 * x.[55] * x.[31] // aAa + Aaa | SedimentationDirectName: aAa + Aaa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -819,7 +820,7 @@ module ModelData =
 
             // 32 - Aab
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[32]) * x.[32]
+                -kW * (2.0 * xSum - x.[32]) * x.[32]
                 -73.4172518615685 * x.[65] * x.[32] // abA + Aab | SedimentationDirectName: abA + Aab -> 6 Y
                 -54.0764426321166 * x.[10] * x.[32] // BB + Aab | SedimentationDirectName: BB + Aab -> 5 Y
             |]
@@ -828,7 +829,7 @@ module ModelData =
 
             // 33 - AbA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[33]) * x.[33]
+                -kW * (2.0 * xSum - x.[33]) * x.[33]
                 -77.7817604984622 * x.[33] * x.[67] // AbA + aba | SedimentationDirectName: AbA + aba -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -836,7 +837,7 @@ module ModelData =
 
             // 34 - AbB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[34]) * x.[34]
+                -kW * (2.0 * xSum - x.[34]) * x.[34]
                 -12.497743307692 * x.[84] * x.[34] // bbb + AbB | SedimentationDirectName: bbb + AbB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -844,7 +845,7 @@ module ModelData =
 
             // 35 - Aba
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[35]) * x.[35]
+                -kW * (2.0 * xSum - x.[35]) * x.[35]
                 -7.59615840450121 * x.[76] * x.[35] // bBb + Aba | SedimentationDirectName: bBb + Aba -> 6 Y
                 -58.4584523985377 * x.[35] * x.[69] // Aba + bAA | SedimentationDirectName: Aba + bAA -> 6 Y
                 -27.2917476778003 * x.[17] * x.[35] // bA + Aba | SedimentationDirectName: bA + Aba -> 5 Y
@@ -855,7 +856,7 @@ module ModelData =
 
             // 36 - Abb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[36]) * x.[36]
+                -kW * (2.0 * xSum - x.[36]) * x.[36]
                 -20.315272434543 * x.[36] * x.[78] // Abb + baB | SedimentationDirectName: Abb + baB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -863,7 +864,7 @@ module ModelData =
 
             // 37 - BAA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[37]) * x.[37]
+                -kW * (2.0 * xSum - x.[37]) * x.[37]
                 -1.80423188083245 * x.[3] * x.[37] // a + BAA | SedimentationDirectName: a + BAA -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -871,7 +872,7 @@ module ModelData =
 
             // 38 - BAB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[38]) * x.[38]
+                -kW * (2.0 * xSum - x.[38]) * x.[38]
                 -12.4492769460629 * x.[19] * x.[38] // ba + BAB | SedimentationDirectName: ba + BAB -> 5 Y
                 -39.2919001150608 * x.[6] * x.[38] // AB + BAB | SedimentationDirectName: AB + BAB -> 5 Y
             |]
@@ -880,14 +881,14 @@ module ModelData =
 
             // 39 - BAa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[39]) * x.[39]
+                -kW * (2.0 * xSum - x.[39]) * x.[39]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 40 - BAb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[40]) * x.[40]
+                -kW * (2.0 * xSum - x.[40]) * x.[40]
                 -11.1827526720811 * x.[81] * x.[40] // bbA + BAb | SedimentationDirectName: bbA + BAb -> 6 Y
                 -20.315272434543 * x.[58] * x.[40] // aBB + BAb | SedimentationDirectName: aBB + BAb -> 6 Y
             |]
@@ -896,7 +897,7 @@ module ModelData =
 
             // 41 - BBA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[41]) * x.[41]
+                -kW * (2.0 * xSum - x.[41]) * x.[41]
                 -15.1873530633643 * x.[41] * x.[52] // BBA + Bbb | SedimentationDirectName: BBA + Bbb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -904,7 +905,7 @@ module ModelData =
 
             // 42 - BBB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[42]) * x.[42]
+                -kW * (2.0 * xSum - x.[42]) * x.[42]
                 -17.954704695951 * x.[76] * x.[42] // bBb + BBB | SedimentationDirectName: bBb + BBB -> 6 Y
                 -12.497743307692 * x.[42] * x.[60] // BBB + aBb | SedimentationDirectName: BBB + aBb -> 6 Y
                 -32.069030234827 * x.[3] * x.[42] // a + BBB | SedimentationDirectName: a + BBB -> 4 Y
@@ -914,7 +915,7 @@ module ModelData =
 
             // 43 - BBa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[43]) * x.[43]
+                -kW * (2.0 * xSum - x.[43]) * x.[43]
                 -11.1827526720811 * x.[43] * x.[78] // BBa + baB | SedimentationDirectName: BBa + baB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -922,7 +923,7 @@ module ModelData =
 
             // 44 - BBb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[44]) * x.[44]
+                -kW * (2.0 * xSum - x.[44]) * x.[44]
                 -20.3315239059183 * x.[44] * x.[65] // BBb + abA | SedimentationDirectName: BBb + abA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -930,7 +931,7 @@ module ModelData =
 
             // 45 - BaA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[45]) * x.[45]
+                -kW * (2.0 * xSum - x.[45]) * x.[45]
                 -36.8637857212933 * x.[9] * x.[45] // BA + BaA | SedimentationDirectName: BA + BaA -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -938,14 +939,14 @@ module ModelData =
 
             // 46 - BaB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[46]) * x.[46]
+                -kW * (2.0 * xSum - x.[46]) * x.[46]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 47 - Baa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[47]) * x.[47]
+                -kW * (2.0 * xSum - x.[47]) * x.[47]
                 -58.4584523985377 * x.[57] * x.[47] // aBA + Baa | SedimentationDirectName: aBA + Baa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -953,21 +954,21 @@ module ModelData =
 
             // 48 - Bab
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[48]) * x.[48]
+                -kW * (2.0 * xSum - x.[48]) * x.[48]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 49 - BbA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[49]) * x.[49]
+                -kW * (2.0 * xSum - x.[49]) * x.[49]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 50 - BbB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[50]) * x.[50]
+                -kW * (2.0 * xSum - x.[50]) * x.[50]
                 -17.954704695951 * x.[50] * x.[84] // BbB + bbb | SedimentationDirectName: BbB + bbb -> 6 Y
                 -7.59615840450121 * x.[50] * x.[57] // BbB + aBA | SedimentationDirectName: BbB + aBA -> 6 Y
             |]
@@ -976,14 +977,14 @@ module ModelData =
 
             // 51 - Bba
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[51]) * x.[51]
+                -kW * (2.0 * xSum - x.[51]) * x.[51]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 52 - Bbb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[52]) * x.[52]
+                -kW * (2.0 * xSum - x.[52]) * x.[52]
                 -15.1873530633643 * x.[41] * x.[52] // BBA + Bbb | SedimentationDirectName: BBA + Bbb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -991,7 +992,7 @@ module ModelData =
 
             // 53 - aAA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[53]) * x.[53]
+                -kW * (2.0 * xSum - x.[53]) * x.[53]
                 -44.4986243599349 * x.[29] * x.[53] // AaA + aAA | SedimentationDirectName: AaA + aAA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -999,7 +1000,7 @@ module ModelData =
 
             // 54 - aAB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[54]) * x.[54]
+                -kW * (2.0 * xSum - x.[54]) * x.[54]
                 -73.4172518615685 * x.[27] * x.[54] // ABa + aAB | SedimentationDirectName: ABa + aAB -> 6 Y
                 -54.0764426321166 * x.[20] * x.[54] // bb + aAB | SedimentationDirectName: bb + aAB -> 5 Y
             |]
@@ -1008,7 +1009,7 @@ module ModelData =
 
             // 55 - aAa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[55]) * x.[55]
+                -kW * (2.0 * xSum - x.[55]) * x.[55]
                 -44.4986243599349 * x.[55] * x.[31] // aAa + Aaa | SedimentationDirectName: aAa + Aaa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1016,14 +1017,14 @@ module ModelData =
 
             // 56 - aAb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[56]) * x.[56]
+                -kW * (2.0 * xSum - x.[56]) * x.[56]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 57 - aBA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[57]) * x.[57]
+                -kW * (2.0 * xSum - x.[57]) * x.[57]
                 -7.59615840450121 * x.[50] * x.[57] // BbB + aBA | SedimentationDirectName: BbB + aBA -> 6 Y
                 -58.4584523985377 * x.[57] * x.[47] // aBA + Baa | SedimentationDirectName: aBA + Baa -> 6 Y
                 -27.2917476778003 * x.[11] * x.[57] // Ba + aBA | SedimentationDirectName: Ba + aBA -> 5 Y
@@ -1034,7 +1035,7 @@ module ModelData =
 
             // 58 - aBB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[58]) * x.[58]
+                -kW * (2.0 * xSum - x.[58]) * x.[58]
                 -20.315272434543 * x.[58] * x.[40] // aBB + BAb | SedimentationDirectName: aBB + BAb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1042,7 +1043,7 @@ module ModelData =
 
             // 59 - aBa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[59]) * x.[59]
+                -kW * (2.0 * xSum - x.[59]) * x.[59]
                 -77.7817604984622 * x.[59] * x.[25] // aBa + ABA | SedimentationDirectName: aBa + ABA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1050,7 +1051,7 @@ module ModelData =
 
             // 60 - aBb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[60]) * x.[60]
+                -kW * (2.0 * xSum - x.[60]) * x.[60]
                 -12.497743307692 * x.[42] * x.[60] // BBB + aBb | SedimentationDirectName: BBB + aBb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1058,35 +1059,35 @@ module ModelData =
 
             // 61 - aaA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[61]) * x.[61]
+                -kW * (2.0 * xSum - x.[61]) * x.[61]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 62 - aaB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[62]) * x.[62]
+                -kW * (2.0 * xSum - x.[62]) * x.[62]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 63 - aaa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[63]) * x.[63]
+                -kW * (2.0 * xSum - x.[63]) * x.[63]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 64 - aab
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[64]) * x.[64]
+                -kW * (2.0 * xSum - x.[64]) * x.[64]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 65 - abA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[65]) * x.[65]
+                -kW * (2.0 * xSum - x.[65]) * x.[65]
                 -20.3315239059183 * x.[44] * x.[65] // BBb + abA | SedimentationDirectName: BBb + abA -> 6 Y
                 -73.4172518615685 * x.[65] * x.[32] // abA + Aab | SedimentationDirectName: abA + Aab -> 6 Y
             |]
@@ -1095,14 +1096,14 @@ module ModelData =
 
             // 66 - abB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[66]) * x.[66]
+                -kW * (2.0 * xSum - x.[66]) * x.[66]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 67 - aba
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[67]) * x.[67]
+                -kW * (2.0 * xSum - x.[67]) * x.[67]
                 -77.7817604984622 * x.[33] * x.[67] // AbA + aba | SedimentationDirectName: AbA + aba -> 6 Y
                 -70.6753181586129 * x.[9] * x.[67] // BA + aba | SedimentationDirectName: BA + aba -> 5 Y
             |]
@@ -1111,14 +1112,14 @@ module ModelData =
 
             // 68 - abb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[68]) * x.[68]
+                -kW * (2.0 * xSum - x.[68]) * x.[68]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 69 - bAA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[69]) * x.[69]
+                -kW * (2.0 * xSum - x.[69]) * x.[69]
                 -58.4584523985377 * x.[35] * x.[69] // Aba + bAA | SedimentationDirectName: Aba + bAA -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1126,14 +1127,14 @@ module ModelData =
 
             // 70 - bAB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[70]) * x.[70]
+                -kW * (2.0 * xSum - x.[70]) * x.[70]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 71 - bAa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[71]) * x.[71]
+                -kW * (2.0 * xSum - x.[71]) * x.[71]
                 -36.8637857212933 * x.[19] * x.[71] // ba + bAa | SedimentationDirectName: ba + bAa -> 5 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1141,21 +1142,21 @@ module ModelData =
 
             // 72 - bAb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[72]) * x.[72]
+                -kW * (2.0 * xSum - x.[72]) * x.[72]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 73 - bBA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[73]) * x.[73]
+                -kW * (2.0 * xSum - x.[73]) * x.[73]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 74 - bBB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[74]) * x.[74]
+                -kW * (2.0 * xSum - x.[74]) * x.[74]
                 -15.1873530633643 * x.[83] * x.[74] // bba + bBB | SedimentationDirectName: bba + bBB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1163,14 +1164,14 @@ module ModelData =
 
             // 75 - bBa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[75]) * x.[75]
+                -kW * (2.0 * xSum - x.[75]) * x.[75]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 76 - bBb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[76]) * x.[76]
+                -kW * (2.0 * xSum - x.[76]) * x.[76]
                 -17.954704695951 * x.[76] * x.[42] // bBb + BBB | SedimentationDirectName: bBb + BBB -> 6 Y
                 -7.59615840450121 * x.[76] * x.[35] // bBb + Aba | SedimentationDirectName: bBb + Aba -> 6 Y
             |]
@@ -1179,14 +1180,14 @@ module ModelData =
 
             // 77 - baA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[77]) * x.[77]
+                -kW * (2.0 * xSum - x.[77]) * x.[77]
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
 
 
             // 78 - baB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[78]) * x.[78]
+                -kW * (2.0 * xSum - x.[78]) * x.[78]
                 -11.1827526720811 * x.[43] * x.[78] // BBa + baB | SedimentationDirectName: BBa + baB -> 6 Y
                 -20.315272434543 * x.[36] * x.[78] // Abb + baB | SedimentationDirectName: Abb + baB -> 6 Y
             |]
@@ -1195,7 +1196,7 @@ module ModelData =
 
             // 79 - baa
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[79]) * x.[79]
+                -kW * (2.0 * xSum - x.[79]) * x.[79]
                 -1.80423188083245 * x.[1] * x.[79] // A + baa | SedimentationDirectName: A + baa -> 4 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1203,7 +1204,7 @@ module ModelData =
 
             // 80 - bab
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[80]) * x.[80]
+                -kW * (2.0 * xSum - x.[80]) * x.[80]
                 -12.4492769460629 * x.[9] * x.[80] // BA + bab | SedimentationDirectName: BA + bab -> 5 Y
                 -39.2919001150608 * x.[16] * x.[80] // ab + bab | SedimentationDirectName: ab + bab -> 5 Y
             |]
@@ -1212,7 +1213,7 @@ module ModelData =
 
             // 81 - bbA
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[81]) * x.[81]
+                -kW * (2.0 * xSum - x.[81]) * x.[81]
                 -11.1827526720811 * x.[81] * x.[40] // bbA + BAb | SedimentationDirectName: bbA + BAb -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1220,7 +1221,7 @@ module ModelData =
 
             // 82 - bbB
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[82]) * x.[82]
+                -kW * (2.0 * xSum - x.[82]) * x.[82]
                 -20.3315239059183 * x.[82] * x.[27] // bbB + ABa | SedimentationDirectName: bbB + ABa -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1228,7 +1229,7 @@ module ModelData =
 
             // 83 - bba
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[83]) * x.[83]
+                -kW * (2.0 * xSum - x.[83]) * x.[83]
                 -15.1873530633643 * x.[83] * x.[74] // bba + bBB | SedimentationDirectName: bba + bBB -> 6 Y
             |]
             |> Array.fold (fun acc r -> acc + r) 0.0
@@ -1236,7 +1237,7 @@ module ModelData =
 
             // 84 - bbb
             [|
-                -5.63057838270002E-05 * (2.0 * xSum - x.[84]) * x.[84]
+                -kW * (2.0 * xSum - x.[84]) * x.[84]
                 -17.954704695951 * x.[50] * x.[84] // BbB + bbb | SedimentationDirectName: BbB + bbb -> 6 Y
                 -12.497743307692 * x.[84] * x.[34] // bbb + AbB | SedimentationDirectName: bbb + AbB -> 6 Y
                 -32.069030234827 * x.[1] * x.[84] // A + bbb | SedimentationDirectName: A + bbb -> 4 Y
