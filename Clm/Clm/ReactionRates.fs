@@ -214,15 +214,62 @@ module ReactionRates =
         member __.getRates (r : SedimentationAllReaction) = getRatesImpl rateDictionary calculateRates r
 
 
-    type LigationModel () = 
+    type LigationParam = 
+        {
+            ligationDistribution : Distribution
+            forwardScale : double option
+            backwardScale : double option
+        }
+
+    type LigationModel (p : LigationParam) = 
         let rateDictionary = new Dictionary<LigationReaction, (ReactionRate option * ReactionRate option)>()
-        let calculateRates _ = failwith ""
+
+        let calculateRates _ = 
+            let d = p.ligationDistribution
+            getRates (p.forwardScale, d.nextDouble() |> Some) (p.backwardScale, d.nextDouble() |> Some)
+
         member __.getRates (r : LigationReaction) = getRatesImpl rateDictionary calculateRates r
 
 
-    type CatalyticLigationModel () = 
+    type CatalyticLigationParam = 
+        {
+            catLigationDistribution : Distribution
+            ligationModel : LigationModel
+            multiplier : double
+            maxEe : double
+        }
+
+
+    type CatalyticLigationModel (p : CatalyticLigationParam) = 
         let rateDictionary = new Dictionary<CatalyticLigationReaction, (ReactionRate option * ReactionRate option)>()
-        let calculateRates _ = failwith ""
+
+        let calculateRates  (CatalyticLigationReaction (s, c)) = 
+            let distr = p.catLigationDistribution
+            match distr.nextDoubleOpt() with 
+            | Some k0 -> 
+                let (sf0, sb0) = p.ligationModel.getRates s
+                let ee = p.maxEe * (distr.nextDoubleFromZeroToOne() - 0.5)
+                let k = k0 * p.multiplier * (1.0 + ee)
+                let ke = k0 * p.multiplier * (1.0 - ee)
+
+                let (rf, rfe) = 
+                    match sf0 with
+                    | Some (ReactionRate sf) -> (k * sf |> ReactionRate |> Some, ke * sf |> ReactionRate |> Some)
+                    | None -> (None, None)
+
+                let (rb, rbe) = 
+                    match sb0 with
+                    | Some (ReactionRate sb) -> (k * sb |> ReactionRate |> Some, ke * sb |> ReactionRate |> Some)
+                    | None -> (None, None)
+
+                let re = (s, c.enantiomer) |> CatalyticLigationReaction
+
+                {
+                    primary = (rf, rb)
+                    similar = [ (re, (rfe, rbe)) ]
+                }
+            | None -> noRates
+
         member __.getRates (r : CatalyticLigationReaction) = getRatesImpl rateDictionary calculateRates r
 
 
@@ -269,8 +316,8 @@ module ReactionRates =
 
         static member defaultSynthesisModel (rnd : Random) forward backward =
             {
-                //synthesisDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
-                synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                synthesisDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
+                //synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
                 forwardScale = Some forward
                 backwardScale = Some backward
             }
@@ -284,6 +331,16 @@ module ReactionRates =
                 maxEe = 0.05
             }
             |> CatalyticSynthesisModel
+
+        static member defaultLigationModel (rnd : Random) forward backward =
+            {
+                ligationDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
+                //ligationDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                forwardScale = Some forward
+                backwardScale = Some backward
+            }
+            |> LigationModel
+
 
         static member defaultSedimentationDirectModel (rnd : Random) threshold mult =
             {
