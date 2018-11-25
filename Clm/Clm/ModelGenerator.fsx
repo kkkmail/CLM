@@ -35,11 +35,11 @@ let saModel = ReactionRateProvider.defaultSedimentationAllModel rnd saMult
 let rates = 
     [
          synthModel |> SynthesisRateModel
-         ////catSynthModel |> CatalyticSynthesisRateModel
+         catSynthModel |> CatalyticSynthesisRateModel
          //(Ligation, (fun __ -> (Some (ReactionRate 1.0), Some (ReactionRate 0.1))) |> ReactionRateProvider)
          //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
-         sdModel |> SedimentationDirectRateModel
-         saModel |> SedimentationAllRateModel
+         //sdModel |> SedimentationDirectRateModel
+         //saModel |> SedimentationAllRateModel
     ]
 
 
