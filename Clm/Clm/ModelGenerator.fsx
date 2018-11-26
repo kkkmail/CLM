@@ -12,7 +12,7 @@ open Clm.ReactionRates
 open Clm.Model
 open System
 
-let n = NumberOfAminoAcids.FourAminoAcids
+let n = NumberOfAminoAcids.FiveAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 let seed = 12345
