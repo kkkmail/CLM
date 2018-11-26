@@ -3,8 +3,8 @@
 #r "System.dll"
 #r "System.Numerics.dll"
 //===========================================================
-#r "./bin/Debug/MathNet.Numerics.dll"
-#r "./bin/Debug/MathNet.Numerics.FSharp.dll"
+//#r "./bin/Debug/MathNet.Numerics.dll"
+//#r "./bin/Debug/MathNet.Numerics.FSharp.dll"
 #r "./bin/Debug/FSharp.Plotly.dll"
 #r "./bin/Debug/Clm.dll"
 #r "./bin/Debug/Model.dll"
