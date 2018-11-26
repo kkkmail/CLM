@@ -19,6 +19,8 @@ module Model =
             maxPeptideLength : MaxPeptideLength
             getTotals : array<double> -> array<double * double>
             getTotalSubst : array<double> -> double
+            allSubst : list<Substance>
+            allInd : Map<Substance, int>
         }
 
 
@@ -68,9 +70,24 @@ module Model =
             @
             (peptides |> List.map (fun p -> PeptideChain p))
 
-
         let allInd = allSubst |> List.mapi (fun i s -> (s, i)) |> Map.ofList
 
+        let generateSubst() = 
+            @"
+    let aminoAcids = AminoAcid.getAminoAcids numberOfAminoAcids
+    let chiralAminoAcids = ChiralAminoAcid.getAminoAcids numberOfAminoAcids
+    let peptides = Peptide.getPeptides maxPeptideLength numberOfAminoAcids
+
+    let allSubst = 
+        [ Substance.food ]
+        @
+        (chiralAminoAcids |> List.map (fun a -> Chiral a))
+        @
+        (peptides |> List.map (fun p -> PeptideChain p))
+
+    let allInd = allSubst |> List.mapi (fun i s -> (s, i)) |> Map.ofList
+
+"
 
         let allNamesMap = 
             allSubst
@@ -224,6 +241,20 @@ module Model =
             nl + "        |]" + nl + "         |> Array.sum" + nl + nl
 
 
+        let generateTotalSubstAtLevel(level : int) = 
+            let x =
+                allSubst
+                |> List.filter (fun s -> s.length = level)
+                |> List.map (fun s -> s, s.atoms)
+                |> List.map (fun (s, i) -> "            " + (toMult i) + (x s) + " // " + (substToString s))
+                |> String.concat nl
+
+            "    let getTotalSubstAtLevel" + (level.ToString()) + " (x : array<double>) = " + nl +
+            "        [|" + nl +
+            x +
+            nl + "        |]" + nl + "         |> Array.sum" + nl + nl
+
+
         let generate () = 
             let t0 = DateTime.Now
             printfn "t0 = %A" t0
@@ -304,6 +335,8 @@ module Model =
             maxPeptideLength = " + modelParams.maxPeptideLength.ToString() + @"
             getTotals = getTotals
             getTotalSubst = getTotalSubst
+            allSubst = allSubst
+            allInd = allInd
         }
 "
 
@@ -318,14 +351,15 @@ module Model =
                 "    let seedValue = " + seedValue.ToString() + nl + 
                 "    let numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + nl + 
                 "    let maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + nl +
-                "    let numberOfSubstances = " + (allSubst.Length).ToString() + nl + 
-                coeffSedAllCode + nl
+                "    let numberOfSubstances = " + (allSubst.Length).ToString() + nl +
+                generateSubst() + 
+                coeffSedAllCode
 
             [
                 "namespace Model" + nl
-                "open Clm.Substances" + nl
-                "open Clm.Model" + nl + nl
-                "module ModelData = " + nl
+                "open Clm.Substances"
+                "open Clm.Model" + nl
+                "module ModelData = "
                 paramCode + nl
                 totalSubstCode + nl
                 totalCode + nl

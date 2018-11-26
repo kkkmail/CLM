@@ -12,17 +12,17 @@ open Clm.ReactionRates
 open Clm.Model
 open System
 
-let n = NumberOfAminoAcids.FiveAminoAcids
+let n = NumberOfAminoAcids.TwoAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
-let seed = 12345
+let seed = 123456
 let rnd = new Random(seed)
 
 let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.01 0.001
-let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.001) 1000.0
-let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.1 0.1
-let catLigModel = ReactionRateProvider.defaultCatalyticLigationModel rnd ligModel (Some 0.001) 100.0
-let sdModel = ReactionRateProvider.defaultSedimentationDirectModel rnd 0.01 100.0
+let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.0001) 1000.0
+let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.01 0.001
+let catLigModel = ReactionRateProvider.defaultCatalyticLigationModel rnd ligModel (Some 0.0001) 1000.0
+let sdModel = ReactionRateProvider.defaultSedimentationDirectModel rnd 0.001 100.0
 let saModel = ReactionRateProvider.defaultSedimentationAllModel rnd 0.1
 
 let rates = 
