@@ -341,6 +341,14 @@ module ReactionRates =
             }
             |> LigationModel
 
+        static member defaultCatalyticLigationModel (rnd : Random) m threshold mult =
+            {
+                catLigationDistribution = UniformDistribution(rnd.Next(), { threshold = threshold }) |> Uniform
+                ligationModel = m
+                multiplier  = mult
+                maxEe = 0.05
+            }
+            |> CatalyticLigationModel
 
         static member defaultSedimentationDirectModel (rnd : Random) threshold mult =
             {

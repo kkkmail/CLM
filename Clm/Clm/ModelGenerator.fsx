@@ -12,30 +12,27 @@ open Clm.ReactionRates
 open Clm.Model
 open System
 
-let n = NumberOfAminoAcids.OneAminoAcid
+let n = NumberOfAminoAcids.TwoAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 let seed = 12345
 let rnd = new Random(seed)
 
-let sdMult = 100.0
-let sdThreshold = 0.01
-let saMult = 0.1
-
 let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.01 0.001
-let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.01) 1000.0
-let ligModel = ReactionRateProvider.defaultLigationModel rnd 1.0 1.0
-let sdModel = ReactionRateProvider.defaultSedimentationDirectModel rnd sdThreshold sdMult
-let saModel = ReactionRateProvider.defaultSedimentationAllModel rnd saMult
+let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.001) 1000.0
+let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.1 0.1
+let catLigModel = ReactionRateProvider.defaultCatalyticLigationModel rnd ligModel (Some 0.001) 100.0
+let sdModel = ReactionRateProvider.defaultSedimentationDirectModel rnd 0.01 100.0
+let saModel = ReactionRateProvider.defaultSedimentationAllModel rnd 0.1
 
 let rates = 
     [
-         //synthModel |> SynthesisRateModel
-         //catSynthModel |> CatalyticSynthesisRateModel
+         synthModel |> SynthesisRateModel
+         catSynthModel |> CatalyticSynthesisRateModel
          ligModel |> LigationRateModel
-         //(CatalyticLigation, (fun __ -> (Some (ReactionRate 5.0), Some (ReactionRate 0.5))) |> ReactionRateProvider)
-         //sdModel |> SedimentationDirectRateModel
-         //saModel |> SedimentationAllRateModel
+         catLigModel |> CatalyticLigationRateModel
+         sdModel |> SedimentationDirectRateModel
+         saModel |> SedimentationAllRateModel
     ]
 
 
