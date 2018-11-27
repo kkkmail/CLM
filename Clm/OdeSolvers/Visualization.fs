@@ -76,7 +76,23 @@ module Visualization =
             let yData = tIdx |> List.map (fun t -> r.t.[t], r.x.[t,0])
             let minData = tIdx |> List.map (fun t -> r.t.[t], r.x.[t,*] |> Array.min)
 
-            Chart.Combine([ Chart.Line(totalData, Name = "Total"); Chart.Line(yData, Name = Substance.food.name); Chart.Line(minData, Name = "Min") ])
+            let levelData level = 
+                let levelSubst = 
+                    p.allSubst
+                    |> List.filter (fun s -> s.length = level)
+                    |> List.map (fun s -> p.allInd.[s])
+
+                let xData t =
+                    let d = r.x.[t,*]
+                    levelSubst |> List.sumBy (fun i -> (double level) * d.[i])
+
+                tIdx |> List.map (fun t -> r.t.[t], xData t)
+
+
+            Chart.Combine(
+                    [ Chart.Line(totalData, Name = "Total"); Chart.Line(minData, Name = "Min"); Chart.Line(yData, Name = Substance.food.name) ]
+                    @ [ for level in 1..p.maxPeptideLength.length -> Chart.Line(levelData level, Name = level.ToString()) ]
+                    )
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
             |> Chart.ShowWithDescription description
 
