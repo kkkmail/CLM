@@ -10,7 +10,16 @@ open FSharp.Plotly
 module Visualization = 
 
     type Plotter(p : ModelDataParams, o : OdeResult) =
-        let description = sprintf "Number of amino acids: %A, number of peptides: %A, number of substances: %A." p.numberOfAminoAcids.length p.maxPeptideLength.length p.numberOfSubstances
+        let dl = 
+            [
+                "number of amino acids: ", sprintf "%A" p.numberOfAminoAcids.length
+                "max peptide length: ", sprintf "%A" p.maxPeptideLength.length
+                "number of substances: ", sprintf "%A" p.maxPeptideLength.length
+            ]
+
+        let description = 
+            sprintf "Number of amino acids: %A, number of peptides: %A, number of substances: %A, " p.numberOfAminoAcids.length p.maxPeptideLength.length p.numberOfSubstances + 
+            sprintf "end time: %A" o.endTime
 
 
         let plotAllImpl (r : OdeResult) =

@@ -20,7 +20,7 @@ module Solver =
                 endTime = 10.0
                 stepSize = 0.01
                 eps = 0.00001
-                noOfOutputPoints = Some 100
+                noOfOutputPoints = Some 1000
             }
 
 
