@@ -21,6 +21,8 @@ module Model =
             getTotalSubst : array<double> -> double
             allSubst : list<Substance>
             allInd : Map<Substance, int>
+            allRawReactions : list<ReactionName * int>
+            allReactions : list<ReactionName * int>
         }
 
 
@@ -114,10 +116,17 @@ module Model =
             synth @ catSynth @ lig @ catLig @ sedDir
             |> List.distinct
 
+        let allReactionsData = 
+            allReac
+            |> List.groupBy (fun r -> r.name)
+            |> List.map (fun (n, l) -> (n, l.Length))
+            |> List.map (fun (n, c) -> "                    " + "(" + n.ToString() + ", " + c.ToString() + ")")
+            |> String.concat nl
+
 
         let allReacMap = 
             allReac
-            |> List.map (fun e -> e, e.name)
+            |> List.map (fun e -> e, e.fullName)
             |> Map.ofList
 
 
@@ -337,6 +346,15 @@ module Model =
             getTotalSubst = getTotalSubst
             allSubst = allSubst
             allInd = allInd
+
+            allRawReactions = 
+                [
+                ]
+
+            allReactions = 
+                [" + 
+                nl + allReactionsData + @"
+                ]
         }
 "
 
@@ -356,9 +374,10 @@ module Model =
                 coeffSedAllCode
 
             [
-                "namespace Model" + nl
+                "namespace Model" + nl + nl
                 "open Clm.Substances"
                 "open Clm.Model" + nl
+                "open Clm.ReactionTypes" + nl
                 "module ModelData = "
                 paramCode + nl
                 totalSubstCode + nl

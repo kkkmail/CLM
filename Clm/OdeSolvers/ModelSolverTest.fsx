@@ -8,7 +8,7 @@ open OdeSolvers.Solver
 open OdeSolvers.Visualization
 
 let y0 = 1000.0
-let tEnd = 10000.0
+let tEnd = 1000.0
 
 printfn "Solving for n = %A..." numberOfSubstances
 

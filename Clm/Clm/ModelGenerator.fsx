@@ -15,11 +15,11 @@ open System
 let n = NumberOfAminoAcids.EightAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
-let seed = 123456
+let seed = (new Random()).Next()
 let rnd = new Random(seed)
 
 let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.001 0.0001
-let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.0001) 1000.0
+let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.0005) 1000.0
 let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.001 0.0001
 let catLigModel = ReactionRateProvider.defaultCatalyticLigationModel rnd ligModel (Some 0.0001) 1000.0
 let sdModel = ReactionRateProvider.defaultSedimentationDirectModel rnd 0.0001 100.0

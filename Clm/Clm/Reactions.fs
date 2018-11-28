@@ -85,6 +85,12 @@ module Reactions =
             | Reversible r -> r.enantiomer |> Reversible
 
         member this.name = 
+            match this with
+            | Forward r ->  r.reaction.name
+            | Backward r -> r.reaction.name
+            | Reversible r -> r.reaction.name
+
+        member this.fullName = 
             let a, i =
                 match this with
                 | Forward r -> " -> ", r.reaction
