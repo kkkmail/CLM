@@ -4,11 +4,13 @@
 #load "ReactionTypes.fs"
 #load "ReactionRates.fs"
 #load "Reactions.fs"
+#load "DataLocation.fs"
 #load "Model.fs"
 
 open System.IO
 open Clm.Substances
 open Clm.ReactionRates
+open Clm.DataLocation
 open Clm.Model
 open System
 
@@ -44,6 +46,7 @@ let modelParams =
         maxPeptideLength = m
         reactionRateModels = rates
         updateFuncType = UseFunctions
+        modelLocationData = ModelLocationInputData.defaultValue
     }
 
 

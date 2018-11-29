@@ -9,12 +9,25 @@ open Clm.Substances
 open Clm.Reactions
 open Clm.ReactionTypes
 open Clm.ReactionRates
+open Clm.DataLocation
 
 module Model = 
+
+    type ModelInfo = 
+        {
+            seedValue : int
+            modelName : string
+            numberOfSubstances : int
+            numberOfAminoAcids : NumberOfAminoAcids
+            maxPeptideLength : MaxPeptideLength
+            allRates : list<ReactionRateModel>
+        }
+
 
     type ModelDataParams = 
         {
             seedValue : int
+            modelName : string
             numberOfSubstances : int
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
@@ -24,6 +37,7 @@ module Model =
             allInd : Map<Substance, int>
             allRawReactions : list<ReactionName * int>
             allReactions : list<ReactionName * int>
+            allRates : list<ReactionRateModel>
         }
 
 
@@ -40,6 +54,7 @@ module Model =
             maxPeptideLength : MaxPeptideLength
             reactionRateModels : List<ReactionRateModel>
             updateFuncType : UpdateFuncType
+            modelLocationData : ModelLocationInputData
         }
 
 
@@ -60,6 +75,8 @@ module Model =
             | None -> 
                 let r = new Random()
                 r.Next()
+
+        let modelLocationInfo = createModelLocationInfo modelParams.modelLocationData
 
         let rateProviderParams = { rateModels = modelParams.reactionRateModels }
         let rateProvider = ReactionRateProvider rateProviderParams
@@ -378,6 +395,7 @@ module Model =
     let modelDataParams = 
         {
             seedValue = seedValue
+            modelName = " + modelLocationInfo.modelName + @"
             numberOfSubstances = " + allSubst.Length.ToString() + @"
             numberOfAminoAcids = " + modelParams.numberOfAminoAcids.ToString() + @"
             maxPeptideLength = " + modelParams.maxPeptideLength.ToString() + @"
@@ -394,6 +412,11 @@ module Model =
             allReactions = 
                 [" + 
                 nl + allReactionsData + @"
+                ]
+
+            allRates = 
+                [" + 
+                nl + @"
                 ]
         }
 "
@@ -455,9 +478,9 @@ module Model =
                 coeffSedAllCode
 
             [
-                "namespace Model" + nl + nl
+                "namespace Model" + nl
                 "open Clm.Substances"
-                "open Clm.Model" + nl
+                "open Clm.Model"
                 "open Clm.ReactionTypes" + nl
                 "module ModelData = "
                 paramCode + nl
@@ -466,6 +489,19 @@ module Model =
             ]
             @ updateCode
             @ [ modelDataParamsCode ]
+
+        let allModelDataImpl = @"
+        [
+            {
+                seedValue = " + seedValue.ToString() + @"
+                modelName = String.Empty
+                numberOfSubstances = 0
+                numberOfAminoAcids = NumberOfAminoAcids.OneAminoAcid
+                maxPeptideLength = MaxPeptideLength.TwoMax
+                allRates = []
+            }
+        ]
+"
 
 
         member model.allSubstances = allSubst

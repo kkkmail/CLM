@@ -47,11 +47,13 @@
     <Compile Include="ReactionTypes.fs" />
     <Compile Include="ReactionRates.fs" />
     <Compile Include="Reactions.fs" />
+    <Compile Include="DataLocation.fs" />
     <Compile Include="Model.fs" />
     <None Include="References.fsx" />
     <None Include="ModelGenerator.fsx" />
-    <Content Include="packages.config" />
     <None Include="MapPerformance.fsx" />
+    <None Include="FileSystemTests.fsx" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Collections.ParallelSeq">
