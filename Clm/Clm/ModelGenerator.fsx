@@ -14,7 +14,7 @@ open Clm.DataLocation
 open Clm.Model
 open System
 
-let n = NumberOfAminoAcids.NineAminoAcids
+let n = NumberOfAminoAcids.TwoAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 let seed = (new Random()).Next()
@@ -64,8 +64,14 @@ printfn "Generating..."
 let s = model.generateCode()
 #time
 
+let info = model.locationInfo
+
 printfn "Writing..."
 #time
-File.WriteAllLines("c:\\Temp\ModelData.fs", s)
+File.WriteAllLines(info.outputFile, s)
 #time
-printfn "Done"
+printfn "Done."
+
+printfn "Updating %A..." modelParams.modelLocationData.allModelsFile
+File.AppendAllLines(modelParams.modelLocationData.allModelsFile, [ model.allModelData ])
+printfn "Done."

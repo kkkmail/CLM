@@ -11,6 +11,7 @@ module DataLocation =
             startingFolder : string
             separator : string
             padLength : int
+            allModelsFile : string
         }
 
         static member defaultValue = 
@@ -18,6 +19,7 @@ module DataLocation =
                 startingFolder = @"C:\GitHub\CLM\Clm\Model\Models"
                 separator = "_"
                 padLength = 2
+                allModelsFile = @"C:\GitHub\CLM\Clm\Model\AllModels.fs"
             }
 
 
@@ -26,6 +28,9 @@ module DataLocation =
             modelFolder : string
             modelName : string
         }
+
+        member location.modelDataName = "ModelData"
+        member location.outputFile = Path.Combine(location.modelFolder, location.modelName, location.modelDataName) + ".fs"
 
 
     type ResultInfo =

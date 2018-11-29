@@ -491,16 +491,19 @@ module Model =
             @ [ modelDataParamsCode ]
 
         let allModelDataImpl = @"
+        @
         [
             {
                 seedValue = " + seedValue.ToString() + @"
-                modelName = String.Empty
-                numberOfSubstances = 0
-                numberOfAminoAcids = NumberOfAminoAcids.OneAminoAcid
-                maxPeptideLength = MaxPeptideLength.TwoMax
+                modelName = " + modelLocationInfo.modelName + @"
+                numberOfSubstances = " + (allSubst.Length).ToString() + @"
+                numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + @"
+                maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + @"
+
                 allRates = []
             }
         ]
+
 "
 
 
@@ -512,3 +515,5 @@ module Model =
         member model.sedimentationDirect = sedDir
         member model.allReactions = allReac
         member model.generateCode() = generate()
+        member model.allModelData = allModelDataImpl
+        member model.locationInfo = modelLocationInfo
