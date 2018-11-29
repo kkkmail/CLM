@@ -14,6 +14,7 @@ module Model =
 
     type ModelDataParams = 
         {
+            seedValue : int
             numberOfSubstances : int
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
@@ -32,6 +33,7 @@ module Model =
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
             reactionRateModels : List<ReactionRateModel>
+            useVariables : bool
         }
 
 
@@ -64,6 +66,18 @@ module Model =
             |> List.distinct
 
         let ligationPairs = allPairs |> List.filter (fun (a, b) -> a.Length + b.Length <= modelParams.maxPeptideLength.length)
+        let catSynthPairs = List.allPairs (chiralAminoAcids |> List.map (fun c -> SynthesisReaction c)) synthCatalysts
+        let catLigPairs = List.allPairs (ligationPairs |> List.map (fun c -> LigationReaction c)) ligCatalysts
+
+        let noOfRawReactions n = 
+            match n with 
+            | SynthesisName -> chiralAminoAcids.Length
+            | CatalyticSynthesisName -> catSynthPairs.Length
+            | LigationName -> ligationPairs.Length
+            | CatalyticLigationName -> catLigPairs.Length
+            | SedimentationDirectName -> allPairs.Length
+            | SedimentationAllName -> chiralAminoAcids.Length
+
 
         let allSubst = 
             [ Substance.food ]
@@ -88,14 +102,12 @@ module Model =
         (peptides |> List.map (fun p -> PeptideChain p))
 
     let allInd = allSubst |> List.mapi (fun i s -> (s, i)) |> Map.ofList
-
 "
 
         let allNamesMap = 
             allSubst
             |> List.map (fun s -> s, s.name)
             |> Map.ofList
-
 
         let createReactions c l = 
             let create a = c a |> AnyReaction.tryCreateReaction rateProvider
@@ -108,13 +120,19 @@ module Model =
         let synth = createReactions (fun a -> SynthesisReaction a |> Synthesis) chiralAminoAcids
         let lig = createReactions (fun x -> LigationReaction x |> Ligation) ligationPairs
         let sedDir = createReactions (fun x -> SedimentationDirectReaction x |> SedimentationDirect) allPairs
-        let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) (List.allPairs (chiralAminoAcids |> List.map (fun c -> SynthesisReaction c)) synthCatalysts)
-        let catLig = createReactions (fun x -> CatalyticLigationReaction x |> CatalyticLigation) (List.allPairs (ligationPairs |> List.map (fun c -> LigationReaction c)) ligCatalysts)
+        let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) catSynthPairs
+        let catLig = createReactions (fun x -> CatalyticLigationReaction x |> CatalyticLigation) catLigPairs
 
 
         let allReac = 
             synth @ catSynth @ lig @ catLig @ sedDir
             |> List.distinct
+
+        let allRawReactionsData = 
+            ReactionName.all
+            |> List.map (fun n -> n, noOfRawReactions n)
+            |> List.map (fun (n, c) -> "                    " + "(" + n.ToString() + ", " + c.ToString() + ")")
+            |> String.concat nl
 
         let allReactionsData = 
             allReac
@@ -141,6 +159,7 @@ module Model =
         let xSumName = "xSum"
         let xSumNameN = "xSumN"
         let xSumSquaredNameN = "xSumSquaredN"
+        let dName = "d"
 
         let coeffSedAllName = "kW"
 
@@ -149,9 +168,10 @@ module Model =
             |> rateProvider.getRates
             |> fst
 
-        let substComment (s : Substance) = "            // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
+        let substComment (s : Substance) = "        // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
         //let reactionComment (r : Reaction) = " // " + (reactToString r) + nl
         let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
+        let d (s : Substance) = dName + "" + (allInd.[s]).ToString()
 
         let rate (l : list<Substance * int>) (ReactionRate r) = 
             let toFloat (s : string) = 
@@ -207,7 +227,6 @@ module Model =
                 @
                 (update rv.reaction.info.output rv.reaction.info.input rv.backwardRate true rc)
 
-
         let generateTotals () = 
             let g a =
                 allSubst
@@ -236,7 +255,6 @@ module Model =
             x +
             "        |]" + nl
 
-
         let generateTotalSubst() = 
             let x =
                 allSubst
@@ -247,21 +265,7 @@ module Model =
             "    let getTotalSubst (x : array<double>) = " + nl +
             "        [|" + nl +
             x +
-            nl + "        |]" + nl + "         |> Array.sum" + nl + nl
-
-
-        let generateTotalSubstAtLevel(level : int) = 
-            let x =
-                allSubst
-                |> List.filter (fun s -> s.length = level)
-                |> List.map (fun s -> s, s.atoms)
-                |> List.map (fun (s, i) -> "            " + (toMult i) + (x s) + " // " + (substToString s))
-                |> String.concat nl
-
-            "    let getTotalSubstAtLevel" + (level.ToString()) + " (x : array<double>) = " + nl +
-            "        [|" + nl +
-            x +
-            nl + "        |]" + nl + "         |> Array.sum" + nl + nl
+            nl + "        |]" + nl + "        |> Array.sum" + nl
 
 
         let generate () = 
@@ -309,7 +313,13 @@ module Model =
 
             let a = 
                 allSubst
-                |> List.map (fun s -> "" + nl + (substComment s) +  "            [|" + nl + (getTotalSedReac s) + nl + (getReaction s) + "            |]" + nl + "            |> Array.fold (fun acc r -> acc + r) 0.0" + nl)
+                |> List.map (fun s -> nl + "    " + (substComment s) +  "            [|" + nl + (getTotalSedReac s) + nl + (getReaction s) + "            |]" + nl + "            |> Array.sum" + nl)
+
+            let dInitCode = 
+                allSubst
+                |> List.map (fun s -> nl + (substComment s) + "        let " + (d s) + " = " + nl + "            [|" + nl + (getTotalSedReac s) + nl + (getReaction s) + "            |]" + nl + "            |> Array.sum" + nl)
+
+            let dArrayCode = allSubst |> List.map (fun s -> "                " + (d s)) |> String.concat nl
 
 
             let t2 = DateTime.Now
@@ -333,12 +343,13 @@ module Model =
 
             let sumCode = "        let " + xSumName + " = (" + xName + " |> Array.sum) - " + xName + ".[0]" + nl + nl
             let sumCodeN = "        let " + xSumNameN + " = " + nl + "            [|" + nl + sc + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
-            let sumSquaredCodeN = "        let " + xSumSquaredNameN + " = " + nl + "            [|" + nl + sc2 + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
+            let sumSquaredCodeN = "        let " + xSumSquaredNameN + " = " + nl + "            [|" + nl + sc2 + nl + "            |]" + nl + "            |> Array.sum" + nl
 
             let modelDataParamsCode = 
                 @"
     let modelDataParams = 
         {
+            seedValue = seedValue
             numberOfSubstances = " + allSubst.Length.ToString() + @"
             numberOfAminoAcids = " + modelParams.numberOfAminoAcids.ToString() + @"
             maxPeptideLength = " + modelParams.maxPeptideLength.ToString() + @"
@@ -348,7 +359,8 @@ module Model =
             allInd = allInd
 
             allRawReactions = 
-                [
+                [" + 
+                nl + allRawReactionsData + @"
                 ]
 
             allReactions = 
@@ -359,11 +371,33 @@ module Model =
 "
 
             let updateCode = 
-                [ "    let update (x : array<double>) : array<double> = " + nl + sumCode + sumCodeN + sumSquaredCodeN + "        [|" ]
+                [ 
+                    "    let update (x : array<double>) : array<double> = " + nl
+                    "        // printfn \"update::Starting...\"" + nl
+                    sumCode
+                    sumCodeN
+                    sumSquaredCodeN
+                ]
                 @
-                a
-                @
-                [ "        |]" + nl ]
+                if modelParams.useVariables |> not
+                then 
+                    [ "        [|" ]
+                    @
+                    a
+                    @
+                    [ "        |]" + nl ]
+                else
+                    dInitCode
+                    @
+                    [
+                        "        // printfn \"update::Assembling d...\"" + nl
+                        "        let d = "
+                        "            [|" 
+                        dArrayCode
+                        "            |]" + nl
+                        "        // printfn \"update::Completed.\"" + nl
+                        "        d" + nl
+                    ]
 
             let paramCode = 
                 "    let seedValue = " + seedValue.ToString() + nl + 

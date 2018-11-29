@@ -12,10 +12,11 @@ open Clm.ReactionRates
 open Clm.Model
 open System
 
-let n = NumberOfAminoAcids.EightAminoAcids
+let n = NumberOfAminoAcids.NineAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
-let seed = (new Random()).Next()
+//let seed = (new Random()).Next()
+let seed = 842740526
 let rnd = new Random(seed)
 
 let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.001 0.0001
@@ -42,10 +43,12 @@ let modelParams =
         numberOfAminoAcids = n
         maxPeptideLength = m
         reactionRateModels = rates
+        useVariables = true
     }
 
 
 printfn "Creating model..."
+printfn "Starting at: %A" DateTime.Now
 #time
 let model = ClmModel modelParams
 #time

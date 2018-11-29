@@ -12,7 +12,24 @@ module ReactionTypes =
         | SedimentationDirectName
         | SedimentationAllName
 
-        member this.name = sprintf "%A" this
+        member this.name =
+            match this with 
+            | SynthesisName -> "synthesis"
+            | CatalyticSynthesisName -> "catalytic synthesis"
+            | LigationName -> "ligation"
+            | CatalyticLigationName -> "catalytic ligation"
+            | SedimentationDirectName -> "sedimentation direct"
+            | SedimentationAllName -> "sedimentation all"
+
+        static member all = 
+            [
+                SynthesisName
+                CatalyticSynthesisName
+                LigationName
+                CatalyticLigationName
+                SedimentationDirectName
+                SedimentationAllName
+            ]
 
 
     type ReactionInfo =

@@ -12,20 +12,18 @@ module Visualization =
     type Plotter(p : ModelDataParams, o : OdeResult) =
         let description = 
             [
+                "end time: ", sprintf "%A" o.endTime
+                "y0:", sprintf "%A" o.y0
                 "number of amino acids: ", sprintf "%A" p.numberOfAminoAcids.length
                 "max peptide length: ", sprintf "%A" p.maxPeptideLength.length
                 "number of substances: ", sprintf "%A" p.maxPeptideLength.length
             ]
             @
-            (p.allReactions |> List.map (fun (r, c) -> r.ToString() + ": ", c.ToString()))
-            @ [ "end time: ", sprintf "%A" o.endTime]
+            (p.allReactions |> List.map (fun (r, c) -> r.name + ": ", c.ToString()))
+            @
+            (p.allRawReactions |> List.map (fun (r, c) -> r.name + " (raw): ", c.ToString()))
             |> List.map (fun (n, d) -> n + d)
             |> String.concat ", "
-
-        //let description = 
-        //    sprintf "Number of amino acids: %A, number of peptides: %A, number of substances: %A, " p.numberOfAminoAcids.length p.maxPeptideLength.length p.numberOfSubstances + 
-        //    sprintf "end time: %A" o.endTime
-
 
         let plotAllImpl (r : OdeResult) =
             let fn = [ for i in 0..p.numberOfSubstances - 1 -> i ]
@@ -35,7 +33,6 @@ module Visualization =
                 tIdx
                 |> List.map (fun t -> r.t.[t], r.x.[t,i])
 
-            //FSharp.Plotly
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = i.ToString())))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
             |> Chart.ShowWithDescription description
@@ -111,7 +108,7 @@ module Visualization =
             |> Chart.ShowWithDescription description
 
 
-        member this.plotAll() = plotAllImpl o
-        member this.plotAminoAcids() = plotAminoAcidsImpl o
-        member this.plotTotalSubst() = plotTotalSubstImpl o
-        member this.plotEnantiomericExcess() = plotEnantiomericExcessImpl o
+        member __.plotAll() = plotAllImpl o
+        member __.plotAminoAcids() = plotAminoAcidsImpl o
+        member __.plotTotalSubst() = plotTotalSubstImpl o
+        member __.plotEnantiomericExcess() = plotEnantiomericExcessImpl o
