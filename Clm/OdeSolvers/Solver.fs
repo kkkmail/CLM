@@ -12,6 +12,7 @@ module Solver =
             stepSize : double
             eps : double
             noOfOutputPoints : int option
+            noOfProgressPoints : int option
         }
 
         static member defaultValue =
@@ -21,6 +22,7 @@ module Solver =
                 stepSize = 0.01
                 eps = 0.00001
                 noOfOutputPoints = Some 1000
+                noOfProgressPoints = Some 100
             }
 
 
@@ -46,8 +48,22 @@ module Solver =
     //let nSolve (p : OdeParams) (f : double[] -> double -> double[]) (i : array<double>) : OdeResult = 
     let nSolve tEnd (g : double[] -> double[]) n y0 : OdeResult = 
         printfn "nSolve::Starting."
+
+        let mutable progressCount = 0
+
         let p = { OdeParams.defaultValue with endTime = tEnd }
-        let f (x : double[]) (_ : double) : double[] = g x
+
+        let f (x : double[]) (t : double) : double[] = 
+            match p.noOfProgressPoints with 
+            | Some k when k > 0 && tEnd > 0.0 ->
+                if t > (double progressCount) * (tEnd / (double k))
+                then 
+                    progressCount <- ((double k) * (t / tEnd) |> int) + 1
+                    printfn "Current time: %A, t = %A of %A." (DateTime.Now) t tEnd
+            | _ -> ignore()
+
+            g x
+
         let i = defaultInit n y0
 
         let eps = p.eps

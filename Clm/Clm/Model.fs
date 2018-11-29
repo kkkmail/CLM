@@ -27,13 +27,19 @@ module Model =
         }
 
 
+    type UpdateFuncType = 
+        | UseArray
+        | UseVariables
+        | UseFunctions
+
+
     type ModelParams = 
         {
             seedValue : int option
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
             reactionRateModels : List<ReactionRateModel>
-            useVariables : bool
+            updateFuncType : UpdateFuncType
         }
 
 
@@ -41,6 +47,12 @@ module Model =
 
         /// As of 20181122 F# / FSI still have a problem with a new line.
         let nl = "\r\n"
+
+        let reactionShift = 
+            match modelParams.updateFuncType with
+            | UseArray -> "    "
+            | UseVariables -> "    "
+            | UseFunctions -> ""
 
         let seedValue = 
             match modelParams.seedValue with 
@@ -168,7 +180,7 @@ module Model =
             |> rateProvider.getRates
             |> fst
 
-        let substComment (s : Substance) = "        // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
+        let substComment (s : Substance) shift = shift + "    // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
         //let reactionComment (r : Reaction) = " // " + (reactToString r) + nl
         let x (s : Substance) = xName + ".[" + (allInd.[s]).ToString() + "]"
         let d (s : Substance) = dName + "" + (allInd.[s]).ToString()
@@ -202,19 +214,19 @@ module Model =
                     |> List.map (fun (s, _) -> s)
                     |> Set.ofList
 
-                let shift = "                "
+                let totalShift = reactionShift + "            "
                 let (iSign, oSign) = if f then "-", "" else "", "-"
                 let fwd = rate i r
                 (
                     i
                     |> List.filter (fun (s, _) -> catalysts.Contains s |> not)
-                    |> List.map (fun (s, n) -> (s, (shift + iSign + (toMult n) + fwd + " | " + rc + nl)))
+                    |> List.map (fun (s, n) -> (s, (totalShift + iSign + (toMult n) + fwd + " | " + rc + nl)))
                 )
                 @
                 (
                     o
                     |> List.filter (fun (s, _) -> catalysts.Contains s |> not)
-                    |> List.map (fun (s, n) -> (s, (shift + oSign + (toMult n) + fwd+ " | " + rc + nl)))
+                    |> List.map (fun (s, n) -> (s, (totalShift + oSign + (toMult n) + fwd+ " | " + rc + nl)))
                 )
 
             let rc = reactToString r
@@ -297,12 +309,12 @@ module Model =
                 | Some r -> r |> List.rev |> List.map (fun (_, e) -> e) |> String.concat ""
                 | None -> String.Empty
 
-            let getTotalSedReac (s : Substance) = 
+            let getTotalSedReac (s : Substance) shift = 
                 match kW with
                 | Some (ReactionRate _) -> 
                     match s with 
-                    | Food _ -> "                " + coeffSedAllName + " * (2.0 * " + xSumName + " * " + xSumNameN + " - " + xSumSquaredNameN + ")"
-                    | _ -> "                " + "-" + coeffSedAllName + " * (2.0 * " + xSumName + " - " + (x s) + ") * " + (x s)
+                    | Food _ -> shift + "            " + coeffSedAllName + " * (2.0 * " + xSumName + " * " + xSumNameN + " - " + xSumSquaredNameN + ")"
+                    | _ -> shift + "            " + "-" + coeffSedAllName + " * (2.0 * " + xSumName + " - " + (x s) + ") * " + (x s)
                 | None -> String.Empty
 
             let coeffSedAllCode = 
@@ -313,13 +325,29 @@ module Model =
 
             let a = 
                 allSubst
-                |> List.map (fun s -> nl + "    " + (substComment s) +  "            [|" + nl + (getTotalSedReac s) + nl + (getReaction s) + "            |]" + nl + "            |> Array.sum" + nl)
+                |> List.map (fun s -> nl + "    " + (substComment s "    ") +  "            [|" + nl + (getTotalSedReac s "    ") + nl + (getReaction s) + "            |]" + nl + "            |> Array.sum" + nl)
 
-            let dInitCode = 
+            let dInitCode xPar = 
+                let shift, g = 
+                    match xPar with 
+                    | "" -> "    ", d 
+                    | _ -> 
+                        let d1 s = 
+                            (d s) + " (" + xName + " : array<double>) " + xSumName + " " + xSumNameN + " " + xSumSquaredNameN
+                        String.Empty, d1
+
                 allSubst
-                |> List.map (fun s -> nl + (substComment s) + "        let " + (d s) + " = " + nl + "            [|" + nl + (getTotalSedReac s) + nl + (getReaction s) + "            |]" + nl + "            |> Array.sum" + nl)
+                |> List.map (fun s -> nl + (substComment s shift) + shift + "    let " + (g s) + " = " + nl + shift + "        [|" + nl + (getTotalSedReac s shift) + nl + (getReaction s) + shift + "        |]" + nl + shift + "        |> Array.sum" + nl)
 
-            let dArrayCode = allSubst |> List.map (fun s -> "                " + (d s)) |> String.concat nl
+            let dArrayCode xPar = 
+                let shift, g = 
+                    match xPar with 
+                    | "" -> "    ", d
+                    | _ -> 
+                        let d1 s = (d s) + " " + xPar + " " + xSumName + " " + xSumNameN + " " + xSumSquaredNameN
+                        "", d1
+
+                allSubst |> List.map (fun s -> shift + "            " + (g s)) |> String.concat nl
 
 
             let t2 = DateTime.Now
@@ -370,7 +398,44 @@ module Model =
         }
 "
 
+            let updateOuterCode = 
+                match modelParams.updateFuncType with 
+                | UseArray -> []
+                | UseVariables -> []
+                | UseFunctions -> 
+                    dInitCode xName
+
+
+            let updateInnerCode = 
+                match modelParams.updateFuncType with 
+                | UseArray ->
+                    [ "        [|" ] 
+                    @ 
+                    a 
+                    @ 
+                    [ "        |]" + nl ]
+                | UseVariables ->
+                    dInitCode String.Empty
+                    @
+                    [
+                        "        // printfn \"update::Assembling d...\"" + nl
+                        "        let d = "
+                        "            [|" 
+                        dArrayCode String.Empty
+                        "            |]" + nl
+                        "        // printfn \"update::Completed.\"" + nl
+                        "        d" + nl
+                    ]
+                | UseFunctions -> 
+                    [ "        [|" ] 
+                    @
+                    [ dArrayCode xName ]
+                    @
+                    [ "        |]" + nl ]
+
             let updateCode = 
+                updateOuterCode
+                @
                 [ 
                     "    let update (x : array<double>) : array<double> = " + nl
                     "        // printfn \"update::Starting...\"" + nl
@@ -379,25 +444,7 @@ module Model =
                     sumSquaredCodeN
                 ]
                 @
-                if modelParams.useVariables |> not
-                then 
-                    [ "        [|" ]
-                    @
-                    a
-                    @
-                    [ "        |]" + nl ]
-                else
-                    dInitCode
-                    @
-                    [
-                        "        // printfn \"update::Assembling d...\"" + nl
-                        "        let d = "
-                        "            [|" 
-                        dArrayCode
-                        "            |]" + nl
-                        "        // printfn \"update::Completed.\"" + nl
-                        "        d" + nl
-                    ]
+                updateInnerCode
 
             let paramCode = 
                 "    let seedValue = " + seedValue.ToString() + nl + 

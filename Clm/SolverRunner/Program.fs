@@ -8,10 +8,24 @@ open OdeSolvers.Visualization
 let main argv = 
     printfn "%A" argv
 
-    let y0 = 1000.0
-    let tEnd = 100.0
+    let tEnd0 = 1.0
+    let y00 = 1000.0
 
-    printfn "Solving for n = %A..." numberOfSubstances
+    let tEnd, y0 = 
+        match argv |> List.ofArray with 
+        | [] -> tEnd0, y00
+        | h :: t ->
+            match Double.TryParse h with 
+            | true, v -> 
+                match t with 
+                | [] -> v, y00
+                | h1 :: _ ->
+                    match Double.TryParse h1 with 
+                    | true, v1 -> v, v1
+                    | false, _ -> v, y00
+            | false, _ -> tEnd0, y00
+
+    printfn "Solving for n = %A, tEnd = %A, y0 = %A." numberOfSubstances tEnd y0
     printfn "Starting at: %A" DateTime.Now
 
     printfn "Calling defaultInit."
@@ -30,4 +44,4 @@ let main argv =
     plotter.plotEnantiomericExcess()
     printfn "Completed."
 
-    0 // return an integer exit code
+    0

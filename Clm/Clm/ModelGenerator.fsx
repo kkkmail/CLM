@@ -12,7 +12,7 @@ open Clm.ReactionRates
 open Clm.Model
 open System
 
-let n = NumberOfAminoAcids.EightAminoAcids
+let n = NumberOfAminoAcids.NineAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 let seed = (new Random()).Next()
@@ -33,7 +33,7 @@ let rates =
          ligModel |> LigationRateModel
          catLigModel |> CatalyticLigationRateModel
          sdModel |> SedimentationDirectRateModel
-         //saModel |> SedimentationAllRateModel
+         saModel |> SedimentationAllRateModel
     ]
 
 
@@ -43,7 +43,7 @@ let modelParams =
         numberOfAminoAcids = n
         maxPeptideLength = m
         reactionRateModels = rates
-        useVariables = false
+        updateFuncType = UseFunctions
     }
 
 

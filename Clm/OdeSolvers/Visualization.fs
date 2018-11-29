@@ -12,11 +12,12 @@ module Visualization =
     type Plotter(p : ModelDataParams, o : OdeResult) =
         let description = 
             [
+                "Comleted at: ", sprintf "%A" (DateTime.Now)
                 "end time: ", sprintf "%A" o.endTime
                 "y0:", sprintf "%A" o.y0
                 "number of amino acids: ", sprintf "%A" p.numberOfAminoAcids.length
                 "max peptide length: ", sprintf "%A" p.maxPeptideLength.length
-                "number of substances: ", sprintf "%A" p.maxPeptideLength.length
+                "number of substances: ", sprintf "%A" p.numberOfSubstances
             ]
             @
             (p.allReactions |> List.map (fun (r, c) -> r.name + ": ", c.ToString()))
