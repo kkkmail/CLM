@@ -6,7 +6,7 @@ open Clm.ReactionTypes
 open Clm.ReactionRates
 
 module ModelData = 
-    let seedValue = 1049272498
+    let seedValue = 799816112
     let numberOfAminoAcids = NumberOfAminoAcids.TwoAminoAcids
     let maxPeptideLength = MaxPeptideLength.ThreeMax
     let numberOfSubstances = 85
@@ -23,7 +23,7 @@ module ModelData =
         (peptides |> List.map (fun p -> PeptideChain p))
 
     let allInd = allSubst |> List.mapi (fun i s -> (s, i)) |> Map.ofList
-    let kW = 0.0948061007982148 / 84.0
+    let kW = 0.016044067645466 / 84.0
 
 
     let getTotalSubst (x : array<double>) = 
@@ -344,6 +344,8 @@ module ModelData =
     let d1 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[1]) * x.[1]
+            0.0500194232923287 * x.[35] * x.[58] // Aba + aBB | catalytic ligation: A + ba + aBB <-> Aba + aBB
+            -0.500194232923287 * x.[1] * x.[19] * x.[58] // A + ba + aBB | catalytic ligation: A + ba + aBB <-> Aba + aBB
             0.0001 * x.[17] // bA | ligation: b + A <-> bA
             -0.001 * x.[4] * x.[1] // b + A | ligation: b + A <-> bA
             0.0001 * x.[36] // Abb | ligation: A + bb <-> Abb
@@ -400,8 +402,6 @@ module ModelData =
     let d2 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[2]) * x.[2]
-            0.00415524017730415 * x.[42] * x.[14] // BBB + aB | catalytic ligation: B + BB + aB <-> BBB + aB
-            -0.0415524017730415 * x.[2] * x.[10] * x.[14] // B + BB + aB | catalytic ligation: B + BB + aB <-> BBB + aB
             0.0001 * x.[52] // Bbb | ligation: B + bb <-> Bbb
             -0.001 * x.[2] * x.[20] // B + bb | ligation: B + bb <-> Bbb
             0.0001 * x.[51] // Bba | ligation: B + ba <-> Bba
@@ -458,6 +458,8 @@ module ModelData =
     let d3 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[3]) * x.[3]
+            0.0500194232923287 * x.[57] * x.[36] // aBA + Abb | catalytic ligation: a + BA + Abb <-> aBA + Abb
+            -0.500194232923287 * x.[3] * x.[9] * x.[36] // a + BA + Abb | catalytic ligation: a + BA + Abb <-> aBA + Abb
             0.0001 * x.[11] // Ba | ligation: B + a <-> Ba
             -0.001 * x.[2] * x.[3] // B + a | ligation: B + a <-> Ba
             0.0001 * x.[58] // aBB | ligation: a + BB <-> aBB
@@ -514,8 +516,6 @@ module ModelData =
     let d4 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[4]) * x.[4]
-            0.00415524017730415 * x.[84] * x.[8] // bbb + Ab | catalytic ligation: b + bb + Ab <-> bbb + Ab
-            -0.0415524017730415 * x.[4] * x.[20] * x.[8] // b + bb + Ab | catalytic ligation: b + bb + Ab <-> bbb + Ab
             0.0001 * x.[74] // bBB | ligation: b + BB <-> bBB
             -0.001 * x.[4] * x.[10] // b + BB | ligation: b + BB <-> bBB
             0.0001 * x.[73] // bBA | ligation: b + BA <-> bBA
@@ -644,6 +644,8 @@ module ModelData =
     let d9 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[9]) * x.[9]
+            0.0500194232923287 * x.[57] * x.[36] // aBA + Abb | catalytic ligation: a + BA + Abb <-> aBA + Abb
+            -0.500194232923287 * x.[3] * x.[9] * x.[36] // a + BA + Abb | catalytic ligation: a + BA + Abb <-> aBA + Abb
             0.0001 * x.[73] // bBA | ligation: b + BA <-> bBA
             -0.001 * x.[4] * x.[9] // b + BA | ligation: b + BA <-> bBA
             0.0001 * x.[41] // BBA | ligation: B + BA <-> BBA
@@ -660,8 +662,6 @@ module ModelData =
     let d10 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[10]) * x.[10]
-            0.00415524017730415 * x.[42] * x.[14] // BBB + aB | catalytic ligation: B + BB + aB <-> BBB + aB
-            -0.0415524017730415 * x.[2] * x.[10] * x.[14] // B + BB + aB | catalytic ligation: B + BB + aB <-> BBB + aB
             0.0001 * x.[74] // bBB | ligation: b + BB <-> bBB
             -0.001 * x.[4] * x.[10] // b + BB | ligation: b + BB <-> bBB
             0.0001 * x.[42] // BBB | ligation: B + BB <-> BBB
@@ -824,6 +824,8 @@ module ModelData =
     let d19 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[19]) * x.[19]
+            0.0500194232923287 * x.[35] * x.[58] // Aba + aBB | catalytic ligation: A + ba + aBB <-> Aba + aBB
+            -0.500194232923287 * x.[1] * x.[19] * x.[58] // A + ba + aBB | catalytic ligation: A + ba + aBB <-> Aba + aBB
             0.0001 * x.[51] // Bba | ligation: B + ba <-> Bba
             -0.001 * x.[2] * x.[19] // B + ba | ligation: B + ba <-> Bba
             0.0001 * x.[83] // bba | ligation: b + ba <-> bba
@@ -840,8 +842,6 @@ module ModelData =
     let d20 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[20]) * x.[20]
-            0.00415524017730415 * x.[84] * x.[8] // bbb + Ab | catalytic ligation: b + bb + Ab <-> bbb + Ab
-            -0.0415524017730415 * x.[4] * x.[20] * x.[8] // b + bb + Ab | catalytic ligation: b + bb + Ab <-> bbb + Ab
             0.0001 * x.[52] // Bbb | ligation: B + bb <-> Bbb
             -0.001 * x.[2] * x.[20] // B + bb | ligation: B + bb <-> Bbb
             0.0001 * x.[84] // bbb | ligation: b + bb <-> bbb
@@ -1000,6 +1000,8 @@ module ModelData =
     let d35 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[35]) * x.[35]
+            -0.0500194232923287 * x.[35] * x.[58] // Aba + aBB | catalytic ligation: A + ba + aBB <-> Aba + aBB
+            0.500194232923287 * x.[1] * x.[19] * x.[58] // A + ba + aBB | catalytic ligation: A + ba + aBB <-> Aba + aBB
             -0.0001 * x.[35] // Aba | ligation: A + ba <-> Aba
             0.001 * x.[1] * x.[19] // A + ba | ligation: A + ba <-> Aba
         |]
@@ -1070,8 +1072,6 @@ module ModelData =
     let d42 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[42]) * x.[42]
-            -0.00415524017730415 * x.[42] * x.[14] // BBB + aB | catalytic ligation: B + BB + aB <-> BBB + aB
-            0.0415524017730415 * x.[2] * x.[10] * x.[14] // B + BB + aB | catalytic ligation: B + BB + aB <-> BBB + aB
             -0.0001 * x.[42] // BBB | ligation: B + BB <-> BBB
             0.001 * x.[2] * x.[10] // B + BB | ligation: B + BB <-> BBB
         |]
@@ -1222,6 +1222,8 @@ module ModelData =
     let d57 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[57]) * x.[57]
+            -0.0500194232923287 * x.[57] * x.[36] // aBA + Abb | catalytic ligation: a + BA + Abb <-> aBA + Abb
+            0.500194232923287 * x.[3] * x.[9] * x.[36] // a + BA + Abb | catalytic ligation: a + BA + Abb <-> aBA + Abb
             -0.0001 * x.[57] // aBA | ligation: a + BA <-> aBA
             0.001 * x.[3] * x.[9] // a + BA | ligation: a + BA <-> aBA
         |]
@@ -1492,8 +1494,6 @@ module ModelData =
     let d84 (x : array<double>) xSum xSumN xSumSquaredN = 
         [|
             -kW * (2.0 * xSum - x.[84]) * x.[84]
-            -0.00415524017730415 * x.[84] * x.[8] // bbb + Ab | catalytic ligation: b + bb + Ab <-> bbb + Ab
-            0.0415524017730415 * x.[4] * x.[20] * x.[8] // b + bb + Ab | catalytic ligation: b + bb + Ab <-> bbb + Ab
             -0.0001 * x.[84] // bbb | ligation: b + bb <-> bbb
             0.001 * x.[4] * x.[20] // b + bb | ligation: b + bb <-> bbb
         |]
@@ -1782,7 +1782,7 @@ module ModelData =
                         {
                             versionNumber = "1.0.0.0"
                             seedValue = seedValue
-                            modelName = "20181129_06"
+                            modelName = "20181129_04"
                             numberOfSubstances = 85
                             numberOfAminoAcids = TwoAminoAcids
                             maxPeptideLength = ThreeMax
@@ -1791,41 +1791,41 @@ module ModelData =
                     allParams = 
                         [
                             {
-                                synthesisDistribution = DeltaDistribution(351993203, { threshold = None }) |> Delta
+                                synthesisDistribution = DeltaDistribution(711620226, { threshold = None }) |> Delta
                                 forwardScale = Some 0.001
                                 backwardScale = Some 0.0001
                             }
                             |> SynthesisRateParam
 
                             {
-                                catSynthDistribution = UniformDistribution(1408221336, { threshold = Some 0.0005 }) |> Uniform
+                                catSynthDistribution = UniformDistribution(1560408454, { threshold = Some 0.0005 }) |> Uniform
                                 multiplier = 1000.0
                                 maxEe = 0.05
                             }
                             |> CatalyticSynthesisRateParam
 
                             {
-                                ligationDistribution = DeltaDistribution(1306605989, { threshold = None }) |> Delta
+                                ligationDistribution = DeltaDistribution(1388338941, { threshold = None }) |> Delta
                                 forwardScale = Some 0.001
                                 backwardScale = Some 0.0001
                             }
                             |> LigationRateParam
 
                             {
-                                catLigationDistribution = UniformDistribution(1103789466, { threshold = Some 0.0001 }) |> Uniform
+                                catLigationDistribution = UniformDistribution(929641302, { threshold = Some 0.0001 }) |> Uniform
                                 multiplier = 1000.0
                                 maxEe = 0.05
                             }
                             |> CatalyticLigationRateParam
 
                             {
-                                sedimentationDirectDistribution = TriangularDistribution(388918053, { threshold = Some 0.0001 }) |> Triangular
+                                sedimentationDirectDistribution = TriangularDistribution(448133902, { threshold = Some 0.0001 }) |> Triangular
                                 forwardScale = Some 100.0
                             }
                             |> SedimentationDirectRateParam
 
                             {
-                                sedimentationAllDistribution = UniformDistribution(372444012, { threshold = None }) |> Uniform
+                                sedimentationAllDistribution = UniformDistribution(1256429583, { threshold = None }) |> Uniform
                                 forwardScale = Some 0.1
                             }
                             |> SedimentationAllRateParam

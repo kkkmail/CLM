@@ -90,6 +90,8 @@ module Model =
 
         let rateProviderParams = { rateModels = modelParams.reactionRateModels }
         let rateProvider = ReactionRateProvider rateProviderParams
+        let allParamsCode shift = rateProvider.toParamFSharpCode shift
+
         let aminoAcids = AminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let chiralAminoAcids = ChiralAminoAcid.getAminoAcids modelParams.numberOfAminoAcids
         let peptides = Peptide.getPeptides modelParams.maxPeptideLength modelParams.numberOfAminoAcids
@@ -400,9 +402,6 @@ module Model =
             let sumCodeN = "        let " + xSumNameN + " = " + nl + "            [|" + nl + sc + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
             let sumSquaredCodeN = "        let " + xSumSquaredNameN + " = " + nl + "            [|" + nl + sc2 + nl + "            |]" + nl + "            |> Array.sum" + nl
 
-            let allParamsCode shift = rateProvider.toParamFSharpCode shift
-
-
             let modelDataParamsCode = 
                 @"
     let modelDataParamsWithExtraData = 
@@ -530,8 +529,9 @@ module Model =
                     }
 
                 allParams = 
-                    ["
-                               + nl + @"
+                    [
+"
+                                + (allParamsCode "            ") + @"
                     ]
             }
         ]"
