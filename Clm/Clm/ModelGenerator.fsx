@@ -39,8 +39,9 @@ let rates =
     ]
 
 
-let modelParams = 
+let modelGenerationParams = 
     {
+        versionNumber = "1.0.0.0"
         seedValue = Some seed
         numberOfAminoAcids = n
         maxPeptideLength = m
@@ -53,7 +54,7 @@ let modelParams =
 printfn "Creating model..."
 printfn "Starting at: %A" DateTime.Now
 #time
-let model = ClmModel modelParams
+let model = ClmModel modelGenerationParams
 #time
 
 printfn "allSubstances.Length = %A" model.allSubstances.Length
@@ -72,6 +73,6 @@ File.WriteAllLines(info.outputFile, s)
 #time
 printfn "Done."
 
-printfn "Updating %A..." modelParams.modelLocationData.allModelsFile
-File.AppendAllLines(modelParams.modelLocationData.allModelsFile, [ model.allModelData ])
+printfn "Updating %A..." modelGenerationParams.modelLocationData.allModelsFile
+File.AppendAllLines(modelGenerationParams.modelLocationData.allModelsFile, [ model.allModelData ])
 printfn "Done."

@@ -9,15 +9,15 @@ open FSharp.Plotly
 
 module Visualization = 
 
-    type Plotter(p : ModelDataParams, o : OdeResult) =
+    type Plotter(p : ModelDataParamsWithExtraData, o : OdeResult) =
         let description = 
             [
                 "Comleted at: ", sprintf "%A" (DateTime.Now)
                 "end time: ", sprintf "%A" o.endTime
                 "y0:", sprintf "%A" o.y0
-                "number of amino acids: ", sprintf "%A" p.numberOfAminoAcids.length
-                "max peptide length: ", sprintf "%A" p.maxPeptideLength.length
-                "number of substances: ", sprintf "%A" p.numberOfSubstances
+                "number of amino acids: ", sprintf "%A" p.modelDataParams.modelInfo.numberOfAminoAcids.length
+                "max peptide length: ", sprintf "%A" p.modelDataParams.modelInfo.maxPeptideLength.length
+                "number of substances: ", sprintf "%A" p.modelDataParams.modelInfo.numberOfSubstances
             ]
             @
             (p.allReactions |> List.map (fun (r, c) -> r.name + ": ", c.ToString()))
@@ -27,7 +27,7 @@ module Visualization =
             |> String.concat ", "
 
         let plotAllImpl (r : OdeResult) =
-            let fn = [ for i in 0..p.numberOfSubstances - 1 -> i ]
+            let fn = [ for i in 0..p.modelDataParams.modelInfo.numberOfSubstances - 1 -> i ]
             let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
 
             let getFuncData i = 
@@ -40,7 +40,7 @@ module Visualization =
 
 
         let plotAminoAcidsImpl (r : OdeResult) =
-            let fn = [ for i in 0..(p.numberOfAminoAcids.length * 2 - 1) -> i ]
+            let fn = [ for i in 0..(p.modelDataParams.modelInfo.numberOfAminoAcids.length * 2 - 1) -> i ]
 
             let name i = 
                 let idx = i / 2
@@ -61,7 +61,7 @@ module Visualization =
 
 
         let plotEnantiomericExcessImpl (r : OdeResult) =
-            let fn = [ for i in 0..(p.numberOfAminoAcids.length - 1) -> i ]
+            let fn = [ for i in 0..(p.modelDataParams.modelInfo.numberOfAminoAcids.length - 1) -> i ]
 
             let name (i : int) = 
                 let l = AminoAcid.toString i
@@ -103,7 +103,7 @@ module Visualization =
 
             Chart.Combine(
                     [ Chart.Line(totalData, Name = "Total"); Chart.Line(minData, Name = "Min"); Chart.Line(yData, Name = Substance.food.name) ]
-                    @ [ for level in 1..p.maxPeptideLength.length -> Chart.Line(levelData level, Name = level.ToString()) ]
+                    @ [ for level in 1..p.modelDataParams.modelInfo.maxPeptideLength.length -> Chart.Line(levelData level, Name = level.ToString()) ]
                     )
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
             |> Chart.ShowWithDescription description

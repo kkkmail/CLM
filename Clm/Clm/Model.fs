@@ -15,29 +15,38 @@ module Model =
 
     type ModelInfo = 
         {
+            versionNumber : string
             seedValue : int
             modelName : string
             numberOfSubstances : int
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
-            allRates : list<ReactionRateModel>
+        }
+
+
+    type ModelInfoWithModels = 
+        {
+            modelInfo : ModelInfo
+            allModels : list<ReactionRateModel>
         }
 
 
     type ModelDataParams = 
         {
-            seedValue : int
-            modelName : string
-            numberOfSubstances : int
-            numberOfAminoAcids : NumberOfAminoAcids
-            maxPeptideLength : MaxPeptideLength
+            modelInfo : ModelInfo
+            allParams : list<ReactionRateModelParam>
+        }
+
+
+    type ModelDataParamsWithExtraData = 
+        {
+            modelDataParams : ModelDataParams
             getTotals : array<double> -> array<double * double>
             getTotalSubst : array<double> -> double
             allSubst : list<Substance>
             allInd : Map<Substance, int>
             allRawReactions : list<ReactionName * int>
             allReactions : list<ReactionName * int>
-            allRates : list<ReactionRateModel>
         }
 
 
@@ -47,8 +56,9 @@ module Model =
         | UseFunctions
 
 
-    type ModelParams = 
+    type ModelGenerationParams = 
         {
+            versionNumber : string
             seedValue : int option
             numberOfAminoAcids : NumberOfAminoAcids
             maxPeptideLength : MaxPeptideLength
@@ -58,7 +68,7 @@ module Model =
         }
 
 
-    type ClmModel (modelParams : ModelParams) = 
+    type ClmModel (modelParams : ModelGenerationParams) = 
 
         /// As of 20181122 F# / FSI still have a problem with a new line.
         let nl = "\r\n"
@@ -390,15 +400,33 @@ module Model =
             let sumCodeN = "        let " + xSumNameN + " = " + nl + "            [|" + nl + sc + nl + "            |]" + nl + "            |> Array.sum" + nl + nl
             let sumSquaredCodeN = "        let " + xSumSquaredNameN + " = " + nl + "            [|" + nl + sc2 + nl + "            |]" + nl + "            |> Array.sum" + nl
 
+            let allParamsCode shift = rateProvider.toParamFSharpCode shift
+
+
             let modelDataParamsCode = 
                 @"
-    let modelDataParams = 
+    let modelDataParamsWithExtraData = 
         {
-            seedValue = seedValue
-            modelName = " + modelLocationInfo.modelName + @"
-            numberOfSubstances = " + allSubst.Length.ToString() + @"
-            numberOfAminoAcids = " + modelParams.numberOfAminoAcids.ToString() + @"
-            maxPeptideLength = " + modelParams.maxPeptideLength.ToString() + @"
+            modelDataParams = 
+                {
+                    modelInfo = 
+                        {
+                            versionNumber = """ + modelParams.versionNumber + @"""
+                            seedValue = seedValue
+                            modelName = """ + modelLocationInfo.modelName + @"""
+                            numberOfSubstances = " + allSubst.Length.ToString() + @"
+                            numberOfAminoAcids = " + modelParams.numberOfAminoAcids.ToString() + @"
+                            maxPeptideLength = " + modelParams.maxPeptideLength.ToString() + @"
+                        }
+
+                    allParams = 
+                        [
+" 
+                        + 
+                        (allParamsCode "                ") + @"
+                        ]
+                }
+
             getTotals = getTotals
             getTotalSubst = getTotalSubst
             allSubst = allSubst
@@ -412,11 +440,6 @@ module Model =
             allReactions = 
                 [" + 
                 nl + allReactionsData + @"
-                ]
-
-            allRates = 
-                [" + 
-                nl + @"
                 ]
         }
 "
@@ -481,7 +504,8 @@ module Model =
                 "namespace Model" + nl
                 "open Clm.Substances"
                 "open Clm.Model"
-                "open Clm.ReactionTypes" + nl
+                "open Clm.ReactionTypes"
+                "open Clm.ReactionRates" + nl
                 "module ModelData = "
                 paramCode + nl
                 totalSubstCode + nl
@@ -490,21 +514,27 @@ module Model =
             @ updateCode
             @ [ modelDataParamsCode ]
 
+
         let allModelDataImpl = @"
         @
         [
             {
-                seedValue = " + seedValue.ToString() + @"
-                modelName = " + modelLocationInfo.modelName + @"
-                numberOfSubstances = " + (allSubst.Length).ToString() + @"
-                numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + @"
-                maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + @"
+                modelInfo = 
+                    {
+                        versionNumber = """ + modelParams.versionNumber + @"""
+                        seedValue = " + seedValue.ToString() + @"
+                        modelName = """ + modelLocationInfo.modelName + @"""
+                        numberOfSubstances = " + (allSubst.Length).ToString() + @"
+                        numberOfAminoAcids = NumberOfAminoAcids." + (modelParams.numberOfAminoAcids.ToString()) + @"
+                        maxPeptideLength = MaxPeptideLength." + (modelParams.maxPeptideLength.ToString()) + @"
+                    }
 
-                allRates = []
+                allParams = 
+                    ["
+                               + nl + @"
+                    ]
             }
-        ]
-
-"
+        ]"
 
 
         member model.allSubstances = allSubst

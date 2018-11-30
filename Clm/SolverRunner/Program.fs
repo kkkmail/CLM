@@ -38,7 +38,7 @@ let main argv =
     let result = nSolve tEnd update numberOfSubstances y0
 
     printfn "Plotting."
-    let plotter = new Plotter(modelDataParams, result)
+    let plotter = new Plotter(modelDataParamsWithExtraData, result)
     plotter.plotAminoAcids()
     plotter.plotTotalSubst()
     plotter.plotEnantiomericExcess()

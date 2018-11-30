@@ -30,7 +30,7 @@ module DataLocation =
         }
 
         member location.modelDataName = "ModelData"
-        member location.outputFile = Path.Combine(location.modelFolder, location.modelName, location.modelDataName) + ".fs"
+        member location.outputFile = Path.Combine(location.modelFolder, location.modelDataName) + ".fs"
 
 
     type ResultInfo =
