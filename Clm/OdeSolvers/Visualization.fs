@@ -43,7 +43,7 @@ module Visualization =
                     p.modelDataParams.modelInfo.modelName
                     i.resultInfo.separator
                     (int o.y0).ToString().PadLeft(3, '0')
-                    (int o.endTime).ToString().PadLeft(4, '0')
+                    (int o.endTime).ToString().PadLeft(5, '0')
                     suff
                 ]
                 |> String.concat i.resultInfo.separator
