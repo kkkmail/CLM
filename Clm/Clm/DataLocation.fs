@@ -18,7 +18,7 @@ module DataLocation =
             {
                 startingFolder = @"C:\GitHub\CLM\Clm\Model\Models"
                 separator = "_"
-                padLength = 2
+                padLength = 3
                 allModelsFile = @"C:\GitHub\CLM\Clm\Model\AllModels.fs"
             }
 

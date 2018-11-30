@@ -41,6 +41,7 @@ module Visualization =
             let fileName = 
                 [
                     p.modelDataParams.modelInfo.modelName
+                    i.resultInfo.separator
                     (int o.y0).ToString().PadLeft(3, '0')
                     (int o.endTime).ToString().PadLeft(4, '0')
                     suff
