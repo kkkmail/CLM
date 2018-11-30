@@ -14,7 +14,7 @@ open Clm.DataLocation
 open Clm.Model
 open System
 
-let n = NumberOfAminoAcids.TwoAminoAcids
+let n = NumberOfAminoAcids.EightAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 let seed = (new Random()).Next()

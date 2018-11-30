@@ -66,10 +66,10 @@ module ReactionRates =
             | false -> None
 
 
-    type DeltaDistribution (seed : int, p : DistributionParams) = 
-        inherit DistributionBase (seed, p, fun _ -> 1.0)
+    type DeltaDistribution (p : DistributionParams) = 
+        inherit DistributionBase (0, p, fun _ -> 1.0)
 
-        member distr.toFSharpCode = "DeltaDistribution(" + seed.ToString() + ", " + p.toFSharpCode + ")"
+        member distr.toFSharpCode = "DeltaDistribution(" + p.toFSharpCode + ")"
 
 
     type UniformDistribution (seed : int, p : DistributionParams) = 
@@ -438,7 +438,7 @@ module ReactionRates =
 
         static member defaultSynthesisModel (rnd : Random) forward backward =
             {
-                synthesisDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
+                synthesisDistribution = DeltaDistribution({ threshold = None }) |> Delta
                 //synthesisDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
                 forwardScale = Some forward
                 backwardScale = Some backward
@@ -449,7 +449,7 @@ module ReactionRates =
             {
                 catSynthParam = 
                     {
-                        catSynthDistribution = UniformDistribution(rnd.Next(), { threshold = threshold }) |> Uniform
+                        catSynthDistribution = TriangularDistribution(rnd.Next(), { threshold = threshold }) |> Triangular
                         multiplier  = mult
                         maxEe = 0.05
                     }
@@ -459,7 +459,7 @@ module ReactionRates =
 
         static member defaultLigationModel (rnd : Random) forward backward =
             {
-                ligationDistribution = DeltaDistribution(rnd.Next(), { threshold = None }) |> Delta
+                ligationDistribution = DeltaDistribution({ threshold = None }) |> Delta
                 //ligationDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
                 forwardScale = Some forward
                 backwardScale = Some backward
@@ -470,7 +470,7 @@ module ReactionRates =
             {
                 catLigationParam = 
                     {
-                        catLigationDistribution = UniformDistribution(rnd.Next(), { threshold = threshold }) |> Uniform
+                        catLigationDistribution = TriangularDistribution(rnd.Next(), { threshold = threshold }) |> Triangular
                         multiplier  = mult
                         maxEe = 0.05
                     }
@@ -487,7 +487,7 @@ module ReactionRates =
 
         static member defaultSedimentationAllModel (rnd : Random) mult =
             {
-                sedimentationAllDistribution = UniformDistribution(rnd.Next(), { threshold = None }) |> Uniform
+                sedimentationAllDistribution = TriangularDistribution(rnd.Next(), { threshold = None }) |> Triangular
                 forwardScale = Some mult
             }
             |> SedimentationAllModel
