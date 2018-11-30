@@ -6,7 +6,7 @@ open Clm.ReactionRates
 
 module AllModels = 
 
-    /// !!! Automatically added at the end. Do not modify without extreme need !!!
+    /// !!! Grows automatically at the end. Do not modify without extreme need !!!
     let allModelData : list<ModelDataParams> = 
         []
 

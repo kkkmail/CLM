@@ -393,6 +393,13 @@ module ChartExtensions =
             System.Diagnostics.Process.Start(path) |> ignore
 
 
+        /// Saves chart in a specified file name and shows it in the browser. The caller is responsible for full path / filename / extension.
+        static member ShowFileWithDescription (fullFileName : string) (d : string) (ch:GenericChart) = 
+            let html = GenericChart.toEmbeddedHtmlWithDescription d ch
+            File.WriteAllText(fullFileName, html)
+            System.Diagnostics.Process.Start(fullFileName) |> ignore
+
+
         /// Show chart in browser
         static member Show (ch:GenericChart) = Chart.ShowWithDescription "" ch
 

@@ -1,15 +1,56 @@
 ﻿namespace OdeSolvers
 
 open System
+open System.IO
 open Clm.Substances
 open Clm.Model
+open Clm.DataLocation
 open OdeSolvers.Solver
 open Microsoft.FSharp.Core
 open FSharp.Plotly
 
 module Visualization = 
 
-    type Plotter(p : ModelDataParamsWithExtraData, o : OdeResult) =
+    type PlotDataInfo = 
+        {
+            resultInfo : ResultInfo
+        }
+
+        static member defaultValue = 
+            {
+                resultInfo = ResultInfo.defautlValue
+            }
+
+
+    type ChartType = 
+        | PlotAllSubst
+        | PlotAminoAcids
+        | PlotEnantiomericExcess
+        | PlotTotalSubst
+
+        member ct.fileSuffix = 
+            match ct with 
+            | PlotAllSubst -> "as"
+            | PlotAminoAcids -> "aa"
+            | PlotEnantiomericExcess -> "ee"
+            | PlotTotalSubst -> "ts"
+
+        member ct.getFileName (i : PlotDataInfo) (p : ModelDataParamsWithExtraData) (o : OdeResult) = 
+            let suff = ct.fileSuffix
+
+            let fileName = 
+                [
+                    p.modelDataParams.modelInfo.modelName
+                    (int o.y0).ToString().PadLeft(3, '0')
+                    (int o.endTime).ToString().PadLeft(4, '0')
+                    suff
+                ]
+                |> String.concat i.resultInfo.separator
+
+            Path.Combine(i.resultInfo.resultLocation, fileName + ".html")
+
+
+    type Plotter(i : PlotDataInfo, p : ModelDataParamsWithExtraData, o : OdeResult) =
         let description = 
             [
                 "Comleted at: ", sprintf "%A" (DateTime.Now)
@@ -26,6 +67,7 @@ module Visualization =
             |> List.map (fun (n, d) -> n + d)
             |> String.concat ", "
 
+
         let plotAllImpl (r : OdeResult) =
             let fn = [ for i in 0..p.modelDataParams.modelInfo.numberOfSubstances - 1 -> i ]
             let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
@@ -36,7 +78,7 @@ module Visualization =
 
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = i.ToString())))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowWithDescription description
+            |> Chart.ShowFileWithDescription (PlotAllSubst.getFileName i p o) description
 
 
         let plotAminoAcidsImpl (r : OdeResult) =
@@ -57,7 +99,7 @@ module Visualization =
 
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowWithDescription description
+            |> Chart.ShowFileWithDescription (PlotAminoAcids.getFileName i p o) description
 
 
         let plotEnantiomericExcessImpl (r : OdeResult) =
@@ -79,7 +121,7 @@ module Visualization =
 
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowWithDescription description
+            |> Chart.ShowFileWithDescription (PlotEnantiomericExcess.getFileName i p o) description
 
 
         let plotTotalSubstImpl (r : OdeResult) =
@@ -106,7 +148,7 @@ module Visualization =
                     @ [ for level in 1..p.modelDataParams.modelInfo.maxPeptideLength.length -> Chart.Line(levelData level, Name = level.ToString()) ]
                     )
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowWithDescription description
+            |> Chart.ShowFileWithDescription (PlotTotalSubst.getFileName i p o) description
 
 
         member __.plotAll() = plotAllImpl o

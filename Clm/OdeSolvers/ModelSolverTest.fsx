@@ -26,7 +26,7 @@ let result = nSolve tEnd update numberOfSubstances y0
 #time
 
 printfn "Plotting."
-let plotter = new Plotter(modelDataParams, result)
+let plotter = new Plotter(PlotDataInfo.defaultValue, modelDataParamsWithExtraData, result)
 //plotter.plotAll()
 plotter.plotAminoAcids()
 plotter.plotTotalSubst()

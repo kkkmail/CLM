@@ -37,9 +37,6 @@ module DataLocation =
         {
             resultLocation : string
             separator : string
-            //modelName : string
-            //y0 : double
-            //tMax : double
         }
 
         static member defautlValue = 
