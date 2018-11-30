@@ -62,3 +62,56 @@ module AllModels =
                     ]
             }
         ]
+
+        @
+        [
+            {
+                modelInfo = 
+                    {
+                        versionNumber = "1.0.0.0"
+                        seedValue = 1082891382
+                        modelName = "20181129_005"
+                        numberOfSubstances = 8421
+                        numberOfAminoAcids = NumberOfAminoAcids.TenAminoAcids
+                        maxPeptideLength = MaxPeptideLength.ThreeMax
+                    }
+
+                allParams = 
+                    [
+                        {
+                            synthesisDistribution = DeltaDistribution({ threshold = None }) |> Delta
+                            forwardScale = Some 0.001
+                            backwardScale = Some 0.0001
+                        }
+                        |> SynthesisRateParam
+
+                        {
+                            catSynthDistribution = TriangularDistribution(430135867, { threshold = Some 0.0005 }) |> Triangular
+                            multiplier = 1000.0
+                            maxEe = 0.05
+                        }
+                        |> CatalyticSynthesisRateParam
+
+                        {
+                            ligationDistribution = DeltaDistribution({ threshold = None }) |> Delta
+                            forwardScale = Some 0.001
+                            backwardScale = Some 0.0001
+                        }
+                        |> LigationRateParam
+
+                        {
+                            catLigationDistribution = TriangularDistribution(266190779, { threshold = Some 0.0001 }) |> Triangular
+                            multiplier = 1000.0
+                            maxEe = 0.05
+                        }
+                        |> CatalyticLigationRateParam
+
+                        {
+                            sedimentationDirectDistribution = TriangularDistribution(1670086807, { threshold = Some 0.0001 }) |> Triangular
+                            forwardScale = Some 100.0
+                        }
+                        |> SedimentationDirectRateParam
+
+                    ]
+            }
+        ]
