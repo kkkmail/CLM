@@ -51,10 +51,13 @@ module DataLocation =
         let todayPrefix = today.ToString "yyyyMMdd"
 
         let todayMaxDirNumber = 
-            dirs 
-            |> List.filter(fun d -> d.StartsWith(todayPrefix))
-            |> List.map (fun d -> d.Substring(todayPrefix.Length).Replace("_", ""))
-            |> List.choose (fun n -> match Int32.TryParse n with | (true, i) -> Some i | (false, _) -> None)
+            (
+                dirs 
+                |> List.filter(fun d -> d.StartsWith(todayPrefix))
+                |> List.map (fun d -> d.Substring(todayPrefix.Length).Replace("_", ""))
+                |> List.choose (fun n -> match Int32.TryParse n with | (true, i) -> Some i | (false, _) -> None)
+            )
+            @ [ 0 ]
             |> List.max
 
         let modelName = todayPrefix + i.separator + (todayMaxDirNumber + 1).ToString().PadLeft(i.padLength, '0')
