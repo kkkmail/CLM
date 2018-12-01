@@ -274,3 +274,56 @@ module AllModels =
                     ]
             }
         ]
+
+        @
+        [
+            {
+                modelInfo = 
+                    {
+                        versionNumber = "1.0.0.0"
+                        seedValue = 2081387425
+                        modelName = "20181130_004"
+                        numberOfSubstances = 6175
+                        numberOfAminoAcids = NumberOfAminoAcids.NineAminoAcids
+                        maxPeptideLength = MaxPeptideLength.ThreeMax
+                    }
+
+                allParams = 
+                    [
+                        {
+                            synthesisDistribution = DeltaDistribution({ threshold = None }) |> Delta
+                            forwardScale = Some 0.001
+                            backwardScale = Some 0.0001
+                        }
+                        |> SynthesisRateParam
+
+                        {
+                            catSynthDistribution = TriangularDistribution(389078061, { threshold = Some 0.0005 }) |> Triangular
+                            multiplier = 1000.0
+                            maxEe = 0.05
+                        }
+                        |> CatalyticSynthesisRateParam
+
+                        {
+                            ligationDistribution = DeltaDistribution({ threshold = None }) |> Delta
+                            forwardScale = Some 0.001
+                            backwardScale = Some 0.0001
+                        }
+                        |> LigationRateParam
+
+                        {
+                            catLigationDistribution = TriangularDistribution(1568005932, { threshold = Some 0.0001 }) |> Triangular
+                            multiplier = 1000.0
+                            maxEe = 0.05
+                        }
+                        |> CatalyticLigationRateParam
+
+                        {
+                            sedimentationAllDistribution = TriangularDistribution(502199802, { threshold = None }) |> Triangular
+                            forwardScale = Some 0.1
+                        }
+                        |> SedimentationAllRateParam
+
+                    ]
+            }
+        ]

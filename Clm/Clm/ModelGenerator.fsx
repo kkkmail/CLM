@@ -34,8 +34,8 @@ let rates =
          catSynthModel |> CatalyticSynthesisRateModel
          ligModel |> LigationRateModel
          catLigModel |> CatalyticLigationRateModel
-         sdModel |> SedimentationDirectRateModel
-         //saModel |> SedimentationAllRateModel
+         //sdModel |> SedimentationDirectRateModel
+         saModel |> SedimentationAllRateModel
     ]
 
 
