@@ -14,7 +14,8 @@ open Clm.DataLocation
 open Clm.Model
 //===========================================================
 let updateAllModels = false
-let n = NumberOfAminoAcids.TwoAminoAcids
+
+let n = NumberOfAminoAcids.SixAminoAcids
 let m = MaxPeptideLength.ThreeMax
 //===========================================================
 

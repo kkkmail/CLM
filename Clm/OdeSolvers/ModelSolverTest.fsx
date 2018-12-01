@@ -9,10 +9,10 @@ open Model.ModelData
 open OdeSolvers.Solver
 open OdeSolvers.Visualization
 //===========================================================
-let y00 = 1000.0
-let tEnd = 10000.0
-
 let useTempFolder = true
+
+let y00 = 1.0
+let tEnd = 10000.0
 //===========================================================
 let y0 = y00 * (2.0 * (double modelDataParamsWithExtraData.modelDataParams.modelInfo.numberOfAminoAcids.length))
 printfn "Solving for n = %A, y0 = %A..." numberOfSubstances y0
@@ -27,7 +27,6 @@ let result = nSolve tEnd update getInitValues y0
 
 printfn "Plotting."
 let plotter = new Plotter({ PlotDataInfo.defaultValue with useTempFolder = useTempFolder }, modelDataParamsWithExtraData, result)
-//plotter.plotAll()
 plotter.plotAminoAcids()
 plotter.plotTotalSubst()
 plotter.plotEnantiomericExcess()
