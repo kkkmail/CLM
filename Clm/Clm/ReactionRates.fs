@@ -3,9 +3,6 @@
 open System
 open System.Collections.Generic
 open FSharp.Collections
-open System.Numerics
-open MathNet.Numerics.LinearAlgebra
-open Clm.Substances
 open Clm.ReactionTypes
 
 module ReactionRates = 

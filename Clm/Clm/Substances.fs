@@ -1,9 +1,5 @@
 ﻿namespace Clm
 
-open System
-open System.Numerics
-open MathNet.Numerics.LinearAlgebra
-
 module Substances = 
 
     type NumberOfAminoAcids = 

@@ -4,7 +4,6 @@ open System.IO
 open System
 
 module DataLocation = 
-    open System.IO
 
     type ModelLocationInputData = 
         {

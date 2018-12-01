@@ -1,10 +1,7 @@
 ﻿namespace Clm
 
 open System
-open System.Collections.Generic
 open FSharp.Collections
-open System.Numerics
-open MathNet.Numerics.LinearAlgebra
 open Clm.Substances
 open Clm.Reactions
 open Clm.ReactionTypes
@@ -12,6 +9,7 @@ open Clm.ReactionRates
 open Clm.DataLocation
 
 module Model = 
+    open System.IO
 
     type ModelInfo = 
         {
@@ -65,6 +63,7 @@ module Model =
             reactionRateModels : List<ReactionRateModel>
             updateFuncType : UpdateFuncType
             modelLocationData : ModelLocationInputData
+            updateAllModels : bool
         }
 
 
@@ -164,10 +163,14 @@ module Model =
         let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) catSynthPairs
         let catLig = createReactions (fun x -> CatalyticLigationReaction x |> CatalyticLigation) catLigPairs
 
-
         let allReac = 
             synth @ catSynth @ lig @ catLig @ sedDir
             |> List.distinct
+
+        let kW = 
+            SedimentationAllReaction |> SedimentationAll
+            |> rateProvider.getRates
+            |> fst
 
         let allRawReactionsData = 
             ReactionName.all
@@ -176,10 +179,21 @@ module Model =
             |> String.concat nl
 
         let allReactionsData = 
-            allReac
-            |> List.groupBy (fun r -> r.name)
-            |> List.map (fun (n, l) -> (n, l.Length))
-            |> List.map (fun (n, c) -> "                    " + "(" + n.ToString() + ", " + c.ToString() + ")")
+            let shift = "                    "
+
+            (
+                allReac
+                |> List.groupBy (fun r -> r.name)
+                |> List.map (fun (n, l) -> (n, l.Length))
+                |> List.map (fun (n, c) -> shift + "(" + n.ToString() + ", " + c.ToString() + ")")
+            )
+            @
+            (
+                // TODO kk:20181130 A little hack. Do it properly.
+                match kW with 
+                | Some _ -> [ shift + "(" + ReactionName.SedimentationAllName.ToString() + ", " + (2 * modelParams.numberOfAminoAcids.length).ToString() + ")" ]
+                | None -> []
+            )
             |> String.concat nl
 
 
@@ -203,11 +217,6 @@ module Model =
         let dName = "d"
 
         let coeffSedAllName = "kW"
-
-        let kW = 
-            SedimentationAllReaction |> SedimentationAll
-            |> rateProvider.getRates
-            |> fst
 
         let substComment (s : Substance) shift = shift + "    // " + (allInd.[s]).ToString() + " - " + (substToString s) + nl
         //let reactionComment (r : Reaction) = " // " + (reactToString r) + nl
@@ -536,6 +545,21 @@ module Model =
             }
         ]"
 
+        let generateAndSave() = 
+            printfn "Generating..."
+            let s = generate()
+
+            printfn "Writing..."
+            File.WriteAllLines(modelLocationInfo.outputFile, s)
+            printfn "Done."
+
+            match modelParams.updateAllModels with
+            | true -> 
+                printfn "Updating %A..." modelParams.modelLocationData.allModelsFile
+                File.AppendAllLines(modelParams.modelLocationData.allModelsFile, [ allModelDataImpl ])
+            | false -> printfn "NOT updating %A." modelParams.modelLocationData.allModelsFile
+
+            printfn "Done."
 
         member model.allSubstances = allSubst
         member model.synthesis = synth
@@ -544,6 +568,6 @@ module Model =
         member model.catalyticLigation = catLig
         member model.sedimentationDirect = sedDir
         member model.allReactions = allReac
-        member model.generateCode() = generate()
         member model.allModelData = allModelDataImpl
         member model.locationInfo = modelLocationInfo
+        member model.generateCode() = generateAndSave()
