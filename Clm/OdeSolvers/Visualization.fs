@@ -119,7 +119,7 @@ module Visualization =
 
         let plotAminoAcidsImpl (r : OdeResult) =
             let fn = [ for i in 0..(p.modelDataParams.modelInfo.numberOfAminoAcids.length - 1) -> i ]
-            let name (i : int) = AminoAcid.toString i
+            let name (i : int) = (AminoAcid.toString i) + " + " + (AminoAcid.toString i).ToLower()
             let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
             let a = tIdx |> Array.ofList |> Array.map (fun t -> p.getTotals r.x.[t,*])
             let d t i = (a.[t].[i] |> fst) + (a.[t].[i] |> snd)

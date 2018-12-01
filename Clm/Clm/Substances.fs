@@ -318,6 +318,13 @@ module Substances =
             | PeptideChain p -> p.atoms
             | Sum _ -> 0
 
+        member substance.aminoAcids = 
+            match substance with 
+            | Food _ -> []
+            | Chiral c -> [ c ]
+            | PeptideChain p -> p.aminoAcids
+            | Sum _ -> []
+
         static member food = FoodSubst.y |> Food
         static member chiralL a = a |> L |> Chiral
 

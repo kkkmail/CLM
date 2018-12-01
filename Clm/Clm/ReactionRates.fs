@@ -39,6 +39,11 @@ module ReactionRates =
 
         member this.toFSharpCode = "{ threshold = " + (doubleOptFSharpString this.threshold) + " }"
 
+        static member defaultValue = 
+            {
+                threshold = None
+            }
+
 
     [<AbstractClass>]
     type DistributionBase(seed : int, p : DistributionParams, d : Random -> double) = 
@@ -73,6 +78,7 @@ module ReactionRates =
         inherit DistributionBase (seed, p, fun r -> r.NextDouble())
 
         member distr.toFSharpCode = "UniformDistribution(" + seed.ToString() + ", " + p.toFSharpCode + ")"
+        new (seed : int) = UniformDistribution(seed, DistributionParams.defaultValue)
 
 
     type TriangularDistribution (seed : int, p : DistributionParams) = 

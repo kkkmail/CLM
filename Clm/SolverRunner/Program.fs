@@ -1,5 +1,6 @@
 ﻿open System
 open Microsoft.FSharp.Core
+open Clm.Model
 open Model.ModelData
 open OdeSolvers.Solver
 open OdeSolvers.Visualization
@@ -29,14 +30,10 @@ let main argv =
     printfn "Solving for n = %A, tEnd = %A, y0 = %A." numberOfSubstances tEnd y0
     printfn "Starting at: %A" DateTime.Now
 
-    printfn "Calling defaultInit."
-    let i = defaultInit numberOfSubstances y0
-
-    printfn "Calling update."
-    let d = update i
+    let getInitValues = defaultInit (ModelInitValuesParams.getDefaultValue modelDataParamsWithExtraData None)
 
     printfn "Calling nSolve..."
-    let result = nSolve tEnd update numberOfSubstances y0
+    let result = nSolve tEnd update getInitValues y0
 
     printfn "Plotting."
     let plotter = new Plotter(PlotDataInfo.defaultValue, modelDataParamsWithExtraData, result)
