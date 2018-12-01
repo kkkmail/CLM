@@ -10,7 +10,7 @@
     <RootNamespace>OdeSolvers</RootNamespace>
     <AssemblyName>OdeSolvers</AssemblyName>
     <UseStandardResourceNames>true</UseStandardResourceNames>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Name>OdeSolvers</Name>
   </PropertyGroup>
@@ -55,7 +55,7 @@
       <HintPath>..\packages\FSharp.Collections.ParallelSeq.1.1.2\lib\net45\FSharp.Collections.ParallelSeq.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Core">
-      <HintPath>..\packages\FSharp.Core.4.5.2\lib\net45\FSharp.Core.dll</HintPath>
+      <HintPath>..\packages\FSharp.Core.4.5.4\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -76,9 +76,9 @@
       <Project>{2cfc7e81-4fb4-46b4-9534-c1455e2c4c14}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\FSharp.Plotly\src\FSharp.Plotly\FSharp.Plotly.fsproj">
+    <ProjectReference Include="..\FSharp.Plotly\FSharp.Plotly.fsproj">
       <Name>FSharp.Plotly</Name>
-      <Project>{e253d080-bbb1-45df-ad5a-961be7b634d1}</Project>
+      <Project>{c609d8ec-f1ea-4917-a43c-12efb173b8f3}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.fsproj">

@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>2cfc7e81-4fb4-46b4-9534-c1455e2c4c14</ProjectGuid>
+    <ProjectGuid>c609d8ec-f1ea-4917-a43c-12efb173b8f3</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Clm</RootNamespace>
-    <AssemblyName>Clm</AssemblyName>
+    <RootNamespace>FSharp.Plotly</RootNamespace>
+    <AssemblyName>FSharp.Plotly</AssemblyName>
     <UseStandardResourceNames>true</UseStandardResourceNames>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>Clm</Name>
+    <Name>FSharp.Plotly</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,7 +23,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <DocumentationFile>bin\$(Configuration)\$(AssemblyName).XML</DocumentationFile>
-    <OtherFlags>--warnaserror+:25</OtherFlags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,41 +41,45 @@
   </PropertyGroup>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="VersionInfo.fs" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Substances.fs" />
-    <Compile Include="ReactionTypes.fs" />
-    <Compile Include="ReactionRates.fs" />
-    <Compile Include="Reactions.fs" />
-    <Compile Include="DataLocation.fs" />
-    <Compile Include="Model.fs" />
-    <None Include="References.fsx" />
-    <None Include="ModelGenerator.fsx" />
-    <None Include="MapPerformance.fsx" />
-    <None Include="FileSystemTests.fsx" />
+    <Compile Include="StyleParams.fs" />
+    <Compile Include="DynamicObj.fs" />
+    <Compile Include="Colors.fs" />
+    <Compile Include="Colorbar.fs" />
+    <Compile Include="Light.fs" />
+    <Compile Include="Contours.fs" />
+    <Compile Include="Dimensions.fs" />
+    <Compile Include="Line.fs" />
+    <Compile Include="Marker.fs" />
+    <Compile Include="Font.fs" />
+    <Compile Include="Axis.fs" />
+    <Compile Include="Bins.fs" />
+    <Compile Include="Cumulative.fs" />
+    <Compile Include="Scene.fs" />
+    <Compile Include="Shape.fs" />
+    <Compile Include="Error.fs" />
+    <Compile Include="Trace.fs" />
+    <Compile Include="Trace3d.fs" />
+    <Compile Include="Layout.fs" />
+    <Compile Include="GenericChart.fs" />
+    <Compile Include="Chart.fs" />
+    <Compile Include="ChartExtensions.fs" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="FSharp.Collections.ParallelSeq">
-      <HintPath>..\packages\FSharp.Collections.ParallelSeq.1.1.2\lib\net45\FSharp.Collections.ParallelSeq.dll</HintPath>
-    </Reference>
     <Reference Include="FSharp.Core">
       <HintPath>..\packages\FSharp.Core.4.5.4\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.ValueTuple">
       <Private>True</Private>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AlgLib\AlgLib.csproj">
-      <Name>AlgLib</Name>
-      <Project>{5d23cbc1-d7c8-4942-b9c4-22993f4f5e30}</Project>
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

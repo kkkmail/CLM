@@ -6,10 +6,11 @@ open OdeSolvers.Visualization
 
 [<EntryPoint>]
 let main argv = 
-    printfn "%A" argv
+    printfn "Input values: %A" argv
 
     let tEnd0 = 1.0
-    let y00 = 1000.0
+    let y000 = 1000.0
+    let y00 = y000 * (2.0 * (double modelDataParamsWithExtraData.modelDataParams.modelInfo.numberOfAminoAcids.length))
 
     let tEnd, y0 = 
         match argv |> List.ofArray with 

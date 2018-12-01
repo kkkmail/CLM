@@ -7,11 +7,12 @@ open Microsoft.FSharp.Core
 open Model.ModelData
 open OdeSolvers.Solver
 open OdeSolvers.Visualization
-
-let y0 = 1000.0
+//===========================================================
+let y00 = 1000.0
 let tEnd = 10000.0
-
-printfn "Solving for n = %A..." numberOfSubstances
+//===========================================================
+let y0 = y00 * (2.0 * (double modelDataParamsWithExtraData.modelDataParams.modelInfo.numberOfAminoAcids.length))
+printfn "Solving for n = %A, y0 = %A..." numberOfSubstances y0
 printfn "Starting at: %A" DateTime.Now
 
 printfn "Calling defaultInit."

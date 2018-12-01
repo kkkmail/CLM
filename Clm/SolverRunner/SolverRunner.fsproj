@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
-      <HintPath>..\packages\FSharp.Core.4.5.2\lib\net45\FSharp.Core.dll</HintPath>
+      <HintPath>..\packages\FSharp.Core.4.5.4\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -71,21 +71,6 @@
     <ProjectReference Include="..\Clm\Clm.fsproj">
       <Name>Clm</Name>
       <Project>{2cfc7e81-4fb4-46b4-9534-c1455e2c4c14}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\FSharp.Plotly\src\FSharp.Plotly\FSharp.Plotly.fsproj">
-      <Name>FSharp.Plotly</Name>
-      <Project>{e253d080-bbb1-45df-ad5a-961be7b634d1}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\MathNetNumerics\src\FSharp\FSharp.fsproj">
-      <Name>FSharp</Name>
-      <Project>{def82043-cbd9-480d-b128-b97cc3b3399e}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\MathNetNumerics\src\Numerics\Numerics.csproj">
-      <Name>Numerics</Name>
-      <Project>{b8113b94-a51d-4988-a528-3bf03e675719}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.fsproj">
