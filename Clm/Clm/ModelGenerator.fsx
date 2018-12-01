@@ -13,7 +13,7 @@ open Clm.ReactionRates
 open Clm.DataLocation
 open Clm.Model
 
-let n = NumberOfAminoAcids.TwoAminoAcids
+let n = NumberOfAminoAcids.NineAminoAcids
 let m = MaxPeptideLength.ThreeMax
 
 let seed = (new Random()).Next()
@@ -53,7 +53,7 @@ let modelGenerationParams =
         reactionRateModels = rates
         updateFuncType = UseFunctions
         modelLocationData = ModelLocationInputData.defaultValue
-        updateAllModels = false
+        updateAllModels = true
     }
 
 
