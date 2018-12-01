@@ -20,8 +20,8 @@ let seed = (new Random()).Next()
 let rnd = new Random(seed)
 
 ////////////////////////////////////////
-let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.001 0.0001
-let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.001 0.0001
+let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.001 0.001
+let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.001 0.001
 
 let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.0005) 1000.0
 let catLigModel = ReactionRateProvider.defaultCatalyticLigationModel rnd ligModel (Some 0.0001) 1000.0
@@ -37,8 +37,8 @@ let rates =
 
          //catSynthModel |> CatalyticSynthesisRateModel
          //catLigModel |> CatalyticLigationRateModel
-
          //sdModel |> SedimentationDirectRateModel
+
          //saModel |> SedimentationAllRateModel
     ]
 
