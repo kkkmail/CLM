@@ -14,16 +14,19 @@ module Visualization =
     type PlotDataInfo = 
         {
             resultInfo : ResultInfo
+            useTempFolder : bool
         }
 
         static member defaultValue = 
             {
                 resultInfo = ResultInfo.defautlValue
+                useTempFolder = false
             }
 
 
     type ChartType = 
         | PlotAllSubst
+        | PlotChiralAminoAcids
         | PlotAminoAcids
         | PlotEnantiomericExcess
         | PlotTotalSubst
@@ -31,6 +34,7 @@ module Visualization =
         member ct.fileSuffix = 
             match ct with 
             | PlotAllSubst -> "as"
+            | PlotChiralAminoAcids -> "ca"
             | PlotAminoAcids -> "aa"
             | PlotEnantiomericExcess -> "ee"
             | PlotTotalSubst -> "ts"
@@ -55,6 +59,7 @@ module Visualization =
         let description = 
             [
                 "Comleted at: ", sprintf "%A" (DateTime.Now)
+                "model name: ", p.modelDataParams.modelInfo.modelName
                 "end time: ", sprintf "%A" o.endTime
                 "y0:", sprintf "%A" o.y0
                 "number of amino acids: ", sprintf "%A" p.modelDataParams.modelInfo.numberOfAminoAcids.length
@@ -69,6 +74,15 @@ module Visualization =
             |> String.concat ", "
 
 
+        let showChart fileName = 
+            match i.useTempFolder with 
+            | true -> Chart.ShowWithDescription
+            | false -> Chart.ShowFileWithDescription fileName
+
+
+        let getFileName (ct : ChartType) = ct.getFileName i p o
+
+
         let plotAllImpl (r : OdeResult) =
             let fn = [ for i in 0..p.modelDataParams.modelInfo.numberOfSubstances - 1 -> i ]
             let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
@@ -79,10 +93,10 @@ module Visualization =
 
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = i.ToString())))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowFileWithDescription (PlotAllSubst.getFileName i p o) description
+            |> showChart (getFileName PlotAllSubst) description
 
 
-        let plotAminoAcidsImpl (r : OdeResult) =
+        let plotChiralAminoAcidsImpl (r : OdeResult) =
             let fn = [ for i in 0..(p.modelDataParams.modelInfo.numberOfAminoAcids.length * 2 - 1) -> i ]
 
             let name i = 
@@ -100,7 +114,20 @@ module Visualization =
 
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowFileWithDescription (PlotAminoAcids.getFileName i p o) description
+            |> showChart (getFileName PlotChiralAminoAcids) description
+
+
+        let plotAminoAcidsImpl (r : OdeResult) =
+            let fn = [ for i in 0..(p.modelDataParams.modelInfo.numberOfAminoAcids.length - 1) -> i ]
+            let name (i : int) = AminoAcid.toString i
+            let tIdx = [ for i in 0..o.noOfOutputPoints -> i ]
+            let a = tIdx |> Array.ofList |> Array.map (fun t -> p.getTotals r.x.[t,*])
+            let d t i = (a.[t].[i] |> fst) + (a.[t].[i] |> snd)
+            let getFuncData i = tIdx |> List.map (fun t -> r.t.[t], d t i)
+
+            Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
+            |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
+            |> showChart (getFileName PlotChiralAminoAcids) description
 
 
         let plotEnantiomericExcessImpl (r : OdeResult) =
@@ -122,7 +149,7 @@ module Visualization =
 
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowFileWithDescription (PlotEnantiomericExcess.getFileName i p o) description
+            |> showChart (getFileName PlotEnantiomericExcess) description
 
 
         let plotTotalSubstImpl (r : OdeResult) =
@@ -149,10 +176,11 @@ module Visualization =
                     @ [ for level in 1..p.modelDataParams.modelInfo.maxPeptideLength.length -> Chart.Line(levelData level, Name = level.ToString()) ]
                     )
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> Chart.ShowFileWithDescription (PlotTotalSubst.getFileName i p o) description
+            |> showChart (getFileName PlotTotalSubst) description
 
 
         member __.plotAll() = plotAllImpl o
+        member __.plotChiralAminoAcids() = plotChiralAminoAcidsImpl o
         member __.plotAminoAcids() = plotAminoAcidsImpl o
         member __.plotTotalSubst() = plotTotalSubstImpl o
         member __.plotEnantiomericExcess() = plotEnantiomericExcessImpl o
