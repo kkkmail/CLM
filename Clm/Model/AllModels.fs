@@ -15,6 +15,7 @@ module AllModels =
             {
                 modelInfo = 
                     {
+                        fileStructureVersionNumber = "1.0.0.0"
                         versionNumber = "1.0.0.0"
                         seedValue = 1843395616
                         modelName = "20181129_004"
@@ -68,6 +69,7 @@ module AllModels =
             {
                 modelInfo = 
                     {
+                        fileStructureVersionNumber = "1.0.0.0"
                         versionNumber = "1.0.0.0"
                         seedValue = 1082891382
                         modelName = "20181129_005"
@@ -121,6 +123,7 @@ module AllModels =
             {
                 modelInfo = 
                     {
+                        fileStructureVersionNumber = "1.0.0.0"
                         versionNumber = "1.0.0.0"
                         seedValue = 1907012401
                         modelName = "20181130_001"
@@ -174,6 +177,7 @@ module AllModels =
             {
                 modelInfo = 
                     {
+                        fileStructureVersionNumber = "1.0.0.0"
                         versionNumber = "1.0.0.0"
                         seedValue = 967770849
                         modelName = "20181130_002"
@@ -227,6 +231,7 @@ module AllModels =
             {
                 modelInfo = 
                     {
+                        fileStructureVersionNumber = "1.0.0.0"
                         versionNumber = "1.0.0.0"
                         seedValue = 1048669266
                         modelName = "20181130_003"
@@ -280,6 +285,7 @@ module AllModels =
             {
                 modelInfo = 
                     {
+                        fileStructureVersionNumber = "1.0.0.0"
                         versionNumber = "1.0.0.0"
                         seedValue = 2081387425
                         modelName = "20181130_004"

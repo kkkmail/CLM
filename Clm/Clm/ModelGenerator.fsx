@@ -45,6 +45,7 @@ let rates =
 
 let modelGenerationParams = 
     {
+        fileStructureVersionNumber = FileStructureVersionNumber
         versionNumber = VersionNumber
         seedValue = Some seed
         numberOfAminoAcids = n
@@ -65,7 +66,6 @@ let model = ClmModel modelGenerationParams
 printfn "allSubstances.Length = %A" model.allSubstances.Length
 printfn "allReactions.Length = %A" model.allReactions.Length
 
-printfn "Generating..."
 #time
 do model.generateCode()
 #time

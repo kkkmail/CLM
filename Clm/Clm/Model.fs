@@ -13,6 +13,7 @@ module Model =
 
     type ModelInfo = 
         {
+            fileStructureVersionNumber : string
             versionNumber : string
             seedValue : int
             modelName : string
@@ -56,6 +57,7 @@ module Model =
 
     type ModelGenerationParams = 
         {
+            fileStructureVersionNumber : string
             versionNumber : string
             seedValue : int option
             numberOfAminoAcids : NumberOfAminoAcids
@@ -419,6 +421,7 @@ module Model =
                 {
                     modelInfo = 
                         {
+                            fileStructureVersionNumber = """ + modelParams.fileStructureVersionNumber + @"""
                             versionNumber = """ + modelParams.versionNumber + @"""
                             seedValue = seedValue
                             modelName = """ + modelLocationInfo.modelName + @"""
@@ -529,6 +532,7 @@ module Model =
             {
                 modelInfo = 
                     {
+                        fileStructureVersionNumber = """ + modelParams.fileStructureVersionNumber + @"""
                         versionNumber = """ + modelParams.versionNumber + @"""
                         seedValue = " + seedValue.ToString() + @"
                         modelName = """ + modelLocationInfo.modelName + @"""
