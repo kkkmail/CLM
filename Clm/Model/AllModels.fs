@@ -333,3 +333,37 @@ module AllModels =
                     ]
             }
         ]
+
+        @
+        [
+            {
+                modelInfo = 
+                    {
+                        fileStructureVersionNumber = "1.0.0.0"
+                        versionNumber = "1.0.0.1"
+                        seedValue = 1975103951
+                        modelName = "20181130_005"
+                        numberOfSubstances = 6175
+                        numberOfAminoAcids = NumberOfAminoAcids.NineAminoAcids
+                        maxPeptideLength = MaxPeptideLength.ThreeMax
+                    }
+
+                allParams = 
+                    [
+                        {
+                            synthesisDistribution = DeltaDistribution({ threshold = None }) |> Delta
+                            forwardScale = Some 0.001
+                            backwardScale = Some 0.0001
+                        }
+                        |> SynthesisRateParam
+
+                        {
+                            ligationDistribution = DeltaDistribution({ threshold = None }) |> Delta
+                            forwardScale = Some 0.001
+                            backwardScale = Some 0.0001
+                        }
+                        |> LigationRateParam
+
+                    ]
+            }
+        ]
