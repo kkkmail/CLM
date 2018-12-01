@@ -59,9 +59,9 @@ module HTML =
 
 /// Module to represent a GenericChart
 module GenericChart =
-    
+
     open Trace
-    
+
     type GenericChart =
         | Chart of Trace * Layout
         | MultiChart of Trace list * Layout
@@ -91,7 +91,7 @@ module GenericChart =
             Chart (trace, (DynObj.combine l' layout |> unbox) )
         | MultiChart (traces,l')       -> 
             MultiChart (traces, (DynObj.combine l' layout |> unbox))
-    
+
     // // Adds multiple Layout functions to the GenericChart
     // let addLayouts layouts gChart =
     //     match gChart with
@@ -106,8 +106,8 @@ module GenericChart =
     let combine(gCharts:seq<GenericChart>) =
         let combineLayouts (first:Layout) (second:Layout) = 
             DynObj.combine first second |> unbox
-                
-            
+
+
         gCharts
         |> Seq.reduce (fun acc elem ->
             match acc,elem with
@@ -147,7 +147,7 @@ module GenericChart =
                 //.Replace("style=\"width: [WIDTH]px; height: [HEIGHT]px;\"","style=\"width: 600px; height: 600px;\"")
                 .Replace("[WIDTH]", string 600 )
                 .Replace("[HEIGHT]", string 600)
-                .Replace("[ID]", guid)                
+                .Replace("[ID]", guid)
                 .Replace("[DATA]", tracesJson)
                 .Replace("[LAYOUT]", layoutJson)
         html
@@ -200,7 +200,7 @@ module GenericChart =
                 //.Replace("style=\"width: [WIDTH]px; height: [HEIGHT]px;\"","style=\"width: 600px; height: 600px;\"")
                 .Replace("[WIDTH]", string 600 )
                 .Replace("[HEIGHT]", string 600)
-                .Replace("[ID]", guid)                
+                .Replace("[ID]", guid)
                 .Replace("[DATA]", tracesJson)
                 .Replace("[LAYOUT]", layoutJson)
                 .Replace("[IMAGEFORMAT]",format.ToString().ToLower())
@@ -214,15 +214,15 @@ module GenericChart =
             HTML.doc.Replace("[CHART]", chartMarkup)
         html
 
-        
-    /// Creates a new GenericChart whose traces are the results of applying the given function to each of the trace of the GenericChart.           
+
+    /// Creates a new GenericChart whose traces are the results of applying the given function to each of the trace of the GenericChart. 
     let mapTrace f gChart =
         match gChart with
         | Chart (trace,layout)       -> Chart (f trace,layout)
         | MultiChart (traces,layout) -> MultiChart (traces |> List.map f,layout) 
 
     /// Creates a new GenericChart whose traces are the results of applying the given function to each of the trace of the GenericChart.
-    /// The integer index passed to the function indicates the index (from 0) of element being transformed.           
+    /// The integer index passed to the function indicates the index (from 0) of element being transformed.
     let mapiTrace f gChart =
         match gChart with
         | Chart (trace,layout)       -> Chart (f 0 trace,layout)
@@ -234,20 +234,16 @@ module GenericChart =
         | Chart (_)             -> 1
         | MultiChart (traces,_) -> traces |> Seq.length
 
-    /// Creates a new GenericChart whose traces are the results of applying the given function to each of the trace of the GenericChart.           
+    /// Creates a new GenericChart whose traces are the results of applying the given function to each of the trace of the GenericChart.
     let existsTrace (f:Trace->bool) gChart =
         match gChart with
         | Chart (trace,_)       -> f trace 
         | MultiChart (traces,_) -> traces |> List.exists f
           
-    /// Converts from a trace object and a layout object into GenericChart    
+    /// Converts from a trace object and a layout object into GenericChart
     let ofTraceObject trace = //layout =
         GenericChart.Chart(trace, Layout() )
-    
+
     /// Converts from a list of trace objects and a layout object into GenericChart
     let ofTraceObjects traces = // layout =
         GenericChart.MultiChart(traces, Layout() )
-
-
-
-
