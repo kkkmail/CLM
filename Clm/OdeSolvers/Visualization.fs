@@ -127,7 +127,7 @@ module Visualization =
 
             Chart.Combine (fn |> List.map (fun i -> Chart.Line(getFuncData i, Name = name i)))
             |> Chart.withX_AxisStyle("t", MinMax = (o.startTime, o.endTime))
-            |> showChart (getFileName PlotChiralAminoAcids) description
+            |> showChart (getFileName PlotAminoAcids) description
 
 
         let plotEnantiomericExcessImpl (r : OdeResult) =

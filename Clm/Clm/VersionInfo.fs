@@ -10,5 +10,4 @@ module VersionInfo =
 
     /// This is a version of the code. Update as necessary but respect FileStructureVersionNumber.
     [<Literal>]
-    let VersionNumber = "1.0.1.0"
-
+    let VersionNumber = "1.0.1.1"
