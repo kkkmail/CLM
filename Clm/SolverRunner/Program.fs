@@ -10,8 +10,11 @@ let main argv =
     printfn "Input values: %A" argv
 
     let tEnd0 = 1.0
-    let y000 = 1000.0
-    let y00 = y000 * (2.0 * (double modelDataParamsWithExtraData.modelDataParams.modelInfo.numberOfAminoAcids.length))
+    let y000 = 1.0
+
+    // This is a tough choice...
+    //let y00 = y000 * (2.0 * (double modelDataParamsWithExtraData.modelDataParams.modelInfo.numberOfAminoAcids.length))
+    let y00 = y000 * 2.0
 
     let tEnd, y0 = 
         match argv |> List.ofArray with 

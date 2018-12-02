@@ -322,11 +322,6 @@ module Model =
         let d (s : Substance) = dName + "" + (allInd.[s]).ToString()
 
         let rate (l : list<Substance * int>) (ReactionRate r) = 
-            let toFloat (s : string) = 
-                match s.Contains(".") with 
-                | true -> s
-                | false -> s + ".0"
-
             let toPown s n = 
                 match n with 
                 | 1 -> x s

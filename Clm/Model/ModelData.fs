@@ -6,7 +6,7 @@ open Clm.ReactionTypes
 open Clm.ReactionRates
 
 module ModelData = 
-    let seedValue = 909605930
+    let seedValue = 232432000
     let numberOfAminoAcids = NumberOfAminoAcids.TwoAminoAcids
     let maxPeptideLength = MaxPeptideLength.TwoMax
     let numberOfSubstances = 21
@@ -116,13 +116,13 @@ module ModelData =
         [|
 
             0.001 * x.[4] // b | synthesis: Y <-> b
-            -0.0001 * x.[0] // Y | synthesis: Y <-> b
+            -5E-05 * x.[0] // Y | synthesis: Y <-> b
             0.001 * x.[2] // B | synthesis: Y <-> B
-            -0.0001 * x.[0] // Y | synthesis: Y <-> B
+            -5E-05 * x.[0] // Y | synthesis: Y <-> B
             0.001 * x.[3] // a | synthesis: Y <-> a
-            -0.0001 * x.[0] // Y | synthesis: Y <-> a
+            -5E-05 * x.[0] // Y | synthesis: Y <-> a
             0.001 * x.[1] // A | synthesis: Y <-> A
-            -0.0001 * x.[0] // Y | synthesis: Y <-> A
+            -5E-05 * x.[0] // Y | synthesis: Y <-> A
         |]
         |> Array.sum
 
@@ -132,7 +132,7 @@ module ModelData =
         [|
 
             -0.001 * x.[1] // A | synthesis: Y <-> A
-            0.0001 * x.[0] // Y | synthesis: Y <-> A
+            5E-05 * x.[0] // Y | synthesis: Y <-> A
         |]
         |> Array.sum
 
@@ -142,7 +142,7 @@ module ModelData =
         [|
 
             -0.001 * x.[2] // B | synthesis: Y <-> B
-            0.0001 * x.[0] // Y | synthesis: Y <-> B
+            5E-05 * x.[0] // Y | synthesis: Y <-> B
         |]
         |> Array.sum
 
@@ -152,7 +152,7 @@ module ModelData =
         [|
 
             -0.001 * x.[3] // a | synthesis: Y <-> a
-            0.0001 * x.[0] // Y | synthesis: Y <-> a
+            5E-05 * x.[0] // Y | synthesis: Y <-> a
         |]
         |> Array.sum
 
@@ -162,7 +162,7 @@ module ModelData =
         [|
 
             -0.001 * x.[4] // b | synthesis: Y <-> b
-            0.0001 * x.[0] // Y | synthesis: Y <-> b
+            5E-05 * x.[0] // Y | synthesis: Y <-> b
         |]
         |> Array.sum
 
@@ -386,7 +386,7 @@ module ModelData =
                             fileStructureVersionNumber = "1.0.0.0"
                             versionNumber = "1.0.1.0"
                             seedValue = seedValue
-                            modelName = "20181201_002"
+                            modelName = "20181201_003"
                             numberOfSubstances = 21
                             numberOfAminoAcids = TwoAminoAcids
                             maxPeptideLength = TwoMax
@@ -396,7 +396,7 @@ module ModelData =
                         [
                             {
                                 synthesisDistribution = DeltaDistribution({ threshold = None }) |> Delta
-                                forwardScale = Some 0.0001
+                                forwardScale = Some 5E-05
                                 backwardScale = Some 0.001
                             }
                             |> SynthesisRateParam

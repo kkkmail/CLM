@@ -18,13 +18,18 @@ module ReactionRates =
         | false -> s + ".0"
 
 
+    let toFloat (s : string) = 
+        match s.Contains(".") with 
+        | true -> s
+        | false -> 
+            match s.ToUpper().Contains("E+") || s.ToUpper().Contains("E-") with
+            | true -> s
+            | false -> s + ".0"
+
+
     let doubleOptFSharpString (d : double option) = 
         match d with 
-        | Some v -> 
-            let s = v.ToString()
-            match s.Contains(".") with
-            | true -> "Some " + s
-            | false -> "Some " + s + ".0"
+        | Some v -> "Some " + (v.ToString() |> toFloat)
         | None -> "None"
 
 
