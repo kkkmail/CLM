@@ -9,7 +9,7 @@ open Model.ModelData
 open OdeSolvers.Solver
 open OdeSolvers.Visualization
 //===========================================================
-let useTempFolder = true
+let useTempFolder = false
 
 let y00 = 1.0
 let tEnd = 10000.0
