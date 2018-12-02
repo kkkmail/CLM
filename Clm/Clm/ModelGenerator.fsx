@@ -18,10 +18,8 @@ let updateAllModels = false
 let n = NumberOfAminoAcids.TwoAminoAcids
 let m = MaxPeptideLength.TwoMax
 //===========================================================
-
 let seed = (new Random()).Next()
 let rnd = new Random(seed)
-
 //===========================================================
 let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.0001 0.001
 let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.0001 0.001
@@ -56,8 +54,7 @@ let modelGenerationParams =
         modelLocationData = ModelLocationInputData.defaultValue
         updateAllModels = updateAllModels
     }
-
-
+//===========================================================
 printfn "Creating model..."
 printfn "Starting at: %A" DateTime.Now
 #time
@@ -71,3 +68,4 @@ printfn "allReactions.Length = %A" model.allReactions.Length
 do model.generateCode()
 #time
 printfn "... completed."
+//===========================================================

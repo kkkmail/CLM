@@ -2,6 +2,7 @@
 
 open System
 open FSharp.Collections
+open Clm.VersionInfo
 open Clm.Substances
 open Clm.Reactions
 open Clm.ReactionTypes
@@ -77,8 +78,8 @@ module Model =
             multEe : double option
         }
 
-        static member defaultMult = 0.01
-        static member defaultMultEe = 0.01
+        static member defaultMult = 0.001
+        static member defaultMultEe = 0.001
 
         static member getDefaultValue p so = 
             {
@@ -114,7 +115,12 @@ module Model =
 
         let allSubst = p.modelDataParams.allSubst
 
-        let nextValue() = y0 * mult *p.distr.nextDouble() / (double p.modelDataParams.modelDataParams.modelInfo.numberOfSubstances)
+        let nextValue (s : Substance) = 
+            let n = p.modelDataParams.modelDataParams.modelInfo.numberOfAminoAcids.length
+            let noOfSubstOnLevel = pown (2 * n) s.atoms
+            //y0 * mult *p.distr.nextDouble() / (double p.modelDataParams.modelDataParams.modelInfo.numberOfSubstances)
+            y0 * mult *p.distr.nextDouble() / (double noOfSubstOnLevel)
+
         let nextEe() = multEe * (2.0 * p.distr.nextDoubleFromZeroToOne() - 1.0)
 
         let initVals =
@@ -122,7 +128,7 @@ module Model =
             |> List.filter (fun s -> s.isFood |> not)
             |> List.map (fun s -> orderPairs (s.aminoAcids, s.enantiomer.aminoAcids) |> fst |> Substance.fromList)
             |> List.distinct
-            |> List.map (fun s -> (s, (nextValue(), nextEe())))
+            |> List.map (fun s -> (s, (nextValue s, nextEe())))
 
         let initValsMap = initVals |> Map.ofList
         let total = initVals |> List.map (fun (s, (v, _)) -> v * (double s.atoms)) |> List.sum
@@ -131,7 +137,8 @@ module Model =
             let s = allIndRev.[i]
             match s.isFood with 
             | true -> y0 - 2.0 * total
-            | false -> 
+            | false ->
+                let len = s.atoms
                 match initValsMap.TryFind s, initValsMap.TryFind s.enantiomer with 
                 | Some _, Some _ -> 
                     printfn "Duplicate init value for i: %A, substance: %A." i s.name
@@ -185,10 +192,10 @@ module Model =
 
         let ligationPairs = allPairs |> List.filter (fun (a, b) -> a.Length + b.Length <= modelParams.maxPeptideLength.length)
 
-        do
-            ligationPairs
-            |> List.map (fun (a, b) -> printfn "a: %A, b: %A" a b)
-            |> ignore
+        //do
+        //    ligationPairs
+        //    |> List.map (fun (a, b) -> printfn "a: %A, b: %A" a b)
+        //    |> ignore
 
         let catSynthPairs = List.allPairs (chiralAminoAcids |> List.map (fun c -> SynthesisReaction c)) synthCatalysts
         let catLigPairs = List.allPairs (ligationPairs |> List.map (fun c -> LigationReaction c)) ligCatalysts
@@ -245,10 +252,10 @@ module Model =
         let synth = createReactions (fun a -> SynthesisReaction a |> Synthesis) chiralAminoAcids
         let lig = createReactions (fun x -> LigationReaction x |> Ligation) ligationPairs
 
-        do
-            lig
-            |> List.map (fun r -> printfn "r: %A" r)
-            |> ignore
+        //do
+        //    lig
+        //    |> List.map (fun r -> printfn "r: %A" r)
+        //    |> ignore
 
         let sedDir = createReactions (fun x -> SedimentationDirectReaction x |> SedimentationDirect) allPairs
         let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) catSynthPairs
