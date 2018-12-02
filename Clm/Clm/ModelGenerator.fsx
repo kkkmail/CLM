@@ -23,7 +23,7 @@ let rnd = new Random(seed)
 //===========================================================
 let synthModel = ReactionRateProvider.defaultSynthesisModel rnd 0.001 0.01
 //let synthModel = ReactionRateProvider.defaultSynthesisModel rnd (0.0001 / (double n.length)) 0.001
-let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.001 0.01
+let ligModel = ReactionRateProvider.defaultLigationModel rnd 0.001 0.001
 
 let catSynthModel = ReactionRateProvider.defaultCatalyticSynthesisModel rnd synthModel (Some 0.0005) 10000.0
 let catLigModel = ReactionRateProvider.defaultCatalyticLigationModel rnd ligModel (Some 0.0001) 10000.0
