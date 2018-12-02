@@ -184,6 +184,12 @@ module Model =
             |> List.distinct
 
         let ligationPairs = allPairs |> List.filter (fun (a, b) -> a.Length + b.Length <= modelParams.maxPeptideLength.length)
+
+        do
+            ligationPairs
+            |> List.map (fun (a, b) -> printfn "a: %A, b: %A" a b)
+            |> ignore
+
         let catSynthPairs = List.allPairs (chiralAminoAcids |> List.map (fun c -> SynthesisReaction c)) synthCatalysts
         let catLigPairs = List.allPairs (ligationPairs |> List.map (fun c -> LigationReaction c)) ligCatalysts
 
@@ -229,6 +235,7 @@ module Model =
 
         let createReactions c l = 
             let create a = c a |> AnyReaction.tryCreateReaction rateProvider
+
             l
             |> List.map create
             |> List.choose id
@@ -237,6 +244,12 @@ module Model =
 
         let synth = createReactions (fun a -> SynthesisReaction a |> Synthesis) chiralAminoAcids
         let lig = createReactions (fun x -> LigationReaction x |> Ligation) ligationPairs
+
+        do
+            lig
+            |> List.map (fun r -> printfn "r: %A" r)
+            |> ignore
+
         let sedDir = createReactions (fun x -> SedimentationDirectReaction x |> SedimentationDirect) allPairs
         let catSynth = createReactions (fun x -> CatalyticSynthesisReaction x |> CatalyticSynthesis) catSynthPairs
         let catLig = createReactions (fun x -> CatalyticLigationReaction x |> CatalyticLigation) catLigPairs

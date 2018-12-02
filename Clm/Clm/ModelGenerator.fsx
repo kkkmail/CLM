@@ -15,8 +15,8 @@ open Clm.Model
 //===========================================================
 let updateAllModels = false
 
-let n = NumberOfAminoAcids.SixAminoAcids
-let m = MaxPeptideLength.ThreeMax
+let n = NumberOfAminoAcids.TwoAminoAcids
+let m = MaxPeptideLength.TwoMax
 //===========================================================
 
 let seed = (new Random()).Next()
@@ -35,7 +35,7 @@ let saModel = ReactionRateProvider.defaultSedimentationAllModel rnd 0.1
 let rates = 
     [
          synthModel |> SynthesisRateModel
-         ligModel |> LigationRateModel
+         //ligModel |> LigationRateModel
 
          //catSynthModel |> CatalyticSynthesisRateModel
          //catLigModel |> CatalyticLigationRateModel

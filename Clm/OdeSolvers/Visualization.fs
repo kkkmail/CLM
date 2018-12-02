@@ -58,19 +58,19 @@ module Visualization =
     type Plotter(i : PlotDataInfo, p : ModelDataParamsWithExtraData, o : OdeResult) =
         let description = 
             [
-                "Comleted at: ", sprintf "%A" (DateTime.Now)
-                "model name: ", p.modelDataParams.modelInfo.modelName
-                "end time: ", sprintf "%A" o.endTime
-                "y0:", sprintf "%A" o.y0
-                "number of amino acids: ", sprintf "%A" p.modelDataParams.modelInfo.numberOfAminoAcids.length
-                "max peptide length: ", sprintf "%A" p.modelDataParams.modelInfo.maxPeptideLength.length
-                "number of substances: ", sprintf "%A" p.modelDataParams.modelInfo.numberOfSubstances
+                "Comleted at", sprintf "%A" (DateTime.Now)
+                "model name", p.modelDataParams.modelInfo.modelName
+                "end time", sprintf "%A" o.endTime
+                "y0", sprintf "%A" o.y0
+                "number of amino acids", sprintf "%A" p.modelDataParams.modelInfo.numberOfAminoAcids.length
+                "max peptide length", sprintf "%A" p.modelDataParams.modelInfo.maxPeptideLength.length
+                "number of substances", sprintf "%A" p.modelDataParams.modelInfo.numberOfSubstances
             ]
             @
-            (p.allReactions |> List.map (fun (r, c) -> r.name + ": ", c.ToString()))
+            (p.allReactions |> List.map (fun (r, c) -> r.name, c.ToString()))
             @
-            (p.allRawReactions |> List.map (fun (r, c) -> r.name + " (raw): ", c.ToString()))
-            |> List.map (fun (n, d) -> n + d)
+            (p.allRawReactions |> List.map (fun (r, c) -> r.name + " (raw)", c.ToString()))
+            |> List.map (fun (n, d) -> n + ": " + d)
             |> String.concat ", "
 
 
